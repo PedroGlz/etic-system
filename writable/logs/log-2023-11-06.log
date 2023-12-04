@@ -1,0 +1,252 @@
+CRITICAL - 2023-11-06 08:52:23 --> Undefined array key 0
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inspecciones.php(304): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 304)
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->cargar_bd_inspeccion()
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2023-11-06 10:23:14 --> Undefined variable $nombre_bd
+#0 C:\xampp\htdocs\etic-system\app\Controllers\ProcesoBD.php(26): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 26)
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\ProcesoBD->procesobd()
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProcesoBD))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2023-11-06 10:23:14 --> Uncaught ErrorException: Cannot modify header information - headers already sent in C:\xampp\htdocs\etic-system\system\Debug\Exceptions.php:107
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', 'C:\\xampp\\htdocs...', 107)
+#1 C:\xampp\htdocs\etic-system\system\Debug\Exceptions.php(107): header('HTTP/1.1 500 In...', true, 500)
+#2 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#3 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2023-11-06 10:29:27 --> Uncaught ErrorException: Cannot modify header information - headers already sent in C:\xampp\htdocs\etic-system\system\Debug\Exceptions.php:107
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', 'C:\\xampp\\htdocs...', 107)
+#1 C:\xampp\htdocs\etic-system\system\Debug\Exceptions.php(107): header('HTTP/1.1 404 No...', true, 404)
+#2 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Exceptions\PageNotFoundException))
+#3 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2023-11-06 10:32:57 --> syntax error, unexpected variable "$script_insert", expecting "function" or "const"
+#0 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-11-06 10:32:57 --> Uncaught ErrorException: Cannot modify header information - headers already sent in C:\xampp\htdocs\etic-system\system\Debug\Exceptions.php:107
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', 'C:\\xampp\\htdocs...', 107)
+#1 C:\xampp\htdocs\etic-system\system\Debug\Exceptions.php(107): header('HTTP/1.1 500 In...', true, 500)
+#2 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ParseError))
+#3 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2023-11-06 10:36:34 --> Unmatched '}'
+#0 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-11-06 10:36:34 --> Uncaught ErrorException: Cannot modify header information - headers already sent in C:\xampp\htdocs\etic-system\system\Debug\Exceptions.php:107
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', 'C:\\xampp\\htdocs...', 107)
+#1 C:\xampp\htdocs\etic-system\system\Debug\Exceptions.php(107): header('HTTP/1.1 500 In...', true, 500)
+#2 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ParseError))
+#3 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2023-11-06 10:37:22 --> Unmatched '}'
+#0 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-11-06 10:37:58 --> Undefined variable $nombre_bd
+#0 C:\xampp\htdocs\etic-system\app\Controllers\ProcesoBD.php(26): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 26)
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\ProcesoBD->procesobd()
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProcesoBD))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2023-11-06 10:38:36 --> Undefined variable $nombre_bd
+#0 C:\xampp\htdocs\etic-system\app\Controllers\ProcesoBD.php(26): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 26)
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\ProcesoBD->procesobd()
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProcesoBD))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2023-11-06 11:28:31 --> opendir(C:\xampp\htdocs\etic-system\public/Archivos_ETIC/inspecciones/2090/Imagenes): El sistema no puede encontrar la ruta especifica (code: 3)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 987)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(987): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-11-06 13:18:29 --> ini_set(): Session ini settings cannot be changed after headers have already been sent
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'ini_set(): Sess...', 'C:\\xampp\\htdocs...', 71)
+#1 C:\xampp\htdocs\etic-system\system\Session\Handlers\FileHandler.php(71): ini_set('session.save_pa...', 'C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\Config\Services.php(570): CodeIgniter\Session\Handlers\FileHandler->__construct(Object(Config\App), '127.0.0.1')
+#3 C:\xampp\htdocs\etic-system\system\Config\BaseService.php(248): CodeIgniter\Config\Services::session(Object(Config\App), false)
+#4 C:\xampp\htdocs\etic-system\system\Config\BaseService.php(189): CodeIgniter\Config\BaseService::__callStatic('session', Array)
+#5 C:\xampp\htdocs\etic-system\system\Config\Services.php(563): CodeIgniter\Config\BaseService::getSharedInstance('session', NULL)
+#6 C:\xampp\htdocs\etic-system\system\Config\BaseService.php(248): CodeIgniter\Config\Services::session()
+#7 C:\xampp\htdocs\etic-system\system\Common.php(909): CodeIgniter\Config\BaseService::__callStatic('session', Array)
+#8 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1545): session()
+#9 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteBaseLine()
+#10 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#11 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2023-11-06 13:18:29 --> Uncaught ErrorException: Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\etic-system\app\Config\Events.php:32) in C:\xampp\htdocs\etic-system\system\Debug\Exceptions.php:107
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', 'C:\\xampp\\htdocs...', 107)
+#1 C:\xampp\htdocs\etic-system\system\Debug\Exceptions.php(107): header('HTTP/1.1 500 In...', true, 500)
+#2 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#3 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2023-11-06 13:22:48 --> Maximum execution time of 120 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2023-11-06 13:25:28 --> Maximum execution time of 120 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2023-11-06 13:31:56 --> Allowed memory size of 536870912 bytes exhausted (tried to allocate 93947512 bytes)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2023-11-06 16:28:30 --> FPDF error: Interlacing not supported: http://etic-system.local/Archivos_ETIC/clientes_img/bachoco.png
+#0 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1322): App\ThirdParty\fpdf\FPDF->Error('Interlacing not...')
+#1 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1288): App\ThirdParty\fpdf\FPDF->_parsepngstream(Resource id #160, 'http://etic-sys...')
+#2 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(913): App\ThirdParty\fpdf\FPDF->_parsepng('http://etic-sys...')
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(3378): App\ThirdParty\fpdf\FPDF->Image('http://etic-sys...', 247, 8, 40, 16)
+#4 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(338): App\Controllers\PDF->Header()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1813): App\ThirdParty\fpdf\FPDF->AddPage('L', 'A4', 0)
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteListaProblemas('Abierto')
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-11-06 16:28:39 --> FPDF error: Interlacing not supported: http://etic-system.local/Archivos_ETIC/clientes_img/bachoco.png
+#0 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1322): App\ThirdParty\fpdf\FPDF->Error('Interlacing not...')
+#1 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1288): App\ThirdParty\fpdf\FPDF->_parsepngstream(Resource id #160, 'http://etic-sys...')
+#2 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(913): App\ThirdParty\fpdf\FPDF->_parsepng('http://etic-sys...')
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(3378): App\ThirdParty\fpdf\FPDF->Image('http://etic-sys...', 247, 8, 40, 16)
+#4 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(338): App\Controllers\PDF->Header()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1813): App\ThirdParty\fpdf\FPDF->AddPage('L', 'A4', 0)
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteListaProblemas('Abierto')
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-11-06 16:28:41 --> FPDF error: Interlacing not supported: http://etic-system.local/Archivos_ETIC/clientes_img/bachoco.png
+#0 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1322): App\ThirdParty\fpdf\FPDF->Error('Interlacing not...')
+#1 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1288): App\ThirdParty\fpdf\FPDF->_parsepngstream(Resource id #160, 'http://etic-sys...')
+#2 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(913): App\ThirdParty\fpdf\FPDF->_parsepng('http://etic-sys...')
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(3378): App\ThirdParty\fpdf\FPDF->Image('http://etic-sys...', 247, 8, 40, 16)
+#4 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(338): App\Controllers\PDF->Header()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1813): App\ThirdParty\fpdf\FPDF->AddPage('L', 'A4', 0)
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteListaProblemas('Cerrado')
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-11-06 16:31:03 --> FPDF error: Interlacing not supported: http://etic-system.local/Archivos_ETIC/clientes_img/bachoco.png
+#0 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1322): App\ThirdParty\fpdf\FPDF->Error('Interlacing not...')
+#1 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1288): App\ThirdParty\fpdf\FPDF->_parsepngstream(Resource id #160, 'http://etic-sys...')
+#2 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(913): App\ThirdParty\fpdf\FPDF->_parsepng('http://etic-sys...')
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(3378): App\ThirdParty\fpdf\FPDF->Image('http://etic-sys...', 247, 8, 40, 16)
+#4 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(338): App\Controllers\PDF->Header()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1813): App\ThirdParty\fpdf\FPDF->AddPage('L', 'A4', 0)
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteListaProblemas('Cerrado')
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-11-06 16:31:04 --> FPDF error: Interlacing not supported: http://etic-system.local/Archivos_ETIC/clientes_img/bachoco.png
+#0 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1322): App\ThirdParty\fpdf\FPDF->Error('Interlacing not...')
+#1 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1288): App\ThirdParty\fpdf\FPDF->_parsepngstream(Resource id #160, 'http://etic-sys...')
+#2 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(913): App\ThirdParty\fpdf\FPDF->_parsepng('http://etic-sys...')
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(3378): App\ThirdParty\fpdf\FPDF->Image('http://etic-sys...', 247, 8, 40, 16)
+#4 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(338): App\Controllers\PDF->Header()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1813): App\ThirdParty\fpdf\FPDF->AddPage('L', 'A4', 0)
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteListaProblemas('Abierto')
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-11-06 16:33:42 --> FPDF error: Interlacing not supported: http://etic-system.local/Archivos_ETIC/clientes_img/bachoco.png
+#0 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1322): App\ThirdParty\fpdf\FPDF->Error('Interlacing not...')
+#1 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1288): App\ThirdParty\fpdf\FPDF->_parsepngstream(Resource id #160, 'http://etic-sys...')
+#2 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(913): App\ThirdParty\fpdf\FPDF->_parsepng('http://etic-sys...')
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(3378): App\ThirdParty\fpdf\FPDF->Image('http://etic-sys...', 247, 8, 40, 16)
+#4 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(338): App\Controllers\PDF->Header()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1813): App\ThirdParty\fpdf\FPDF->AddPage('L', 'A4', 0)
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteListaProblemas('Abierto')
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-11-06 16:34:11 --> FPDF error: Interlacing not supported: http://etic-system.local/Archivos_ETIC/clientes_img/bachoco.png
+#0 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1322): App\ThirdParty\fpdf\FPDF->Error('Interlacing not...')
+#1 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1288): App\ThirdParty\fpdf\FPDF->_parsepngstream(Resource id #160, 'http://etic-sys...')
+#2 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(913): App\ThirdParty\fpdf\FPDF->_parsepng('http://etic-sys...')
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(3378): App\ThirdParty\fpdf\FPDF->Image('http://etic-sys...', 247, 8, 40, 16)
+#4 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(338): App\Controllers\PDF->Header()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1813): App\ThirdParty\fpdf\FPDF->AddPage('L', 'A4', 0)
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteListaProblemas('Abierto')
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-11-06 16:38:18 --> FPDF error: Interlacing not supported: http://etic-system.local/Archivos_ETIC/clientes_img/bachoco.PNG
+#0 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1322): App\ThirdParty\fpdf\FPDF->Error('Interlacing not...')
+#1 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1288): App\ThirdParty\fpdf\FPDF->_parsepngstream(Resource id #160, 'http://etic-sys...')
+#2 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(913): App\ThirdParty\fpdf\FPDF->_parsepng('http://etic-sys...')
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(3378): App\ThirdParty\fpdf\FPDF->Image('http://etic-sys...', 247, 8, 40, 16)
+#4 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(338): App\Controllers\PDF->Header()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1813): App\ThirdParty\fpdf\FPDF->AddPage('L', 'A4', 0)
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteListaProblemas('Abierto')
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-11-06 16:40:01 --> FPDF error: Interlacing not supported: http://etic-system.local/Archivos_ETIC/clientes_img/bachoco.png
+#0 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1322): App\ThirdParty\fpdf\FPDF->Error('Interlacing not...')
+#1 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1288): App\ThirdParty\fpdf\FPDF->_parsepngstream(Resource id #160, 'http://etic-sys...')
+#2 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(913): App\ThirdParty\fpdf\FPDF->_parsepng('http://etic-sys...')
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(3378): App\ThirdParty\fpdf\FPDF->Image('http://etic-sys...', 247, 8, 40, 16)
+#4 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(338): App\Controllers\PDF->Header()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1813): App\ThirdParty\fpdf\FPDF->AddPage('L', 'A4', 0)
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteListaProblemas('Abierto')
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-11-06 16:40:03 --> FPDF error: Interlacing not supported: http://etic-system.local/Archivos_ETIC/clientes_img/bachoco.png
+#0 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1322): App\ThirdParty\fpdf\FPDF->Error('Interlacing not...')
+#1 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1288): App\ThirdParty\fpdf\FPDF->_parsepngstream(Resource id #161, 'http://etic-sys...')
+#2 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(913): App\ThirdParty\fpdf\FPDF->_parsepng('http://etic-sys...')
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(3378): App\ThirdParty\fpdf\FPDF->Image('http://etic-sys...', 247, 8, 40, 16)
+#4 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(338): App\Controllers\PDF->Header()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1813): App\ThirdParty\fpdf\FPDF->AddPage('L', 'A4', 0)
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteListaProblemas('Abierto')
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}

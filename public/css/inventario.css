@@ -1,0 +1,96 @@
+/* body,html{width:100%;height:100%;padding:0;margin:0;} */
+
+#contenedor_listas {
+    border-left: solid 1px;
+    border-right: solid 1px;
+    border-color: #e4e4e4;
+}
+
+#contenedor_elementos_inventario {
+    border: solid 1px;
+    border-color: #00000070;
+    position: relative;
+}
+
+#contenedor_filtros_lista_problemas {
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-right: 4px;
+    display:flex;
+    justify-content:flex-end;
+}
+
+.clearfix:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+#main{
+   /* background-color: BurlyWood; */
+   float: right;
+   /* height: 350px; */
+   width: 65%;
+}
+#sidebar{
+   /* background-color: IndianRed; */
+   width:35%;
+   max-height: 100%;
+   float: left;
+   /* height:200px; */
+   /* overflow-y: hidden; */
+
+   overflow-y: auto;
+   height: 450px;
+}
+
+#dragbar{
+   background-color: #00000070;
+   height:100%;
+   float: right;
+   width: 2px;
+   cursor: col-resize;
+   z-index: 9;
+   position: absolute;
+}
+#ghostbar{
+    width:2px;
+    height:100%;
+    background-color:#00000070;
+    opacity:0.5;
+    position:absolute;
+    cursor: col-resize;
+    /* z-index:999 */
+    z-index:9
+}
+
+.list-group-item.node-treeview {
+    border:none !important;
+}
+
+.stilo_resize_lista, .clearfix {
+    /* overflow: hidden; */
+    overflow: auto;
+    resize: vertical;
+    border-bottom:1px solid #00000070;
+    border-left:1px solid #00000070;
+    border-right:1px solid #00000070;
+    min-height: 10px;
+    max-width:100%;
+}
+
+#contenedor_elementos_inspeccion{
+    padding: 0px;
+}
+/* .jsgrid-grid-body {
+    overflow-x: auto;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+} */
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #207cf1 !important;
+}
+
+a {
+    color: #111111;
+}

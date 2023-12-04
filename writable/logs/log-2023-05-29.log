@@ -1,0 +1,742 @@
+CRITICAL - 2023-05-29 00:24:40 --> syntax error, unexpected token "if"
+#0 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-05-29 00:27:23 --> syntax error, unexpected token "if", expecting ";"
+#0 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-05-29 00:27:59 --> syntax error, unexpected token "if", expecting ";"
+#0 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-05-29 00:28:32 --> Cannot use object of type CodeIgniter\Session\Session as array
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->actualizar_estatus_inspeccion()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 00:28:43 --> session_unset() expects exactly 0 arguments, 1 given
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inspecciones.php(305): session_unset('6056C51E-E42A-4...')
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->actualizar_estatus_inspeccion()
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2023-05-29 00:28:47 --> session_unset() expects exactly 0 arguments, 1 given
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inspecciones.php(305): session_unset('6056C51E-E42A-4...')
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->actualizar_estatus_inspeccion()
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2023-05-29 00:29:17 --> Cannot use object of type CodeIgniter\Session\Session as array
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->actualizar_estatus_inspeccion()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 00:29:22 --> Cannot use object of type CodeIgniter\Session\Session as array
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->actualizar_estatus_inspeccion()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 00:30:15 --> Cannot use object of type CodeIgniter\Session\Session as array
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->actualizar_estatus_inspeccion()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 00:30:20 --> Cannot use object of type CodeIgniter\Session\Session as array
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->actualizar_estatus_inspeccion()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 00:30:55 --> session_unset() expects exactly 0 arguments, 1 given
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inspecciones.php(305): session_unset('6056C51E-E42A-4...')
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->actualizar_estatus_inspeccion()
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2023-05-29 00:30:58 --> session_unset() expects exactly 0 arguments, 1 given
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inspecciones.php(305): session_unset('6056C51E-E42A-4...')
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->actualizar_estatus_inspeccion()
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2023-05-29 00:33:51 --> syntax error, unexpected token "if", expecting ";"
+#0 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-05-29 00:48:28 --> Call to undefined method CodeIgniter\Session\Session::unset_userdata()
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->actualizar_estatus_inspeccion()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 00:48:38 --> Call to undefined method CodeIgniter\Session\Session::unset_userdata()
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->actualizar_estatus_inspeccion()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 00:50:41 --> Call to undefined method CodeIgniter\Session\Session::unset()
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->actualizar_estatus_inspeccion()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 00:50:44 --> Call to undefined method CodeIgniter\Session\Session::unset()
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->actualizar_estatus_inspeccion()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 00:51:15 --> Call to undefined method CodeIgniter\Session\Session::session_unset()
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->actualizar_estatus_inspeccion()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 00:51:20 --> Call to undefined method CodeIgniter\Session\Session::session_unset()
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->actualizar_estatus_inspeccion()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 01:04:26 --> syntax error, unexpected double-quoted string ""
+#0 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-05-29 03:11:56 --> Call to undefined function App\Controllers\write_file()
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->exportar_inspeccion_db()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2023-05-29 03:58:29 --> Table 'etic_system_db.inspecciones' doesn't exist
+CRITICAL - 2023-05-29 03:58:29 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\InspeccionesMdl.php(94): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(46): App\Models\InspeccionesMdl->datos_inspeccion_restaurar()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->index()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2023-05-29 03:58:46 --> Table 'etic_system_db.inspecciones' doesn't exist
+CRITICAL - 2023-05-29 03:58:46 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\InspeccionesMdl.php(94): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(46): App\Models\InspeccionesMdl->datos_inspeccion_restaurar()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->index()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2023-05-29 04:07:34 --> Error connecting to the database: Unknown database 'etic_system_db'
+CRITICAL - 2023-05-29 04:07:34 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'etic_system_db'
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT `Id_Insp...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Models\InspeccionesMdl.php(94): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(46): App\Models\InspeccionesMdl->datos_inspeccion_restaurar()
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->index()
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-05-29 04:08:45 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 04:08:45 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 04:09:05 --> mkdir(): File exists
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mkdir(): File e...', 'C:\\xampp\\htdocs...', 224)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inspecciones.php(224): mkdir('C:\\xampp\\htdocs...', 511, true)
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inspecciones.php(292): App\Controllers\Inspecciones->crearCarpeta('1908')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->restaurar_bd_inspeccion()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-05-29 04:10:23 --> mkdir(): File exists
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mkdir(): File e...', 'C:\\xampp\\htdocs...', 224)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inspecciones.php(224): mkdir('C:\\xampp\\htdocs...', 511, true)
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inspecciones.php(292): App\Controllers\Inspecciones->crearCarpeta('1908')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->restaurar_bd_inspeccion()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-05-29 04:12:03 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 04:12:03 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 04:12:11 --> mkdir(): File exists
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mkdir(): File e...', 'C:\\xampp\\htdocs...', 224)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inspecciones.php(224): mkdir('C:\\xampp\\htdocs...', 511, true)
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inspecciones.php(292): App\Controllers\Inspecciones->crearCarpeta('1908')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->restaurar_bd_inspeccion()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-05-29 04:13:50 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 04:13:50 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 04:21:28 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 04:21:28 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 04:22:21 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones/1908/Imagenes): El sistema no puede encontrar la ruta especifica (code: 3)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 04:22:49 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 04:22:49 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 04:25:24 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 04:25:25 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 04:33:24 --> Call to undefined method CodeIgniter\Session\Session::unset_userdata()
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inspecciones->actualizar_estatus_inspeccion()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inspecciones))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 11:34:20 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 11:34:20 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 11:43:36 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 11:43:36 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 11:44:16 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 11:44:16 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 11:52:56 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 11:52:56 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 11:58:13 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 11:58:14 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 11:59:21 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones/1243/Imagenes): El sistema no puede encontrar la ruta especifica (code: 3)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 12:21:23 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 12:21:23 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 12:22:09 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 12:22:10 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 12:25:06 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 12:25:06 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 12:28:14 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 12:28:14 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 12:30:49 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 12:30:50 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 12:36:30 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 12:36:30 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 12:36:35 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 12:36:36 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 12:36:43 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 12:36:43 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 12:51:22 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 12:51:23 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 12:54:28 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 12:54:28 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 12:54:56 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 12:54:56 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 13:16:39 --> syntax error, unexpected token "=>", expecting "]"
+#0 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-05-29 13:16:44 --> syntax error, unexpected token "=>", expecting "]"
+#0 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-05-29 13:17:50 --> syntax error, unexpected token "=>", expecting "]"
+#0 C:\xampp\htdocs\etic-system\system\Router\Router.php(176): CodeIgniter\Router\Router->autoRoute('inspecciones/ac...')
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(718): CodeIgniter\Router\Router->handle('inspecciones/ac...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(359): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2023-05-29 18:12:57 --> syntax error, unexpected integer "0", expecting ")"
+#0 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-05-29 18:13:00 --> syntax error, unexpected integer "0", expecting ")"
+#0 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-05-29 18:13:15 --> syntax error, unexpected integer "0", expecting ")"
+#0 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2023-05-29 18:47:13 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Estatus_Inspeccion_Det AS Estatus, `name` AS `Elemento`, `Codigo_Barras`, `No...' at line 2
+CRITICAL - 2023-05-29 18:47:13 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\InventariosMdl.php(63): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(928): App\Models\InventariosMdl->consultaReporte('60F6FF54-2816-4...', '6056C51E-E42A-4...', Array)
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteInventarios()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2023-05-29 18:47:22 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Estatus_Inspeccion_Det AS Estatus, `name` AS `Elemento`, `Codigo_Barras`, `No...' at line 2
+CRITICAL - 2023-05-29 18:47:22 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\InventariosMdl.php(63): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(928): App\Models\InventariosMdl->consultaReporte('60F6FF54-2816-4...', '6056C51E-E42A-4...', Array)
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteInventarios()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-05-29 21:02:44 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones/1797/Imagenes): El sistema no puede encontrar la ruta especifica (code: 3)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 21:03:11 --> file_put_contents(C:/xampp/htdocs/etic-system/public/etic/inspecciones/1797/Reportes/ETIC_INVENTARIO_INSPECCION_1797.pdf): Failed to open stream: No such file or directory
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_put_conten...', 'C:\\xampp\\htdocs...', 1049)
+#1 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1049): file_put_contents('C:/xampp/htdocs...', '%PDF-1.3\n3 0 ob...')
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1012): App\ThirdParty\fpdf\FPDF->Output('F', 'C:/xampp/htdocs...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteInventarios()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-05-29 21:03:21 --> file_put_contents(C:/xampp/htdocs/etic-system/public/etic/inspecciones/1797/Reportes/ETIC_INVENTARIO_INSPECCION_1797.pdf): Failed to open stream: No such file or directory
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_put_conten...', 'C:\\xampp\\htdocs...', 1049)
+#1 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1049): file_put_contents('C:/xampp/htdocs...', '%PDF-1.3\n3 0 ob...')
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1012): App\ThirdParty\fpdf\FPDF->Output('F', 'C:/xampp/htdocs...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteInventarios()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-05-29 21:03:30 --> get_object_vars(): Argument #1 ($object) must be of type object, null given
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(927): get_object_vars(NULL)
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteInventarios()
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2023-05-29 21:03:59 --> file_put_contents(C:/xampp/htdocs/etic-system/public/etic/inspecciones/1797/Reportes/ETIC_INVENTARIO_INSPECCION_1797.pdf): Failed to open stream: No such file or directory
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_put_conten...', 'C:\\xampp\\htdocs...', 1049)
+#1 C:\xampp\htdocs\etic-system\app\ThirdParty\fpdf\FPDF.php(1049): file_put_contents('C:/xampp/htdocs...', '%PDF-1.3\n3 0 ob...')
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1012): App\ThirdParty\fpdf\FPDF->Output('F', 'C:/xampp/htdocs...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteInventarios()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-05-29 21:04:46 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones/1797/Imagenes): El sistema no puede encontrar la ruta especifica (code: 3)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 21:21:51 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 21:21:52 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 21:24:05 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 21:24:05 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 21:24:25 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 21:24:26 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 21:25:48 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 21:25:48 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 21:26:07 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 21:26:08 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-05-29 21:29:33 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones//Imagenes): El sistema no puede encontrar el archivo especifica (code: 2)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 868)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(868): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-05-29 21:29:33 --> Too few arguments to function App\Controllers\Inventarios::getProblemas_Sitio(), 0 passed in C:\xampp\htdocs\etic-system\system\CodeIgniter.php on line 824 and exactly 1 expected
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}

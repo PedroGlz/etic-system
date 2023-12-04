@@ -1,0 +1,28 @@
+CRITICAL - 2023-09-19 22:18:45 --> opendir(C:\xampp\htdocs\etic-system\public/etic/inspecciones/1825/Imagenes): El sistema no puede encontrar la ruta especifica (code: 3)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'opendir(C:\\xamp...', 'C:\\xampp\\htdocs...', 891)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(891): opendir('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->explorarArchivos()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+ERROR - 2023-09-19 22:18:45 --> Table 'etic_system_db.datos_reporte' doesn't exist
+CRITICAL - 2023-09-19 22:18:45 --> Call to a member function getFirstRow() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#1 C:\xampp\htdocs\etic-system\app\Models\DatosReporteMdl.php(42): CodeIgniter\BaseModel->first()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(3227): App\Models\DatosReporteMdl->get_registros('964D9CEE-17AE-4...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->obtener_datos_reporte()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2023-09-19 22:18:45 --> Unknown column 'Estatus' in 'where clause'
+CRITICAL - 2023-09-19 22:18:45 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\TipoAmbientesMdl.php(20): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\TipoAmbientes.php(10): App\Models\TipoAmbientesMdl->get()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\TipoAmbientes->show()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TipoAmbientes))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}

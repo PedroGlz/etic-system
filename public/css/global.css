@@ -1,0 +1,275 @@
+/* Estilo para que los campos de las tablas no se acomoden hacia abajo */
+.noWrap { white-space: nowrap; }
+
+/* EStilos para las alertas sweetalert2 */
+.colored-toast.swal2-icon-success {
+  background-color: #a5dc86 !important;
+  /* opacity: 0.9; */
+}
+  
+.colored-toast.swal2-icon-error {
+  background-color: #f27474 !important;
+  /* opacity: 0.9; */
+}
+
+.colored-toast.swal2-icon-warning {
+  background-color: #f8bb86 !important;
+  /* opacity: 0.9; */
+}
+
+.colored-toast.swal2-icon-info {
+  background-color: #3fc3ee !important;
+  /* opacity: 0.9; */
+}
+
+.colored-toast.swal2-icon-question {
+  background-color: #87adbd !important;
+  /* opacity: 0.9; */
+}
+
+.colored-toast .swal2-title {
+  color: white !important;
+}
+
+.colored-toast .swal2-close {
+  color: white !important;
+}
+
+.colored-toast .swal2-html-container {
+  color: white !important;
+}
+.swal2-popup.swal2-toast {
+  padding: .5em 1em !important;
+  display: flex !important;
+  width: 18em !important;
+  height: 4.3em !important;
+}
+.swal2-popup.swal2-toast .swal2-title {
+  margin: .75em .25em !important;
+  margin-left: .73em !important;
+}
+
+.swal2-container .swal2-popup.swal2-toast {
+  flex-direction: column;
+  align-items: start;
+}
+
+.swal2-container .swal2-popup.swal2-toast .swal2-content {
+  margin-left: 50px;
+}
+
+/* Colores iconos treview y jsgrid */
+.fa-traffic-light{
+  color: rgb(240, 212, 0);
+}
+
+.fa-grip-vertical{
+  color: rgb(24, 181, 27);
+}
+
+/* Estilo para que los label esten mas pegados a los inputs*/
+label {
+  display: inline-block;
+  margin-bottom: 0rem;
+}
+
+.fontSizeInputRuta{
+  font-size: 13px !important;
+}
+
+.col-form-label-sm {
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: .875rem;
+  line-height: 1.5;
+}
+
+.modal-header {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-bottom: 1px solid #e9ecef;
+  border-top-left-radius: calc(.3rem - 1px);
+  border-top-right-radius: calc(.3rem - 1px);
+}
+
+.modal-footer {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding: 0rem;
+  border-top: 1px solid #e9ecef;
+  border-bottom-right-radius: calc(.3rem - 1px);
+  border-bottom-left-radius: calc(.3rem - 1px);
+}
+
+/* Estilo para el checkbox de cornico en el modal problemas */
+.custom-switch .custom-control-input:disabled:checked~.custom-control-label::before{
+  background-color: rgba(255, 0, 0, 0.779);
+  border-color: #cf1e1e; 
+}
+
+/* Modificacion del ancho de los elementos del treeview */
+/* se modifico tambien el paddin del jsgrid de .5em a .1em 
+  directamente en el archivo jsgrid.min.css
+*/
+.list-group-item {
+  padding: .1rem .3rem !important;
+}
+
+.styleBtnInicioTree {
+  width:100% !important;
+  display: flex !important;
+  align-items: left !important;
+  padding: 4px 3px 3px 5px !important;
+  font-size: .835rem;
+  background-color: white;
+  border: none;
+}
+
+.jsgrid-cell { 
+  overflow: hidden;
+}
+
+.list-group {
+  width: fit-content !important;
+  grid-template-columns: max-content max-content 1fr !important;
+  min-width: 100% !important;
+
+}
+
+/* .jsgrid-grid-body{
+  max-height: 450px!important;
+} */
+
+/* Alto del contenedor del jsgridBaseLine */
+/* #jsGridBaseLine > .jsgrid-grid-body{
+  height: 220px!important;
+} */
+
+.scrollVertical{
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.scrollHorizontal{
+  overflow-x: hidden;
+  overflow-y: auto;
+  white-space: nowrap;
+}
+
+/* Estilo color azúl para boton input file*/
+.choose::-webkit-file-upload-button {
+  color: white;
+  display: inline-block;
+  background: #1CB6E0;
+  border: none;
+  padding: 7px 15px;
+  font-weight: 700;
+  border-radius: 3px;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 10pt;
+}
+
+/* Estilo para que la clase form-control en los input file se adapte al tamaño del boton*/
+.input-group-sm>.custom-select, .input-group-sm>.form-control:not(textarea) {
+  height: auto;
+}
+
+.fontJsGrid{
+  font-size: .835rem;
+}
+
+.noWrap{
+  white-space:nowrap;
+}
+
+/* Estilos para el explorador de archivos, para subir imagenes*/
+#listaImg {
+  padding-inline-start: 0px;
+  list-style-type: none;
+}
+  
+li.listExploradorArchivos {
+  display: inline-block;
+}
+  
+input.checkBoxImg {
+  display: none;
+}
+  
+label.labelImg {
+  border: 1px solid #fff;
+  padding: 10px;
+  display: block;
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+  
+label.labelImg::before {
+  background-color: white;
+  color: white;
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  border: 1px solid #28a745;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 28px;
+  transition-duration: 0.4s;
+  transform: scale(0);
+}
+  
+label img {
+  height: 100px;
+  width: 100px;
+  transition-duration: 0.2s;
+  transform-origin: 50% 50%;
+}
+  
+:checked+label {
+  border-color: #ddd;
+}
+  
+:checked+label.labelImg::before {
+  content: "✓";
+  background-color: #28a745;
+  transform: scale(1);
+}
+  
+:checked+label img {
+  transform: scale(0.9);
+  box-shadow: 0 0 5px #333;
+  z-index: -1;
+}
+
+  /* Finalizan estilos para el explorador de archivos */

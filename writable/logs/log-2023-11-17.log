@@ -1,0 +1,10 @@
+CRITICAL - 2023-11-17 09:39:19 --> fopen(C:/xampp/htdocs/etic-system/public/Archivos_ETIC/inspecciones/2102/Reportes/ETIC_LISTADO_DE_PROBLEMAS_EMPAQUES MODERNOS SAN PABLO_PAPEL_INSPECCION_2102.Xlsx): Failed to open stream: Resource temporarily unavailable
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fopen(C:/xampp/...', 'C:\\xampp\\htdocs...', 128)
+#1 C:\xampp\htdocs\etic-system\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php(128): fopen('C:/xampp/htdocs...', 'wb')
+#2 C:\xampp\htdocs\etic-system\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(547): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('C:/xampp/htdocs...')
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(3402): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('C:/xampp/htdocs...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteListaProblemasExcel('2023-11-17', '2023-11-17')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
