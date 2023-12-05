@@ -3223,7 +3223,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       //     return obtenerDatosReporteProblemasPdf()
       //   })
       // });
-
+return
       generarReporteBaseLine().then(() => {
         return obtenerDatosReporteInventariosPdf()
       }).then(() => {

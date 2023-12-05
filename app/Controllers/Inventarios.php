@@ -3461,7 +3461,6 @@ class Inventarios extends BaseController{
         $session = session();
 
         $ultimo_registro_en_bd = $datos_reporte->get();
-
         
         $data = [
             'Id_Inspeccion' => $session->Id_Inspeccion,
