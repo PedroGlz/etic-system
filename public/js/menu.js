@@ -112,9 +112,11 @@ function guardar_estatus_inspeccion(){
                         // btn_exportar_inspeccion_finalizada.style.display = "";
                         document.querySelector("#contenedor_modulo_inspeccion_actual").classList.add("disable");
                         // Primero se crea la copia de la inspeccion finalizada
-                        exportar_inspeccion_db().then(() => {
+                        exportar_inspeccion_db().then((res) => {
                             // Despues se limpia la bd en los datos de la inspeccion
-                            limpiar_bd()
+                            if(res == 200){
+                                limpiar_bd()
+                            }
                         })
                     break;
                     // Pospuesta
@@ -167,14 +169,16 @@ function exportar_inspeccion_db(){
                         icon: 'success',
                         title: 'Archivo Backup generado'
                     })
+                    
+                    resolve(200);
                 }else{
                     Toast.fire({
                         icon: 'error',
                         title: 'Evento inesperado'
                     })
+                    resolve(500);
                 }
 
-                resolve('succes');
             },
             error: function (error) {
             reject(error)

@@ -1667,7 +1667,7 @@ class Inventarios extends BaseController{
         $lineaBaseMdl = new LineaBaseMdl();
         $usuariosMdl = new UsuariosMdl();
         $session = session();
-        
+
         // arreglo con las ubicaciones ordenadas en el js
         $baseLine = $this->request->getPost('orden_ubicaciones');
         $datosInpector = $usuariosMdl->obtenerRegistros($session->Id_Usuario);
@@ -2698,7 +2698,7 @@ class Inventarios extends BaseController{
 
         $pdf->SetFont('Arial','B',11);
         if ($nombre_contactos[1] != "") {
-            $pdf->Cell(0,5,utf8_decode("Estimados,"),0,0,'L');
+            $pdf->Cell(0,5,utf8_decode("Estimados:"),0,0,'L');
         }else{
             $pdf->Cell(0,5,utf8_decode("Estimado,"),0,0,'L');
         }
@@ -3292,39 +3292,39 @@ class Inventarios extends BaseController{
     }
 
     public function unirReportesPdf(){
-        // $inspeccionesMdl = new InspeccionesMdl();
-        // $session = session();
+        $inspeccionesMdl = new InspeccionesMdl();
+        $session = session();
 
-        // // Consulta para los datos de la inspección
-        // $datosInspeccion = $inspeccionesMdl->obtenerRegistros($session->Id_Inspeccion);
+        // Consulta para los datos de la inspección
+        $datosInspeccion = $inspeccionesMdl->obtenerRegistros($session->Id_Inspeccion);
 
-        // $ruta = ROOTPATH."public/Archivos_ETIC/inspecciones/".$datosInspeccion[0]['No_Inspeccion']."/Reportes/";
-        // $archivo_procedimientos_inspeccion = ROOTPATH."public/Archivos_ETIC/plantillas_reportes/F-PRS-02_PROCEDIMIENTO_INSPECCIONES.pdf";
+        $ruta = ROOTPATH."public/Archivos_ETIC/inspecciones/".$datosInspeccion[0]['No_Inspeccion']."/Reportes/";
+        $archivo_procedimientos_inspeccion = ROOTPATH."public/Archivos_ETIC/plantillas_reportes/F-PRS-02_PROCEDIMIENTO_INSPECCIONES.pdf";
         
-        // $files = array(
-        //     $ruta."ETIC_PORTADA_REPORTE_INSPECCION_".$datosInspeccion[0]['No_Inspeccion'].".pdf",
-        //     $ruta."ETIC_GRAFICA_ANOMALIAS_INSPECCION_".$datosInspeccion[0]['No_Inspeccion'].".pdf",
-        //     $ruta."ETIC_INVENTARIO_INSPECCION_".$datosInspeccion[0]['No_Inspeccion'].".pdf",
-        //     $ruta."ETIC_PROBLEMAS_INSPECCION_".$datosInspeccion[0]['No_Inspeccion'].".pdf",
-        //     $ruta."ETIC_BASELINE_INSPECCION_".$datosInspeccion[0]['No_Inspeccion'].".pdf",
-        //     $ruta."ETIC_LISTA_PROBLEMAS_ABIERTOS_INSPECCION_".$datosInspeccion[0]['No_Inspeccion'].".pdf",
-        //     $ruta."ETIC_LISTA_PROBLEMAS_CERRADOS_INSPECCION_".$datosInspeccion[0]['No_Inspeccion'].".pdf",
-        //     $archivo_procedimientos_inspeccion,            
-        // );
+        $files = array(
+            $ruta."ETIC_PORTADA_REPORTE_INSPECCION_".$datosInspeccion[0]['No_Inspeccion'].".pdf",
+            $ruta."ETIC_GRAFICA_ANOMALIAS_INSPECCION_".$datosInspeccion[0]['No_Inspeccion'].".pdf",
+            $ruta."ETIC_INVENTARIO_INSPECCION_".$datosInspeccion[0]['No_Inspeccion'].".pdf",
+            $ruta."ETIC_PROBLEMAS_INSPECCION_".$datosInspeccion[0]['No_Inspeccion'].".pdf",
+            $ruta."ETIC_BASELINE_INSPECCION_".$datosInspeccion[0]['No_Inspeccion'].".pdf",
+            $ruta."ETIC_LISTA_PROBLEMAS_ABIERTOS_INSPECCION_".$datosInspeccion[0]['No_Inspeccion'].".pdf",
+            $ruta."ETIC_LISTA_PROBLEMAS_CERRADOS_INSPECCION_".$datosInspeccion[0]['No_Inspeccion'].".pdf",
+            $archivo_procedimientos_inspeccion,            
+        );
         
-        // $pdf = new Fpdi();
-        // foreach ($files as $file) {
-        //     $pageCount = $pdf->setSourceFile($file);
-        //     for ($pageNo=1; $pageNo <= $pageCount; $pageNo++) { 
-        //         $template = $pdf->importPage($pageNo);
-        //         $size = $pdf->getTemplateSize($template);
-        //         $pdf->AddPage($size["orientation"], $size);
-        //         $pdf->useTemplate($template);
-        //     }
-        // }
+        $pdf = new Fpdi();
+        foreach ($files as $file) {
+            $pageCount = $pdf->setSourceFile($file);
+            for ($pageNo=1; $pageNo <= $pageCount; $pageNo++) { 
+                $template = $pdf->importPage($pageNo);
+                $size = $pdf->getTemplateSize($template);
+                $pdf->AddPage($size["orientation"], $size);
+                $pdf->useTemplate($template);
+            }
+        }
         
-        // $nombrePdf = 'ETIC_RESULTADOS_ANALISIS_DE_RIESGO_CON_TERMOGRAFIA_INSPECCION_'.$datosInspeccion[0]['No_Inspeccion'].'.pdf';
-        // $pdf->Output('F', $_SERVER["DOCUMENT_ROOT"].'/Archivos_ETIC/inspecciones/'.$datosInspeccion[0]['No_Inspeccion'].'/Reportes/'.$nombrePdf);
+        $nombrePdf = 'ETIC_RESULTADOS_ANALISIS_DE_RIESGO_CON_TERMOGRAFIA_INSPECCION_'.$datosInspeccion[0]['No_Inspeccion'].'.pdf';
+        $pdf->Output('F', $_SERVER["DOCUMENT_ROOT"].'/Archivos_ETIC/inspecciones/'.$datosInspeccion[0]['No_Inspeccion'].'/Reportes/'.$nombrePdf);
 
     }
 
