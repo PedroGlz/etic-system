@@ -261,8 +261,9 @@ class Inspecciones extends BaseController
     }
 
     public function exportar_inspeccion_db(){
+        $session = session();
 
-        $nombre_backup_inspeccion = $this->request->getPost('nombre_archivo');
+        $nombre_backup_inspeccion = "ETIC_".$session->inspeccion."_".str_replace(' ', '_',$session->nombreSitio)."_INSPECCIONADA.sql";
         $usuario = "root";
         $password = "";
         $database = "u695808356_etic_system_db";
@@ -271,14 +272,14 @@ class Inspecciones extends BaseController
         shell_exec("C:\\xampp\\mysql\\bin\\mysqldump -h localhost -u root --no-create-info u695808356_etic_system_db --replace >".$ruta_guardar_script);
 
         if(file_exists($ruta_guardar_script)){
-            return json_encode(200);
+            return json_encode(["status" => 200, "nombre_backup" => $nombre_backup_inspeccion]);
         }else{
-            return json_encode(500);
+            return json_encode(["status" => 500]);
         }
 
     }
 
-    public function descargar_bd_exportar($nombre_backup_inspeccion = "INSPECCION_NN.sql"){
+    public function descargar_bd_exportar($nombre_backup_inspeccion){
         $filePath = ROOTPATH.'public/Archivos_ETIC/bd_exportar_inspecciones/'.$nombre_backup_inspeccion;
 
         return $this->response->download($filePath, null);

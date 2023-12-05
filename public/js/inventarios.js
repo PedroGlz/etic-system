@@ -44,7 +44,6 @@ var totalFIlasProblemas = 0;
 var arrayIdElementos = [];
 var arrayContactosSitio = [];
 var arrayUbicacionesOrdenadas = [];
-var nombre_archivo_inspeccion = "";
 var datos_base_line_filtro = [];
 var id_inspeccion_det_bl_respaldo
 
@@ -2936,12 +2935,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
       dataType: 'json',
       success: function (data){
         console.log(data[0])
-        console.log(data[0].nombreCliente)
-        // Estructurando nomnre del archivo para exportar al finalizar la inspeccion
-        let nombre_cliente = data[0].nombreCliente.replaceAll(" ","")
-        let nombre_sitio = data[0].Sitio.replaceAll(" ","")
-        nombre_archivo_inspeccion = `ETIC_${strNumInspeccion.value}_${nombre_cliente}_${nombre_sitio}_INSPECCIONADA.sql`;
-        console.log(nombre_archivo_inspeccion)
 
         nombre_contacto_1.value = data[0].Contacto_1;
         puesto_contacto_1.value = data[0].Puesto_Contacto_1;
@@ -2951,10 +2944,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         
         nombre_contacto_3.value = data[0].Contacto_3;
         puesto_contacto_3.value = data[0].Puesto_Contacto_3;
-        
-        // arrayContactosSitio = [...arrayContactosSitio, contacto1, contacto2, contacto3];
-        
-        // insertarContactos(arrayContactosSitio);
 
       },
       error: function (error) {
@@ -3265,7 +3254,6 @@ return
     document.querySelector("#img_portada").src = "img/sistema/imagen-no-disponible.jpeg";
 
     $(".datosImg").empty();
-    cargarContactos();
 
     document.querySelector("#contenedorTabrecomendaciones").innerHTML=``;
     document.querySelector("#contenedorTabrecomendaciones").innerHTML = `

@@ -109,12 +109,13 @@ function guardar_estatus_inspeccion(){
                     break;
                     // Cerrada
                     case "73F27007-76B3-11D3-82BF-00104BC75DC2":
-                        // btn_exportar_inspeccion_finalizada.style.display = "";
-                        document.querySelector("#contenedor_modulo_inspeccion_actual").classList.add("disable");
                         // Primero se crea la copia de la inspeccion finalizada
                         exportar_inspeccion_db().then((res) => {
+                            console.log(res)
                             // Despues se limpia la bd en los datos de la inspeccion
                             if(res == 200){
+                                // btn_exportar_inspeccion_finalizada.style.display = "";
+                                document.querySelector("#contenedor_modulo_inspeccion_actual").classList.add("disable");
                                 limpiar_bd()
                             }
                         })
@@ -148,23 +149,16 @@ function guardar_estatus_inspeccion(){
 }
 
 function exportar_inspeccion_db(){
-    console.log(nombre_archivo_inspeccion)
-    if(nombre_archivo_inspeccion == ""){
-        nombre_archivo_inspeccion = "INSPECCION_NN.sql"
-    }
-    // return
     return new Promise((resolve, reject) => {
         $.ajax({
             url: `/exportar_inspeccion_db`,
             type: "POST",
             dataType: 'json',
-            //   la variable nombre_archivo_inspeccion esta definida en el procesoValidacionFormInventarios.js
-            data:{nombre_archivo:nombre_archivo_inspeccion},
             success: function (res) {
                 console.log(res)
                 
-                if(res == 200){
-                    window.location.href = `inspecciones/descargar_bd_exportar/${nombre_archivo_inspeccion}`
+                if(res.status == 200){
+                    window.location.href = `inspecciones/descargar_bd_exportar/${res.nombre_backup}`
                     Toast.fire({
                         icon: 'success',
                         title: 'Archivo Backup generado'
@@ -174,7 +168,8 @@ function exportar_inspeccion_db(){
                 }else{
                     Toast.fire({
                         icon: 'error',
-                        title: 'Evento inesperado'
+                        title: 'Evento inesperado: Error al crear archivo Backup',
+                        timer: 5500
                     })
                     resolve(500);
                 }
@@ -282,7 +277,7 @@ function abrir_modal_inicializar_imagenes (){
 
 function guardar_nombres_img(){
     onlyClick(btn_inicializar_imagenes)
-console.log("guardando")
+
     if($("#form_inicializar_imagenes").valid()){
         // Guardamos el form con los input file para subir archivos
         var formData = new FormData(document.getElementById("form_inicializar_imagenes"));
