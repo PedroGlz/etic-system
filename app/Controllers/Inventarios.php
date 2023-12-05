@@ -1282,15 +1282,16 @@ class Inventarios extends BaseController{
                     case 7:
                         $fcv = 2.40;
                     break;
-                    
                     default:
-                        $fcv = 0;
+                        $fcv = 2.40;
                     break;
                 }
 
                 $ajuste_temperatura_viento = 0;
                 if ($value['Wind_Speed'] != "" && $value['Wind_Speed'] > 0) {
                     $ajuste_temperatura_viento = round((($temp_prob - $temp_amb) * (floatval($fcv))) + $temp_amb);
+                }else{
+                    $ajuste_temperatura_viento = $temp_prob;
                 }
 
                 // Tomando el valor maximo entre los rms
@@ -1299,7 +1300,7 @@ class Inventarios extends BaseController{
                 if($corriente_nominal >= 1){
                     $porsentaje_carga = ($max_rms_amper_medido / $corriente_nominal) * 100;
                 }else{
-                    $porsentaje_carga = 0;
+                    $porsentaje_carga = 1;
                 }
 
                 switch ((round($porsentaje_carga/10)*10)) {
@@ -1322,29 +1323,23 @@ class Inventarios extends BaseController{
                         $fcc = 4.33;
                     break;
                     default:
-                        $fcc = 0;
+                        $fcc = 4.33;
                     break;
                 }
 
-                // Validando si hay ajuste de viento
-                if ($ajuste_temperatura_viento < 1){
-                    $valor_ajust_vien_temp = floatval($value['Problem_Temperature']);
-                }else{
-                    $valor_ajust_vien_temp = $ajuste_temperatura_viento;
-                }
-                $proyeccion_100 = round((($valor_ajust_vien_temp - $temp_amb) * (floatval($fcc)))+ $temp_amb);
-                if($proyeccion_100 >= 1){
-                    $proyeccion_50 = round(($proyeccion_100 / 2));
-                }else{
-                    $proyeccion_50 = 0;
+                if((round($porsentaje_carga/10)*10) < 40){
+                    $fcc = 0;
                 }
 
-                $pdf->SetFont('Arial','',8); $pdf->Cell(58,4,utf8_decode('Ajuste de temperatura por Viento:'),0,0,'L');
+                $ajuste_temp_carga = round((($ajuste_temperatura_viento - $temp_amb) * (floatval($fcc)))+ $temp_amb);
+
+
+                $pdf->SetFont('Arial','',8); $pdf->Cell(58,4,utf8_decode('Ajuste de temperatura por viento:'),0,0,'L');
                 $pdf->SetFont('Arial','B',8); $pdf->Cell(9,4,utf8_decode($ajuste_temperatura_viento > 0 ? $ajuste_temperatura_viento."°C" : ""),0,0,'R'); $pdf->Ln();
-                $pdf->SetFont('Arial','',8); $pdf->Cell(58,4,utf8_decode('Temperatura estimada 50%:'),0,0,'L');
-                $pdf->SetFont('Arial','B',8); $pdf->Cell(9,4,utf8_decode($proyeccion_50."°C"),0,0,'R'); $pdf->Ln();
-                $pdf->SetFont('Arial','',8); $pdf->Cell(58,4,utf8_decode('Temperatura estimada 100%:'),0,0,'L');
-                $pdf->SetFont('Arial','B',8); $pdf->Cell(9,4,utf8_decode($proyeccion_100."°C"),0,0,'R'); $pdf->Ln();
+                $pdf->SetFont('Arial','',8); $pdf->Cell(58,4,utf8_decode('Temperatura ajuste por carga:'),0,0,'L');
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(9,4,utf8_decode($ajuste_temp_carga."°C"),0,0,'R');
+                // $pdf->SetFont('Arial','',8); $pdf->Cell(58,4,utf8_decode('Temperatura estimada 100%:'),0,0,'L');
+                // $pdf->SetFont('Arial','B',8); $pdf->Cell(9,4,utf8_decode($proyeccion_100."°C"),0,0,'R'); $pdf->Ln();
 
                 // Ubicando Apartado Equipment Information
                 $pdf->SetXY(10,108);
