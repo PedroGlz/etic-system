@@ -162,8 +162,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
   
   // Si pasa la validación de una inspeccion activa se inician todas las funciones
   if (iniciar_moduulo) {
-    // Creamos el select de estatus
-    colocar_datos_reporte();
     cargarDataJsGridBaseLine();
     cargarDataSelectFallas();
     explorarArchivos();
@@ -176,8 +174,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     crearSelectFases('Reference_Phase');
     crearSelectFases('Additional_Info');
     crearSelectTipoAmbientes('Environment');
-    // Cargar contactos en el modal para el reporte word
-    cargarContactos();
     // Creamos el trebiew con datos por default
     crear_treeview(datos_treeview);
     // Cargamos el jsGrid
@@ -2919,14 +2915,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function infoReporteResultadoAnalisis(){
+    document.querySelector("#portada-tab").click()
     seleccionarElementosReporte("contenedor_lista_ra",2);
     seleccionarProblemasReporte("tablaProblemasPdf_ra",2);
-    $('#modalInfoReporteResultadoAnalisis').modal('show');
+
+    colocar_datos_reporte().then(() =>{
+      $('#modalInfoReporteResultadoAnalisis').modal('show');
+    })
   }
 
   // Cargar contactos en el modal para el reporte word
   function cargarContactos(){
-
     // peticion a la base
     $.ajax({
       url: `/sitios/contactos_sitios/${idSitio}`,
@@ -2951,6 +2950,216 @@ window.addEventListener('DOMContentLoaded', (event) => {
       },
     });
 
+  }
+
+  function colocar_datos_reporte(){
+    return new Promise((resolve, reject) => {
+    // peticion a la base
+      $.ajax({
+        url: `/inventarios/obtener_datos_reporte`,
+        type: "get",
+        data:'',
+        dataType: 'json',
+        success: function (data){
+          console.log(data)
+          /* si no hay nigun dato guardado anteriormente para el reporte
+          entonces carga solo los contactos del sitio */
+          if (data === null || data.length < 1) {
+            cargarContactos();
+            resolve()
+            return
+          }
+
+          /* Si ya hay datos guardados del reporte entonces cargamos esos datos */
+
+          /* Detalles del sitio */
+          // document.querySelector("#detalle_ubicacion").value = data.detalle_ubicacion;
+
+          /* Creacion de los elementos con los nombres guardados */
+          let array_nombres = data.nombre_contacto.split("$");
+          array_nombres.forEach(function callback(nombre, index) {
+            document.querySelector(`#nombre_contacto_${index+1}`).value = nombre;
+          });
+          
+          /* Creacion de los elementos con los puestos guardados */
+          let array_puestos = data.puesto_contacto.split("$");
+          array_puestos.forEach(function callback(puesto, index) {
+            document.querySelector(`#puesto_contacto_${index+1}`).value = puesto;
+          });
+          
+          /* Fechas del reporte */
+          document.querySelector("#fecha_inicio_ra").value = data.fecha_inicio_ra;
+          document.querySelector("#fecha_fin_ra").value = data.fecha_fin_ra;
+          
+          /* Imagen de la portada */
+          document.querySelector("#nombre_img_portada").value = data.nombre_img_portada;
+          
+          /* Descripciones guardadas */
+          let array_descripciones = data.descripcion_reporte.split("$");
+          array_descripciones.forEach(function callback(descripcion, index) {
+            if(index == 0){
+              document.querySelector("#descripcion_reporte").textContent = descripcion ;
+            }else{
+
+              let div_contenedor = document.createElement('div');
+              div_contenedor.classList.add("input-group","input-group-sm","mt-1");
+
+              div_contenedor.innerHTML = `
+                <textarea class="form-control form-control-sm" id=""
+                name="descripcion_reporte[]" placeholder="Ingresa la descripción" rows="2">${descripcion}</textarea>
+                <div class="d-flex align-items-center p-1">
+                  <i class="fas fa-trash-alt btnCamposReporte eliminar" style="color:red; cursor: pointer;"></i>
+                </div>
+              `;
+
+              document.querySelector("#contenedorDescripciones").appendChild(div_contenedor);
+
+            }
+          });
+
+          /* Areas inspeccionas */
+          let array_areas_inspeccionadas = data.areas_inspeccionadas.split("$");
+          array_areas_inspeccionadas.forEach(function callback(area, index) {
+            if(index == 0){
+              document.querySelector("#areas_inspeccionadas").textContent = area ;
+            }else{
+
+              let div_contenedor = document.createElement('div');
+              div_contenedor.classList.add("input-group","input-group-sm","mt-1");
+              
+              div_contenedor.innerHTML = `
+                <textarea class="form-control form-control-sm" id=""
+                name="areas_inspeccionadas[]" placeholder="Ingresa la descripción" rows="2">${area}</textarea>
+                <div class="d-flex align-items-center p-1">
+                  <i class="fas fa-trash-alt btnCamposReporte eliminar" style="color:red; cursor: pointer;"></i>
+                </div>
+              `;
+
+              document.querySelector("#contenedorAreas").appendChild(div_contenedor);
+
+            }
+          });
+
+          /* Creacion de los elementos de recomendaciones y sus imagenes guardadas */
+          let imagen_recomendacion = data.imagen_recomendacion.split("$");
+          let imagen_recomendacion_2 = data.imagen_recomendacion_2.split("$");
+          let array_recomendacion_reporte = data.recomendacion_reporte.split("$");
+          document.querySelector("#contenedorTabrecomendaciones").innerHTML = "";
+          array_recomendacion_reporte.forEach(function callback(recomendacion, index) {
+            
+            let div_contenedor = document.createElement('div');
+            div_contenedor.classList.add("input-group","input-group-sm","mt-1");
+
+            let div_contenedor_recomendaciones = document.createElement('div');
+            div_contenedor_recomendaciones.innerHTML = "";
+            div_contenedor.innerHTML += `
+              <textarea class="form-control form-control-sm" id=""
+              name="recomendacion_reporte[]" placeholder="Ingresa la descripción" rows="2">${recomendacion}</textarea>
+            `;
+
+            if (index == 0) {
+              div_contenedor.innerHTML += `
+              <div class="d-flex align-items-center p-1">
+                <i class="fas fa-undo-alt btnCamposReporte limpiar recomendacion" style="color:red; cursor: pointer;"></i>
+              </div>
+            `;
+            }else if(index > 0 && index < 3) {
+              div_contenedor.innerHTML += `
+              <div class="d-flex align-items-center p-1">
+                <i class="fas fa-undo-alt btnCamposReporte limpiar recomendacion" style="color:red; cursor: pointer;"></i>
+                <i class="fas fa-trash-alt btnCamposReporte eliminar recomendacion pl-1" style="color:red; cursor: pointer;"></i>
+              </div>
+            `;
+            }else{
+              div_contenedor.innerHTML += `
+              <div class="d-flex align-items-center p-1">
+                <i class="fas fa-trash-alt btnCamposReporte eliminar recomendacion pl-1" style="color:red; cursor: pointer;"></i>
+              </div>
+            `;
+            }
+            
+            let div_contenedor_img = document.createElement('div');
+            div_contenedor_img.classList.add("row");
+            div_contenedor_img.innerHTML = `
+              <div class="col-sm-5 mt-1">
+                  <div class="input-group input-group-sm" style="" id="">
+                      <input type="text" class="form-control form-control-sm inputIR inputTextImg" name="imagen_recomendacion[]" id="" placeholder="Nombre archivo" value="${imagen_recomendacion[index]}">
+                      <div class="btn-group-vertical btn-group-sm">
+                          <button type="button" style="font-size:7px;margin:0;padding:0;width:20px;"
+                              class="btn btn-default btn-sm rounded-0 btnUp">
+                              <i class="fas fa-chevron-up"></i>
+                          </button>
+                          <button type="button" style="font-size:7px;margin:0;padding:0;width:20px;"
+                              class="btn btn-default btn-sm rounded-0 btnDown">
+                              <i class="fas fa-chevron-down"></i>
+                          </button>
+                      </div>
+                      <button type="button" class="btn btn-default btn-sm rounded-0 btnGetLastImg" style="margin:0;padding:0;width:20px;">...</button>
+                      <div class="input-group-prepend">
+                          <button class="btn btn-info btn-sm btnModalArchivos_recomendacion" type="button" data-toggle="modal"
+                              data-target="#modalFileExplorer">
+                              <i class="fas fa-folder-open fa-xs"></i>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-sm-5 mt-1">
+                <div class="input-group input-group-sm" style="" id="">
+                    <input type="text" class="form-control form-control-sm inputIR inputTextImg" name="imagen_recomendacion_2[]" id="" placeholder="Nombre archivo" value="${imagen_recomendacion_2[index]}">
+                    <div class="btn-group-vertical btn-group-sm">
+                        <button type="button" style="font-size:7px;margin:0;padding:0;width:20px;"
+                            class="btn btn-default btn-sm rounded-0 btnUp">
+                            <i class="fas fa-chevron-up"></i>
+                        </button>
+                        <button type="button" style="font-size:7px;margin:0;padding:0;width:20px;"
+                            class="btn btn-default btn-sm rounded-0 btnDown">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <button type="button" class="btn btn-default btn-sm rounded-0 btnGetLastImg" style="margin:0;padding:0;width:20px;">...</button>
+                    <div class="input-group-prepend">
+                        <button class="btn btn-info btn-sm btnModalArchivos_recomendacion" type="button" data-toggle="modal"
+                            data-target="#modalFileExplorer">
+                            <i class="fas fa-folder-open fa-xs"></i>
+                        </button>
+                    </div>
+                </div>
+              </div>
+            `;
+    
+            div_contenedor_recomendaciones.appendChild(div_contenedor);
+            div_contenedor_recomendaciones.appendChild(div_contenedor_img);
+            document.querySelector("#contenedorTabrecomendaciones").appendChild(div_contenedor_recomendaciones);
+
+          });
+        
+          /* Creacion delas referencias guardadas */
+          let array_referencia_reporte = data.referencia_reporte.split("$");
+          document.querySelector("#contenedorTabreferencias").innerHTML = ""
+          array_referencia_reporte.forEach(function callback(referencia, index) {
+
+            document.querySelector("#contenedorTabreferencias").innerHTML += `
+              <div class="input-group input-group-sm mt-1">
+                <textarea class="form-control form-control-sm" id="" name="referencia_reporte[]" placeholder="Ingresa la recomendación" rows="1">${referencia.trim()}</textarea>
+                <div class="d-flex align-items-center p-1">
+                  <i class="fas fa-undo-alt btnCamposReporte limpiar" style="color:red; cursor: pointer;"></i>
+                  <i class="fas fa-trash-alt btnCamposReporte eliminar pl-1" style="color:red; cursor: pointer;"></i>
+                </div>
+              </div>
+            `;
+
+          });
+          
+          resolve()
+
+        },
+        error: function (error) {
+          console.log(error);
+          reject()
+        },
+      });
+    
+    });
   }
 
   function limpiarCampoContacto(event){
@@ -3187,7 +3396,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       console.log("entrando ala generacion")
       onlyClick(btnGenerarReporteAnalisis)
 
-      alertLodading("Creando Reporte..","info",70000)
+      alertLodading("Creando Reporte..","info",900000)
       
 
       // Obtenemos la operacion a realizar create ó update
@@ -3206,13 +3415,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
           throw "Error en la llamada Ajax";
         }
       })
-      
-      // generarReporteBaseLine().then(() => {
-      //   return obtenerDatosReporteInventariosPdf().then(() => {
-      //     return obtenerDatosReporteProblemasPdf()
-      //   })
-      // });
-return
+
       generarReporteBaseLine().then(() => {
         return obtenerDatosReporteInventariosPdf()
       }).then(() => {
@@ -3722,210 +3925,6 @@ return
       });
 
     }
-  }
-
-  function colocar_datos_reporte(){
-    // peticion a la base
-    $.ajax({
-      url: `/inventarios/obtener_datos_reporte`,
-      type: "get",
-      data:'',
-      dataType: 'json',
-      success: function (data){
-        console.log(data)
-        /* si no hay nigun dato guardado anteriormente para el reporte
-        entonces carga solo los contactos del sitio */
-        if (data === null || data.length < 1) {
-          cargarContactos();
-          return
-        }
-
-        /* Si ya hay datos guardados del reporte entonces cargamos esos datos */
-
-        /* Detalles del sitio */
-        // document.querySelector("#detalle_ubicacion").value = data.detalle_ubicacion;
-
-        /* Creacion de los elementos con los nombres guardados */
-        let array_nombres = data.nombre_contacto.split("$");
-        array_nombres.forEach(function callback(nombre, index) {
-          document.querySelector(`#nombre_contacto_${index+1}`).value = nombre;
-        });
-        
-        /* Creacion de los elementos con los puestos guardados */
-        let array_puestos = data.puesto_contacto.split("$");
-        array_puestos.forEach(function callback(puesto, index) {
-          document.querySelector(`#puesto_contacto_${index+1}`).value = puesto;
-        });
-        
-        /* Fechas del reporte */
-        document.querySelector("#fecha_inicio_ra").value = data.fecha_inicio_ra;
-        document.querySelector("#fecha_fin_ra").value = data.fecha_fin_ra;
-        
-        /* Imagen de la portada */
-        document.querySelector("#nombre_img_portada").value = data.nombre_img_portada;
-        
-        /* Descripciones guardadas */
-        let array_descripciones = data.descripcion_reporte.split("$");
-        array_descripciones.forEach(function callback(descripcion, index) {
-          if(index == 0){
-            document.querySelector("#descripcion_reporte").textContent = descripcion ;
-          }else{
-
-            let div_contenedor = document.createElement('div');
-            div_contenedor.classList.add("input-group","input-group-sm","mt-1");
-
-            div_contenedor.innerHTML = `
-              <textarea class="form-control form-control-sm" id=""
-              name="descripcion_reporte[]" placeholder="Ingresa la descripción" rows="2">${descripcion}</textarea>
-              <div class="d-flex align-items-center p-1">
-                <i class="fas fa-trash-alt btnCamposReporte eliminar" style="color:red; cursor: pointer;"></i>
-              </div>
-            `;
-
-            document.querySelector("#contenedorDescripciones").appendChild(div_contenedor);
-
-          }
-        });
-
-        /* Areas inspeccionas */
-        let array_areas_inspeccionadas = data.areas_inspeccionadas.split("$");
-        array_areas_inspeccionadas.forEach(function callback(area, index) {
-          if(index == 0){
-            document.querySelector("#areas_inspeccionadas").textContent = area ;
-          }else{
-
-            let div_contenedor = document.createElement('div');
-            div_contenedor.classList.add("input-group","input-group-sm","mt-1");
-            
-            div_contenedor.innerHTML = `
-              <textarea class="form-control form-control-sm" id=""
-              name="areas_inspeccionadas[]" placeholder="Ingresa la descripción" rows="2">${area}</textarea>
-              <div class="d-flex align-items-center p-1">
-                <i class="fas fa-trash-alt btnCamposReporte eliminar" style="color:red; cursor: pointer;"></i>
-              </div>
-            `;
-
-            document.querySelector("#contenedorAreas").appendChild(div_contenedor);
-
-          }
-        });
-
-        /* Creacion de los elementos de recomendaciones y sus imagenes guardadas */
-        let imagen_recomendacion = data.imagen_recomendacion.split("$");
-        let imagen_recomendacion_2 = data.imagen_recomendacion_2.split("$");
-        let array_recomendacion_reporte = data.recomendacion_reporte.split("$");
-        document.querySelector("#contenedorTabrecomendaciones").innerHTML = "";
-        array_recomendacion_reporte.forEach(function callback(recomendacion, index) {
-          
-          let div_contenedor = document.createElement('div');
-          div_contenedor.classList.add("input-group","input-group-sm","mt-1");
-
-          let div_contenedor_recomendaciones = document.createElement('div');
-          div_contenedor_recomendaciones.innerHTML = "";
-          div_contenedor.innerHTML += `
-            <textarea class="form-control form-control-sm" id=""
-            name="recomendacion_reporte[]" placeholder="Ingresa la descripción" rows="2">${recomendacion}</textarea>
-          `;
-
-          if (index == 0) {
-            div_contenedor.innerHTML += `
-            <div class="d-flex align-items-center p-1">
-              <i class="fas fa-undo-alt btnCamposReporte limpiar recomendacion" style="color:red; cursor: pointer;"></i>
-            </div>
-          `;
-          }else if(index > 0 && index < 3) {
-            div_contenedor.innerHTML += `
-            <div class="d-flex align-items-center p-1">
-              <i class="fas fa-undo-alt btnCamposReporte limpiar recomendacion" style="color:red; cursor: pointer;"></i>
-              <i class="fas fa-trash-alt btnCamposReporte eliminar recomendacion pl-1" style="color:red; cursor: pointer;"></i>
-            </div>
-          `;
-          }else{
-            div_contenedor.innerHTML += `
-            <div class="d-flex align-items-center p-1">
-              <i class="fas fa-trash-alt btnCamposReporte eliminar recomendacion pl-1" style="color:red; cursor: pointer;"></i>
-            </div>
-          `;
-          }
-          
-          let div_contenedor_img = document.createElement('div');
-          div_contenedor_img.classList.add("row");
-          div_contenedor_img.innerHTML = `
-            <div class="col-sm-5 mt-1">
-                <div class="input-group input-group-sm" style="" id="">
-                    <input type="text" class="form-control form-control-sm inputIR inputTextImg" name="imagen_recomendacion[]" id="" placeholder="Nombre archivo" value="${imagen_recomendacion[index]}">
-                    <div class="btn-group-vertical btn-group-sm">
-                        <button type="button" style="font-size:7px;margin:0;padding:0;width:20px;"
-                            class="btn btn-default btn-sm rounded-0 btnUp">
-                            <i class="fas fa-chevron-up"></i>
-                        </button>
-                        <button type="button" style="font-size:7px;margin:0;padding:0;width:20px;"
-                            class="btn btn-default btn-sm rounded-0 btnDown">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <button type="button" class="btn btn-default btn-sm rounded-0 btnGetLastImg" style="margin:0;padding:0;width:20px;">...</button>
-                    <div class="input-group-prepend">
-                        <button class="btn btn-info btn-sm btnModalArchivos_recomendacion" type="button" data-toggle="modal"
-                            data-target="#modalFileExplorer">
-                            <i class="fas fa-folder-open fa-xs"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-5 mt-1">
-              <div class="input-group input-group-sm" style="" id="">
-                  <input type="text" class="form-control form-control-sm inputIR inputTextImg" name="imagen_recomendacion_2[]" id="" placeholder="Nombre archivo" value="${imagen_recomendacion_2[index]}">
-                  <div class="btn-group-vertical btn-group-sm">
-                      <button type="button" style="font-size:7px;margin:0;padding:0;width:20px;"
-                          class="btn btn-default btn-sm rounded-0 btnUp">
-                          <i class="fas fa-chevron-up"></i>
-                      </button>
-                      <button type="button" style="font-size:7px;margin:0;padding:0;width:20px;"
-                          class="btn btn-default btn-sm rounded-0 btnDown">
-                          <i class="fas fa-chevron-down"></i>
-                      </button>
-                  </div>
-                  <button type="button" class="btn btn-default btn-sm rounded-0 btnGetLastImg" style="margin:0;padding:0;width:20px;">...</button>
-                  <div class="input-group-prepend">
-                      <button class="btn btn-info btn-sm btnModalArchivos_recomendacion" type="button" data-toggle="modal"
-                          data-target="#modalFileExplorer">
-                          <i class="fas fa-folder-open fa-xs"></i>
-                      </button>
-                  </div>
-              </div>
-            </div>
-          `;
-  
-          div_contenedor_recomendaciones.appendChild(div_contenedor);
-          div_contenedor_recomendaciones.appendChild(div_contenedor_img);
-          document.querySelector("#contenedorTabrecomendaciones").appendChild(div_contenedor_recomendaciones);
-
-        });
-      
-        /* Creacion delas referencias guardadas */
-        let array_referencia_reporte = data.referencia_reporte.split("$");
-        document.querySelector("#contenedorTabreferencias").innerHTML = ""
-        array_referencia_reporte.forEach(function callback(referencia, index) {
-
-          document.querySelector("#contenedorTabreferencias").innerHTML += `
-            <div class="input-group input-group-sm mt-1">
-              <textarea class="form-control form-control-sm" id="" name="referencia_reporte[]" placeholder="Ingresa la recomendación" rows="1">${referencia.trim()}</textarea>
-              <div class="d-flex align-items-center p-1">
-                <i class="fas fa-undo-alt btnCamposReporte limpiar" style="color:red; cursor: pointer;"></i>
-                <i class="fas fa-trash-alt btnCamposReporte eliminar pl-1" style="color:red; cursor: pointer;"></i>
-              </div>
-            </div>
-          `;
-
-        });
-        
-
-      },
-      error: function (error) {
-        console.log(error);
-      },
-    });
   }
 
   function buscar_codigo_barras(){
