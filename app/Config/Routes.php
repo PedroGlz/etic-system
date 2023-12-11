@@ -167,6 +167,8 @@ $routes->POST('/procesobd', 'ProcesoBD::procesobd');
 $routes->GET('/descargar_bd_procesada/(:any)', 'ProcesoBD::descargar_bd_procesada/$1');
 // PROCESO DB
 $routes->POST('/cargar_bd_inspeccion', 'Inspecciones::cargar_bd_inspeccion');
+// Imgs
+$routes->get('/inventarios/optimizar_imagenes', 'Inventarios::optimizar_imagenes');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

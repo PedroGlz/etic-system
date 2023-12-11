@@ -236,6 +236,7 @@ class Inspecciones extends BaseController
 
     public function crearCarpeta($carpeta){
         mkdir(ROOTPATH.'public/Archivos_ETIC/inspecciones/'.$carpeta.'/Imagenes',0777,true);
+        mkdir(ROOTPATH.'public/Archivos_ETIC/inspecciones/'.$carpeta.'/Imagenes_optimizadas',0777,true);
         mkdir(ROOTPATH.'public/Archivos_ETIC/inspecciones/'.$carpeta.'/Reportes',0777,true);
     }
 

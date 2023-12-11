@@ -288,6 +288,14 @@
                   <p>REPORTES <i class="right fas fa-angle-left"></i></p>
                 </a>
                 <ul class="nav nav-treeview">
+
+                  <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="optimizar_imagenes()">
+                      <i class="nav-icon fas fa-star"></i>
+                      <p> Optimizar imágenes</p>
+                    </a>
+                  </li>
+
                   <li class="nav-item">
                     <a id="btnGenerarResultadoAnalisis" target="_blank" class="nav-link" style="cursor:pointer;">
                       <i class="nav-icon far fa-file-alt"></i>

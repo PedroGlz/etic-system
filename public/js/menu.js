@@ -342,3 +342,22 @@ function validar_form_inicializar_img(){
         }
     });
 }
+
+function optimizar_imagenes(){
+    return new Promise((resolve, reject) => {
+        alertLodading("Optimizando imágenes...",'info',9000000);
+        $.ajax({
+            url: `/inventarios/optimizar_imagenes`,
+            type: 'get',
+            dataType: "json",
+            success: function(data){
+                resolve()
+                cerrarAlertLoading('Optimización finzalizada!')
+            },
+            error: function (error) {
+                reject()
+                cerrarAlertLoading('Evento inesperado', 'error')
+            },
+        });
+    });
+}

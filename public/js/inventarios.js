@@ -284,7 +284,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     btnGenerarResultadoAnalisis.addEventListener('click', infoReporteResultadoAnalisis);
     $(".btnLimpiarContacto").click("click", (event) => {limpiarCampoContacto(event)})
     $("#FrmInfoReporteResultadoAnalisis").click("click", (event) => {camposReporeteResultados(event)})
-    btnGenerarReporteAnalisis.addEventListener('click', generarReporteResultadoAnalisis);
+    btnGenerarReporteAnalisis.addEventListener('click', preparacion_reporte_resultado_analisis);
     btnReporteBaseLine.addEventListener('click', () => {generarReporteBaseLine("individual")});
     btnGraficaConcentradoProblemas.addEventListener('click', () => {generarGraficaConcentradoProblemas("individual")});
     btnReporteListaProblemasExcel.addEventListener('click', seleccionarFechasReporteExcelProblemas);
@@ -2780,8 +2780,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
       if (tipo_reporte == "individual") {
         $("#modalSeleccionarProblemasPdf").modal("hide");
       }
-
-      console.log(arrayElementosParaReporte)
       
       let arregloOriginal = arrayElementosParaReporte,
       arreglo_problemas_partes = []; // Aquí almacenamos los nuevos arreglos
@@ -2791,7 +2789,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         let pedazo = arregloOriginal.slice(i, i + LONGITUD_PEDAZOS);
         arreglo_problemas_partes.push(pedazo);
       }
-      console.log(arreglo_problemas_partes)
 
       generar_reporte_problemas_pdf(arreglo_problemas_partes, tipo_reporte).then(()=>{
         
@@ -2825,7 +2822,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     for (let index = 0; index < arreglo_problemas_partes.length; index++) {
       let arrayElementosParaReporte = arreglo_problemas_partes[index];
       let datosArreglo = JSON.stringify({arrayElementosParaReporte});
-      console.log(datosArreglo)
       
       if(tipo_reporte == "individual"){
         alertLodading(`Generando reporte problemas ${index+1}`,"info")
@@ -3390,58 +3386,80 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
   }
 
-  function generarReporteResultadoAnalisis(){
+  function preparacion_reporte_resultado_analisis(){
     // window.open(`/inventarios/datosResultadoDeAnalisis`);
     if($("#FrmInfoReporteResultadoAnalisis").valid()){
       console.log("entrando ala generacion")
       onlyClick(btnGenerarReporteAnalisis)
 
-      alertLodading("Creando Reporte..","info",900000)
-      
-
-      // Obtenemos la operacion a realizar create ó update
-      var form_action = $("#FrmInfoReporteResultadoAnalisis").attr("action");
-      // Guardamos el form con los input file para subir archivos
-      var formData = new FormData(document.getElementById("FrmInfoReporteResultadoAnalisis"));
-
-      // Guardando los datos del reporte en la BD
-      fetch('/inventarios/guardar_datos_reporte', {
-        method: 'POST',
-        body: formData
-      }).then(function(response) {
-        if(response.ok) {
-          return response.text()
-        } else {
-          throw "Error en la llamada Ajax";
+      Swal.fire({
+        icon:'warning',
+        // title: '',
+        html: `Si hubo algún cambio en las imágenes ó es el primer reporte que se genera es necesario realizar el proceso de optimización,<br> <b>¿Desea optimizar las imágenes?</b>`,
+        showCancelButton: true,
+        cancelButtonColor: '#d33',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Si',
+        cancelButtonText: 'No'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          optimizar_imagenes().then(() => {
+            generar_reporte_resultado_analisis()
+          })
+        }else{
+          generar_reporte_resultado_analisis()
         }
+
       })
 
-      generarReporteBaseLine().then(() => {
-        return obtenerDatosReporteInventariosPdf()
-      }).then(() => {
-        return obtenerDatosReporteProblemasPdf()
-      }).then(() => {
-        $.ajax({
-          data: formData,
-          url: form_action,
-          type: "POST",
-          dataType: 'json',
-          processData: false,
-          contentType: false,
-          success: function (res) {
-            cerrarAlertLoading("Reporte generado!")
-            
-            setTimeout(() => {
-              $('#modalInfoReporteResultadoAnalisis').modal('hide');
-            }, 850);
-          },
-          error: function (err) {
-            console.log(err)
-            cerrarAlertLoading("Error al generar el reporte")
-          }
-        });
-      });
     }
+  }
+
+  function generar_reporte_resultado_analisis(){
+    alertLodading("Creando Reporte..","info",900000)
+
+    // Obtenemos la operacion a realizar create ó update
+    var form_action = $("#FrmInfoReporteResultadoAnalisis").attr("action");
+    // Guardamos el form con los input file para subir archivos
+    var formData = new FormData(document.getElementById("FrmInfoReporteResultadoAnalisis"));
+
+    // Guardando los datos del reporte en la BD
+    fetch('/inventarios/guardar_datos_reporte', {
+      method: 'POST',
+      body: formData
+    }).then(function(response) {
+      if(response.ok) {
+        return response.text()
+      } else {
+        throw "Error en la llamada Ajax";
+      }
+    })
+
+    generarReporteBaseLine().then(() => {
+      return obtenerDatosReporteInventariosPdf()
+    }).then(() => {
+      return obtenerDatosReporteProblemasPdf()
+    }).then(() => {
+      $.ajax({
+        data: formData,
+        url: form_action,
+        type: "POST",
+        dataType: 'json',
+        processData: false,
+        contentType: false,
+        success: function (res) {
+          cerrarAlertLoading("Reporte generado!")
+          
+          setTimeout(() => {
+            $('#modalInfoReporteResultadoAnalisis').modal('hide');
+          }, 850);
+        },
+        error: function (err) {
+          console.log(err)
+          cerrarAlertLoading("Error al generar el reporte")
+        }
+      });
+    });
   }
 
   function limpiarFrmResultadoAnalisis(){

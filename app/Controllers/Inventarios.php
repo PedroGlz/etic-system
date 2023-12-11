@@ -1175,10 +1175,12 @@ class Inventarios extends BaseController{
             // datos Imagenes
             $imgIR = empty($value['Ir_File']) ? " " : $value['Ir_File'];
             $imgDIG = empty($value['Photo_File']) ? " " : $value['Photo_File'];
-            $rutaImgIR = 'Archivos_ETIC/inspecciones/'.$value['numInspeccion'].'/Imagenes/'.$imgIR;
-            $rutaImgDIG = 'Archivos_ETIC/inspecciones/'.$value['numInspeccion'].'/Imagenes/'.$imgDIG;
-            $datosImgIR = $this->obtenerDatosImg(1, $rutaImgIR);
-            $datosImgDIG = $this->obtenerDatosImg(1, $rutaImgDIG);
+            $rutaImgIR = 'Archivos_ETIC/inspecciones/'.$value['numInspeccion'].'/Imagenes_optimizadas/'.$imgIR;
+            $rutaImgDIG = 'Archivos_ETIC/inspecciones/'.$value['numInspeccion'].'/Imagenes_optimizadas/'.$imgDIG;
+            $ruta_datos_img_ir = 'Archivos_ETIC/inspecciones/'.$value['numInspeccion'].'/Imagenes/'.$imgIR;
+            $ruta_datos_img_dig = 'Archivos_ETIC/inspecciones/'.$value['numInspeccion'].'/Imagenes/'.$imgDIG;
+            $datosImgIR = $this->obtenerDatosImg(1, $ruta_datos_img_ir);
+            $datosImgDIG = $this->obtenerDatosImg(1, $ruta_datos_img_dig);
 
             // Titulo
             $pdf->SetXY(86,10);
@@ -1696,10 +1698,13 @@ class Inventarios extends BaseController{
             $rutaImgError = "img/sistema/imagen-no-disponible.jpeg";
             $imgIR = empty($value['Archivo_IR']) ? " " : $value['Archivo_IR'];
             $imgDIG = empty($value['Archivo_ID']) ? " " : $value['Archivo_ID'];
-            $rutaImgIR = 'Archivos_ETIC/inspecciones/'.$value['numInspeccion'].'/Imagenes/'.$imgIR;
-            $rutaImgDIG = 'Archivos_ETIC/inspecciones/'.$value['numInspeccion'].'/Imagenes/'.$imgDIG;
-            $datosImgIR = $this->obtenerDatosImg(1, $rutaImgIR);
-            $datosImgDIG = $this->obtenerDatosImg(1, $rutaImgDIG);
+            $rutaImgIR = 'Archivos_ETIC/inspecciones/'.$value['numInspeccion'].'/Imagenes_optimizadas/'.$imgIR;
+            $rutaImgDIG = 'Archivos_ETIC/inspecciones/'.$value['numInspeccion'].'/Imagenes_optimizadas/'.$imgDIG;
+            $ruta_datos_img_ir = 'Archivos_ETIC/inspecciones/'.$value['numInspeccion'].'/Imagenes/'.$imgIR;
+            $ruta_datos_img_dig = 'Archivos_ETIC/inspecciones/'.$value['numInspeccion'].'/Imagenes/'.$imgDIG;
+            $datosImgIR = $this->obtenerDatosImg(1, $ruta_datos_img_ir);
+            $datosImgDIG = $this->obtenerDatosImg(1, $ruta_datos_img_dig);
+
 
             // Título
             $pdf->SetXY(86,10);
@@ -2375,7 +2380,7 @@ class Inventarios extends BaseController{
         // Obteniendo el nombre y ruta de la imagen del cliente
         $img_portada = $this->request->getPost('nombre_img_portada');
 
-        $ruta_img_portada = 'Archivos_ETIC/inspecciones/'.$datosInspeccion[0]['No_Inspeccion'].'/Imagenes/'.$img_portada;
+        $ruta_img_portada = 'Archivos_ETIC/inspecciones/'.$datosInspeccion[0]['No_Inspeccion'].'/Imagenes_optimizadas/'.$img_portada;
 
         $cliente = $datosInspeccion[0]['nombreCliente'];
         $sitio = $datosSitio[0]['Sitio'];
@@ -3494,6 +3499,60 @@ class Inventarios extends BaseController{
         $session = session();
 
         return json_encode($datos_reporte->get_registros($session->Id_Inspeccion));
+    }
+
+    function optimizar_imagenes(){
+        $session = session();
+
+        // Validamos que la carpeta para las imagenes optimizadas exista, si no, la creamos
+        $ruta_carpeta = $_SERVER["DOCUMENT_ROOT"].'/Archivos_ETIC/inspecciones/'.$session->inspeccion.'/Imagenes_optimizadas';
+        $this->validar_carpeta_creada($ruta_carpeta);
+
+        $ruta = ROOTPATH.'public/Archivos_ETIC/inspecciones/'.$session->inspeccion.'/Imagenes';
+        $imagenesArray = array();
+
+        // Abre un gestor de directorios para la ruta indicada
+        $gestor = opendir($ruta);
+
+        // Recorre todos los elementos del directorio
+        while (($archivo = readdir($gestor)) !== false)  {
+            // Se muestran todos los archivos y carpetas excepto "." y ".."
+            if ($archivo != "." && $archivo != "..") {
+                array_push($imagenesArray,$archivo);
+            }
+        }
+
+        closedir($gestor);
+
+        foreach ($imagenesArray as $key => $nombre_img_original) {
+            $ruta_imagen_original = ROOTPATH."public/Archivos_ETIC/inspecciones/".$session->inspeccion."/Imagenes/".$nombre_img_original; //Imagen original
+            // return $ruta_imagen_original;
+            $ruta_img_nueva = ROOTPATH."public/Archivos_ETIC/inspecciones/".$session->inspeccion."/Imagenes_optimizadas/".$nombre_img_original; //Nueva imagen
+            $ancho = 440; //Nuevo ancho
+            $alto = 330;  //Nuevo alto
+            //Creamos una nueva imagen a partir del fichero inicial
+            
+            $ruta_imagen_original = imagecreatefromjpeg($ruta_imagen_original);
+            //Obtenemos el tamaño 
+            $x = imagesx($ruta_imagen_original);
+            $y = imagesy($ruta_imagen_original);
+            
+            if ($x >= $y) {
+                $ancho = $ancho;
+                $alto = $ancho * $y / $x;
+                } else {
+                $alto = $alto;
+                $ancho = $x / $y * $alto;
+            }
+
+            $img_optimizada = imagecreatetruecolor($ancho, $alto);
+            imagecopyresampled($img_optimizada, $ruta_imagen_original, 0, 0, 0, 0, floor($ancho), floor($alto), $x, $y);
+            
+            //se crea la imagen
+            imagejpeg($img_optimizada, $ruta_img_nueva);
+        }
+
+        return json_encode(200);
     }
 }
 
