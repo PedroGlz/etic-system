@@ -1,0 +1,35 @@
+[33mcommit 5823a19c40fbef79087b854dc01c62081c8d4e03[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Pedro Gonzalez <gpedro.17.3f@gmail.com>
+Date:   Sun Dec 10 11:17:52 2023 -0600
+
+    correccion tiemppo msj
+
+[33mcommit 5169fbea415ad4d6eabdf3c4cd9d59928d5b0ffb[m
+Author: Pedro Gonzalez <gpedro.17.3f@gmail.com>
+Date:   Tue Dec 5 14:13:17 2023 -0600
+
+    correccion exportar inspeccion backup nombre
+
+[33mcommit b294f2d774f0a0c70fbb7b7bccc08387b6c44f80[m
+Author: Pedro Gonzalez <gpedro.17.3f@gmail.com>
+Date:   Tue Dec 5 13:31:48 2023 -0600
+
+    ajustes contactos sitios
+
+[33mcommit c84fd01678b4d67a920d2bdb48e7b5730c90e947[m
+Author: Pedro Gonzalez <gpedro.17.3f@gmail.com>
+Date:   Tue Dec 5 11:40:05 2023 -0600
+
+    correcciones exportar bd
+
+[33mcommit 11bfcd4da4d45a2dd5925e11a127aaeb1800d53b[m
+Author: Pedro Gonzalez <gpedro.17.3f@gmail.com>
+Date:   Tue Dec 5 11:03:09 2023 -0600
+
+    Ajustes formula correccion Temp por carga
+
+[33mcommit dc07fcf318fd0fde20dbf264846addb6028806ac[m
+Author: Pedro Gonzalez <gpedro.17.3f@gmail.com>
+Date:   Mon Dec 4 17:34:34 2023 -0600
+
+    first commit

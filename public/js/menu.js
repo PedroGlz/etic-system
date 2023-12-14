@@ -356,7 +356,7 @@ function optimizar_imagenes(){
             },
             error: function (error) {
                 reject()
-                cerrarAlertLoading('Evento inesperado', 'error')
+                cerrarAlertLoading('Evento inesperado, revisar imágenes', 'error')
             },
         });
     });
