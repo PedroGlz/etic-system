@@ -6,6 +6,10 @@
     <title>ETIC System</title>
     <link rel="shortcut icon" href="img/sistema/favicon.ico">
 
+    <style id="size_fuente">
+        *{font-size:0.9rem}
+    </style>
+
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->

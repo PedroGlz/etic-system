@@ -597,3 +597,8 @@ function formDataToObjet(formData){
 
     return object;
 }
+
+function cambiar_size_fuente(size){
+
+    document.querySelector("#size_fuente").innerHTML = `*{font-size:${size}rem}`
+}

@@ -393,6 +393,32 @@
               </li>
             </div>
             <?php endif; ?>
+
+            <!-- TAMAÑO DE LETRA -->
+            <div class="user-panel mb-3 d-flex">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>FUENTE <i class="right fas fa-angle-left"></i></p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#" id="" class="nav-link" style="cursor:pointer;" onclick="cambiar_size_fuente('0.9')">
+                      <p>Pequeño</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" id="" class="nav-link" style="cursor:pointer;" onclick="cambiar_size_fuente('1')">
+                      <p>Mediano</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" id="" class="nav-link" style="cursor:pointer;" onclick="cambiar_size_fuente('1.1')">
+                      <p>Grande</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </div>
             
             <!-- APARTADO DE AYUDA -->
             <li class="nav-header">AYUDA</li>
