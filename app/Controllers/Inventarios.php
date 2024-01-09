@@ -1479,7 +1479,7 @@ class Inventarios extends BaseController{
 
                 // Imagenes
                 if (file_exists($rutaImgIR)){
-                    $pdf->Image(base_url($rutaImgIR),80,105,102);
+                    // $pdf->Image(base_url($rutaImgIR),80,105,102);
                 }
                 else{
                     $pdf->Rect(80, 105, 102, 76, 'D');
@@ -1488,7 +1488,7 @@ class Inventarios extends BaseController{
                 }
 
                 if(file_exists($rutaImgDIG)){
-                    $pdf->Image(base_url($rutaImgDIG),185,105,102);
+                    // $pdf->Image(base_url($rutaImgDIG),185,105,102);
                 }else{
                     $pdf->Rect(185, 105, 102, 76, 'D');
                     $pdf->SetXY(226,141);
@@ -1579,7 +1579,7 @@ class Inventarios extends BaseController{
 
                 // Imagenes
                 if (file_exists($rutaImgIR)){
-                    $pdf->Image(base_url($rutaImgIR),26,93,121);
+                    // $pdf->Image(base_url($rutaImgIR),26,93,121);
                 }
                 else{
                     $pdf->Rect(26, 93, 121, 90, 'D');
@@ -1588,7 +1588,7 @@ class Inventarios extends BaseController{
                 }
 
                 if(file_exists($rutaImgDIG)){
-                    $pdf->Image(base_url($rutaImgDIG),150,93,121);
+                    // $pdf->Image(base_url($rutaImgDIG),150,93,121);
                 }else{
                     $pdf->Rect(150, 93, 121, 90, 'D');
                     $pdf->SetXY(200,136);
