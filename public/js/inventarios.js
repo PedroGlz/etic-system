@@ -69,7 +69,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         icon: 'warning',
         confirmButtonColor: '#28a745',
         confirmButtonText: 'Cargar inspección',
-        showCancelButton: true,
+        showCancelButton: false,
         cancelButtonColor: '#1279B4',
         cancelButtonText: 'Seleccionar inspección',
       }).then((result) => {
