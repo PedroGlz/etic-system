@@ -2784,7 +2784,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       let arregloOriginal = arrayElementosParaReporte,
       arreglo_problemas_partes = []; // Aquí almacenamos los nuevos arreglos
       // console.log("Arreglo original: ", arregloOriginal);
-      const LONGITUD_PEDAZOS = 25; // Partir en arreglo de 3
+      const LONGITUD_PEDAZOS = 10; // Partir en arreglo de 3
       for (let i = 0; i < arregloOriginal.length; i += LONGITUD_PEDAZOS) {
         let pedazo = arregloOriginal.slice(i, i + LONGITUD_PEDAZOS);
         arreglo_problemas_partes.push(pedazo);
@@ -3764,7 +3764,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
           let arregloOriginal = res,
           arregloDeArreglos_bl = []; // Aquí almacenamos los nuevos arreglos
           // console.log("Arreglo original: ", arregloOriginal);
-          const LONGITUD_PEDAZOS = 25; // Partir en arreglo de 3
+          const LONGITUD_PEDAZOS = 10; // Partir en arreglo de 3
           for (let i = 0; i < arregloOriginal.length; i += LONGITUD_PEDAZOS) {
             let pedazo = arregloOriginal.slice(i, i + LONGITUD_PEDAZOS);
             arregloDeArreglos_bl.push(pedazo);

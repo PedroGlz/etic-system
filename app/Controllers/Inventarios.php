@@ -1479,7 +1479,7 @@ class Inventarios extends BaseController{
 
                 // Imagenes
                 if (file_exists($rutaImgIR)){
-                    // $pdf->Image(base_url($rutaImgIR),80,105,102);
+                    $pdf->Image(base_url($rutaImgIR),80,105,102);
                 }
                 else{
                     $pdf->Rect(80, 105, 102, 76, 'D');
@@ -1488,7 +1488,7 @@ class Inventarios extends BaseController{
                 }
 
                 if(file_exists($rutaImgDIG)){
-                    // $pdf->Image(base_url($rutaImgDIG),185,105,102);
+                    $pdf->Image(base_url($rutaImgDIG),185,105,102);
                 }else{
                     $pdf->Rect(185, 105, 102, 76, 'D');
                     $pdf->SetXY(226,141);
@@ -1579,7 +1579,7 @@ class Inventarios extends BaseController{
 
                 // Imagenes
                 if (file_exists($rutaImgIR)){
-                    // $pdf->Image(base_url($rutaImgIR),26,93,121);
+                    $pdf->Image(base_url($rutaImgIR),26,93,121);
                 }
                 else{
                     $pdf->Rect(26, 93, 121, 90, 'D');
@@ -1588,7 +1588,7 @@ class Inventarios extends BaseController{
                 }
 
                 if(file_exists($rutaImgDIG)){
-                    // $pdf->Image(base_url($rutaImgDIG),150,93,121);
+                    $pdf->Image(base_url($rutaImgDIG),150,93,121);
                 }else{
                     $pdf->Rect(150, 93, 121, 90, 'D');
                     $pdf->SetXY(200,136);
@@ -3528,8 +3528,8 @@ class Inventarios extends BaseController{
             $ruta_imagen_original = ROOTPATH."public/Archivos_ETIC/inspecciones/".$session->inspeccion."/Imagenes/".$nombre_img_original; //Imagen original
             // return $ruta_imagen_original;
             $ruta_img_nueva = ROOTPATH."public/Archivos_ETIC/inspecciones/".$session->inspeccion."/Imagenes_optimizadas/".$nombre_img_original; //Nueva imagen
-            $ancho = 440; //Nuevo ancho
-            $alto = 330;  //Nuevo alto
+            $ancho = 400; //Nuevo ancho
+            $alto = 300;  //Nuevo alto
             //Creamos una nueva imagen a partir del fichero inicial
             
             $ruta_imagen_original = imagecreatefromjpeg($ruta_imagen_original);
@@ -3540,7 +3540,7 @@ class Inventarios extends BaseController{
             if ($x >= $y) {
                 $ancho = $ancho;
                 $alto = $ancho * $y / $x;
-                } else {
+            } else {
                 $alto = $alto;
                 $ancho = $x / $y * $alto;
             }
@@ -3554,6 +3554,498 @@ class Inventarios extends BaseController{
 
         return json_encode(200);
     }
+
+    public function generarReporteProblemas_______________________(){
+        $inspeccionesMdl = new InspeccionesMdl();
+        $usuariosMdl = new UsuariosMdl();
+        $problemasMdl = new ProblemasMdl();
+        $historialProblemas = new HistorialProblemasMdl();
+        $session = session();
+
+        // Consulta para los datos del analista termografo
+        $datosInpector = $usuariosMdl->obtenerRegistros($session->Id_Usuario);
+        // Consulta para los datos de la inspección
+        $datosInspeccion = $inspeccionesMdl->obtenerRegistros($session->Id_Inspeccion);
+        // Problemas de las ubicaciones
+        $arrayElementosParaReporte = (get_object_vars(json_decode($this->request->getPost('datosArreglo')))["arrayElementosParaReporte"]);
+        
+        $condicion = [
+            'Id_Sitio' => $session->Id_Sitio,
+            'Id_Inspeccion' => $session->Id_Inspeccion,
+            'Estatus_Problema' => 'Abierto',
+        ];
+        $orden = 'Id_Tipo_Inspeccion ASC, Numero_Problema ASC';
+        $problemas = $problemasMdl->getProblemas_Sitio($condicion, $orden, $arrayElementosParaReporte);
+
+        // Datos para el encabezado del reporte y encaberzado de tabla
+        $datosEncabezado = [
+            "tipoEncabezado" => 2,
+            "titulo" => "",
+        ];
+
+        $pdf = new PDF($datosEncabezado);
+        $pdf->AddPage('L','A4',0);
+
+        // Contador de iteraciones
+        $iteracion = 0;
+        // Total de iteraciones para genera paginas
+        $totalProblemas = count($problemas) - 1;
+
+        // Datos de la tabla
+        foreach($problemas as $key => $value){
+            // datos Imagenes
+            $imgIR = empty($value['Ir_File']) ? " " : $value['Ir_File'];
+            $imgDIG = empty($value['Photo_File']) ? " " : $value['Photo_File'];
+            $rutaImgIR = 'Archivos_ETIC/inspecciones/'.$value['numInspeccion'].'/Imagenes_optimizadas/'.$imgIR;
+            $rutaImgDIG = 'Archivos_ETIC/inspecciones/'.$value['numInspeccion'].'/Imagenes_optimizadas/'.$imgDIG;
+            $ruta_datos_img_ir = 'Archivos_ETIC/inspecciones/'.$value['numInspeccion'].'/Imagenes/'.$imgIR;
+            $ruta_datos_img_dig = 'Archivos_ETIC/inspecciones/'.$value['numInspeccion'].'/Imagenes/'.$imgDIG;
+            $datosImgIR = $this->obtenerDatosImg(1, $ruta_datos_img_ir);
+            $datosImgDIG = $this->obtenerDatosImg(1, $ruta_datos_img_dig);
+
+            // Titulo
+            $pdf->SetXY(86,10);
+            $pdf->SetFont('Arial','B',13);
+            $pdf->MultiCell(125,6,utf8_decode($value['tipoInspeccion']."\nDocumentación Del Problema"),0,'C');
+
+            $pdf->SetY(27);
+            // Apartado De datos de la inspeccion
+            // if($pdf->datosInspeccion["grupo"] != ""){
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(80,4,utf8_decode($pdf->datosEncabezado["grupo"]),0,0,'L') ;$pdf->Ln();
+            // }
+            $pdf->SetFont('Arial','B',8); $pdf->Cell(102,4,utf8_decode($datosInspeccion[0]['nombreCliente']),0,0,'L'); $pdf->Ln();
+            $pdf->SetFont('Arial','',8); $pdf->Cell(102,4,utf8_decode($datosInspeccion[0]['nombreSitio']),0,0,'L'); $pdf->Ln();
+            $pdf->Cell(102,4,utf8_decode('Analista Termógrafo: '.$session->nombre),0,0,'L'); $pdf->Ln();
+            $pdf->Cell(102,4,utf8_decode('Nivel De Certificación: '.$datosInpector[0]['nivelCertificacion']),0,0,'L'); $pdf->Ln();
+
+            if ($value['Id_Tipo_Inspeccion'] != "0D32B333-76C3-11D3-82BF-00104BC75DC2"){
+                $pdf->Cell(102,4, 'Fecha De Reporte: '.date("Y/m/d"),0,0,'L'); $pdf->Ln();
+                // $pdf->Cell(102,4,utf8_decode('No. Inspección Anterior: '.$datosInspeccion[0]['No_Inspeccion_Ant']),1,0,'L'); $pdf->Ln();
+                // $pdf->Cell(102,4,utf8_decode('No. Inspección Actual: '.$datosInspeccion[0]['No_Inspeccion']),1,0,'L');
+
+                // Datos inspeccion actual y anterior
+                $pdf->SetFont('Arial','',8); $pdf->Cell(31,4,utf8_decode('No. Inspección Anterior:'),0,0,'L');
+                $pdf->SetFont('Arial','',8); $pdf->Cell(10,4,utf8_decode($datosInspeccion[0]['No_Inspeccion_Ant']),0,0,'L');$pdf->Ln();
+                $pdf->SetFont('Arial','',8); $pdf->Cell(10,4,utf8_decode("Fecha: "),0,0,'L');
+                $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode($datosInspeccion[0]["fechaInspeccionAnterior"]),0,0,'L');$pdf->Ln();
+                $pdf->SetFont('Arial','',8);$pdf->Cell(31,4,utf8_decode('No. Inspección Actual:'),0,0,'L');
+                $pdf->SetFont('Arial','',8); $pdf->Cell(10,4,utf8_decode($datosInspeccion[0]['No_Inspeccion']),0,0,'L');$pdf->Ln();
+                $pdf->SetFont('Arial','',8); $pdf->Cell(10,4,utf8_decode("Fecha: "),0,0,'L');
+                $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode($datosInspeccion[0]["fechaInspeccionActual"]),0,0,'L');$pdf->Ln();
+            }
+
+            // $historial = array();
+            // $data = [];
+
+            // if(count($historialProblemas->getHistorialProblema($value['Id_Problema'])) > 0){
+
+            //     $historial = $historialProblemas->getHistorialProblema($value['Id_Problema']);
+
+            //     foreach ($historial as $key5 => $value5) {
+            //         $data['Problema'][$value5["fecha_problema_historico"]] = $value5["Problem_Temperature"];
+            //         $data['Referencia'][$value5["fecha_problema_historico"]] = $value5["Reference_Temperature"];
+            //     }
+            //     ksort($data["Problema"]);
+            //     ksort($data["Referencia"]);
+            // }
+            
+            // // Antes del proceso DB
+            // // if ($value['Id_Tipo_Inspeccion'] == 1 || $value['Id_Tipo_Inspeccion'] == 4) {
+            // // PROBLEMAS ELECTRICOS Y MECANICOS
+            // if ($value['Id_Tipo_Inspeccion'] == "0D32B331-76C3-11D3-82BF-00104BC75DC2" ||
+            //     $value['Id_Tipo_Inspeccion'] == "0D32B332-76C3-11D3-82BF-00104BC75DC2" ||
+            //     $value['Id_Tipo_Inspeccion'] == "0D32B334-76C3-11D3-82BF-00104BC75DC2") {
+
+            //     // Calculos de temperatura
+            //     $problemaTemperatura = $value['Problem_Temperature'];
+            //     $temperaturaReferencia = $value['Reference_Temperature'];
+            //     $carga_50 = ceil((($problemaTemperatura - $temperaturaReferencia)* floatval(2.98)) + $temperaturaReferencia);
+            //     $carga_100 = ceil((($problemaTemperatura - $temperaturaReferencia)* floatval(1.00)) + $temperaturaReferencia);
+
+            //     // Ubicando Apartado con datos del problema
+            //     $pdf->SetXY(10, 67);
+            //     // Apartado de Informacion de temperatura
+            //     $pdf->Rect(10, 67, 67, 38, 'D');
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(67,4,utf8_decode('Información De Temperatura'),"B",0,'L'); $pdf->Ln();
+            //     $pdf->SetFont('Arial','',8); $pdf->Cell(22,4,utf8_decode('Temp. Ambiente:'),0,0,'L');
+            //     $Temp_Ambient = $value['Temp_Ambient'] > 0 ? $value['Temp_Ambient']."°C" : " " ;
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(45,4,utf8_decode($Temp_Ambient),0,0,'R'); $pdf->Ln();
+            //     $pdf->SetFont('Arial','',8); $pdf->Cell(20,4,utf8_decode('Tipo Ambiente:'),0,0,'L');
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(47,4,$value['tipoAmbiente'],0,0,'R'); $pdf->Ln();
+            //     $pdf->SetFont('Arial','',8); $pdf->Cell(10,4,utf8_decode('Velocidad de Viento:'),0,0,'L');
+
+            //     $velocidad_viento = $value['Wind_Speed'] != "" && $value['Wind_Speed'] > 0 ? $value['Wind_Speed']." m/s" : " ";
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(57,4,$velocidad_viento,0,0,'R'); $pdf->Ln();
+
+                
+            //     $vel_v = floatval($value['Wind_Speed']);
+            //     $temp_prob = floatval($value['Problem_Temperature']);
+            //     $temp_amb = floatval($value['Temp_Ambient']);
+            //     $corriente_nominal = floatval($value['Rated_Load']);
+
+            //     switch ($vel_v) {
+            //         case 1:
+            //             $fcv = 1.15;
+            //         break;
+            //         case 2:
+            //             $fcv = 1.36;
+            //         break;
+            //         case 3:
+            //             $fcv = 1.64;
+            //         break;
+            //         case 4:
+            //             $fcv = 1.86;
+            //         break;
+            //         case 5:
+            //             $fcv = 2.06;
+            //         break;
+            //         case 6:
+            //             $fcv = 2.23;
+            //         break;
+            //         case 7:
+            //             $fcv = 2.40;
+            //         break;
+            //         default:
+            //             $fcv = 2.40;
+            //         break;
+            //     }
+
+            //     $ajuste_temperatura_viento = 0;
+            //     if ($value['Wind_Speed'] != "" && $value['Wind_Speed'] > 0) {
+            //         $ajuste_temperatura_viento = round((($temp_prob - $temp_amb) * (floatval($fcv))) + $temp_amb);
+            //     }else{
+            //         $ajuste_temperatura_viento = $temp_prob;
+            //     }
+
+            //     // Tomando el valor maximo entre los rms
+            //     $max_rms_amper_medido = max(floatval($value['Problem_Rms']), floatval($value['Reference_Rms']), floatval($value['Additional_Rms']));
+                
+            //     if($corriente_nominal >= 1){
+            //         $porsentaje_carga = ($max_rms_amper_medido / $corriente_nominal) * 100;
+            //     }else{
+            //         $porsentaje_carga = 1;
+            //     }
+
+            //     switch ((round($porsentaje_carga/10)*10)) {
+            //         case 90:
+            //             $fcc = 1.20;
+            //         break;
+            //         case 80:
+            //             $fcc = 1.46;
+            //         break;
+            //         case 70:
+            //             $fcc = 1.77;
+            //         break;
+            //         case 60:
+            //             $fcc = 2.27;
+            //         break;
+            //         case 50:
+            //             $fcc = 2.98;
+            //         break;
+            //         case 40:
+            //             $fcc = 4.33;
+            //         break;
+            //         default:
+            //             $fcc = 4.33;
+            //         break;
+            //     }
+
+            //     if((round($porsentaje_carga/10)*10) < 40){
+            //         $fcc = 0;
+            //     }
+
+            //     $ajuste_temp_carga = round((($ajuste_temperatura_viento - $temp_amb) * (floatval($fcc)))+ $temp_amb);
+
+
+            //     $pdf->SetFont('Arial','',8); $pdf->Cell(58,4,utf8_decode('Ajuste de temperatura por viento:'),0,0,'L');
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(9,4,utf8_decode($ajuste_temperatura_viento > 0 ? $ajuste_temperatura_viento."°C" : ""),0,0,'R'); $pdf->Ln();
+            //     $pdf->SetFont('Arial','',8); $pdf->Cell(58,4,utf8_decode('Temperatura ajuste por carga:'),0,0,'L');
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(9,4,utf8_decode($ajuste_temp_carga."°C"),0,0,'R');
+            //     // $pdf->SetFont('Arial','',8); $pdf->Cell(58,4,utf8_decode('Temperatura estimada 100%:'),0,0,'L');
+            //     // $pdf->SetFont('Arial','B',8); $pdf->Cell(9,4,utf8_decode($proyeccion_100."°C"),0,0,'R'); $pdf->Ln();
+
+            //     // Ubicando Apartado Equipment Information
+            //     $pdf->SetXY(10,108);
+            //     $pdf->Rect(10, 108, 67, 38, 'D');
+            //     $pdf->SetX(10);
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(67,4,utf8_decode('Información Del Equipo'),'B',0,'L'); $pdf->Ln();
+            //     $pdf->SetX(10);
+            //     $pdf->SetFont('Arial','',8); $pdf->Cell(25,4,utf8_decode('Componente:'),0,0,'L');
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(42,4,'INT',0,0,'L'); $pdf->Ln();
+            //     $pdf->SetX(10); $pdf->SetFont('Arial','',8); $pdf->Cell(25,4,utf8_decode('Tipo Falla:'),0,0,'L');
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(42,4,utf8_decode($value['tipoInspeccion']),0,0,'L'); $pdf->Ln();
+            //     $pdf->SetX(10); $pdf->SetFont('Arial','',8); $pdf->Cell(25,4,utf8_decode('Fabricante:'),0,0,'L');
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(42,4,utf8_decode($value['fabricante']),0,0,'L'); $pdf->Ln();
+            //     $pdf->SetX(10); $pdf->SetFont('Arial','',8); $pdf->Cell(29,4,utf8_decode('Circuito Voltage [V]:'),0,0,'L');
+
+            //     $voltage = $value['Circuit_Voltage'] > 0 ? $value['Circuit_Voltage']." V" : " " ;
+            //     $pdf->SetFont('Arial','B',8);
+            //     $pdf->Cell(38,4,$voltage,0,0,'L'); $pdf->Ln();
+
+            //     $pdf->SetTextColor(0,35,172);
+            //     $pdf->SetX(10);
+            //     $pdf->SetFont('Arial','',8);
+            //     $pdf->Cell(29,4,utf8_decode('Corriente Nominal [A]:'),0,0,'L');
+
+            //     $amperios = $value['Rated_Load'] > 0 ? $value['Rated_Load']." A" : " " ;
+            //     $pdf->SetFont('Arial','B',8);
+            //     $pdf->Cell(38,4,$amperios,0,0,'L'); $pdf->Ln();
+
+            //     // Apartado RMS FASES Load Test Results
+            //     $pdf->SetXY(10,149);
+            //     $pdf->Rect(10, 149, 67, 38, 'D');
+            //     $pdf->SetTextColor(0,0,0);
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(67,4,utf8_decode('Datos De Medición De Carga'),'B',0,'L'); $pdf->Ln();
+
+            //     $pdf->SetTextColor(0,35,172);
+            //     $pdf->SetX(10); $pdf->SetFont('Arial','',8); $pdf->MultiCell(25,4,utf8_decode('RMS Amperes:'),0,'L');
+            //     $pdf->SetXY(35,153); $pdf->SetFont('Arial','B',8); $pdf->MultiCell(42,4,"",0,'L'); $pdf->Ln();
+
+            //     $pdf->SetTextColor(0,0,0);
+            //     $faseProblema = $value['faseProblema'] != "" ? $value['faseProblema'].':' : " " ;
+            //     $Problem_Rms = $value['Problem_Rms'] > 0 ? $value['Problem_Rms'] : " " ;
+            //     $pdf->SetXY(10,157); $pdf->SetFont('Arial','',8); $pdf->MultiCell(25,4,utf8_decode($faseProblema),0,'L');
+            //     $pdf->SetXY(35,157); $pdf->SetTextColor(0,35,172);$pdf->SetFont('Arial','B',8); $pdf->MultiCell(42,4,$Problem_Rms,0,'L'); $pdf->Ln();
+
+            //     $pdf->SetTextColor(0,0,0);
+            //     $faseReferencia = $value['faseReferencia'] != "" ? $value['faseReferencia'].':' : " " ;
+            //     $Reference_Rms = $value['Reference_Rms'] > 0 ? $value['Reference_Rms'] : " " ;
+            //     $pdf->SetXY(10,161); $pdf->SetFont('Arial','',8); $pdf->MultiCell(25,4,utf8_decode($faseReferencia),0,'L');
+            //     $pdf->SetXY(35,161); $pdf->SetTextColor(0,35,172);$pdf->SetFont('Arial','B',8); $pdf->MultiCell(42,4,$Reference_Rms,0,'L'); $pdf->Ln();
+
+            //     $pdf->SetTextColor(0,0,0);
+            //     $faseAdicional = $value['faseAdicional'] != "" ? $value['faseAdicional'].':' : " " ;
+            //     $Additional_Rms = $value['Additional_Rms'] > 0 ? $value['Additional_Rms'] : " " ;
+            //     $pdf->SetXY(10,165); $pdf->SetFont('Arial','',8); $pdf->MultiCell(25,4,utf8_decode($faseAdicional),0,'L');
+            //     $pdf->SetXY(35,165); $pdf->SetTextColor(0,35,172);$pdf->SetFont('Arial','B',8); $pdf->MultiCell(42,4,$Additional_Rms,0,'L'); $pdf->Ln();
+
+            //     $pdf->SetTextColor(0,0,0);
+            //     $pdf->SetXY(10,177); $pdf->SetFont('Arial','',8); $pdf->MultiCell(25,4,utf8_decode('Emisividad:'),0,'L');
+            //     $Emissivity = $value['Emissivity'] > 0 ? $value['Emissivity'] : " " ;
+            //     $pdf->SetXY(35,177); $pdf->SetFont('Arial','B',8); $pdf->MultiCell(42,4,$Emissivity,0,'L'); $pdf->Ln();
+
+            //     // Apartado DATOS PROBELMA
+            //     $pdf->SetXY(246,23);
+            //     $pdf->SetFont('Arial','',8); $pdf->Cell(19,4,'Problema No:','LT',0,'R');
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(22,4,utf8_decode($value['tipoInspeccion'].' / '.$value['Numero_Problema']),'TR',0,'L'); $pdf->Ln();
+            //     $pdf->SetXY(185,27);
+            //     $pdf->SetTextColor(0,0,0);
+            //     $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode('Es Crónico:'),'LT',0,'L');
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(87,4,$value['Es_Cronico'],'TR',0,'L'); $pdf->Ln();
+            //     $pdf->SetXY(185,31);
+            //     $pdf->SetFont('Arial','',8); $pdf->Cell(27,4,utf8_decode('Prioridad Operación:'),'L',0,'L');
+            //     $pdf->SetFont('Arial','B',8); $pdf->MultiCell(75,4,utf8_decode($value['tipoPrioridad']),'R','L');
+            //     $pdf->SetXY(185,35);
+            //     $pdf->SetFont('Arial','',8); $pdf->Cell(33,4,utf8_decode('Prioridad De Reparación:'),'L',0,'L');
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(69,4,utf8_decode($value['severidad']),'R',0,'L'); $pdf->Ln();
+            //     $pdf->SetXY(185,39);
+            //     $pdf->SetFont('Arial','',8); $pdf->MultiCell(85,4,utf8_decode('Temperatura De Anomalía En '.$value['faseProblema'].':'),'L','L');
+            //     $pdf->SetXY(270,39);
+            //     $pdf->SetFont('Arial','B',8); $pdf->MultiCell(17,4,utf8_decode($value['Problem_Temperature'].'°C'),'R','R');
+            //     $pdf->SetXY(185,43);
+            //     $pdf->SetTextColor(0,35,172); $pdf->SetFont('Arial','',8); $pdf->MultiCell(85,4,utf8_decode('Temperatura De Referencia En: '.$value['faseReferencia']),'L','L');
+            //     $pdf->SetXY(270,43);
+            //     $pdf->SetFont('Arial','B',8); $pdf->MultiCell(17,4,utf8_decode($value['Reference_Temperature'].'°C'),'R','R');
+            //     $pdf->SetXY(185,47);
+            //     $pdf->SetTextColor(245,0,0); $pdf->SetFont('Arial','',8); $pdf->Cell(85,4,utf8_decode('Diferencial De temperatura:'),'LB',0,'L');
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(17,4,utf8_decode($value['Aumento_Temperatura'].'°C'),'RB',0,'R'); $pdf->Ln();
+
+            //     // Apartado de informacion del equipo
+            //     $pdf->SetTextColor(0,0,0);
+            //     $pdf->Rect(185, 54, 102, 48, 'D');
+            //     $pdf->SetXY(185,54);
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(102,4,utf8_decode('Información Del Equipo'),'B',0,'L'); $pdf->Ln();
+            //     $pdf->SetX(185); $pdf->SetFont('Arial','',8); $pdf->Cell(102,4,utf8_decode('Código De Barras: '.$value['codigoBarras']),0,0,'L'); $pdf->Ln();
+
+            //     $arrayRuta = explode(" / ", $value['Ruta']);
+
+            //     if (count($arrayRuta) > 6) {
+            //         $pdf->SetX(185); $pdf->SetFont('Arial','',8); $pdf->MultiCell(102,4,utf8_decode($value['Ruta']),0,'L');
+            //     }else{
+
+            //         $identar = "";
+            //         foreach($arrayRuta as $valueRuta){
+            //             $pdf->SetX(185); $pdf->SetFont('Arial','',8); $pdf->Cell(102,4,utf8_decode($identar.$valueRuta),0,0,'L'); $pdf->Ln();
+            //             $identar = $identar."\r\n \r\n";
+            //         }
+            //     }
+
+            //     // Comentarios del problema
+            //     $pdf->SetXY(185,86);
+            //     $pdf->SetTextColor(0,35,172);
+            //     $pdf->MultiCell(102,4,utf8_decode($value['Component_Comment']),0,'L');
+            //     $pdf->SetTextColor(0,0,0);
+
+            //     // GRafica
+            //     if ($value['Id_Tipo_Inspeccion'] == "0D32B331-76C3-11D3-82BF-00104BC75DC2"){
+            //         $data['Problema'][$value['fecha_key_grafica']] = $problemaTemperatura;
+            //         // $data['Problema']['50%'] = $carga_50;
+            //         // $data['Problema']['100%'] = $carga_100;
+
+            //         $data["Referencia"][$value['fecha_key_grafica']] = $temperaturaReferencia;
+            //         // $data["Referencia"]['50%'] = $temperaturaReferencia;
+            //         // $data["Referencia"]['100%'] = $temperaturaReferencia;
+
+            //     }else{
+            //         $data['Problema'][$value['fecha_key_grafica']] = $problemaTemperatura;
+            //         $data["Referencia"][$value['fecha_key_grafica']] = $temperaturaReferencia;
+            //     }
+            //     $colors = array(
+            //         'Problema' => array(245,0,0),
+            //         'Referencia' => array(15,142,149),
+            //     );
+
+            //     $pdf->SetXY(75,33);
+            //     $pdf->LineGraph(105,69,$data,'VHkBgBdB',$colors,0,10);
+
+            //     // Imagenes
+            //     if (file_exists($rutaImgIR)){
+            //         $pdf->Image(base_url($rutaImgIR),80,105,102);
+            //     }
+            //     else{
+            //         $pdf->Rect(80, 105, 102, 76, 'D');
+            //         $pdf->SetXY(121,141);
+            //         $pdf->Cell(20,4,utf8_decode("Sin Imagen"),0,0,"C");
+            //     }
+
+            //     if(file_exists($rutaImgDIG)){
+            //         $pdf->Image(base_url($rutaImgDIG),185,105,102);
+            //     }else{
+            //         $pdf->Rect(185, 105, 102, 76, 'D');
+            //         $pdf->SetXY(226,141);
+            //         $pdf->Cell(20,4,utf8_decode("Sin Imagen"),0,0,"C");
+            //     }
+
+            //     // Apartado DAtos imagenes
+            //     $pdf->SetXY(80,183);
+            //     $pdf->SetTextColor(0,0,0);
+            //     $pdf->SetFont('Arial','',8);
+            //     $pdf->Cell(41,4,'Archivo: '.utf8_decode($imgIR),'TLB',0,'L');
+            //     $pdf->Cell(33,4,'Fecha: '.$datosImgIR['fecha'],'BT',0,'L');
+            //     $pdf->Cell(28,4,'Hora: '.$datosImgIR['hora'],'TRB',0,'L');
+            //     $pdf->SetXY(185,183);
+            //     $pdf->Cell(41,4,'Archivo: '.utf8_decode($imgDIG),'TLB',0,'L');
+            //     $pdf->Cell(33,4,'Fecha: '.$datosImgDIG['fecha'],'BT',0,'L');
+            //     $pdf->Cell(28,4,'Hora: '.$datosImgDIG['hora'],'TRB',0,'L');
+
+            // // Antes del proceso DB
+            // // }elseif ($value['Id_Tipo_Inspeccion'] == 3){
+            // // PROBLEMAS VISUALES
+            // }elseif ($value['Id_Tipo_Inspeccion'] == "0D32B333-76C3-11D3-82BF-00104BC75DC2"){
+
+            //     // Apartado de informacion del equipo
+            //     $pdf->SetTextColor(0,0,0);
+            //     $pdf->Rect(113, 27, 80, 30, 'D');
+            //     $pdf->SetXY(113,27);
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(80,4,utf8_decode('Ubicación Del Equipo'),'B',0,'L'); $pdf->Ln();
+            //     $pdf->SetX(113); $pdf->SetFont('Arial','',8); $pdf->Cell(80,4,utf8_decode('Código De Barras: '.$value['codigoBarras']),0,0,'L'); $pdf->Ln();
+
+            //     $arrayRuta = explode(" / ", $value['Ruta']);
+            //     if (count($arrayRuta) > 5) {
+            //         $pdf->SetX(113); $pdf->SetFont('Arial','',8); $pdf->MultiCell(80,4,utf8_decode($value['Ruta']),0,'L');
+            //     }else{
+
+            //         $identar = "";
+            //         foreach($arrayRuta as $valueRuta){
+            //             $pdf->SetX(113); $pdf->SetFont('Arial','',8); $pdf->Cell(80,4,utf8_decode($identar.$valueRuta),0,0,'L'); $pdf->Ln();
+            //             $identar = $identar."\r\n \r\n";
+            //         }
+            //     }
+
+            //     // Apartado DATOS PROBELMA
+            //     $pdf->SetXY(195,23);
+            //     $pdf->Rect(195, 27, 92, 30, 'D');
+            //     $pdf->SetTextColor(0,0,0);
+
+            //     $pdf->SetFont('Arial','',8); $pdf->Cell(45,4,'',0,0,'R');
+            //     $pdf->SetFont('Arial','',8); $pdf->Cell(25,4,'Problema No:','LT',0,'R');
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(22,4,utf8_decode($value['tipoInspeccion'].' / '.$value['Numero_Problema']),'TR',0,'L'); $pdf->Ln();
+
+            //     $pdf->SetX(195); $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode('Es Crónico:'),"B",0,'L');
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(77,4,$value['Es_Cronico'],"B",0,'L'); $pdf->Ln();
+
+            //     $pdf->SetX(195); $pdf->SetFont('Arial','',8); $pdf->Cell(27,4,utf8_decode('Prioridad Operación:'),0,0,'L');
+            //     $pdf->SetFont('Arial','B',8); $pdf->MultiCell(65,4,utf8_decode($value['tipoPrioridad']),0,'L');
+
+            //     $pdf->SetX(195); $pdf->SetFont('Arial','',8); $pdf->Cell(33,4,utf8_decode('Prioridad De Reparación:'),0,0,'L');
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(59,4,utf8_decode($value['severidad']),0,0,'L'); $pdf->Ln();
+
+            //     $pdf->SetFont('Arial','',8);
+            //     $pdf->SetX(195); $pdf->Cell(92,4, 'Fecha De Reporte: '.date("Y/m/d"),0,0,'L'); $pdf->Ln();
+            //     // $pdf->SetX(195); $pdf->Cell(102,4,utf8_decode('No. Inspección Anterior: '.$datosInspeccion[0]['No_Inspeccion_Ant']),0,0,'L'); $pdf->Ln();
+            //     // $pdf->SetX(195); $pdf->Cell(102,4,utf8_decode('No. Inspección Actual: '.$datosInspeccion[0]['No_Inspeccion']),0,0,'L');
+
+            //     // Datos inspeccion actual y anterior
+            //     $pdf->SetX(195);
+            //     $pdf->SetFont('Arial','',8); $pdf->Cell(31,4,utf8_decode('No. Inspección Anterior:'),0,0,'L');
+            //     $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode($datosInspeccion[0]['No_Inspeccion_Ant']),0,0,'L');
+            //     $pdf->SetFont('Arial','',8); $pdf->Cell(10,4,utf8_decode("Fecha: "),0,0,'L');
+            //     $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode($datosInspeccion[0]["fechaInspeccionAnterior"]),0,0,'L');$pdf->Ln();
+            //     $pdf->SetX(195);
+            //     $pdf->SetFont('Arial','',8);$pdf->Cell(31,4,utf8_decode('No. Inspección Actual:'),0,0,'L');
+            //     $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode($datosInspeccion[0]['No_Inspeccion']),0,0,'L');
+            //     $pdf->SetFont('Arial','',8); $pdf->Cell(10,4,utf8_decode("Fecha: "),0,0,'L');
+            //     $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode($datosInspeccion[0]["fechaInspeccionActual"]),0,0,'L');$pdf->Ln();
+
+            //     // partado datos del problema
+            //     // $pdf->Rect(10, 67, 276, 24, 'D');
+            //     $pdf->SetY(69);
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(30,4,utf8_decode("Hallazgo Visual:"),0,0,"R");
+            //     // $pdf->SetFont('Arial','',8);  $pdf->Cell(246,4,utf8_decode($value["hazardGroup"]),0,0,"L"); $pdf->Ln();
+            //     // $pdf->SetFont('Arial','B',8); $pdf->Cell(30,4,utf8_decode("Descripción:"),0,0,"R");
+            //     $pdf->SetFont('Arial','',8);  $pdf->Cell(246,4,utf8_decode($value["hazardIssue"]),0,0,"L"); $pdf->Ln();
+            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(30,4,utf8_decode("Observaciones:"),0,0,"R");
+            //     $pdf->SetFont('Arial','',8);  $pdf->SetTextColor(0,35,172); $pdf->MultiCell(246,4,utf8_decode($value["Component_Comment"]),0,"L"); $pdf->Ln();
+            //     $pdf->SetTextColor(0,0,0);
+
+            //     // Imagenes
+            //     if (file_exists($rutaImgIR)){
+            //         $pdf->Image(base_url($rutaImgIR),26,93,121);
+            //     }
+            //     else{
+            //         $pdf->Rect(26, 93, 121, 90, 'D');
+            //         $pdf->SetXY(76,136);
+            //         $pdf->Cell(20,4,utf8_decode("Sin Imagen"),0,0,"C");
+            //     }
+
+            //     if(file_exists($rutaImgDIG)){
+            //         $pdf->Image(base_url($rutaImgDIG),150,93,121);
+            //     }else{
+            //         $pdf->Rect(150, 93, 121, 90, 'D');
+            //         $pdf->SetXY(200,136);
+            //         $pdf->Cell(20,4,utf8_decode("Sin Imagen"),0,0,"C");
+            //     }
+
+            //     // Apartado DAtos imagenes
+            //     $pdf->SetXY(26,185);
+            //     $pdf->SetTextColor(0,0,0);
+            //     $pdf->SetFont('Arial','',8);
+            //     $pdf->Cell(53,4,'Archivo: '.utf8_decode($imgIR),'TLB',0,'L');
+            //     $pdf->Cell(44,4,'Fecha: '.$datosImgIR['fecha'],'BT',0,'L');
+            //     $pdf->Cell(24,4,'Hora: '.$datosImgIR['hora'],'TRB',0,'L');
+            //     $pdf->SetXY(150,185);
+            //     $pdf->Cell(53,4,'Archivo: '.utf8_decode($imgDIG),'TLB',0,'L');
+            //     $pdf->Cell(44,4,'Fecha: '.$datosImgDIG['fecha'],'BT',0,'L');
+            //     $pdf->Cell(24,4,'Hora: '.$datosImgDIG['hora'],'TRB',0,'L');
+
+            // }
+
+            if($iteracion < $totalProblemas){
+                $pdf->AddPage('L','A4',0);
+            }
+
+            $iteracion = $iteracion + 1;
+        }
+
+        // Línea de cierre
+        $currentTimeinSeconds = time();
+        $nombrePdf = $this->request->getPost('numero_reporte').'_ETIC_PROBLEMAS_INSPECCION_'.$datosInspeccion[0]['No_Inspeccion'].'.pdf';
+        $pdf->Output('F', $_SERVER["DOCUMENT_ROOT"].'/Archivos_ETIC/inspecciones/'.$datosInspeccion[0]['No_Inspeccion'].'/Reportes/'.$nombrePdf);
+        // $pdf->Output('I', $nombrePdf);
+
+        return json_encode(200);
+    }
+
 }
 
 class PDF extends FPDF{
