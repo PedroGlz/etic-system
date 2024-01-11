@@ -1134,7 +1134,7 @@ class Inventarios extends BaseController{
         return json_encode(200);
     }
 
-    public function generarReporteProblemas(){
+    public function generarReporteProblemas______________(){
         $inspeccionesMdl = new InspeccionesMdl();
         $usuariosMdl = new UsuariosMdl();
         $problemasMdl = new ProblemasMdl();
@@ -3555,13 +3555,19 @@ class Inventarios extends BaseController{
         return json_encode(200);
     }
 
-    public function generarReporteProblemas_______________________(){
+    public function generarReporteProblemas(){
         $inspeccionesMdl = new InspeccionesMdl();
         $usuariosMdl = new UsuariosMdl();
         $problemasMdl = new ProblemasMdl();
         $historialProblemas = new HistorialProblemasMdl();
         $session = session();
 
+        $file = $_SERVER["DOCUMENT_ROOT"].'/Archivos_ETIC/inspecciones/2088/Reportes/base.pdf';
+        $newfile = $_SERVER["DOCUMENT_ROOT"].'/Archivos_ETIC/inspecciones/2088/Reportes/'.$this->request->getPost('numero_reporte').'_ETIC_PROBLEMAS_INSPECCION_'.$session->inspeccion.'.pdf';
+
+        copy($file, $newfile);
+        // return json_encode(200);
+        
         // Consulta para los datos del analista termografo
         $datosInpector = $usuariosMdl->obtenerRegistros($session->Id_Usuario);
         // Consulta para los datos de la inspección
@@ -3583,7 +3589,8 @@ class Inventarios extends BaseController{
             "titulo" => "",
         ];
 
-        $pdf = new PDF($datosEncabezado);
+        $pdf = new FPDF2File($datosEncabezado);
+        $pdf->Open($newfile);
         $pdf->AddPage('L','A4',0);
 
         // Contador de iteraciones
@@ -3634,401 +3641,401 @@ class Inventarios extends BaseController{
                 $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode($datosInspeccion[0]["fechaInspeccionActual"]),0,0,'L');$pdf->Ln();
             }
 
-            // $historial = array();
-            // $data = [];
+            $historial = array();
+            $data = [];
 
-            // if(count($historialProblemas->getHistorialProblema($value['Id_Problema'])) > 0){
+            if(count($historialProblemas->getHistorialProblema($value['Id_Problema'])) > 0){
 
-            //     $historial = $historialProblemas->getHistorialProblema($value['Id_Problema']);
+                $historial = $historialProblemas->getHistorialProblema($value['Id_Problema']);
 
-            //     foreach ($historial as $key5 => $value5) {
-            //         $data['Problema'][$value5["fecha_problema_historico"]] = $value5["Problem_Temperature"];
-            //         $data['Referencia'][$value5["fecha_problema_historico"]] = $value5["Reference_Temperature"];
-            //     }
-            //     ksort($data["Problema"]);
-            //     ksort($data["Referencia"]);
-            // }
+                foreach ($historial as $key5 => $value5) {
+                    $data['Problema'][$value5["fecha_problema_historico"]] = $value5["Problem_Temperature"];
+                    $data['Referencia'][$value5["fecha_problema_historico"]] = $value5["Reference_Temperature"];
+                }
+                ksort($data["Problema"]);
+                ksort($data["Referencia"]);
+            }
             
-            // // Antes del proceso DB
-            // // if ($value['Id_Tipo_Inspeccion'] == 1 || $value['Id_Tipo_Inspeccion'] == 4) {
-            // // PROBLEMAS ELECTRICOS Y MECANICOS
-            // if ($value['Id_Tipo_Inspeccion'] == "0D32B331-76C3-11D3-82BF-00104BC75DC2" ||
-            //     $value['Id_Tipo_Inspeccion'] == "0D32B332-76C3-11D3-82BF-00104BC75DC2" ||
-            //     $value['Id_Tipo_Inspeccion'] == "0D32B334-76C3-11D3-82BF-00104BC75DC2") {
+            // Antes del proceso DB
+            // if ($value['Id_Tipo_Inspeccion'] == 1 || $value['Id_Tipo_Inspeccion'] == 4) {
+            // PROBLEMAS ELECTRICOS Y MECANICOS
+            if ($value['Id_Tipo_Inspeccion'] == "0D32B331-76C3-11D3-82BF-00104BC75DC2" ||
+                $value['Id_Tipo_Inspeccion'] == "0D32B332-76C3-11D3-82BF-00104BC75DC2" ||
+                $value['Id_Tipo_Inspeccion'] == "0D32B334-76C3-11D3-82BF-00104BC75DC2") {
 
-            //     // Calculos de temperatura
-            //     $problemaTemperatura = $value['Problem_Temperature'];
-            //     $temperaturaReferencia = $value['Reference_Temperature'];
-            //     $carga_50 = ceil((($problemaTemperatura - $temperaturaReferencia)* floatval(2.98)) + $temperaturaReferencia);
-            //     $carga_100 = ceil((($problemaTemperatura - $temperaturaReferencia)* floatval(1.00)) + $temperaturaReferencia);
+                // Calculos de temperatura
+                $problemaTemperatura = $value['Problem_Temperature'];
+                $temperaturaReferencia = $value['Reference_Temperature'];
+                $carga_50 = ceil((($problemaTemperatura - $temperaturaReferencia)* floatval(2.98)) + $temperaturaReferencia);
+                $carga_100 = ceil((($problemaTemperatura - $temperaturaReferencia)* floatval(1.00)) + $temperaturaReferencia);
 
-            //     // Ubicando Apartado con datos del problema
-            //     $pdf->SetXY(10, 67);
-            //     // Apartado de Informacion de temperatura
-            //     $pdf->Rect(10, 67, 67, 38, 'D');
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(67,4,utf8_decode('Información De Temperatura'),"B",0,'L'); $pdf->Ln();
-            //     $pdf->SetFont('Arial','',8); $pdf->Cell(22,4,utf8_decode('Temp. Ambiente:'),0,0,'L');
-            //     $Temp_Ambient = $value['Temp_Ambient'] > 0 ? $value['Temp_Ambient']."°C" : " " ;
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(45,4,utf8_decode($Temp_Ambient),0,0,'R'); $pdf->Ln();
-            //     $pdf->SetFont('Arial','',8); $pdf->Cell(20,4,utf8_decode('Tipo Ambiente:'),0,0,'L');
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(47,4,$value['tipoAmbiente'],0,0,'R'); $pdf->Ln();
-            //     $pdf->SetFont('Arial','',8); $pdf->Cell(10,4,utf8_decode('Velocidad de Viento:'),0,0,'L');
+                // Ubicando Apartado con datos del problema
+                $pdf->SetXY(10, 67);
+                // Apartado de Informacion de temperatura
+                $pdf->Rect(10, 67, 67, 38, 'D');
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(67,4,utf8_decode('Información De Temperatura'),"B",0,'L'); $pdf->Ln();
+                $pdf->SetFont('Arial','',8); $pdf->Cell(22,4,utf8_decode('Temp. Ambiente:'),0,0,'L');
+                $Temp_Ambient = $value['Temp_Ambient'] > 0 ? $value['Temp_Ambient']."°C" : " " ;
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(45,4,utf8_decode($Temp_Ambient),0,0,'R'); $pdf->Ln();
+                $pdf->SetFont('Arial','',8); $pdf->Cell(20,4,utf8_decode('Tipo Ambiente:'),0,0,'L');
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(47,4,$value['tipoAmbiente'],0,0,'R'); $pdf->Ln();
+                $pdf->SetFont('Arial','',8); $pdf->Cell(10,4,utf8_decode('Velocidad de Viento:'),0,0,'L');
 
-            //     $velocidad_viento = $value['Wind_Speed'] != "" && $value['Wind_Speed'] > 0 ? $value['Wind_Speed']." m/s" : " ";
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(57,4,$velocidad_viento,0,0,'R'); $pdf->Ln();
+                $velocidad_viento = $value['Wind_Speed'] != "" && $value['Wind_Speed'] > 0 ? $value['Wind_Speed']." m/s" : " ";
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(57,4,$velocidad_viento,0,0,'R'); $pdf->Ln();
 
                 
-            //     $vel_v = floatval($value['Wind_Speed']);
-            //     $temp_prob = floatval($value['Problem_Temperature']);
-            //     $temp_amb = floatval($value['Temp_Ambient']);
-            //     $corriente_nominal = floatval($value['Rated_Load']);
+                $vel_v = floatval($value['Wind_Speed']);
+                $temp_prob = floatval($value['Problem_Temperature']);
+                $temp_amb = floatval($value['Temp_Ambient']);
+                $corriente_nominal = floatval($value['Rated_Load']);
 
-            //     switch ($vel_v) {
-            //         case 1:
-            //             $fcv = 1.15;
-            //         break;
-            //         case 2:
-            //             $fcv = 1.36;
-            //         break;
-            //         case 3:
-            //             $fcv = 1.64;
-            //         break;
-            //         case 4:
-            //             $fcv = 1.86;
-            //         break;
-            //         case 5:
-            //             $fcv = 2.06;
-            //         break;
-            //         case 6:
-            //             $fcv = 2.23;
-            //         break;
-            //         case 7:
-            //             $fcv = 2.40;
-            //         break;
-            //         default:
-            //             $fcv = 2.40;
-            //         break;
-            //     }
+                switch ($vel_v) {
+                    case 1:
+                        $fcv = 1.15;
+                    break;
+                    case 2:
+                        $fcv = 1.36;
+                    break;
+                    case 3:
+                        $fcv = 1.64;
+                    break;
+                    case 4:
+                        $fcv = 1.86;
+                    break;
+                    case 5:
+                        $fcv = 2.06;
+                    break;
+                    case 6:
+                        $fcv = 2.23;
+                    break;
+                    case 7:
+                        $fcv = 2.40;
+                    break;
+                    default:
+                        $fcv = 2.40;
+                    break;
+                }
 
-            //     $ajuste_temperatura_viento = 0;
-            //     if ($value['Wind_Speed'] != "" && $value['Wind_Speed'] > 0) {
-            //         $ajuste_temperatura_viento = round((($temp_prob - $temp_amb) * (floatval($fcv))) + $temp_amb);
-            //     }else{
-            //         $ajuste_temperatura_viento = $temp_prob;
-            //     }
+                $ajuste_temperatura_viento = 0;
+                if ($value['Wind_Speed'] != "" && $value['Wind_Speed'] > 0) {
+                    $ajuste_temperatura_viento = round((($temp_prob - $temp_amb) * (floatval($fcv))) + $temp_amb);
+                }else{
+                    $ajuste_temperatura_viento = $temp_prob;
+                }
 
-            //     // Tomando el valor maximo entre los rms
-            //     $max_rms_amper_medido = max(floatval($value['Problem_Rms']), floatval($value['Reference_Rms']), floatval($value['Additional_Rms']));
+                // Tomando el valor maximo entre los rms
+                $max_rms_amper_medido = max(floatval($value['Problem_Rms']), floatval($value['Reference_Rms']), floatval($value['Additional_Rms']));
                 
-            //     if($corriente_nominal >= 1){
-            //         $porsentaje_carga = ($max_rms_amper_medido / $corriente_nominal) * 100;
-            //     }else{
-            //         $porsentaje_carga = 1;
-            //     }
+                if($corriente_nominal >= 1){
+                    $porsentaje_carga = ($max_rms_amper_medido / $corriente_nominal) * 100;
+                }else{
+                    $porsentaje_carga = 1;
+                }
 
-            //     switch ((round($porsentaje_carga/10)*10)) {
-            //         case 90:
-            //             $fcc = 1.20;
-            //         break;
-            //         case 80:
-            //             $fcc = 1.46;
-            //         break;
-            //         case 70:
-            //             $fcc = 1.77;
-            //         break;
-            //         case 60:
-            //             $fcc = 2.27;
-            //         break;
-            //         case 50:
-            //             $fcc = 2.98;
-            //         break;
-            //         case 40:
-            //             $fcc = 4.33;
-            //         break;
-            //         default:
-            //             $fcc = 4.33;
-            //         break;
-            //     }
+                switch ((round($porsentaje_carga/10)*10)) {
+                    case 90:
+                        $fcc = 1.20;
+                    break;
+                    case 80:
+                        $fcc = 1.46;
+                    break;
+                    case 70:
+                        $fcc = 1.77;
+                    break;
+                    case 60:
+                        $fcc = 2.27;
+                    break;
+                    case 50:
+                        $fcc = 2.98;
+                    break;
+                    case 40:
+                        $fcc = 4.33;
+                    break;
+                    default:
+                        $fcc = 4.33;
+                    break;
+                }
 
-            //     if((round($porsentaje_carga/10)*10) < 40){
-            //         $fcc = 0;
-            //     }
+                if((round($porsentaje_carga/10)*10) < 40){
+                    $fcc = 0;
+                }
 
-            //     $ajuste_temp_carga = round((($ajuste_temperatura_viento - $temp_amb) * (floatval($fcc)))+ $temp_amb);
+                $ajuste_temp_carga = round((($ajuste_temperatura_viento - $temp_amb) * (floatval($fcc)))+ $temp_amb);
 
 
-            //     $pdf->SetFont('Arial','',8); $pdf->Cell(58,4,utf8_decode('Ajuste de temperatura por viento:'),0,0,'L');
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(9,4,utf8_decode($ajuste_temperatura_viento > 0 ? $ajuste_temperatura_viento."°C" : ""),0,0,'R'); $pdf->Ln();
-            //     $pdf->SetFont('Arial','',8); $pdf->Cell(58,4,utf8_decode('Temperatura ajuste por carga:'),0,0,'L');
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(9,4,utf8_decode($ajuste_temp_carga."°C"),0,0,'R');
-            //     // $pdf->SetFont('Arial','',8); $pdf->Cell(58,4,utf8_decode('Temperatura estimada 100%:'),0,0,'L');
-            //     // $pdf->SetFont('Arial','B',8); $pdf->Cell(9,4,utf8_decode($proyeccion_100."°C"),0,0,'R'); $pdf->Ln();
+                $pdf->SetFont('Arial','',8); $pdf->Cell(58,4,utf8_decode('Ajuste de temperatura por viento:'),0,0,'L');
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(9,4,utf8_decode($ajuste_temperatura_viento > 0 ? $ajuste_temperatura_viento."°C" : ""),0,0,'R'); $pdf->Ln();
+                $pdf->SetFont('Arial','',8); $pdf->Cell(58,4,utf8_decode('Temperatura ajuste por carga:'),0,0,'L');
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(9,4,utf8_decode($ajuste_temp_carga."°C"),0,0,'R');
+                // $pdf->SetFont('Arial','',8); $pdf->Cell(58,4,utf8_decode('Temperatura estimada 100%:'),0,0,'L');
+                // $pdf->SetFont('Arial','B',8); $pdf->Cell(9,4,utf8_decode($proyeccion_100."°C"),0,0,'R'); $pdf->Ln();
 
-            //     // Ubicando Apartado Equipment Information
-            //     $pdf->SetXY(10,108);
-            //     $pdf->Rect(10, 108, 67, 38, 'D');
-            //     $pdf->SetX(10);
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(67,4,utf8_decode('Información Del Equipo'),'B',0,'L'); $pdf->Ln();
-            //     $pdf->SetX(10);
-            //     $pdf->SetFont('Arial','',8); $pdf->Cell(25,4,utf8_decode('Componente:'),0,0,'L');
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(42,4,'INT',0,0,'L'); $pdf->Ln();
-            //     $pdf->SetX(10); $pdf->SetFont('Arial','',8); $pdf->Cell(25,4,utf8_decode('Tipo Falla:'),0,0,'L');
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(42,4,utf8_decode($value['tipoInspeccion']),0,0,'L'); $pdf->Ln();
-            //     $pdf->SetX(10); $pdf->SetFont('Arial','',8); $pdf->Cell(25,4,utf8_decode('Fabricante:'),0,0,'L');
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(42,4,utf8_decode($value['fabricante']),0,0,'L'); $pdf->Ln();
-            //     $pdf->SetX(10); $pdf->SetFont('Arial','',8); $pdf->Cell(29,4,utf8_decode('Circuito Voltage [V]:'),0,0,'L');
+                // Ubicando Apartado Equipment Information
+                $pdf->SetXY(10,108);
+                $pdf->Rect(10, 108, 67, 38, 'D');
+                $pdf->SetX(10);
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(67,4,utf8_decode('Información Del Equipo'),'B',0,'L'); $pdf->Ln();
+                $pdf->SetX(10);
+                $pdf->SetFont('Arial','',8); $pdf->Cell(25,4,utf8_decode('Componente:'),0,0,'L');
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(42,4,'INT',0,0,'L'); $pdf->Ln();
+                $pdf->SetX(10); $pdf->SetFont('Arial','',8); $pdf->Cell(25,4,utf8_decode('Tipo Falla:'),0,0,'L');
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(42,4,utf8_decode($value['tipoInspeccion']),0,0,'L'); $pdf->Ln();
+                $pdf->SetX(10); $pdf->SetFont('Arial','',8); $pdf->Cell(25,4,utf8_decode('Fabricante:'),0,0,'L');
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(42,4,utf8_decode($value['fabricante']),0,0,'L'); $pdf->Ln();
+                $pdf->SetX(10); $pdf->SetFont('Arial','',8); $pdf->Cell(29,4,utf8_decode('Circuito Voltage [V]:'),0,0,'L');
 
-            //     $voltage = $value['Circuit_Voltage'] > 0 ? $value['Circuit_Voltage']." V" : " " ;
-            //     $pdf->SetFont('Arial','B',8);
-            //     $pdf->Cell(38,4,$voltage,0,0,'L'); $pdf->Ln();
+                $voltage = $value['Circuit_Voltage'] > 0 ? $value['Circuit_Voltage']." V" : " " ;
+                $pdf->SetFont('Arial','B',8);
+                $pdf->Cell(38,4,$voltage,0,0,'L'); $pdf->Ln();
 
-            //     $pdf->SetTextColor(0,35,172);
-            //     $pdf->SetX(10);
-            //     $pdf->SetFont('Arial','',8);
-            //     $pdf->Cell(29,4,utf8_decode('Corriente Nominal [A]:'),0,0,'L');
+                $pdf->SetTextColor(0,35,172);
+                $pdf->SetX(10);
+                $pdf->SetFont('Arial','',8);
+                $pdf->Cell(29,4,utf8_decode('Corriente Nominal [A]:'),0,0,'L');
 
-            //     $amperios = $value['Rated_Load'] > 0 ? $value['Rated_Load']." A" : " " ;
-            //     $pdf->SetFont('Arial','B',8);
-            //     $pdf->Cell(38,4,$amperios,0,0,'L'); $pdf->Ln();
+                $amperios = $value['Rated_Load'] > 0 ? $value['Rated_Load']." A" : " " ;
+                $pdf->SetFont('Arial','B',8);
+                $pdf->Cell(38,4,$amperios,0,0,'L'); $pdf->Ln();
 
-            //     // Apartado RMS FASES Load Test Results
-            //     $pdf->SetXY(10,149);
-            //     $pdf->Rect(10, 149, 67, 38, 'D');
-            //     $pdf->SetTextColor(0,0,0);
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(67,4,utf8_decode('Datos De Medición De Carga'),'B',0,'L'); $pdf->Ln();
+                // Apartado RMS FASES Load Test Results
+                $pdf->SetXY(10,149);
+                $pdf->Rect(10, 149, 67, 38, 'D');
+                $pdf->SetTextColor(0,0,0);
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(67,4,utf8_decode('Datos De Medición De Carga'),'B',0,'L'); $pdf->Ln();
 
-            //     $pdf->SetTextColor(0,35,172);
-            //     $pdf->SetX(10); $pdf->SetFont('Arial','',8); $pdf->MultiCell(25,4,utf8_decode('RMS Amperes:'),0,'L');
-            //     $pdf->SetXY(35,153); $pdf->SetFont('Arial','B',8); $pdf->MultiCell(42,4,"",0,'L'); $pdf->Ln();
+                $pdf->SetTextColor(0,35,172);
+                $pdf->SetX(10); $pdf->SetFont('Arial','',8); $pdf->MultiCell(25,4,utf8_decode('RMS Amperes:'),0,'L');
+                $pdf->SetXY(35,153); $pdf->SetFont('Arial','B',8); $pdf->MultiCell(42,4,"",0,'L'); $pdf->Ln();
 
-            //     $pdf->SetTextColor(0,0,0);
-            //     $faseProblema = $value['faseProblema'] != "" ? $value['faseProblema'].':' : " " ;
-            //     $Problem_Rms = $value['Problem_Rms'] > 0 ? $value['Problem_Rms'] : " " ;
-            //     $pdf->SetXY(10,157); $pdf->SetFont('Arial','',8); $pdf->MultiCell(25,4,utf8_decode($faseProblema),0,'L');
-            //     $pdf->SetXY(35,157); $pdf->SetTextColor(0,35,172);$pdf->SetFont('Arial','B',8); $pdf->MultiCell(42,4,$Problem_Rms,0,'L'); $pdf->Ln();
+                $pdf->SetTextColor(0,0,0);
+                $faseProblema = $value['faseProblema'] != "" ? $value['faseProblema'].':' : " " ;
+                $Problem_Rms = $value['Problem_Rms'] > 0 ? $value['Problem_Rms'] : " " ;
+                $pdf->SetXY(10,157); $pdf->SetFont('Arial','',8); $pdf->MultiCell(25,4,utf8_decode($faseProblema),0,'L');
+                $pdf->SetXY(35,157); $pdf->SetTextColor(0,35,172);$pdf->SetFont('Arial','B',8); $pdf->MultiCell(42,4,$Problem_Rms,0,'L'); $pdf->Ln();
 
-            //     $pdf->SetTextColor(0,0,0);
-            //     $faseReferencia = $value['faseReferencia'] != "" ? $value['faseReferencia'].':' : " " ;
-            //     $Reference_Rms = $value['Reference_Rms'] > 0 ? $value['Reference_Rms'] : " " ;
-            //     $pdf->SetXY(10,161); $pdf->SetFont('Arial','',8); $pdf->MultiCell(25,4,utf8_decode($faseReferencia),0,'L');
-            //     $pdf->SetXY(35,161); $pdf->SetTextColor(0,35,172);$pdf->SetFont('Arial','B',8); $pdf->MultiCell(42,4,$Reference_Rms,0,'L'); $pdf->Ln();
+                $pdf->SetTextColor(0,0,0);
+                $faseReferencia = $value['faseReferencia'] != "" ? $value['faseReferencia'].':' : " " ;
+                $Reference_Rms = $value['Reference_Rms'] > 0 ? $value['Reference_Rms'] : " " ;
+                $pdf->SetXY(10,161); $pdf->SetFont('Arial','',8); $pdf->MultiCell(25,4,utf8_decode($faseReferencia),0,'L');
+                $pdf->SetXY(35,161); $pdf->SetTextColor(0,35,172);$pdf->SetFont('Arial','B',8); $pdf->MultiCell(42,4,$Reference_Rms,0,'L'); $pdf->Ln();
 
-            //     $pdf->SetTextColor(0,0,0);
-            //     $faseAdicional = $value['faseAdicional'] != "" ? $value['faseAdicional'].':' : " " ;
-            //     $Additional_Rms = $value['Additional_Rms'] > 0 ? $value['Additional_Rms'] : " " ;
-            //     $pdf->SetXY(10,165); $pdf->SetFont('Arial','',8); $pdf->MultiCell(25,4,utf8_decode($faseAdicional),0,'L');
-            //     $pdf->SetXY(35,165); $pdf->SetTextColor(0,35,172);$pdf->SetFont('Arial','B',8); $pdf->MultiCell(42,4,$Additional_Rms,0,'L'); $pdf->Ln();
+                $pdf->SetTextColor(0,0,0);
+                $faseAdicional = $value['faseAdicional'] != "" ? $value['faseAdicional'].':' : " " ;
+                $Additional_Rms = $value['Additional_Rms'] > 0 ? $value['Additional_Rms'] : " " ;
+                $pdf->SetXY(10,165); $pdf->SetFont('Arial','',8); $pdf->MultiCell(25,4,utf8_decode($faseAdicional),0,'L');
+                $pdf->SetXY(35,165); $pdf->SetTextColor(0,35,172);$pdf->SetFont('Arial','B',8); $pdf->MultiCell(42,4,$Additional_Rms,0,'L'); $pdf->Ln();
 
-            //     $pdf->SetTextColor(0,0,0);
-            //     $pdf->SetXY(10,177); $pdf->SetFont('Arial','',8); $pdf->MultiCell(25,4,utf8_decode('Emisividad:'),0,'L');
-            //     $Emissivity = $value['Emissivity'] > 0 ? $value['Emissivity'] : " " ;
-            //     $pdf->SetXY(35,177); $pdf->SetFont('Arial','B',8); $pdf->MultiCell(42,4,$Emissivity,0,'L'); $pdf->Ln();
+                $pdf->SetTextColor(0,0,0);
+                $pdf->SetXY(10,177); $pdf->SetFont('Arial','',8); $pdf->MultiCell(25,4,utf8_decode('Emisividad:'),0,'L');
+                $Emissivity = $value['Emissivity'] > 0 ? $value['Emissivity'] : " " ;
+                $pdf->SetXY(35,177); $pdf->SetFont('Arial','B',8); $pdf->MultiCell(42,4,$Emissivity,0,'L'); $pdf->Ln();
 
-            //     // Apartado DATOS PROBELMA
-            //     $pdf->SetXY(246,23);
-            //     $pdf->SetFont('Arial','',8); $pdf->Cell(19,4,'Problema No:','LT',0,'R');
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(22,4,utf8_decode($value['tipoInspeccion'].' / '.$value['Numero_Problema']),'TR',0,'L'); $pdf->Ln();
-            //     $pdf->SetXY(185,27);
-            //     $pdf->SetTextColor(0,0,0);
-            //     $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode('Es Crónico:'),'LT',0,'L');
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(87,4,$value['Es_Cronico'],'TR',0,'L'); $pdf->Ln();
-            //     $pdf->SetXY(185,31);
-            //     $pdf->SetFont('Arial','',8); $pdf->Cell(27,4,utf8_decode('Prioridad Operación:'),'L',0,'L');
-            //     $pdf->SetFont('Arial','B',8); $pdf->MultiCell(75,4,utf8_decode($value['tipoPrioridad']),'R','L');
-            //     $pdf->SetXY(185,35);
-            //     $pdf->SetFont('Arial','',8); $pdf->Cell(33,4,utf8_decode('Prioridad De Reparación:'),'L',0,'L');
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(69,4,utf8_decode($value['severidad']),'R',0,'L'); $pdf->Ln();
-            //     $pdf->SetXY(185,39);
-            //     $pdf->SetFont('Arial','',8); $pdf->MultiCell(85,4,utf8_decode('Temperatura De Anomalía En '.$value['faseProblema'].':'),'L','L');
-            //     $pdf->SetXY(270,39);
-            //     $pdf->SetFont('Arial','B',8); $pdf->MultiCell(17,4,utf8_decode($value['Problem_Temperature'].'°C'),'R','R');
-            //     $pdf->SetXY(185,43);
-            //     $pdf->SetTextColor(0,35,172); $pdf->SetFont('Arial','',8); $pdf->MultiCell(85,4,utf8_decode('Temperatura De Referencia En: '.$value['faseReferencia']),'L','L');
-            //     $pdf->SetXY(270,43);
-            //     $pdf->SetFont('Arial','B',8); $pdf->MultiCell(17,4,utf8_decode($value['Reference_Temperature'].'°C'),'R','R');
-            //     $pdf->SetXY(185,47);
-            //     $pdf->SetTextColor(245,0,0); $pdf->SetFont('Arial','',8); $pdf->Cell(85,4,utf8_decode('Diferencial De temperatura:'),'LB',0,'L');
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(17,4,utf8_decode($value['Aumento_Temperatura'].'°C'),'RB',0,'R'); $pdf->Ln();
+                // Apartado DATOS PROBELMA
+                $pdf->SetXY(246,23);
+                $pdf->SetFont('Arial','',8); $pdf->Cell(19,4,'Problema No:','LT',0,'R');
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(22,4,utf8_decode($value['tipoInspeccion'].' / '.$value['Numero_Problema']),'TR',0,'L'); $pdf->Ln();
+                $pdf->SetXY(185,27);
+                $pdf->SetTextColor(0,0,0);
+                $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode('Es Crónico:'),'LT',0,'L');
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(87,4,$value['Es_Cronico'],'TR',0,'L'); $pdf->Ln();
+                $pdf->SetXY(185,31);
+                $pdf->SetFont('Arial','',8); $pdf->Cell(27,4,utf8_decode('Prioridad Operación:'),'L',0,'L');
+                $pdf->SetFont('Arial','B',8); $pdf->MultiCell(75,4,utf8_decode($value['tipoPrioridad']),'R','L');
+                $pdf->SetXY(185,35);
+                $pdf->SetFont('Arial','',8); $pdf->Cell(33,4,utf8_decode('Prioridad De Reparación:'),'L',0,'L');
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(69,4,utf8_decode($value['severidad']),'R',0,'L'); $pdf->Ln();
+                $pdf->SetXY(185,39);
+                $pdf->SetFont('Arial','',8); $pdf->MultiCell(85,4,utf8_decode('Temperatura De Anomalía En '.$value['faseProblema'].':'),'L','L');
+                $pdf->SetXY(270,39);
+                $pdf->SetFont('Arial','B',8); $pdf->MultiCell(17,4,utf8_decode($value['Problem_Temperature'].'°C'),'R','R');
+                $pdf->SetXY(185,43);
+                $pdf->SetTextColor(0,35,172); $pdf->SetFont('Arial','',8); $pdf->MultiCell(85,4,utf8_decode('Temperatura De Referencia En: '.$value['faseReferencia']),'L','L');
+                $pdf->SetXY(270,43);
+                $pdf->SetFont('Arial','B',8); $pdf->MultiCell(17,4,utf8_decode($value['Reference_Temperature'].'°C'),'R','R');
+                $pdf->SetXY(185,47);
+                $pdf->SetTextColor(245,0,0); $pdf->SetFont('Arial','',8); $pdf->Cell(85,4,utf8_decode('Diferencial De temperatura:'),'LB',0,'L');
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(17,4,utf8_decode($value['Aumento_Temperatura'].'°C'),'RB',0,'R'); $pdf->Ln();
 
-            //     // Apartado de informacion del equipo
-            //     $pdf->SetTextColor(0,0,0);
-            //     $pdf->Rect(185, 54, 102, 48, 'D');
-            //     $pdf->SetXY(185,54);
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(102,4,utf8_decode('Información Del Equipo'),'B',0,'L'); $pdf->Ln();
-            //     $pdf->SetX(185); $pdf->SetFont('Arial','',8); $pdf->Cell(102,4,utf8_decode('Código De Barras: '.$value['codigoBarras']),0,0,'L'); $pdf->Ln();
+                // Apartado de informacion del equipo
+                $pdf->SetTextColor(0,0,0);
+                $pdf->Rect(185, 54, 102, 48, 'D');
+                $pdf->SetXY(185,54);
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(102,4,utf8_decode('Información Del Equipo'),'B',0,'L'); $pdf->Ln();
+                $pdf->SetX(185); $pdf->SetFont('Arial','',8); $pdf->Cell(102,4,utf8_decode('Código De Barras: '.$value['codigoBarras']),0,0,'L'); $pdf->Ln();
 
-            //     $arrayRuta = explode(" / ", $value['Ruta']);
+                $arrayRuta = explode(" / ", $value['Ruta']);
 
-            //     if (count($arrayRuta) > 6) {
-            //         $pdf->SetX(185); $pdf->SetFont('Arial','',8); $pdf->MultiCell(102,4,utf8_decode($value['Ruta']),0,'L');
-            //     }else{
+                if (count($arrayRuta) > 6) {
+                    $pdf->SetX(185); $pdf->SetFont('Arial','',8); $pdf->MultiCell(102,4,utf8_decode($value['Ruta']),0,'L');
+                }else{
 
-            //         $identar = "";
-            //         foreach($arrayRuta as $valueRuta){
-            //             $pdf->SetX(185); $pdf->SetFont('Arial','',8); $pdf->Cell(102,4,utf8_decode($identar.$valueRuta),0,0,'L'); $pdf->Ln();
-            //             $identar = $identar."\r\n \r\n";
-            //         }
-            //     }
+                    $identar = "";
+                    foreach($arrayRuta as $valueRuta){
+                        $pdf->SetX(185); $pdf->SetFont('Arial','',8); $pdf->Cell(102,4,utf8_decode($identar.$valueRuta),0,0,'L'); $pdf->Ln();
+                        $identar = $identar."\r\n \r\n";
+                    }
+                }
 
-            //     // Comentarios del problema
-            //     $pdf->SetXY(185,86);
-            //     $pdf->SetTextColor(0,35,172);
-            //     $pdf->MultiCell(102,4,utf8_decode($value['Component_Comment']),0,'L');
-            //     $pdf->SetTextColor(0,0,0);
+                // Comentarios del problema
+                $pdf->SetXY(185,86);
+                $pdf->SetTextColor(0,35,172);
+                $pdf->MultiCell(102,4,utf8_decode($value['Component_Comment']),0,'L');
+                $pdf->SetTextColor(0,0,0);
 
-            //     // GRafica
-            //     if ($value['Id_Tipo_Inspeccion'] == "0D32B331-76C3-11D3-82BF-00104BC75DC2"){
-            //         $data['Problema'][$value['fecha_key_grafica']] = $problemaTemperatura;
-            //         // $data['Problema']['50%'] = $carga_50;
-            //         // $data['Problema']['100%'] = $carga_100;
+                // GRafica
+                if ($value['Id_Tipo_Inspeccion'] == "0D32B331-76C3-11D3-82BF-00104BC75DC2"){
+                    $data['Problema'][$value['fecha_key_grafica']] = $problemaTemperatura;
+                    // $data['Problema']['50%'] = $carga_50;
+                    // $data['Problema']['100%'] = $carga_100;
 
-            //         $data["Referencia"][$value['fecha_key_grafica']] = $temperaturaReferencia;
-            //         // $data["Referencia"]['50%'] = $temperaturaReferencia;
-            //         // $data["Referencia"]['100%'] = $temperaturaReferencia;
+                    $data["Referencia"][$value['fecha_key_grafica']] = $temperaturaReferencia;
+                    // $data["Referencia"]['50%'] = $temperaturaReferencia;
+                    // $data["Referencia"]['100%'] = $temperaturaReferencia;
 
-            //     }else{
-            //         $data['Problema'][$value['fecha_key_grafica']] = $problemaTemperatura;
-            //         $data["Referencia"][$value['fecha_key_grafica']] = $temperaturaReferencia;
-            //     }
-            //     $colors = array(
-            //         'Problema' => array(245,0,0),
-            //         'Referencia' => array(15,142,149),
-            //     );
+                }else{
+                    $data['Problema'][$value['fecha_key_grafica']] = $problemaTemperatura;
+                    $data["Referencia"][$value['fecha_key_grafica']] = $temperaturaReferencia;
+                }
+                $colors = array(
+                    'Problema' => array(245,0,0),
+                    'Referencia' => array(15,142,149),
+                );
 
-            //     $pdf->SetXY(75,33);
-            //     $pdf->LineGraph(105,69,$data,'VHkBgBdB',$colors,0,10);
+                $pdf->SetXY(75,33);
+                $pdf->LineGraph(105,69,$data,'VHkBgBdB',$colors,0,10);
 
-            //     // Imagenes
-            //     if (file_exists($rutaImgIR)){
-            //         $pdf->Image(base_url($rutaImgIR),80,105,102);
-            //     }
-            //     else{
-            //         $pdf->Rect(80, 105, 102, 76, 'D');
-            //         $pdf->SetXY(121,141);
-            //         $pdf->Cell(20,4,utf8_decode("Sin Imagen"),0,0,"C");
-            //     }
+                // Imagenes
+                if (file_exists($rutaImgIR)){
+                    $pdf->Image(base_url($rutaImgIR),80,105,102);
+                }
+                else{
+                    $pdf->Rect(80, 105, 102, 76, 'D');
+                    $pdf->SetXY(121,141);
+                    $pdf->Cell(20,4,utf8_decode("Sin Imagen"),0,0,"C");
+                }
 
-            //     if(file_exists($rutaImgDIG)){
-            //         $pdf->Image(base_url($rutaImgDIG),185,105,102);
-            //     }else{
-            //         $pdf->Rect(185, 105, 102, 76, 'D');
-            //         $pdf->SetXY(226,141);
-            //         $pdf->Cell(20,4,utf8_decode("Sin Imagen"),0,0,"C");
-            //     }
+                if(file_exists($rutaImgDIG)){
+                    $pdf->Image(base_url($rutaImgDIG),185,105,102);
+                }else{
+                    $pdf->Rect(185, 105, 102, 76, 'D');
+                    $pdf->SetXY(226,141);
+                    $pdf->Cell(20,4,utf8_decode("Sin Imagen"),0,0,"C");
+                }
 
-            //     // Apartado DAtos imagenes
-            //     $pdf->SetXY(80,183);
-            //     $pdf->SetTextColor(0,0,0);
-            //     $pdf->SetFont('Arial','',8);
-            //     $pdf->Cell(41,4,'Archivo: '.utf8_decode($imgIR),'TLB',0,'L');
-            //     $pdf->Cell(33,4,'Fecha: '.$datosImgIR['fecha'],'BT',0,'L');
-            //     $pdf->Cell(28,4,'Hora: '.$datosImgIR['hora'],'TRB',0,'L');
-            //     $pdf->SetXY(185,183);
-            //     $pdf->Cell(41,4,'Archivo: '.utf8_decode($imgDIG),'TLB',0,'L');
-            //     $pdf->Cell(33,4,'Fecha: '.$datosImgDIG['fecha'],'BT',0,'L');
-            //     $pdf->Cell(28,4,'Hora: '.$datosImgDIG['hora'],'TRB',0,'L');
+                // Apartado DAtos imagenes
+                $pdf->SetXY(80,183);
+                $pdf->SetTextColor(0,0,0);
+                $pdf->SetFont('Arial','',8);
+                $pdf->Cell(41,4,'Archivo: '.utf8_decode($imgIR),'TLB',0,'L');
+                $pdf->Cell(33,4,'Fecha: '.$datosImgIR['fecha'],'BT',0,'L');
+                $pdf->Cell(28,4,'Hora: '.$datosImgIR['hora'],'TRB',0,'L');
+                $pdf->SetXY(185,183);
+                $pdf->Cell(41,4,'Archivo: '.utf8_decode($imgDIG),'TLB',0,'L');
+                $pdf->Cell(33,4,'Fecha: '.$datosImgDIG['fecha'],'BT',0,'L');
+                $pdf->Cell(28,4,'Hora: '.$datosImgDIG['hora'],'TRB',0,'L');
 
-            // // Antes del proceso DB
-            // // }elseif ($value['Id_Tipo_Inspeccion'] == 3){
-            // // PROBLEMAS VISUALES
-            // }elseif ($value['Id_Tipo_Inspeccion'] == "0D32B333-76C3-11D3-82BF-00104BC75DC2"){
+            // Antes del proceso DB
+            // }elseif ($value['Id_Tipo_Inspeccion'] == 3){
+            // PROBLEMAS VISUALES
+            }elseif ($value['Id_Tipo_Inspeccion'] == "0D32B333-76C3-11D3-82BF-00104BC75DC2"){
 
-            //     // Apartado de informacion del equipo
-            //     $pdf->SetTextColor(0,0,0);
-            //     $pdf->Rect(113, 27, 80, 30, 'D');
-            //     $pdf->SetXY(113,27);
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(80,4,utf8_decode('Ubicación Del Equipo'),'B',0,'L'); $pdf->Ln();
-            //     $pdf->SetX(113); $pdf->SetFont('Arial','',8); $pdf->Cell(80,4,utf8_decode('Código De Barras: '.$value['codigoBarras']),0,0,'L'); $pdf->Ln();
+                // Apartado de informacion del equipo
+                $pdf->SetTextColor(0,0,0);
+                $pdf->Rect(113, 27, 80, 30, 'D');
+                $pdf->SetXY(113,27);
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(80,4,utf8_decode('Ubicación Del Equipo'),'B',0,'L'); $pdf->Ln();
+                $pdf->SetX(113); $pdf->SetFont('Arial','',8); $pdf->Cell(80,4,utf8_decode('Código De Barras: '.$value['codigoBarras']),0,0,'L'); $pdf->Ln();
 
-            //     $arrayRuta = explode(" / ", $value['Ruta']);
-            //     if (count($arrayRuta) > 5) {
-            //         $pdf->SetX(113); $pdf->SetFont('Arial','',8); $pdf->MultiCell(80,4,utf8_decode($value['Ruta']),0,'L');
-            //     }else{
+                $arrayRuta = explode(" / ", $value['Ruta']);
+                if (count($arrayRuta) > 5) {
+                    $pdf->SetX(113); $pdf->SetFont('Arial','',8); $pdf->MultiCell(80,4,utf8_decode($value['Ruta']),0,'L');
+                }else{
 
-            //         $identar = "";
-            //         foreach($arrayRuta as $valueRuta){
-            //             $pdf->SetX(113); $pdf->SetFont('Arial','',8); $pdf->Cell(80,4,utf8_decode($identar.$valueRuta),0,0,'L'); $pdf->Ln();
-            //             $identar = $identar."\r\n \r\n";
-            //         }
-            //     }
+                    $identar = "";
+                    foreach($arrayRuta as $valueRuta){
+                        $pdf->SetX(113); $pdf->SetFont('Arial','',8); $pdf->Cell(80,4,utf8_decode($identar.$valueRuta),0,0,'L'); $pdf->Ln();
+                        $identar = $identar."\r\n \r\n";
+                    }
+                }
 
-            //     // Apartado DATOS PROBELMA
-            //     $pdf->SetXY(195,23);
-            //     $pdf->Rect(195, 27, 92, 30, 'D');
-            //     $pdf->SetTextColor(0,0,0);
+                // Apartado DATOS PROBELMA
+                $pdf->SetXY(195,23);
+                $pdf->Rect(195, 27, 92, 30, 'D');
+                $pdf->SetTextColor(0,0,0);
 
-            //     $pdf->SetFont('Arial','',8); $pdf->Cell(45,4,'',0,0,'R');
-            //     $pdf->SetFont('Arial','',8); $pdf->Cell(25,4,'Problema No:','LT',0,'R');
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(22,4,utf8_decode($value['tipoInspeccion'].' / '.$value['Numero_Problema']),'TR',0,'L'); $pdf->Ln();
+                $pdf->SetFont('Arial','',8); $pdf->Cell(45,4,'',0,0,'R');
+                $pdf->SetFont('Arial','',8); $pdf->Cell(25,4,'Problema No:','LT',0,'R');
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(22,4,utf8_decode($value['tipoInspeccion'].' / '.$value['Numero_Problema']),'TR',0,'L'); $pdf->Ln();
 
-            //     $pdf->SetX(195); $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode('Es Crónico:'),"B",0,'L');
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(77,4,$value['Es_Cronico'],"B",0,'L'); $pdf->Ln();
+                $pdf->SetX(195); $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode('Es Crónico:'),"B",0,'L');
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(77,4,$value['Es_Cronico'],"B",0,'L'); $pdf->Ln();
 
-            //     $pdf->SetX(195); $pdf->SetFont('Arial','',8); $pdf->Cell(27,4,utf8_decode('Prioridad Operación:'),0,0,'L');
-            //     $pdf->SetFont('Arial','B',8); $pdf->MultiCell(65,4,utf8_decode($value['tipoPrioridad']),0,'L');
+                $pdf->SetX(195); $pdf->SetFont('Arial','',8); $pdf->Cell(27,4,utf8_decode('Prioridad Operación:'),0,0,'L');
+                $pdf->SetFont('Arial','B',8); $pdf->MultiCell(65,4,utf8_decode($value['tipoPrioridad']),0,'L');
 
-            //     $pdf->SetX(195); $pdf->SetFont('Arial','',8); $pdf->Cell(33,4,utf8_decode('Prioridad De Reparación:'),0,0,'L');
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(59,4,utf8_decode($value['severidad']),0,0,'L'); $pdf->Ln();
+                $pdf->SetX(195); $pdf->SetFont('Arial','',8); $pdf->Cell(33,4,utf8_decode('Prioridad De Reparación:'),0,0,'L');
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(59,4,utf8_decode($value['severidad']),0,0,'L'); $pdf->Ln();
 
-            //     $pdf->SetFont('Arial','',8);
-            //     $pdf->SetX(195); $pdf->Cell(92,4, 'Fecha De Reporte: '.date("Y/m/d"),0,0,'L'); $pdf->Ln();
-            //     // $pdf->SetX(195); $pdf->Cell(102,4,utf8_decode('No. Inspección Anterior: '.$datosInspeccion[0]['No_Inspeccion_Ant']),0,0,'L'); $pdf->Ln();
-            //     // $pdf->SetX(195); $pdf->Cell(102,4,utf8_decode('No. Inspección Actual: '.$datosInspeccion[0]['No_Inspeccion']),0,0,'L');
+                $pdf->SetFont('Arial','',8);
+                $pdf->SetX(195); $pdf->Cell(92,4, 'Fecha De Reporte: '.date("Y/m/d"),0,0,'L'); $pdf->Ln();
+                // $pdf->SetX(195); $pdf->Cell(102,4,utf8_decode('No. Inspección Anterior: '.$datosInspeccion[0]['No_Inspeccion_Ant']),0,0,'L'); $pdf->Ln();
+                // $pdf->SetX(195); $pdf->Cell(102,4,utf8_decode('No. Inspección Actual: '.$datosInspeccion[0]['No_Inspeccion']),0,0,'L');
 
-            //     // Datos inspeccion actual y anterior
-            //     $pdf->SetX(195);
-            //     $pdf->SetFont('Arial','',8); $pdf->Cell(31,4,utf8_decode('No. Inspección Anterior:'),0,0,'L');
-            //     $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode($datosInspeccion[0]['No_Inspeccion_Ant']),0,0,'L');
-            //     $pdf->SetFont('Arial','',8); $pdf->Cell(10,4,utf8_decode("Fecha: "),0,0,'L');
-            //     $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode($datosInspeccion[0]["fechaInspeccionAnterior"]),0,0,'L');$pdf->Ln();
-            //     $pdf->SetX(195);
-            //     $pdf->SetFont('Arial','',8);$pdf->Cell(31,4,utf8_decode('No. Inspección Actual:'),0,0,'L');
-            //     $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode($datosInspeccion[0]['No_Inspeccion']),0,0,'L');
-            //     $pdf->SetFont('Arial','',8); $pdf->Cell(10,4,utf8_decode("Fecha: "),0,0,'L');
-            //     $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode($datosInspeccion[0]["fechaInspeccionActual"]),0,0,'L');$pdf->Ln();
+                // Datos inspeccion actual y anterior
+                $pdf->SetX(195);
+                $pdf->SetFont('Arial','',8); $pdf->Cell(31,4,utf8_decode('No. Inspección Anterior:'),0,0,'L');
+                $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode($datosInspeccion[0]['No_Inspeccion_Ant']),0,0,'L');
+                $pdf->SetFont('Arial','',8); $pdf->Cell(10,4,utf8_decode("Fecha: "),0,0,'L');
+                $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode($datosInspeccion[0]["fechaInspeccionAnterior"]),0,0,'L');$pdf->Ln();
+                $pdf->SetX(195);
+                $pdf->SetFont('Arial','',8);$pdf->Cell(31,4,utf8_decode('No. Inspección Actual:'),0,0,'L');
+                $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode($datosInspeccion[0]['No_Inspeccion']),0,0,'L');
+                $pdf->SetFont('Arial','',8); $pdf->Cell(10,4,utf8_decode("Fecha: "),0,0,'L');
+                $pdf->SetFont('Arial','',8); $pdf->Cell(15,4,utf8_decode($datosInspeccion[0]["fechaInspeccionActual"]),0,0,'L');$pdf->Ln();
 
-            //     // partado datos del problema
-            //     // $pdf->Rect(10, 67, 276, 24, 'D');
-            //     $pdf->SetY(69);
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(30,4,utf8_decode("Hallazgo Visual:"),0,0,"R");
-            //     // $pdf->SetFont('Arial','',8);  $pdf->Cell(246,4,utf8_decode($value["hazardGroup"]),0,0,"L"); $pdf->Ln();
-            //     // $pdf->SetFont('Arial','B',8); $pdf->Cell(30,4,utf8_decode("Descripción:"),0,0,"R");
-            //     $pdf->SetFont('Arial','',8);  $pdf->Cell(246,4,utf8_decode($value["hazardIssue"]),0,0,"L"); $pdf->Ln();
-            //     $pdf->SetFont('Arial','B',8); $pdf->Cell(30,4,utf8_decode("Observaciones:"),0,0,"R");
-            //     $pdf->SetFont('Arial','',8);  $pdf->SetTextColor(0,35,172); $pdf->MultiCell(246,4,utf8_decode($value["Component_Comment"]),0,"L"); $pdf->Ln();
-            //     $pdf->SetTextColor(0,0,0);
+                // partado datos del problema
+                // $pdf->Rect(10, 67, 276, 24, 'D');
+                $pdf->SetY(69);
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(30,4,utf8_decode("Hallazgo Visual:"),0,0,"R");
+                // $pdf->SetFont('Arial','',8);  $pdf->Cell(246,4,utf8_decode($value["hazardGroup"]),0,0,"L"); $pdf->Ln();
+                // $pdf->SetFont('Arial','B',8); $pdf->Cell(30,4,utf8_decode("Descripción:"),0,0,"R");
+                $pdf->SetFont('Arial','',8);  $pdf->Cell(246,4,utf8_decode($value["hazardIssue"]),0,0,"L"); $pdf->Ln();
+                $pdf->SetFont('Arial','B',8); $pdf->Cell(30,4,utf8_decode("Observaciones:"),0,0,"R");
+                $pdf->SetFont('Arial','',8);  $pdf->SetTextColor(0,35,172); $pdf->MultiCell(246,4,utf8_decode($value["Component_Comment"]),0,"L"); $pdf->Ln();
+                $pdf->SetTextColor(0,0,0);
 
-            //     // Imagenes
-            //     if (file_exists($rutaImgIR)){
-            //         $pdf->Image(base_url($rutaImgIR),26,93,121);
-            //     }
-            //     else{
-            //         $pdf->Rect(26, 93, 121, 90, 'D');
-            //         $pdf->SetXY(76,136);
-            //         $pdf->Cell(20,4,utf8_decode("Sin Imagen"),0,0,"C");
-            //     }
+                // Imagenes
+                if (file_exists($rutaImgIR)){
+                    $pdf->Image(base_url($rutaImgIR),26,93,121);
+                }
+                else{
+                    $pdf->Rect(26, 93, 121, 90, 'D');
+                    $pdf->SetXY(76,136);
+                    $pdf->Cell(20,4,utf8_decode("Sin Imagen"),0,0,"C");
+                }
 
-            //     if(file_exists($rutaImgDIG)){
-            //         $pdf->Image(base_url($rutaImgDIG),150,93,121);
-            //     }else{
-            //         $pdf->Rect(150, 93, 121, 90, 'D');
-            //         $pdf->SetXY(200,136);
-            //         $pdf->Cell(20,4,utf8_decode("Sin Imagen"),0,0,"C");
-            //     }
+                if(file_exists($rutaImgDIG)){
+                    $pdf->Image(base_url($rutaImgDIG),150,93,121);
+                }else{
+                    $pdf->Rect(150, 93, 121, 90, 'D');
+                    $pdf->SetXY(200,136);
+                    $pdf->Cell(20,4,utf8_decode("Sin Imagen"),0,0,"C");
+                }
 
-            //     // Apartado DAtos imagenes
-            //     $pdf->SetXY(26,185);
-            //     $pdf->SetTextColor(0,0,0);
-            //     $pdf->SetFont('Arial','',8);
-            //     $pdf->Cell(53,4,'Archivo: '.utf8_decode($imgIR),'TLB',0,'L');
-            //     $pdf->Cell(44,4,'Fecha: '.$datosImgIR['fecha'],'BT',0,'L');
-            //     $pdf->Cell(24,4,'Hora: '.$datosImgIR['hora'],'TRB',0,'L');
-            //     $pdf->SetXY(150,185);
-            //     $pdf->Cell(53,4,'Archivo: '.utf8_decode($imgDIG),'TLB',0,'L');
-            //     $pdf->Cell(44,4,'Fecha: '.$datosImgDIG['fecha'],'BT',0,'L');
-            //     $pdf->Cell(24,4,'Hora: '.$datosImgDIG['hora'],'TRB',0,'L');
+                // Apartado DAtos imagenes
+                $pdf->SetXY(26,185);
+                $pdf->SetTextColor(0,0,0);
+                $pdf->SetFont('Arial','',8);
+                $pdf->Cell(53,4,'Archivo: '.utf8_decode($imgIR),'TLB',0,'L');
+                $pdf->Cell(44,4,'Fecha: '.$datosImgIR['fecha'],'BT',0,'L');
+                $pdf->Cell(24,4,'Hora: '.$datosImgIR['hora'],'TRB',0,'L');
+                $pdf->SetXY(150,185);
+                $pdf->Cell(53,4,'Archivo: '.utf8_decode($imgDIG),'TLB',0,'L');
+                $pdf->Cell(44,4,'Fecha: '.$datosImgDIG['fecha'],'BT',0,'L');
+                $pdf->Cell(24,4,'Hora: '.$datosImgDIG['hora'],'TRB',0,'L');
 
-            // }
+            }
 
             if($iteracion < $totalProblemas){
                 $pdf->AddPage('L','A4',0);
@@ -4040,8 +4047,8 @@ class Inventarios extends BaseController{
         // Línea de cierre
         $currentTimeinSeconds = time();
         $nombrePdf = $this->request->getPost('numero_reporte').'_ETIC_PROBLEMAS_INSPECCION_'.$datosInspeccion[0]['No_Inspeccion'].'.pdf';
-        $pdf->Output('F', $_SERVER["DOCUMENT_ROOT"].'/Archivos_ETIC/inspecciones/'.$datosInspeccion[0]['No_Inspeccion'].'/Reportes/'.$nombrePdf);
-        // $pdf->Output('I', $nombrePdf);
+        // $pdf->Output('F', $_SERVER["DOCUMENT_ROOT"].'/Archivos_ETIC/inspecciones/'.$datosInspeccion[0]['No_Inspeccion'].'/Reportes/'.$nombrePdf);
+        $pdf->Output();
 
         return json_encode(200);
     }
@@ -5180,4 +5187,795 @@ class PDF_RA extends FPDF{
         // $this->Ln();
     }
 
+}
+
+class FPDF2File extends FPDF{
+
+    // ENCABEZADOS Y PIE DE PAGINA
+    public $datosEncabezado;
+    protected $f;
+
+    public function Open($file='doc.pdf')
+    {
+        $this->f = fopen($file,'wb');
+        if(!$this->f)
+            $this->Error('Unable to create output file: '.$file);
+        $this->_putheader();
+    }
+
+    public function Image($file, $x=null, $y=null, $w=0, $h=0, $type='', $link='')
+    {
+        if(!isset($this->images[$file]))
+        {
+            // Retrieve only metadata
+            $a = getimagesize($file);
+            if($a===false)
+                $this->Error('Missing or incorrect image file: '.$file);
+            $this->images[$file] = array('w'=>$a[0], 'h'=>$a[1], 'type'=>$a[2], 'i'=>count($this->images)+1);
+        }
+        parent::Image($file,$x,$y,$w,$h,$type,$link);
+    }
+
+    public function Output($dest='', $name='', $isUTF8=false)
+    {
+        if($this->state<3)
+            $this->Close();
+    }
+
+    protected function _endpage()
+    {
+        parent::_endpage();
+        // Write page to file
+        $this->_putstreamobject($this->pages[$this->page]);
+        unset($this->pages[$this->page]);
+    }
+
+    protected function _getoffset()
+    {
+        return ftell($this->f);
+    }
+
+    protected function _put($s)
+    {
+        fwrite($this->f,$s."\n",strlen($s)+1);
+    }
+
+    protected function _putimages()
+    {
+        foreach(array_keys($this->images) as $file)
+        {
+            $type = $this->images[$file]['type'];
+            if($type==1)
+                $info=$this->_parsegif($file);
+            elseif($type==2)
+                $info=$this->_parsejpg($file);
+            elseif($type==3)
+                $info=$this->_parsepng($file);
+            else
+                $this->Error('Unsupported image type: '.$file);
+            $this->_putimage($info);
+            $this->images[$file]['n'] = $info['n'];
+            unset($info);
+        }
+    }
+
+    protected function _putpage($n)
+    {
+        $this->_newobj();
+        $this->_put('<</Type /Page');
+        $this->_put('/Parent 1 0 R');
+        if(isset($this->PageInfo[$n]['size']))
+            $this->_put(sprintf('/MediaBox [0 0 %.2F %.2F]',$this->PageInfo[$n]['size'][0],$this->PageInfo[$n]['size'][1]));
+        if(isset($this->PageInfo[$n]['rotation']))
+            $this->_put('/Rotate '.$this->PageInfo[$n]['rotation']);
+        $this->_put('/Resources 2 0 R');
+        if(!empty($this->PageLinks[$n]))
+        {
+            $s = '/Annots [';
+            foreach($this->PageLinks[$n] as $pl)
+                $s .= $pl[5].' 0 R ';
+            $s .= ']';
+            $this->_put($s);
+        }
+        if($this->WithAlpha)
+            $this->_put('/Group <</Type /Group /S /Transparency /CS /DeviceRGB>>');
+        $this->_put('/Contents '.(2+$n).' 0 R>>');
+        $this->_put('endobj');
+        // Link annotations
+        $this->_putlinks($n);
+    }
+
+    protected function _putpages()
+    {
+        $nb = $this->page;
+        $n = $this->n;
+        for($i=1;$i<=$nb;$i++)
+        {
+            $this->PageInfo[$i]['n'] = ++$n;
+            foreach($this->PageLinks[$i] as &$pl)
+                $pl[5] = ++$n;
+            unset($pl);
+        }
+        for($i=1;$i<=$nb;$i++)
+            $this->_putpage($i);
+        // Pages root
+        $this->_newobj(1);
+        $this->_put('<</Type /Pages');
+        $kids = '/Kids [';
+        for($i=1;$i<=$nb;$i++)
+            $kids .= $this->PageInfo[$i]['n'].' 0 R ';
+        $kids .= ']';
+        $this->_put($kids);
+        $this->_put('/Count '.$nb);
+        if($this->DefOrientation=='P')
+        {
+            $w = $this->DefPageSize[0];
+            $h = $this->DefPageSize[1];
+        }
+        else
+        {
+            $w = $this->DefPageSize[1];
+            $h = $this->DefPageSize[0];
+        }
+        $this->_put(sprintf('/MediaBox [0 0 %.2F %.2F]',$w*$this->k,$h*$this->k));
+        $this->_put('>>');
+        $this->_put('endobj');
+    }
+
+    protected function _putheader()
+    {
+        if($this->_getoffset()==0)
+            parent::_putheader();
+    }
+
+    protected function _enddoc()
+    {
+        parent::_enddoc();
+        fclose($this->f);
+    }
+
+    public function __construct($datosEncabezado) {
+        parent::__construct();
+        $this->datosEncabezado = $datosEncabezado;
+    }
+
+    // Cabecera de página
+    function Header(){
+        // Logo
+        $this->Image(base_url('/img/sistema/ETIC_logo.jpg'),11,10,38);
+        // Arial bold 15
+        $this->SetFont('Arial','B',13);
+        // Titulo
+        $this->SetXY(86,10);
+        $this->MultiCell(125,6,utf8_decode($this->datosEncabezado["titulo"]),0,'C');
+
+        $this->SetXY(10,25);
+
+        switch ($this->datosEncabezado["tipoEncabezado"]) {
+            case 1:
+                $this->encabezadoReporteInventario();
+            break;
+            case 4:
+                // Logo CLientes
+                // $this->Rect(247,10,40,14);
+                if(is_dir(ROOTPATH."public/".$this->datosEncabezado["ruta_imagen_cliente"]) != true && file_exists(ROOTPATH."public/".$this->datosEncabezado["ruta_imagen_cliente"])){
+                    $this->Image(base_url($this->datosEncabezado["ruta_imagen_cliente"]),247,8,40,16);
+                }
+                $this->encabezadoListaProblemas();
+            break;
+            case 5:
+                // Logo CLientes
+                // $this->Rect(247,8,40,16);
+                if(is_dir(ROOTPATH."public/".$this->datosEncabezado["ruta_imagen_cliente"]) != true && file_exists(ROOTPATH."public/".$this->datosEncabezado["ruta_imagen_cliente"])){
+                    $this->Image(base_url($this->datosEncabezado["ruta_imagen_cliente"]),247,8,40,16);
+                }
+            break;
+        }
+
+
+    }
+
+    function encabezadoReporteInventario(){
+        // Apartado De datos de la inspeccion
+        $this->SetY($this->GetY()+2);
+
+        if($this->datosEncabezado["grupo"] != ""){
+            $this->SetFont('Arial','B',8); $this->Cell(80,4,utf8_decode($this->datosEncabezado["grupo"]),0,0,'L') ;$this->Ln();
+        }
+        $this->SetFont('Arial','B',8); $this->Cell(80,4,utf8_decode($this->datosEncabezado["cliente"]),0,0,'L'); $this->Ln();
+        $this->SetFont('Arial','',8); $this->Cell(80,4,utf8_decode($this->datosEncabezado["sitio"]),0,0,'L'); $this->Ln();
+        $this->Cell(80,4,utf8_decode('Analista Termógrafo: '.$this->datosEncabezado["analistaTermografo"]),0,0,'L'); $this->Ln();
+        $this->Cell(80,4,utf8_decode('Nivel De Certificación: '.$this->datosEncabezado['nivelCertificacion']),0,0,'L'); $this->Ln();
+        $this->Cell(80,4, 'Fecha De Reporte: '.date("Y/m/d"),0,0,'L'); $this->Ln();
+        
+        // Datos inspeccion actual y anterior
+        $this->SetXY(97, 27);
+        $this->SetFont('Arial','B',8); $this->Cell(34,4,utf8_decode('No. Inspección Anterior:'),0,0,'L');
+        $this->SetFont('Arial','',8); $this->Cell(10,4,utf8_decode($this->datosEncabezado['inspeccionAnterior']),0,0,'L');$this->Ln();
+        $this->SetX(97);
+        $this->SetFont('Arial','B',8); $this->Cell(10,4,utf8_decode("Fecha: "),0,0,'L');
+        $this->SetFont('Arial','',8); $this->Cell(15,4,utf8_decode($this->datosEncabezado["fecha_inspeccion_anterior"]),0,0,'L');$this->Ln();
+        $this->SetX(97);
+        $this->SetFont('Arial','B',8);$this->Cell(34,4,utf8_decode('No. Inspección Actual:'),0,0,'L');
+        $this->SetFont('Arial','',8); $this->Cell(10,4,utf8_decode($this->datosEncabezado['inspeccionActual']),0,0,'L');$this->Ln();
+        $this->SetX(97);
+        $this->SetFont('Arial','B',8); $this->Cell(10,4,utf8_decode("Fecha: "),0,0,'L');
+        $this->SetFont('Arial','',8); $this->Cell(15,4,utf8_decode($this->datosEncabezado["fecha_inspeccion_actual"]),0,0,'L');$this->Ln();
+
+        // Recuadro Tipo de problema
+        $this->SetXY(150, 27); $this->SetFont('Arial','B',8); $this->Cell(30,4,'Tipo De Problema',1,0,'L'); $this->Ln();
+        $this->SetX(150); $this->SetFont('Arial','',8); $this->Cell(30,4,utf8_decode('E = Eléctrico'),'L,R',0,'L'); $this->Ln();
+        $this->SetX(150);$this->Cell(30,4,utf8_decode('M = Mecánico'),'L,R',0,'L'); $this->Ln();
+        $this->SetX(150);$this->Cell(30,4,'V = Visual','L,R,B',0,'L'); $this->Ln();
+
+        // Recuadro de Prioridad Operatica
+        $this->SetXY(189, 27); $this->SetFont('Arial','B',8); $this->Cell(40,4,'Prioridad Operativa',1,0,'L'); $this->Ln();
+        $this->SetX(189); $this->SetFont('Arial','',8); $this->Cell(40,4,utf8_decode('CTO = Crítico'),'L,R',0,'L'); $this->Ln();
+        $this->SetX(189);$this->Cell(40,4,utf8_decode('ETO = Esencial'),'L,R',0,'L'); $this->Ln();
+        $this->SetX(189);$this->Cell(40,4,'UN = No clasificado','L,R,B',0,'L'); $this->Ln();
+
+        // Recuadro de Estado de Equipo en Inspección
+        // $this->SetXY(237, 27); $this->SetFont('Arial','B',8); $this->Cell(50,4,utf8_decode('Estado De Equipo En Inspección'),1,0,'L'); $this->Ln();
+        // $this->SetX(237); $this->SetFont('Arial','',8); $this->Cell(50,4,utf8_decode('TBT = A Inspeccionar'),'L,R',0,'L'); $this->Ln();
+        // $this->SetX(237);$this->Cell(50,4,'TESTED = Inspeccionado','L,R',0,'L'); $this->Ln();
+        // $this->SetX(237);$this->Cell(50,4,utf8_decode('NT/NL = Sin Carga'),'L,R',0,'L'); $this->Ln();
+        // $this->SetX(237);$this->Cell(50,4,'NT/UR = En Mantenimiento','L,R',0,'L'); $this->Ln();
+        // $this->SetX(237);$this->Cell(50,4,'NT/LO = Bloqueado','L,R',0,'L'); $this->Ln();
+        // $this->SetX(237);$this->Cell(50,4,'NT/NA = No Disponible','L,R,B',0,'L'); $this->Ln();
+
+        $this->SetXY(237, 27); $this->SetFont('Arial','B',8); $this->Cell(50,4,utf8_decode('Estado De Equipo En Inspección'),1,0,'L'); $this->Ln();
+        $this->SetX(237); $this->SetFont('Arial','',8); $this->Cell(50,4,utf8_decode('PVERIF = Para Verificar'),'L,R',0,'L'); $this->Ln();
+        $this->SetX(237);$this->Cell(50,4,'VERIFICADO = Verificado','L,R',0,'L'); $this->Ln();
+        $this->SetX(237);$this->Cell(50,4,utf8_decode('NOCARGA = Sin Carga'),'L,R',0,'L'); $this->Ln();
+        $this->SetX(237);$this->Cell(50,4,'MTTO = En Mantenimiento','L,R',0,'L'); $this->Ln();
+        $this->SetX(237);$this->Cell(50,4,'BLOQ = Bloqueado','L,R',0,'L'); $this->Ln();
+        $this->SetX(237);$this->Cell(50,4,'NOACC = No Accesible','L,R,B',0,'L'); $this->Ln();
+
+        // Ubicando la tabla XY
+        $this->SetXY(10, 60);
+
+        // Encabezados de la tabla
+        $header = array('Estado', 'Prioridad','# Problema', ' Ubicación', 'Código Barras','Notas');
+        // Encabezados de la tabala con Negritas
+        $this->SetFont('Arial','B',8);
+        for($i=0;$i<count($header);$i++)
+            $this->Cell($this->datosEncabezado["anchoColumnas"][$i],5,utf8_decode($header[$i]),"B",0,'L');
+        $this->Ln();
+    }
+
+    function encabezadoListaProblemas(){
+        $this->SetY($this->GetY()+2);
+        // Apartado De datos de la inspeccion
+        if($this->datosEncabezado["grupo"] != ""){
+            $this->SetFont('Arial','B',8); $this->Cell(80,4,utf8_decode($this->datosEncabezado["grupo"]),0,0,'L') ;$this->Ln();
+        }
+        $this->SetFont('Arial','B',8); $this->Cell(100,4,utf8_decode($this->datosEncabezado["cliente"]),0,0,'L'); $this->Ln();
+        $this->SetFont('Arial','',8); $this->Cell(100,4,utf8_decode($this->datosEncabezado["sitio"]),0,0,'L'); $this->Ln();
+        $this->Cell(100,4,utf8_decode('Analista Termógrafo: '.$this->datosEncabezado["analistaTermografo"]),0,0,'L'); $this->Ln();
+        $this->Cell(102,4,utf8_decode('Nivel De Certificación: '.$this->datosEncabezado['nivelCertificacion']),0,0,'L'); $this->Ln();
+
+        $this->SetXY(244, 27);
+        $this->Cell(44,4, 'Fecha De Reporte: '.date("d/m/Y"),0,0,'R'); $this->Ln();
+        // $this->SetX(242); $this->Cell(45,4,utf8_decode('No. Inspección Anterior: '.$this->datosEncabezado["inspeccionAnterior"]),0,0,'R'); $this->Ln();
+        // $this->SetX(242); $this->Cell(45,4,utf8_decode('No. Inspección Actual: '.$this->datosEncabezado["inspeccionActual"]),0,0,'R'); $this->Ln();
+
+        // Datos inspeccion actual y anterior
+        $this->SetX(218);
+        $this->SetFont('Arial','',8); $this->Cell(34,4,utf8_decode('No. Inspección Anterior:'),0,0,'R');
+        $this->SetFont('Arial','',8); $this->Cell(10,4,utf8_decode($this->datosEncabezado['inspeccionAnterior']),0,0,'L');
+        $this->SetFont('Arial','',8); $this->Cell(10,4,utf8_decode("Fecha: "),0,0,'L');
+        $this->SetFont('Arial','',8); $this->Cell(15,4,utf8_decode($this->datosEncabezado["fecha_inspeccion_anterior"]),0,0,'L');$this->Ln();
+        $this->SetX(218);
+        $this->SetFont('Arial','',8);$this->Cell(34,4,utf8_decode('No. Inspección Actual:'),0,0,'R');
+        $this->SetFont('Arial','',8); $this->Cell(10,4,utf8_decode($this->datosEncabezado['inspeccionActual']),0,0,'L');
+        $this->SetFont('Arial','',8); $this->Cell(10,4,utf8_decode("Fecha: "),0,0,'L');
+        $this->SetFont('Arial','',8); $this->Cell(15,4,utf8_decode($this->datosEncabezado["fecha_inspeccion_actual"]),0,0,'L');$this->Ln();
+
+        // Encabezados de la tabla
+        $header = array(
+            "Equipo / Comentarios",
+            "Fecha",
+            "No. Insp",
+            "# Problema",
+            "Estatus",
+            "Crónico",
+            "Temp",
+            "DeltaT",
+            "Severidad",
+        );
+
+        // Ubicando encabezados de la tabla XY
+        $this->SetXY(10, 50);
+
+        // Encabezados de la tabala con Negritas
+        $this->SetFont('Arial','B',8);
+        for($i=0;$i<count($header);$i++)
+            $this->Cell($this->datosEncabezado["anchoColumnas"][$i],7,utf8_decode($header[$i]),"B",0,$this->datosEncabezado["alineacionEncabezados"][$i]);
+        $this->Ln();
+    }
+
+    // Pie de página
+    function Footer(){
+        // Arial italic 8
+        $this->SetFont('Arial','',7);
+        // Número de página
+        $this->SetY(195);
+        $this->Cell(0,4,utf8_decode('ETIC SA DE CV'),0,0,'C'); $this->Ln();
+        $this->Cell(0,4,utf8_decode('Copyright © 2023 NefWorks Todos los derechos reservados.'),0,0,'C');
+
+        // Posición: a 1,5 cm del final
+        $this->SetY(-15);
+        // $this->Cell(0,10,utf8_decode('Página '.$this->PageNo().'/{nb}'),0,'L',0);
+    }
+
+    // APARTADO PARA GRAFICAS
+
+    function LineGraph($w, $h, $data, $options='', $colors=null, $maxVal=0, $nbDiv=4){
+        /*******************************************
+        Explain the variables:
+        $w = the width of the diagram
+        $h = the height of the diagram
+        $data = the data for the diagram in the form of a multidimensional array
+        $options = the possible formatting options which include:
+            'V' = Print Vertical Divider lines
+            'H' = Print Horizontal Divider Lines
+            'kB' = Print bounding box around the Key (legend)
+            'vB' = Print bounding box around the values under the graph
+            'gB' = Print bounding box around the graph
+            'dB' = Print bounding box around the entire diagram
+        $colors = A multidimensional array containing RGB values
+        $maxVal = The Maximum Value for the graph vertically
+        $nbDiv = The number of vertical Divisions
+        *******************************************/
+        // $this->SetDrawColor(0,0,0);
+        $this->SetDrawColor(171,171,171);
+        $this->SetLineWidth(0.2);
+        $keys = array_keys($data);
+        $ordinateWidth = 10;
+        $w -= $ordinateWidth;
+        $valX = $this->getX()+$ordinateWidth;
+        $valY = $this->getY();
+        $margin = 1;
+        $titleH = 8;
+        $titleW = $w;
+        $lineh = 4;
+        $keyH = count($data)*$lineh;
+        $keyW = $w/5;
+        $graphValH = 4;
+        $graphValW = $w-$keyW-3*$margin;
+        $graphH = $h-(3*$margin)-$graphValH;
+        $graphW = $w;
+        $graphX = $valX+$margin;
+        $graphY = $valY+$margin;
+        $graphValX = $valX+$margin;
+        $graphValY = $valY+2*$margin+$graphH;
+        $keyX = $valX+(2*$margin)+$graphW;
+        $keyY = $valY+$margin+.5*($h-(2*$margin))-.5*($keyH);
+        //Borde externo de todo el diagrama
+        if(strstr($options,'gB')){
+            $this->Rect($valX-5,$valY-6,$w+7,$h+6);
+        }
+        //borde de la grafica
+        if(strstr($options,'dB')){
+            $this->Rect($valX+$margin,$valY+$margin,$w,$graphH);
+        }
+        //borde de las Keys
+        if(strstr($options,'kB')){
+            $this->Rect($graphValX,$valY -5,$w,4);
+
+            $this->SetXY($graphValX-7,$valY -6);
+            $this->SetFont('Arial','',10);
+            $this->Cell(7,6,utf8_decode("°C"),0,0,'R');
+        }
+        //draw graph value box
+        if(strstr($options,'vB')){
+            $this->Rect($graphValX-5,$graphValY,$w+5,$graphValH);
+        }
+        //define colors
+        if($colors===null){
+            $safeColors = array(0,51,102,153,204,225);
+            for($i=0;$i<count($data);$i++){
+                $colors[$keys[$i]] = array($safeColors[array_rand($safeColors)],$safeColors[array_rand($safeColors)],$safeColors[array_rand($safeColors)]);
+            }
+        }
+        //form an array with all data values from the multi-demensional $data array
+        $ValArray = array();
+        foreach($data as $key => $value){
+            foreach($data[$key] as $val){
+                $ValArray[]=$val;
+            }
+        }
+        //define max value
+        if($maxVal<ceil(max($ValArray))){
+            $maxVal = ceil(max($ValArray));
+        }
+        //dibuja lineas horizontakes
+        $vertDivH = $graphH/$nbDiv;
+        if(strstr($options,'H')){
+            for($i=0;$i<=$nbDiv;$i++){
+                if($i<$nbDiv){
+                    $this->Line($graphX,$graphY+$i*$vertDivH,$graphX+$graphW,$graphY+$i*$vertDivH);
+                } else{
+                    $this->Line($graphX,$graphY+$graphH,$graphX+$graphW,$graphY+$graphH);
+                }
+            }
+        }
+
+        //dibuja lineas verticales
+        // VALIDACION PARA EVITAR LA DIVICION ENTRE CERO
+        $totalDiviciones = count($data[$keys[0]]);
+        $totalDiviciones = $totalDiviciones == 1 ? 1 : $totalDiviciones - 1;
+
+        $horiDivW = floor($graphW/$totalDiviciones);
+        if(strstr($options,'V')){
+            for($i=0;$i<=$totalDiviciones;$i++){
+                if($i<$totalDiviciones){
+                    $this->Line($graphX+$i*$horiDivW,$graphY,$graphX+$i*$horiDivW,$graphY+$graphH);
+                } else {
+                    $this->Line($graphX+$graphW,$graphY,$graphX+$graphW,$graphY+$graphH);
+                }
+            }
+        }
+        //draw graph lines
+        $sp = 0;
+        foreach($data as $key => $value){
+            // color de las lineas de la grafica
+            $this->setDrawColor($colors[$key][0],$colors[$key][1],$colors[$key][2]);
+            // grosor de las lineas de la grafica
+            $this->SetLineWidth(0.5);
+            $valueKeys = array_keys($value);
+
+            // DIBUJANDO LOS CIRCULOS INICIALES
+            $this->SetFillColor($colors[$key][0],$colors[$key][1],$colors[$key][2]);
+
+            for($i=0;$i<count($value);$i++){
+                $abc = 0;
+                if($i==count($value)-2){
+                    $this->Line(
+                        $graphX+($i*$horiDivW),
+                        $graphY+$graphH-($value[$valueKeys[$i]]/$maxVal*$graphH),
+                        $graphX+$graphW,
+                        $graphY+$graphH-($value[$valueKeys[$i+1]]/$maxVal*$graphH)
+                    );
+                    $posicionX = $graphX+($i*$horiDivW);
+                    $posicionY = $graphY+$graphH-($value[$valueKeys[$i]]/$maxVal*$graphH);
+                } else if($i<(count($value)-1)) {
+                    $this->Line(
+                        $graphX+($i*$horiDivW),
+                        $graphY+$graphH-($value[$valueKeys[$i]]/$maxVal*$graphH),
+                        $graphX+($i+1)*$horiDivW,
+                        $graphY+$graphH-($value[$valueKeys[$i+1]]/$maxVal*$graphH)
+                    );
+                    $posicionX = $graphX+($i*$horiDivW);
+                    $posicionY = $graphY+$graphH-($value[$valueKeys[$i]]/$maxVal*$graphH);
+                }else{
+                    $posicionX = $graphX+($i*$horiDivW)+($i-1);
+                    $posicionY = $graphY+$graphH-($value[$valueKeys[$i]]/$maxVal*$graphH);
+                }
+
+                if($i <= 0 && count($value) <= 1 ){
+                    $abc = 1;
+                }
+
+                $this->Circle($posicionX+$abc,$posicionY,(1/2),'D');
+                $this->SetFillColor(243,255,0);
+                $this->Circle($posicionX+$abc,$posicionY,(1/2),'F');
+            }
+
+            //Dibuja las llaves de la grafica
+            $this->SetFont('Arial','',7);
+            if(!isset($n))$n=0;
+            $this->Line(((10*($sp+1)) + ($graphValX + (15*$sp))-5),$valY -3,(10*($sp+1)) + ($graphValX + (15*$sp)),$valY-3);
+            $this->SetXY((10*($sp+1)) + ($graphValX + (15*$sp)),$valY-5);
+            $this->Cell(15,$lineh,utf8_decode($key),0,0,'L');
+            $n++;
+            $sp++;
+        }
+        // VALORES DE X INSPECCIONES
+        //print the abscissa values
+        foreach($valueKeys as $key => $value){
+
+            // Si se agrego numero inspeccion y fecha para el ordenamiento, aquí se quita el numero inspeccion
+            // para pintar solo la fecha delas inspecciones
+            if(str_contains($value,"-")){
+                $value = substr($value,-10);
+            }
+
+            if($key==0){
+                $this->SetXY($graphValX-5,$graphValY);
+                $this->Cell(10,$lineh,$value,0,0,'L');
+            } else if($key==count($valueKeys)-1){
+                $this->SetXY($graphValX+$w-10,$graphValY);
+                $this->Cell(10,$lineh,$value,0,0,'R');
+            } else {
+                $this->SetXY($graphValX+$key*$horiDivW-5,$graphValY);
+                $this->Cell(10,$lineh,$value,0,0,'C');
+            }
+        }
+        // VALORES DE Y VALORES
+        //print the ordinate values
+        for($i=0;$i<=$nbDiv;$i++){
+            $this->SetXY($graphValX-7,$graphY+($nbDiv-$i)*$vertDivH-3);
+            $this->Cell(7,6,floor($maxVal/$nbDiv*$i),0,0,'R');
+        }
+        $this->SetDrawColor(0,0,0);
+        $this->SetLineWidth(0.2);
+    }
+
+    function Circle($x, $y, $r, $style='D'){
+        $this->Ellipse($x,$y,$r,$r,$style);
+    }
+
+    function Ellipse($x, $y, $rx, $ry, $style='D'){
+        if($style=='F')
+            $op='f';
+        elseif($style=='FD' || $style=='DF')
+            $op='B';
+        else
+            $op='S';
+        $lx=4/3*(M_SQRT2-1)*$rx;
+        $ly=4/3*(M_SQRT2-1)*$ry;
+        $k=$this->k;
+        $h=$this->h;
+        $this->_out(sprintf('%.2F %.2F m %.2F %.2F %.2F %.2F %.2F %.2F c',
+            ($x+$rx)*$k,($h-$y)*$k,
+            ($x+$rx)*$k,($h-($y-$ly))*$k,
+            ($x+$lx)*$k,($h-($y-$ry))*$k,
+            $x*$k,($h-($y-$ry))*$k));
+        $this->_out(sprintf('%.2F %.2F %.2F %.2F %.2F %.2F c',
+            ($x-$lx)*$k,($h-($y-$ry))*$k,
+            ($x-$rx)*$k,($h-($y-$ly))*$k,
+            ($x-$rx)*$k,($h-$y)*$k));
+        $this->_out(sprintf('%.2F %.2F %.2F %.2F %.2F %.2F c',
+            ($x-$rx)*$k,($h-($y+$ly))*$k,
+            ($x-$lx)*$k,($h-($y+$ry))*$k,
+            $x*$k,($h-($y+$ry))*$k));
+        $this->_out(sprintf('%.2F %.2F %.2F %.2F %.2F %.2F c %s',
+            ($x+$lx)*$k,($h-($y+$ry))*$k,
+            ($x+$rx)*$k,($h-($y+$ly))*$k,
+            ($x+$rx)*$k,($h-$y)*$k,
+            $op));
+    }
+
+    // APARTADO PARA TABLA DE MULTICELDAS
+    protected $widths;
+    protected $aligns;
+    protected $bgColor;
+
+    function SetWidths($w)
+    {
+        // Set the array of column widths
+        $this->widths = $w;
+    }
+
+    function SetAligns($a)
+    {
+        // Set the array of column alignments
+        $this->aligns = $a;
+    }
+
+    function SetColorCell($cl){
+        $this->bgColor = $cl;
+    }
+
+    function Row($data)
+    {
+        // Calculate the height of the row
+        $nb = 0;
+        for($i=0;$i<count($data);$i++)
+            $nb = max($nb,$this->NbLines($this->widths[$i],$data[$i]));
+        $h = 5*$nb;
+        // Issue a page break first if needed
+        $this->CheckPageBreak($h);
+        // Draw the cells of the row
+        for($i=0;$i<count($data);$i++)
+        {
+            $w = $this->widths[$i];
+            $a = isset($this->aligns[$i]) ? $this->aligns[$i] : 'L';
+            // Save the current position
+            $x = $this->GetX();
+            $y = $this->GetY();
+            // COlor de fondo de la celda
+            $colorR = isset($this->bgColor[0]) ? $this->bgColor[0] : 255;
+            $colorG = isset($this->bgColor[0]) ? $this->bgColor[1] : 255;
+            $colorB = isset($this->bgColor[0]) ? $this->bgColor[2] : 255;
+
+            $this->SetFillColor($colorR, $colorG, $colorB);
+            // Draw the border
+            $this->Rect($x,$y,$w,$h,"F");
+
+
+            if ($data[$i] === "SI"  || $data[$i] === "Crítico") {
+                $this->SetTextColor(255,0,0);
+                $this->SetFont('Arial','B',8);
+            }
+            // Print the text
+            $this->MultiCell($w,4,utf8_decode($data[$i]),0,$a);
+
+            $this->SetTextColor(0,0,0);
+            $this->SetFont('Arial','',8);
+            // Put the position to the right of the cell
+            $this->SetXY($x+$w,$y);
+        }
+        // Go to the next line
+        $this->Ln($h);
+    }
+
+    function CheckPageBreak($h)
+    {
+        // If the height h would cause an overflow, add a new page immediately
+        if($this->GetY()+$h>$this->PageBreakTrigger)
+            $this->AddPage($this->CurOrientation);
+            $y = $this->GetY()+1;
+            $this->SetY($y);
+
+    }
+
+    function NbLines($w, $txt)
+    {
+        // Compute the number of lines a MultiCell of width w will take
+        if(!isset($this->CurrentFont))
+            $this->Error('No font has been set');
+        $cw = $this->CurrentFont['cw'];
+        if($w==0)
+            $w = $this->w-$this->rMargin-$this->x;
+        $wmax = ($w-2*$this->cMargin)*1000/$this->FontSize;
+        $s = str_replace("\r",'',(string)$txt);
+        $nb = strlen($s);
+        if($nb>0 && $s[$nb-1]=="\n")
+            $nb--;
+        $sep = -1;
+        $i = 0;
+        $j = 0;
+        $l = 0;
+        $nl = 1;
+        while($i<$nb)
+        {
+            $c = $s[$i];
+            if($c=="\n")
+            {
+                $i++;
+                $sep = -1;
+                $j = $i;
+                $l = 0;
+                $nl++;
+                continue;
+            }
+            if($c==' ')
+                $sep = $i;
+            $l += $cw[$c];
+            if($l>$wmax)
+            {
+                if($sep==-1)
+                {
+                    if($i==$j)
+                        $i++;
+                }
+                else
+                    $i = $sep+1;
+                $sep = -1;
+                $j = $i;
+                $l = 0;
+                $nl++;
+            }
+            else
+                $i++;
+        }
+        return $nl;
+    }
+
+    // PRUEBA
+    function Sector($xc, $yc, $r, $a, $b, $style='FD', $cw=true, $o=90)
+    {
+        $d0 = $a - $b;
+        if($cw){
+            $d = $b;
+            $b = $o - $a;
+            $a = $o - $d;
+        }else{
+            $b += $o;
+            $a += $o;
+        }
+        while($a<0)
+            $a += 360;
+        while($a>360)
+            $a -= 360;
+        while($b<0)
+            $b += 360;
+        while($b>360)
+            $b -= 360;
+        if ($a > $b)
+            $b += 360;
+        $b = $b/360*2*M_PI;
+        $a = $a/360*2*M_PI;
+        $d = $b - $a;
+        if ($d == 0 && $d0 != 0)
+            $d = 2*M_PI;
+        $k = $this->k;
+        $hp = $this->h;
+        if (sin($d/2))
+            $MyArc = 4/3*(1-cos($d/2))/sin($d/2)*$r;
+        else
+            $MyArc = 0;
+        //first put the center
+        $this->_out(sprintf('%.2F %.2F m',($xc)*$k,($hp-$yc)*$k));
+        //put the first point
+        $this->_out(sprintf('%.2F %.2F l',($xc+$r*cos($a))*$k,(($hp-($yc-$r*sin($a)))*$k)));
+        //draw the arc
+        if ($d < M_PI/2){
+            $this->_Arc($xc+$r*cos($a)+$MyArc*cos(M_PI/2+$a),
+                        $yc-$r*sin($a)-$MyArc*sin(M_PI/2+$a),
+                        $xc+$r*cos($b)+$MyArc*cos($b-M_PI/2),
+                        $yc-$r*sin($b)-$MyArc*sin($b-M_PI/2),
+                        $xc+$r*cos($b),
+                        $yc-$r*sin($b)
+                        );
+        }else{
+            $b = $a + $d/4;
+            $MyArc = 4/3*(1-cos($d/8))/sin($d/8)*$r;
+            $this->_Arc($xc+$r*cos($a)+$MyArc*cos(M_PI/2+$a),
+                        $yc-$r*sin($a)-$MyArc*sin(M_PI/2+$a),
+                        $xc+$r*cos($b)+$MyArc*cos($b-M_PI/2),
+                        $yc-$r*sin($b)-$MyArc*sin($b-M_PI/2),
+                        $xc+$r*cos($b),
+                        $yc-$r*sin($b)
+                        );
+            $a = $b;
+            $b = $a + $d/4;
+            $this->_Arc($xc+$r*cos($a)+$MyArc*cos(M_PI/2+$a),
+                        $yc-$r*sin($a)-$MyArc*sin(M_PI/2+$a),
+                        $xc+$r*cos($b)+$MyArc*cos($b-M_PI/2),
+                        $yc-$r*sin($b)-$MyArc*sin($b-M_PI/2),
+                        $xc+$r*cos($b),
+                        $yc-$r*sin($b)
+                        );
+            $a = $b;
+            $b = $a + $d/4;
+            $this->_Arc($xc+$r*cos($a)+$MyArc*cos(M_PI/2+$a),
+                        $yc-$r*sin($a)-$MyArc*sin(M_PI/2+$a),
+                        $xc+$r*cos($b)+$MyArc*cos($b-M_PI/2),
+                        $yc-$r*sin($b)-$MyArc*sin($b-M_PI/2),
+                        $xc+$r*cos($b),
+                        $yc-$r*sin($b)
+                        );
+            $a = $b;
+            $b = $a + $d/4;
+            $this->_Arc($xc+$r*cos($a)+$MyArc*cos(M_PI/2+$a),
+                        $yc-$r*sin($a)-$MyArc*sin(M_PI/2+$a),
+                        $xc+$r*cos($b)+$MyArc*cos($b-M_PI/2),
+                        $yc-$r*sin($b)-$MyArc*sin($b-M_PI/2),
+                        $xc+$r*cos($b),
+                        $yc-$r*sin($b)
+                        );
+        }
+        //terminate drawing
+        if($style=='F')
+            $op='f';
+        elseif($style=='FD' || $style=='DF')
+            $op='b';
+        else
+            $op='s';
+        $this->_out($op);
+    }
+
+    function _Arc($x1, $y1, $x2, $y2, $x3, $y3 )
+    {
+        $h = $this->h;
+        $this->_out(sprintf('%.2F %.2F %.2F %.2F %.2F %.2F c',
+            $x1*$this->k,
+            ($h-$y1)*$this->k,
+            $x2*$this->k,
+            ($h-$y2)*$this->k,
+            $x3*$this->k,
+            ($h-$y3)*$this->k));
+    }
+
+    function SetDash($black=null, $white=null)
+    {
+        if($black!==null)
+            $s=sprintf('[%.3F %.3F] 0 d',$black*$this->k,$white*$this->k);
+        else
+            $s='[] 0 d';
+        $this->_out($s);
+    }
 }
