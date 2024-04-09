@@ -3395,7 +3395,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       Swal.fire({
         icon:'warning',
         // title: '',
-        html: `Si hubo algún cambio en las imágenes ó es el primer reporte que se genera es necesario realizar el proceso de optimización,<br> <b>¿Desea optimizar las imágenes?</b>`,
+        html: `Si hubo algún cambio en las imágenes ó es el primer reporte que se genera, es necesario realizar el proceso de optimización.<br> <b>¿Desea optimizar las imágenes?</b>`,
         showCancelButton: true,
         cancelButtonColor: '#d33',
         confirmButtonColor: '#3085d6',

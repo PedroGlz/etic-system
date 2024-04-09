@@ -1632,6 +1632,7 @@ class Inventarios extends BaseController{
 
         // arreglo con las ubicaciones ordenadas en el js
         $orden_ubicaciones = $this->request->getPost('orden_ubicaciones');
+
         // Base LIne unicamente de la inspeccion
         $baseLine = $lineaBaseMdl->getHistorialBaseLine('',$session->Id_Inspeccion);
         $array_ids = array();
@@ -1644,11 +1645,15 @@ class Inventarios extends BaseController{
                 }
             }
         }
-        
+
         $str = implode(",", $array_ids);
         $str = "(".$str.")";
         
-        $todo_el_historial = $db->query("SELECT * FROM v_historial_baseline WHERE Id_Ubicacion IN $str")->getResult('array');
+        if (count($array_ids)>0) {
+            $todo_el_historial = $db->query("SELECT * FROM v_historial_baseline WHERE Id_Ubicacion IN $str")->getResult('array');
+        }else{
+            $todo_el_historial = array();
+        }
         
         $arr_hist = array();
         for ($i=0; $i < count($elementos_inventario_ordenados); $i++) { 
@@ -2380,7 +2385,7 @@ class Inventarios extends BaseController{
         // Obteniendo el nombre y ruta de la imagen del cliente
         $img_portada = $this->request->getPost('nombre_img_portada');
 
-        $ruta_img_portada = 'Archivos_ETIC/inspecciones/'.$datosInspeccion[0]['No_Inspeccion'].'/Imagenes_optimizadas/'.$img_portada;
+        $ruta_img_portada = 'Archivos_ETIC/inspecciones/'.$datosInspeccion[0]['No_Inspeccion'].'/Imagenes/'.$img_portada;
 
         $cliente = $datosInspeccion[0]['nombreCliente'];
         $sitio = $datosSitio[0]['Sitio'];
@@ -2652,14 +2657,16 @@ class Inventarios extends BaseController{
         $pdf->SetFont('Arial','',11);
         $pdf->Row(array("Cliente:",$cliente));
         // Grupo de sitios
-        $py_detalle_ubi = $pdf->GetY();
-        $pdf->MultiCell(47,5,"",0,'L');
-        $pdf->SetXY(72,$py_detalle_ubi);
-        $pdf->MultiCell(0,5,$nombreGrupoSitio,0,'L');
+        if ($nombreGrupoSitio != "") {
+            $py_detalle_ubi = $pdf->GetY();
+            $pdf->MultiCell(47,5,"",0,'L');
+            $pdf->SetXY(72,$py_detalle_ubi);
+            $pdf->MultiCell(0,5,$nombreGrupoSitio,0,'L');
+        }
         // Nombre sitio
         $pdf->Row(array("",$sitio));
         // Direccion sitio
-        $pdf->Row(array("",$direccion_completa));
+        $pdf->Row(array("",strtoupper($direccion_completa)));
         $pdf->Ln(13);
 
         // APARTADO DE CONTACTOS
@@ -2692,7 +2699,8 @@ class Inventarios extends BaseController{
         $pdf->SetFont('Arial','B',11);
         $pdf->Cell(0,5,utf8_decode($cliente),0,0,'R'); $pdf->Ln();
         // $pdf->Cell(0,5,$nombreGrupoSitio,1,0,'R');
-        $pdf->MultiCell(0,5,utf8_decode($nombreGrupoSitio),0,'R');
+        $pdf->MultiCell(0,5,utf8_decode($nombreGrupoSitio),0,'R'); $pdf->Ln();
+        
         $pdf->Ln(20);
         
         $pdf->SetFont('Arial','',11);
@@ -2705,7 +2713,7 @@ class Inventarios extends BaseController{
         if ($nombre_contactos[1] != "") {
             $pdf->Cell(0,5,utf8_decode("Estimados:"),0,0,'L');
         }else{
-            $pdf->Cell(0,5,utf8_decode("Estimado,"),0,0,'L');
+            $pdf->Cell(0,5,utf8_decode("Estimado:"),0,0,'L');
         }
         $pdf->SetFont('Arial','',11);
         $pdf->Ln();
@@ -2731,7 +2739,7 @@ class Inventarios extends BaseController{
 
             $strFecha = "del ".$fecha_inicio_format." al ".$fecha_fin_format;
         }
-        $pdf->MultiCell(0,5,utf8_decode("Por este medio, hacemos entrega de los resultados finales de la inspección por termografía infrarroja realizada en las instalaciones eléctricas y mecánicas de ".$sitio.", ubicadas en ".$Municipio.", ".$Estado.". Servicio realizado ".$strFecha."."),0,"J");
+        $pdf->MultiCell(0,5,utf8_decode("Por este medio, hacemos entrega de los resultados finales de la inspección por termografía infrarroja realizada en las instalaciones eléctricas y mecánicas de ".$sitio.", ubicadas en ".$Municipio." ".$Estado.". Servicio realizado ".$strFecha."."),0,"J");
         $pdf->Ln(5);
         $pdf->MultiCell(0,5,utf8_decode("Agradecemos a ustedes la confianza y facilidades otorgadas durante la ejecución de nuestro servicio. Así mismo, expresamos nuestro reconocimiento a su personal técnico por su colaboración y profesionalismo."),0,"J");
         $pdf->Ln(5);
@@ -3465,8 +3473,10 @@ class Inventarios extends BaseController{
         $datos_reporte = new DatosReporteMdl();
         $session = session();
 
+        $array_problemas = $this->request->getPost('arrayProblemasSeleccionados');
+        $str_problemas_seleccionados = $array_problemas != "" ? implode(",", $this->request->getPost('arrayProblemasSeleccionados')) : "";
+
         $ultimo_registro_en_bd = $datos_reporte->get();
-        
         $data = [
             'Id_Inspeccion' => $session->Id_Inspeccion,
             'detalle_ubicacion' => $this->request->getPost('detalle_ubicacion'),
@@ -3482,8 +3492,9 @@ class Inventarios extends BaseController{
             'imagen_recomendacion_2' => implode('$', $this->request->getPost('imagen_recomendacion_2')),
             'referencia_reporte' => implode("$", $this->request->getPost('referencia_reporte')),
             'arrayElementosSeleccionados' => implode(",", $this->request->getPost('arrayElementosSeleccionados')),
-            'arrayProblemasSeleccionados' => implode(",", $this->request->getPost('arrayProblemasSeleccionados')),
+            'arrayProblemasSeleccionados' => $str_problemas_seleccionados,
         ];
+        
 
         if(is_null($ultimo_registro_en_bd[0]['ultimo_registro'])){
             $saveProblema = $datos_reporte->insert($data);
@@ -3528,8 +3539,8 @@ class Inventarios extends BaseController{
             $ruta_imagen_original = ROOTPATH."public/Archivos_ETIC/inspecciones/".$session->inspeccion."/Imagenes/".$nombre_img_original; //Imagen original
             // return $ruta_imagen_original;
             $ruta_img_nueva = ROOTPATH."public/Archivos_ETIC/inspecciones/".$session->inspeccion."/Imagenes_optimizadas/".$nombre_img_original; //Nueva imagen
-            $ancho = 440; //Nuevo ancho
-            $alto = 330;  //Nuevo alto
+            $ancho = 410; //Nuevo ancho 440
+            $alto = 307;  //Nuevo alto 330
             //Creamos una nueva imagen a partir del fichero inicial
             
             $ruta_imagen_original = imagecreatefromjpeg($ruta_imagen_original);
