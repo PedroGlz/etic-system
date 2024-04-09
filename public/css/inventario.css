@@ -25,43 +25,31 @@
     display: table;
     clear: both;
 }
-#main{
-   /* background-color: BurlyWood; */
-   float: right;
-   /* height: 350px; */
-   width: 65%;
-}
-#sidebar{
-   /* background-color: IndianRed; */
-   width:35%;
-   max-height: 100%;
-   float: left;
-   /* height:200px; */
-   /* overflow-y: hidden; */
 
-   overflow-y: auto;
-   height: 450px;
+#jsGridInventario{
+    position: absolute !important;
+    height: auto !important;
+    width: auto !important;
 }
 
-#dragbar{
-   background-color: #00000070;
-   height:100%;
-   float: right;
-   width: 2px;
-   cursor: col-resize;
-   z-index: 9;
-   position: absolute;
+#parent {
+    display: -webkit-box;
+    height: 100%;
+    width: 100%;
 }
-#ghostbar{
-    width:2px;
-    height:100%;
-    background-color:#00000070;
-    opacity:0.5;
-    position:absolute;
-    cursor: col-resize;
-    /* z-index:999 */
-    z-index:9
+
+#LeftCol {
+    flex-grow: 1;
+    resize: horizontal;
+    overflow: auto;
+    min-width: 200px;
 }
+
+#RightCol {
+    flex-grow: 3;
+    border-left: 1px solid black;
+}
+
 
 .list-group-item.node-treeview {
     border:none !important;

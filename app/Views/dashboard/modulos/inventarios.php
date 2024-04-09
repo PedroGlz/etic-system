@@ -53,22 +53,21 @@
               <div class="card-body" id="contenedor_elementos_inspeccion">
 
                 <div class="clearfix fontJsGrid" style="" id="contenedor_elementos_inventario">
-                  <div id="sidebar" class="scrollVertical">                    
 
-                    <div>
+                  <div id="parent">
+
+                    <div id="LeftCol">
                       <button type="button" class="btn btn-default styleBtnInicioTree" id="btnInicio">
                         <i class="fas fa-industry"></i>&nbsp;&nbsp;<?=$nombreSitio;?>
                       </button>
-
                       <div id="treeview"></div>
                     </div>
-                    
-                  </div>
-                  <div id="main">
 
-                  <div id="dragbar"></div>
-                    <div id="jsGridInventario" class="fontJsGrid" style="padding-left: 3px;"></div>
+                    <div id="RightCol">
+                      <div id="jsGridInventario" class="fontJsGrid" style="padding-left: 3px;"></div>
+                    </div>
                   </div>
+
                 </div>
               
                 <div class="stilo_resize_lista">
