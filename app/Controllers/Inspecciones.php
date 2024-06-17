@@ -115,6 +115,7 @@ class Inspecciones extends BaseController
                 'Id_Estatus_Color_Text'   =>'1',
                 'Creado_Por'              =>$session->Id_Usuario,
                 'Fecha_Creacion'          =>date("Y-m-d H:i:s"),
+                'Id_Sitio'                =>$session->Id_Sitio,
             ]);
         }
 

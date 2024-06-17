@@ -673,6 +673,7 @@ class Inventarios extends BaseController{
             'Estatus'              =>"Activo",
             'Creado_Por'           =>$session->Id_Usuario,
             'Fecha_Creacion'       =>date("Y-m-d H:i:s"),
+            'Id_Sitio'             =>$session->Id_Sitio
         ]);
 
         // Cerramos el problema original
@@ -713,7 +714,8 @@ class Inventarios extends BaseController{
         $Id_Linea_Base_insert = crear_id();
 
         $data = [
-            'Id_Linea_Base'    =>$Id_Linea_Base_insert,
+            'Id_Linea_Base' =>$Id_Linea_Base_insert,
+            'Id_Sitio'      =>$session->Id_Sitio,
             'Id_Ubicacion'  =>$this->request->getPost('Id_UbicacionBL'),
             'Id_Inspeccion' =>$idInspeccion,
             'Id_Inspeccion_Det'=> $this->request->getPost('Id_Inspeccion_Det_BL'),
@@ -766,8 +768,6 @@ class Inventarios extends BaseController{
         $lineaBaseMdl = new LineaBaseMdl();
         $inspeccionesDetMdl = new InspeccionesDetMdl();
         $session = session();
-        // habilitar borrado hasta hacer trigger
-        //$op = $problemasMdl->delete($id);
         
         // Colocamos el color de texto a la ubicacionDetalleen negro
         $insp_det = $lineaBaseMdl->select('Id_Inspeccion_Det, Id_Inspeccion')->where(['Id_Linea_Base' => $id])->findAll();
@@ -780,12 +780,14 @@ class Inventarios extends BaseController{
             'Fecha_Mod'               =>date("Y-m-d H:i:s"),
         ]);
 
-        $delete = $lineaBaseMdl->update(
-            $id,[
-            'Estatus'       => 'Inactivo',
-            'Modificado_Por'=>$session->Id_Usuario,
-            'Fecha_Mod'     => date("Y-m-d H:i:s")
-        ]);
+        // $delete = $lineaBaseMdl->update(
+        //     $id,[
+        //     'Estatus'       => 'Inactivo',
+        //     'Modificado_Por'=>$session->Id_Usuario,
+        //     'Fecha_Mod'     => date("Y-m-d H:i:s")
+        // ]);
+
+        $delete = $lineaBaseMdl->delete($id);
 
         if($delete){
             // echo ('{"success":true,"msg":"Registro eliminado","tree":'.json_encode($this->obtener()).'}');
@@ -1709,7 +1711,6 @@ class Inventarios extends BaseController{
             $ruta_datos_img_dig = 'Archivos_ETIC/inspecciones/'.$value['numInspeccion'].'/Imagenes/'.$imgDIG;
             $datosImgIR = $this->obtenerDatosImg(1, $ruta_datos_img_ir);
             $datosImgDIG = $this->obtenerDatosImg(1, $ruta_datos_img_dig);
-
 
             // Título
             $pdf->SetXY(86,10);
@@ -3470,6 +3471,7 @@ class Inventarios extends BaseController{
     }
 
     function guardar_datos_reporte(){
+
         $datos_reporte = new DatosReporteMdl();
         $session = session();
 
@@ -3479,6 +3481,7 @@ class Inventarios extends BaseController{
         $ultimo_registro_en_bd = $datos_reporte->get();
         $data = [
             'Id_Inspeccion' => $session->Id_Inspeccion,
+            'Id_Sitio' => $session->Id_Sitio,
             'detalle_ubicacion' => $this->request->getPost('detalle_ubicacion'),
             'nombre_contacto' => implode('$', $this->request->getPost('nombre_contacto')),
             'puesto_contacto' => implode('$', $this->request->getPost('puesto_contacto')),

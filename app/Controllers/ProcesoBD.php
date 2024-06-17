@@ -48,6 +48,7 @@ class ProcesoBD extends BaseController{
             `Modificado_Por` char(38) DEFAULT NULL,
             `Fecha_Mod` datetime DEFAULT NULL,
             `Id_Inspeccion` char(38) DEFAULT "flag_export",
+            `Id_Sitio` char(38) DEFAULT "flag_export",
             PRIMARY KEY (`Id_Causa_Raiz`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -68,6 +69,7 @@ class ProcesoBD extends BaseController{
             `Modificado_Por` char(38) DEFAULT NULL,
             `Fecha_Mod` datetime DEFAULT NULL,
             `Id_Inspeccion` char(38) DEFAULT "flag_export",
+            `Id_Sitio` char(38) DEFAULT "flag_export",
             PRIMARY KEY (`Id_Cliente`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -76,6 +78,8 @@ class ProcesoBD extends BaseController{
                 `Id_Estatus_Color_Text` int(20) NOT NULL AUTO_INCREMENT,
                 `Color_Text` varchar(15) DEFAULT NULL,
                 `Descripcion` text NOT NULL,
+                `Id_Inspeccion` char(38) DEFAULT "flag_export",
+                `Id_Sitio` char(38) DEFAULT "flag_export",
                 PRIMARY KEY (`Id_Estatus_Color_Text`)
             ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -101,6 +105,7 @@ class ProcesoBD extends BaseController{
                 `referencia_reporte` text DEFAULT NULL,
                 `arrayElementosSeleccionados` text DEFAULT NULL,
                 `arrayProblemasSeleccionados` text DEFAULT NULL,
+                `Id_Sitio` char(38) DEFAULT "flag_export",
                 PRIMARY KEY (`Id_Datos_Reporte`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -117,6 +122,7 @@ class ProcesoBD extends BaseController{
             `Modificado_Por` char(38) DEFAULT NULL,
             `Fecha_Mod` datetime DEFAULT NULL,
             `Id_Inspeccion` char(38) DEFAULT "flag_export",
+            `Id_Sitio` char(38) DEFAULT "flag_export",
             PRIMARY KEY (`Id_Equipo`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -133,6 +139,7 @@ class ProcesoBD extends BaseController{
             `Modificado_Por` char(38) DEFAULT NULL,
             `Fecha_Mod` datetime DEFAULT NULL,
             `Id_Inspeccion` char(38) DEFAULT "flag_export",
+            `Id_Sitio` char(38) DEFAULT "flag_export",
             PRIMARY KEY (`Id_Status_Inspeccion`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -151,6 +158,7 @@ class ProcesoBD extends BaseController{
             `Modificado_Por` char(38) DEFAULT NULL,
             `Fecha_Mod` datetime DEFAULT NULL,
             `Id_Inspeccion` char(38) DEFAULT "flag_export",
+            `Id_Sitio` char(38) DEFAULT "flag_export",
             PRIMARY KEY (`Id_Status_Inspeccion_Det`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -170,6 +178,7 @@ class ProcesoBD extends BaseController{
             `Modificado_Por` char(38) DEFAULT NULL,
             `Fecha_Mod` datetime DEFAULT NULL,
             `Id_Inspeccion` char(38) DEFAULT "flag_export",
+            `Id_Sitio` char(38) DEFAULT "flag_export",
             PRIMARY KEY (`Id_Fabricante`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -186,6 +195,7 @@ class ProcesoBD extends BaseController{
             `Modificado_Por` char(38) DEFAULT NULL,
             `Fecha_Mod` datetime DEFAULT NULL,
             `Id_Inspeccion` char(38) DEFAULT "flag_export",
+            `Id_Sitio` char(38) DEFAULT "flag_export",
             PRIMARY KEY (`Id_Falla`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -202,6 +212,7 @@ class ProcesoBD extends BaseController{
             `Modificado_Por` char(38) DEFAULT NULL,
             `Fecha_Mod` datetime DEFAULT NULL,
             `Id_Inspeccion` char(38) DEFAULT "flag_export",
+            `Id_Sitio` char(38) DEFAULT "flag_export",
             PRIMARY KEY (`Id_Fase`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -218,6 +229,7 @@ class ProcesoBD extends BaseController{
                 `Modificado_Por` char(38) DEFAULT NULL,
                 `Fecha_Mod` datetime DEFAULT NULL,
                 `Id_Inspeccion` char(38) DEFAULT "flag_export",
+                `Id_Sitio` char(38) DEFAULT "flag_export",
                 PRIMARY KEY (`Id_Grupo`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
             insert  into `grupos`(`Id_Grupo`,`Grupo`,`Estatus`,`Creado_Por`,`Fecha_Creacion`,`Modificado_Por`,`Fecha_Mod`) values ("3ZSCOHA1-UR29-PDVL-EFGQ-4NIW65MB8J7K","Termografos","Activo","AFE66B1B-3357-456B-A190-6086B62DAD8D","2023-05-01 22:52:44",NULL,NULL),("5I78A4EH-ZR3Q-K6PS-XJMW-T91OGYL2UBNV","Clientes","Activo","AFE66B1B-3357-456B-A190-6086B62DAD8D","2023-05-01 22:52:32",NULL,NULL),("ISOU90CJ-DRGN-ME4V-FBQH-2T7W5Y8K1AX3","Usuarios","Activo","AFE66B1B-3357-456B-A190-6086B62DAD8D","2023-05-01 22:52:12",NULL,NULL),("K8GJNQPD-4A13-FUZE-RVLI-H5BW6CM29TOY","Administradores","Activo","AFE66B1B-3357-456B-A190-6086B62DAD8D","2023-05-01 22:52:04",NULL,NULL);
@@ -234,6 +246,7 @@ class ProcesoBD extends BaseController{
                 `Modificado_Por` char(38) DEFAULT NULL,
                 `Fecha_Mod` datetime DEFAULT NULL,
                 `Id_Inspeccion` char(38) DEFAULT "flag_export",
+                `Id_Sitio` char(38) DEFAULT "flag_export",
                 PRIMARY KEY (`Id_Grupo_Sitios`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -251,6 +264,7 @@ class ProcesoBD extends BaseController{
                 `Modificado_Por` char(38) DEFAULT NULL,
                 `Fecha_Mod` datetime DEFAULT NULL,
                 `Id_Inspeccion` char(38) DEFAULT "flag_export",
+                `Id_Sitio` char(38) DEFAULT "flag_export",
                 PRIMARY KEY (`Id_Historial_Problema`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;        
             
@@ -295,6 +309,7 @@ class ProcesoBD extends BaseController{
                 `Fecha_Creacion` datetime DEFAULT NULL,
                 `Modificado_Por` char(38) DEFAULT NULL,
                 `Fecha_Mod` datetime DEFAULT NULL,
+                `Id_Sitio` char(38) DEFAULT "flag_export",
                 PRIMARY KEY (`Id_Inspeccion_Det`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -303,6 +318,7 @@ class ProcesoBD extends BaseController{
             DROP TABLE IF EXISTS `linea_base`;
             CREATE TABLE `linea_base` (
                 `Id_Linea_Base` char(38) NOT NULL,
+                `Id_Sitio` char(38) DEFAULT "flag_export",
                 `Id_Ubicacion` char(38) DEFAULT NULL,
                 `Id_Inspeccion` char(38) DEFAULT NULL,
                 `Id_Inspeccion_Det` char(38) DEFAULT NULL,
@@ -391,6 +407,7 @@ class ProcesoBD extends BaseController{
                 `Severidad` varchar(30) DEFAULT NULL,
                 `Descripcion` text CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
                 `Id_Inspeccion` char(38) DEFAULT "flag_export",
+                `Id_Sitio` char(38) DEFAULT "flag_export",
                 PRIMARY KEY (`Id_Severidad`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -433,6 +450,7 @@ class ProcesoBD extends BaseController{
                 `Adjust` decimal(10,2) DEFAULT NULL,
                 `Estatus` enum("Activo","Inactivo") CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT "Activo",
                 `Id_Inspeccion` char(38) DEFAULT "flag_export",
+                `Id_Sitio` char(38) DEFAULT "flag_export",
                 PRIMARY KEY (`Id_Tipo_Ambiente`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -452,6 +470,7 @@ class ProcesoBD extends BaseController{
                 `Modificado_Por` char(38) DEFAULT NULL,
                 `Fecha_Mod` datetime DEFAULT NULL,
                 `Id_Inspeccion` char(38) DEFAULT "flag_export",
+                `Id_Sitio` char(38) DEFAULT "flag_export",
                 PRIMARY KEY (`Id_Tipo_Falla`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -468,6 +487,7 @@ class ProcesoBD extends BaseController{
                 `Modificado_Por` char(38) DEFAULT NULL,
                 `Fecha_Mod` datetime DEFAULT NULL,
                 `Id_Inspeccion` char(38) DEFAULT "flag_export",
+                `Id_Sitio` char(38) DEFAULT "flag_export",
                 PRIMARY KEY (`Id_Tipo_Inspeccion`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -484,6 +504,7 @@ class ProcesoBD extends BaseController{
                 `Modificado_Por` char(38) DEFAULT NULL,
                 `Fecha_Mod` datetime DEFAULT NULL,
                 `Id_Inspeccion` char(38) DEFAULT "flag_export",
+                `Id_Sitio` char(38) DEFAULT "flag_export",
                 PRIMARY KEY (`Id_Tipo_Prioridad`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -2660,13 +2681,13 @@ class ProcesoBD extends BaseController{
 
             /*View structure for view cronicos_actual */
             DROP VIEW IF EXISTS `cronicos_actual`;
-            CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cronicos_actual` AS (select `ppi`.`PIEProblemInspectionID` AS `Id_Problema`,`ppi`.`ProblemInspectionID` AS `ProblemInspectionID`,`proins`.`ProblemID` AS `ProblemID`,`proins`.`InspectionID` AS `Id_Inspeccion` from (`pieprobleminspections` `ppi` join `probleminspections` `proins` on(`proins`.`ProblemInspectionID` = `ppi`.`ProblemInspectionID`)) where `ppi`.`ProblemInspectionID` in (select `pins`.`ProblemInspectionID` from `probleminspections` `pins` where `pins`.`ProblemID` in (select `p`.`ProblemID` from `problems` `p` where `p`.`IsChronic` = 1)) and `proins`.`InspectionID` = (select `inspections`.`InspectionID` from `inspections` where `inspections`.`InspectionNo` = (select max(`inspections`.`InspectionNo`) from `inspections`)));
+            CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cronicos_actual` AS (select `ppi`.`PIEProblemInspectionID` AS `Id_Problema`,`ppi`.`ProblemInspectionID` AS `ProblemInspectionID`,`proins`.`ProblemID` AS `ProblemID`,`proins`.`InspectionID` AS `Id_Inspeccion`, (SELECT `CustomerSiteID` FROM `inspections` AS `ins` WHERE `ins`.`InspectionID` = `proins`.`InspectionID`) AS `Id_Sitio` from (`pieprobleminspections` `ppi` join `probleminspections` `proins` on(`proins`.`ProblemInspectionID` = `ppi`.`ProblemInspectionID`)) where `ppi`.`ProblemInspectionID` in (select `pins`.`ProblemInspectionID` from `probleminspections` `pins` where `pins`.`ProblemID` in (select `p`.`ProblemID` from `problems` `p` where `p`.`IsChronic` = 1)) and `proins`.`InspectionID` = (select `inspections`.`InspectionID` from `inspections` where `inspections`.`InspectionNo` = (select max(`inspections`.`InspectionNo`) from `inspections`)));
             
             /*View structure for view cronicos_anteriores */
             DROP VIEW IF EXISTS `cronicos_anteriores`;
             CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cronicos_anteriores` AS (select `ppi`.`PIEProblemInspectionID` AS `Id_Problema`,`ppi`.`ProblemInspectionID` AS `ProblemInspectionID`,`proins`.`ProblemID` AS `ProblemID`,`proins`.`InspectionID` AS `Id_Inspeccion` from (`pieprobleminspections` `ppi` join `probleminspections` `proins` on(`proins`.`ProblemInspectionID` = `ppi`.`ProblemInspectionID`)) where `ppi`.`ProblemInspectionID` in (select `pins`.`ProblemInspectionID` from `probleminspections` `pins` where `pins`.`ProblemID` in (select `p`.`ProblemID` from `problems` `p` where `p`.`IsChronic` = 1)) and `proins`.`InspectionID` = (select `inspections`.`InspectionID` from `inspections` where `inspections`.`InspectionNo` = (select `inspections`.`LastInspectionNo` from `inspections` where `inspections`.`InspectionNo` = (select max(`inspections`.`InspectionNo`) from `inspections`))));
 
-            /* SENTENCIAS DE INSERT PARA AGREGAR TODOS LOS DATOS  ASUS RESPECTIVAS TABLAS */
+            /* SENTENCIAS DE INSERT PARA AGREGAR TODOS LOS DATOS ASUS RESPECTIVAS TABLAS */
             '.$script_insert.';
             
             /* USAMOS LA BASE QUE USARA EL SISTEMA ACTUAL QUE SE CREO EN UN INICIO*/
@@ -2684,7 +2705,8 @@ class ProcesoBD extends BaseController{
                 ,CreateDate AS Fecha_Creacion
                 ,UPPER(LastUserID) AS Modificado_Por
                 ,LastModified AS Fecha_Mod
-                ,"flag_export" AS Id_Inspeccion
+                ,"flag_export" AS Id_Inspeccion 
+                ,"flag_export" AS Id_Sitio
             FROM '.$nombre_db.'.rootcause AS causa_principal;
 
             INSERT INTO clientes 
@@ -2701,7 +2723,8 @@ class ProcesoBD extends BaseController{
                 ,CreateDate AS Fecha_Creacion
                 ,UPPER(LastUserID) AS Modificado_Por
                 ,LastModified AS Fecha_Mod
-                ,"flag_export" AS Id_Inspeccion
+                ,"flag_export" AS Id_Inspeccion 
+                ,"flag_export" AS Id_Sitio
             FROM '.$nombre_db.'.customers AS Clientes;
 
             INSERT INTO equipos 
@@ -2714,7 +2737,8 @@ class ProcesoBD extends BaseController{
                 ,Equipos.CreateDate AS Fecha_Creacion
                 ,UPPER(Equipos.LastUserID) AS Modificado_Por
                 ,Equipos.LastModified AS Fecha_Mod
-                ,"flag_export" AS Id_Inspeccion
+                ,"flag_export" AS Id_Inspeccion 
+                ,"flag_export" AS Id_Sitio
             FROM '.$nombre_db.'.equipment AS Equipos;
 
             INSERT INTO fabricantes 
@@ -2728,7 +2752,8 @@ class ProcesoBD extends BaseController{
                 ,CreateDate AS Fecha_Creacion
                 ,UPPER(LastUserID) AS Modificado_Por
                 ,LastModified AS Fecha_Mod
-                ,"flag_export" AS Id_Inspeccion
+                ,"flag_export" AS Id_Inspeccion 
+                ,"flag_export" AS Id_Sitio
             FROM '.$nombre_db.'.manufacturers AS fabricantes;
 
             INSERT INTO fallas 
@@ -2741,7 +2766,8 @@ class ProcesoBD extends BaseController{
                 ,CreateDate AS Fecha_Creacion
                 ,UPPER(LastUserID) AS Modificado_Por
                 ,LastModified AS Fecha_Mod
-                ,"flag_export" AS Id_Inspeccion
+                ,"flag_export" AS Id_Inspeccion 
+                ,"flag_export" AS Id_Sitio
             FROM '.$nombre_db.'.faults AS fallas;
 
             INSERT INTO fases 
@@ -2754,7 +2780,8 @@ class ProcesoBD extends BaseController{
                 ,Fases.CreateDate AS Fecha_Creacion
                 ,UPPER(Fases.LastUserID) AS Modificado_Por
                 ,Fases.LastModified AS Fecha_Mod
-                ,"flag_export" AS Id_Inspeccion
+                ,"flag_export" AS Id_Inspeccion 
+                ,"flag_export" AS Id_Sitio
             FROM '.$nombre_db.'.piephases AS Fases;
 
             /*AQUI VA LA TABLA DE HISTORIAL_PROBLEMAS cuando este lista*/
@@ -2770,6 +2797,7 @@ class ProcesoBD extends BaseController{
                 ,NULL Modificado_Por
                 ,NULL Fecha_Mod
                 ,"flag_export" AS Id_Inspeccion
+                ,c_ac.Id_Sitio AS Id_Sitio
             FROM '.$nombre_db.'.cronicos_actual AS c_ac
             INNER JOIN '.$nombre_db.'.cronicos_anteriores AS c_an ON c_an.ProblemID = c_ac.ProblemID;
 
@@ -2809,11 +2837,13 @@ class ProcesoBD extends BaseController{
                 ,CreateDate AS Fecha_Creacion
                 ,UPPER(LastUserID) AS Modificado_Por
                 ,LastModified AS Fecha_Mod
+                ,UPPER((SELECT CustomerSiteID FROM '.$nombre_db.'.inspections AS ins WHERE ins.InspectionID = inspecciones_det.InspectionID )) AS Id_Sitio
             FROM '.$nombre_db.'.inspectiondetails AS inspecciones_det;
 
             INSERT INTO linea_base
             SELECT
                 UPPER(BaselineID) AS Id_Linea_Base
+                ,UPPER((SELECT CustomerSiteID FROM '.$nombre_db.'.inspections AS ins WHERE ins.InspectionID = b_l.InspectionID )) AS Id_Sitio
                 ,UPPER(LocationID) AS Id_Ubicacion
                 ,UPPER(InspectionID) AS Id_Inspeccion
                 ,UPPER((SELECT insdet.InspectionDetailID FROM '.$nombre_db.'.inspectiondetails AS insdet WHERE insdet.LocationID = b_l.LocationID AND insdet.InspectionID = b_l.InspectionID)) AS Id_Inspeccion_Det
@@ -2825,7 +2855,7 @@ class ProcesoBD extends BaseController{
                 ,(SELECT l.PhotoFilename FROM '.$nombre_db.'.locations AS l WHERE l.LocationID = b_l.LocationID) AS Archivo_ID
                 ,IFNULL(IFNULL((SELECT allpopen.LocationPath FROM '.$nombre_db.'.zrpt_AllOpenProblems AS allpopen WHERE allpopen.LocationID = b_l.LocationID GROUP BY allpopen.LocationPath),
                 (SELECT allpclose.LocationPath FROM '.$nombre_db.'.zrpt_AllClosedProblems AS allpclose WHERE allpclose.LocationID = b_l.LocationID GROUP BY allpclose.LocationPath)),
-                    (SELECT bt.Locations_LocationPath FROM '.$nombre_db.'.zrpt_baselinetrending  AS bt WHERE bt.LocationBaselines_BaselineID = b_l.BaselineID GROUP BY bt.Locations_LocationPath)
+                    (SELECT bt.Locations_LocationPath FROM '.$nombre_db.'.zrpt_baselinetrending AS bt WHERE bt.LocationBaselines_BaselineID = b_l.BaselineID GROUP BY bt.Locations_LocationPath)
                 )AS Ruta
                 ,IF(DeleteFlag = 0,"Activo","Inactivo") AS Estatus
                 ,UPPER(CreateUserID) AS Creado_Por
@@ -2839,7 +2869,7 @@ class ProcesoBD extends BaseController{
                 UPPER(PIEProblemInspectionID) AS Id_Problema
                 ,UPPER((SELECT p.InspectionTypeID FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID))) AS Id_Tipo_Inspeccion
                 ,(SELECT ip.ProblemNo FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID) AS Numero_Problema
-                ,UPPER((SELECT CustomerSiteID FROM '.$nombre_db.'.inspections  AS ins WHERE ins.InspectionID = (SELECT ip.InspectionID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID))) AS Id_Sitio
+                ,UPPER((SELECT CustomerSiteID FROM '.$nombre_db.'.inspections AS ins WHERE ins.InspectionID = (SELECT ip.InspectionID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID))) AS Id_Sitio
                 ,UPPER((SELECT ip.InspectionID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID)) AS Id_Inspeccion
                 ,UPPER((SELECT ip.InspectionDetailID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID)) AS Id_Inspeccion_Det
                 ,UPPER((SELECT p.LocationID FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID))) AS Id_Ubicacion
@@ -2941,6 +2971,7 @@ class ProcesoBD extends BaseController{
                     WHEN severidades.Name = "5-Normal" THEN "Sin diferencia, 0°C"
                 END )AS Descripcion
                 ,"flag_export" AS Id_Inspeccion
+                ,"flag_export" AS Id_Sitio
             FROM '.$nombre_db.'.problemseverity AS severidades;
 
             INSERT INTO sitios
@@ -2981,6 +3012,7 @@ class ProcesoBD extends BaseController{
                 ,UPPER(LastUserID) AS Modificado_Por
                 ,LastModified AS Fecha_Mod
                 ,"flag_export" AS Id_Inspeccion
+                ,"flag_export" AS Id_Sitio
             FROM '.$nombre_db.'.faulttypes AS tipo_fallas;
 
             INSERT INTO tipo_inspecciones
@@ -2999,6 +3031,7 @@ class ProcesoBD extends BaseController{
                 ,NULL AS Modificado_Por
                 ,NULL AS Fecha_Mod
                 ,"flag_export" AS Id_Inspeccion
+                ,"flag_export" AS Id_Sitio
             FROM '.$nombre_db.'.inspectiontypes AS tipo_inspecciones;
 
             INSERT INTO tipo_prioridades
@@ -3017,6 +3050,7 @@ class ProcesoBD extends BaseController{
                 ,UPPER(LastUserID) AS Modificado_Por
                 ,LastModified AS Fecha_Mod
                 ,"flag_export" AS Id_Inspeccion
+                ,"flag_export" AS Id_Sitio
             FROM '.$nombre_db.'.prioritystati AS tipo_prioridades;
 
             INSERT INTO ubicaciones_temp

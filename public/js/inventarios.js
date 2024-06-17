@@ -1852,6 +1852,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         },
       },
       rowDoubleClick: function(args){
+        console.log(args)
         dataFilasJsGridBaseLine = $("#jsGridBaseLine").jsGrid("option", "data");
         totalFIlasBaseLine = dataFilasJsGridBaseLine.length - 1;
         filaActualJsGridBaseLine = args.itemIndex;
@@ -1865,7 +1866,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         { name: "numInspeccion", title:"No. Insp", type: "number",align:"center",},
         { name: "Fecha_Creacion", title:"Fecha", type: "text",align:"center",
           itemTemplate : function (value, item) {
-            return new Date(value).toLocaleDateString();
+            return value;
+            // return new Date(value).toLocaleDateString();
           }
         },
         { name: "MTA", title: "MTA °C", type: "text",align:"center",},
@@ -3422,7 +3424,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     var form_action = $("#FrmInfoReporteResultadoAnalisis").attr("action");
     // Guardamos el form con los input file para subir archivos
     var formData = new FormData(document.getElementById("FrmInfoReporteResultadoAnalisis"));
-
+    
     // Guardando los datos del reporte en la BD
     fetch('/inventarios/guardar_datos_reporte', {
       method: 'POST',

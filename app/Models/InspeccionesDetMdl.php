@@ -26,6 +26,7 @@ class InspeccionesDetMdl extends Model
         'Fecha_Creacion',
         'Modificado_Por',
         'Fecha_Mod',
+        'Id_Sitio' //flag_export
     ];
 
     public function get($id = null){

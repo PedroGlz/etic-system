@@ -21,7 +21,8 @@ class ClientesMdl extends Model
         'Fecha_Creacion',
         'Modificado_Por',
         'Fecha_Mod',
-        'Id_Inspeccion' //flag_export
+        'Id_Inspeccion', //flag_export
+        'Id_Sitio' //flag_export
     ];
 
     public function get($id = null){

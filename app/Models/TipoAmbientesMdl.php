@@ -12,7 +12,8 @@ class TipoAmbientesMdl extends Model{
         'Descripcion',
         'Adjust',
         'Estatus',
-        'Id_Inspeccion' //flag_export
+        'Id_Inspeccion', //flag_export
+        'Id_Sitio' //flag_export
     ];
     
     public function get($id = null){

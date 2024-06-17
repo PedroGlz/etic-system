@@ -25,6 +25,7 @@ class DatosReporteMdl extends Model
         'referencia_reporte',
         'arrayElementosSeleccionados',
         'arrayProblemasSeleccionados',
+        'Id_Sitio' //flag_export
     ];
 
     public function get(){

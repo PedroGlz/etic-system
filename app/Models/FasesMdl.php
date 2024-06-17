@@ -14,6 +14,7 @@ class FasesMdl extends Model{
         'Creado_Por',
         'Fecha_Mod',
         'Modificado_Por',
-        'Id_Inspeccion' //flag_export
+        'Id_Inspeccion', //flag_export
+        'Id_Sitio' //flag_export
     ];
 }

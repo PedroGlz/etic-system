@@ -11,6 +11,7 @@ class LineaBaseMdl extends Model
     protected $useAutoIncrement = true;
     protected $allowedFields    = [
         'Id_Linea_Base',
+        'Id_Sitio', //flag_export
         'Id_Ubicacion',
         'Id_Inspeccion',
         'Id_Inspeccion_Det',
@@ -44,9 +45,12 @@ class LineaBaseMdl extends Model
         $orden = 'numInspeccion ASC';
 
         if($Id_Ubicacion != ""){
-            $condicion = ['Id_Ubicacion' => $Id_Ubicacion,'Estatus' => 'Activo'];
+            $condicion = ['Id_Inspeccion' => $Id_Inspeccion,'Id_Ubicacion' => $Id_Ubicacion,'Estatus' => 'Activo'];
             $orden = 'numInspeccion ASC';
         }
+
+        // print_r($condicion);
+        // return;
 
         return $this->table('linea_base')->select('
             Id_Linea_Base,
