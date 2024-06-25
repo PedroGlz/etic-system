@@ -1298,6 +1298,27 @@ window.addEventListener('DOMContentLoaded', (event) => {
         dataFilasJsGridProblemas = $("#jsGridProblemas").jsGrid("option", "data");
         totalFIlasProblemas = dataFilasJsGridProblemas.length - 1;
         filaActualJsGridProblemas = args.itemIndex;
+
+        // Para no poder abrir problemas de menores a la inspeccion pasada
+        if(args.item.Id_Inspeccion != idInspeccion){
+
+          let insp = []
+          dataFilasJsGridProblemas.forEach((it) =>{
+            insp.push(it.numInspeccion)
+          })
+
+          insp.sort(function (a, b) {
+            return b - a;
+          });
+          const mostConcise = [...new Set(insp)];
+          console.log(mostConcise)
+          
+          if(mostConcise.length >= 2){
+            if(args.item.numInspeccion <= mostConcise[1]){
+              return;
+            }
+          }
+        }
         
         ajustesEditarProblema()
 
