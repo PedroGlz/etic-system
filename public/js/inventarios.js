@@ -598,20 +598,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function limpiarChecksEstatus(){
+    console.log('primer paso limpiar')
 
-    // if (!document.querySelector("#checkLista").checked){
-    //   console.log('en el tree')
-    //   console.log(elementosSeleccionadosTree)
-    // }else{
-    //   elementosSeleccionadosJsGrid = [];
-    //   console.log('en el jsGrid')
-    //   $('input[type=checkbox][name="checkUbicacionesJsGrid"]:checked').each(function() {
-    //     elementosSeleccionadosJsGrid.push($(this).val());
-    //   });
-    //   console.log(elementosSeleccionadosJsGrid)
-    // }
+    // // if (!document.querySelector("#checkLista").checked){
+    // //   console.log('en el tree')
+    // //   console.log(elementosSeleccionadosTree)
+    // // }else{
+    // //   elementosSeleccionadosJsGrid = [];
+    // //   console.log('en el jsGrid')
+    // //   $('input[type=checkbox][name="checkUbicacionesJsGrid"]:checked').each(function() {
+    // //     elementosSeleccionadosJsGrid.push($(this).val());
+    // //   });
+    // //   console.log(elementosSeleccionadosJsGrid)
+    // // }
 
-    TreeView.treeview('uncheckAll', { silent: $('#chk-check-silent').is(':checked') });
+    // TreeView.treeview('uncheckAll', { silent: $('#chk-check-silent').is(':checked') });
 
     $('input[type=checkbox][name="checkUbicacionesJsGrid"]:checked').each(function(checkBox) {
       checkBox = $(this)[0];
@@ -2435,7 +2436,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
   
   function cambiarEstatusUbicacion(idUbicacionDet){
-    
+  console.log('cambiando color')  
     console.log(selectEstatus.value)
     console.log(idUbicacionDet)
 
@@ -2449,6 +2450,30 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
       return;
     }
+
+
+
+    // Extrayendo toda la estructura del treeview
+    let treeViewObject = $('#treeview').data('treeview'),
+    allCollapsedNodes = treeViewObject.getCollapsed(),
+    allExpandedNodes = treeViewObject.getExpanded(),
+    allNodes = allCollapsedNodes.concat(allExpandedNodes);
+    
+    // Filtrando para encontrar el nodo con el codigo de barra
+    let nodo_que_coincide = allNodes.filter(nodo => nodo.Id_Inspeccion_Det == idUbicacionDet);
+    // Ubicando el nodo en el treeview expandiendo
+    TreeView.treeview('revealNode', [ nodo_que_coincide[0].nodeId, { silent: true,highlighting:true } ]);
+    
+    // Color negro
+    let colorTexto = '#000000'
+    if (selectEstatus.value != '568798D1-76BB-11D3-82BF-00104BC75DC2') {
+      colorTexto = '#0082ff'
+    }
+    // Colocando color rojo a la letra
+    document.querySelector('[data-nodeid="'+nodo_que_coincide[0].nodeId+'"]').style.color = colorTexto;
+
+
+
     var textEstatus = $('select[name="Id_Status_Inspeccion_Det"] option:selected').text();
     textEstatus = textEstatus.split(" ",1);
 
@@ -2469,7 +2494,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function checkedJsGrid(event){
+    console.log('fueradel if check')
+    console.log(event.target)
     if(event.target.classList.contains('checkBoxEstatusJsGrid') && event.target.checked){
+      console.log('dentro del if check')
+      console.log(event.target)
       rowJsGridInventario = event.target.parentElement.parentElement.nextSibling.nextSibling;
       cambiarEstatusUbicacion(event.target.value);
     }

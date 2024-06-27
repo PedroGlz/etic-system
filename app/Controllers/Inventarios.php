@@ -269,8 +269,8 @@ class Inventarios extends BaseController{
         $session = session();
 
         // Validando que la ubicacion a eliminar no tenga sub elementos o problemas o BL
-        $problemas = $problemasMdl->where(["Id_Inspeccion_Det" => $id, "Id_Inspeccion" => $session->Id_Inspeccion])->findAll();
-        $baseLine = $lineaBaseMdl->where(["Id_Inspeccion_Det" => $id, "Id_Inspeccion" => $session->Id_Inspeccion])->findAll();
+        $problemas = $problemasMdl->where(["Id_Inspeccion_Det" => $id, "Id_Inspeccion" => $session->Id_Inspeccion, "Estatus" => "Activo"])->findAll();
+        $baseLine = $lineaBaseMdl->where(["Id_Inspeccion_Det" => $id, "Id_Inspeccion" => $session->Id_Inspeccion, "Estatus" => "Activo"])->findAll();
 
         $msj = "Esta ubicacíon contiene:<br>";
 
@@ -775,6 +775,7 @@ class Inventarios extends BaseController{
             'Id_Inspeccion_Det' => $insp_det[0]['Id_Inspeccion_Det'],
             'Id_Inspeccion' => $insp_det[0]['Id_Inspeccion'],
         ],[
+            'Id_Status_Inspeccion_Det'=>"568798D1-76BB-11D3-82BF-00104BC75DC2",
             'Id_Estatus_Color_Text'   =>"1",
             'Modificado_Por'          =>$session->Id_Usuario,
             'Fecha_Mod'               =>date("Y-m-d H:i:s"),
@@ -830,6 +831,7 @@ class Inventarios extends BaseController{
                 'Id_Inspeccion_Det' => $problema[0]['Id_Inspeccion_Det'],
                 'Id_Inspeccion' => $problema[0]['Id_Inspeccion'],
             ],[
+                'Id_Status_Inspeccion_Det'=>"568798D1-76BB-11D3-82BF-00104BC75DC2",
                 'Id_Estatus_Color_Text'   =>"1",
                 'Modificado_Por'          =>$session->Id_Usuario,
                 'Fecha_Mod'               =>date("Y-m-d H:i:s"),
@@ -1003,11 +1005,19 @@ class Inventarios extends BaseController{
     function cambiarEstatusUbicacion(){
         $inspeccionesDetMdl = new InspeccionesDetMdl();
         $session = session();
+        
+        $id_estatus_inspeccion_det = $this->request->getPost('idEstatus');
+
+        // Si el estatus es diferente a POR VERIFICAR entonces lo pintamos de color azul de lo contrario se pinta en negro
+        if ($id_estatus_inspeccion_det == "568798D1-76BB-11D3-82BF-00104BC75DC2") {
+            $Id_Estatus_Color_Text = 1;
+        }else{
+            $Id_Estatus_Color_Text = 4;
+        }
 
         $updateDetalle = $inspeccionesDetMdl->update($this->request->getPost('Id_Inspeccion_Det'),[
-            'Id_Status_Inspeccion_Det'=>$this->request->getPost('idEstatus'),
-            // 'Notas_Inspeccion'        =>'',
-            // 'Estatus'                 =>'Activo',
+            'Id_Status_Inspeccion_Det'=>$id_estatus_inspeccion_det,
+            'Id_Estatus_Color_Text'   =>$Id_Estatus_Color_Text,
             'Modificado_Por'          =>$session->Id_Usuario,
             'Fecha_Mod'               =>date("Y-m-d H:i:s")
         ]);
