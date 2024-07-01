@@ -1006,8 +1006,10 @@ class Inventarios extends BaseController{
         $inspeccionesDetMdl = new InspeccionesDetMdl();
         $session = session();
         
+        $id_inspeccion_det = $this->request->getPost('Id_Inspeccion_Det');
         $id_estatus_inspeccion_det = $this->request->getPost('idEstatus');
-
+        $this->val_estatus_p($id_inspeccion_det);
+        return;
         // Si el estatus es diferente a POR VERIFICAR entonces lo pintamos de color azul de lo contrario se pinta en negro
         if ($id_estatus_inspeccion_det == "568798D1-76BB-11D3-82BF-00104BC75DC2") {
             $Id_Estatus_Color_Text = 1;
@@ -1015,7 +1017,7 @@ class Inventarios extends BaseController{
             $Id_Estatus_Color_Text = 4;
         }
 
-        $updateDetalle = $inspeccionesDetMdl->update($this->request->getPost('Id_Inspeccion_Det'),[
+        $updateDetalle = $inspeccionesDetMdl->update($id_inspeccion_det,[
             'Id_Status_Inspeccion_Det'=>$id_estatus_inspeccion_det,
             'Id_Estatus_Color_Text'   =>$Id_Estatus_Color_Text,
             'Modificado_Por'          =>$session->Id_Usuario,
@@ -1023,10 +1025,21 @@ class Inventarios extends BaseController{
         ]);
 
         if($updateDetalle != false){
+
             echo json_encode(array("status" => true ));
         }else{
             echo json_encode(array("status" => false ));
         }
+    }
+
+    function val_estatus_p($id_inspeccion_det){
+        $inventariosMdl = new InventariosMdl();
+
+        // pendeinet mandar id inspeccion
+        $abc = $inventariosMdl->getUbicacionPadre($id_inspeccion_det);
+
+        print_r($abc);
+        // echo($abc);
     }
 
     function actualizarImgInicial($idInspeccion,$nombreImg,$tipoImg){

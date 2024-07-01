@@ -67,4 +67,8 @@ class InventariosMdl extends Model
         ->where(['Id_Sitio' => $Id_Sitio,'Estatus' => 'Activo'])->findAll());
     }
 
+    // pendinete recibir id inspeccion del controlador
+    public function getUbicacionPadre($id_inspeccion_det){
+        return $this->table('v_ubicaciones_arbol')->select('parent_id')->where(['Id_Inspeccion_Det' => $id_inspeccion_det,'Id_Inspeccion' => $id_inspeccion])->findAll();
+    }
 }
