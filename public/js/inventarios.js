@@ -304,6 +304,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
       showCheckbox: false, /* mostrar icono check */
       levels: 1, /* Elementos collapsados al nivel 1 */
       data: datos_treeview,
+      selectedBackColor: '#e789ff4d',
+      selectedColor: '',
     });
 
     /* Eventos del treeView */
@@ -1295,14 +1297,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
         },
       },
       rowDoubleClick: function(args){
-        //console.log(args.item);
-        // //console.log(args.item)
+        console.log(args.item)
         dataFilasJsGridProblemas = $("#jsGridProblemas").jsGrid("option", "data");
         totalFIlasProblemas = dataFilasJsGridProblemas.length - 1;
         filaActualJsGridProblemas = args.itemIndex;
 
-        // Para no poder abrir problemas de menores a la inspeccion pasada
-        if(args.item.Id_Inspeccion != idInspeccion){
+        // no se pueden abiri problemas cerrados de inspecciones menores a la inspeccion anterior
+        // solo se pueden abrir en modal las inspecciones que tengan estatus abierto
+        if(args.item.Id_Inspeccion != idInspeccion && args.item.Estatus_Problema.toLowerCase() == 'cerrado'){
 
           let insp = []
           dataFilasJsGridProblemas.forEach((it) =>{
