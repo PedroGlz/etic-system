@@ -1008,9 +1008,8 @@ class Inventarios extends BaseController{
         
         $id_inspeccion_det = $this->request->getPost('Id_Inspeccion_Det');
         $id_estatus_inspeccion_det = $this->request->getPost('idEstatus');
-        $this->val_estatus_p($id_inspeccion_det);
-        return;
-        // Si el estatus es diferente a POR VERIFICAR entonces lo pintamos de color azul de lo contrario se pinta en negro
+        
+        // Si el estatus es igual a POR VERIFICAR entonces se pinta en negro de lo contrario se pinta en color azul
         if ($id_estatus_inspeccion_det == "568798D1-76BB-11D3-82BF-00104BC75DC2") {
             $Id_Estatus_Color_Text = 1;
         }else{
@@ -1026,20 +1025,45 @@ class Inventarios extends BaseController{
 
         if($updateDetalle != false){
 
+            $this->actualizarEstatusElementoPadre($id_inspeccion_det);
             echo json_encode(array("status" => true ));
         }else{
             echo json_encode(array("status" => false ));
         }
     }
 
-    function val_estatus_p($id_inspeccion_det){
+    function actualizarEstatusElementoPadre($id_inspeccion_det){
         $inventariosMdl = new InventariosMdl();
+        $inspeccionesDetMdl = new InspeccionesDetMdl();
+        $session = session();
 
-        // pendeinet mandar id inspeccion
-        $abc = $inventariosMdl->getUbicacionPadre($id_inspeccion_det);
+        // obtener el id padre del elemento, es el id que se crea por primera vez
+        $id_padre = $inventariosMdl->getUbicacionPadre($id_inspeccion_det, $session->Id_Inspeccion)[0]["parent_id"];
+        
+        if ($id_padre != "0") {
+            $cuantosPorVerificar = $inventariosMdl->cuantosHijosSinInspeccionar($id_padre, $session->Id_Inspeccion);
+            $idInspeccionDetDelPadre = $inventariosMdl->getIdInspeccionDetPorIdPadre($id_padre, $session->Id_Inspeccion)[0]["Id_Inspeccion_Det"];
+            // $estatusIdPadre = $inventariosMdl->getStatusPadre($id_padre, $session->Id_Inspeccion)[0]["Id_Status_Inspeccion_Det"];
 
-        print_r($abc);
-        // echo($abc);
+            if ($cuantosPorVerificar > 0) {
+                $id_status_inspeccion_det = "568798D1-76BB-11D3-82BF-00104BC75DC2"; //estatus por verificado
+                $id_color_texto_inspeccion_det = 1; //color texto negro
+            }else{
+                $id_status_inspeccion_det = "568798D2-76BB-11D3-82BF-00104BC75DC2"; //estatus verificado
+                $id_color_texto_inspeccion_det = 4; //color texto azul
+            }
+
+            $updateEstatusPadre = $inspeccionesDetMdl->update($idInspeccionDetDelPadre,[
+                'Id_Status_Inspeccion_Det'=> $id_status_inspeccion_det,
+                'Id_Estatus_Color_Text'   => $id_color_texto_inspeccion_det,
+                'Modificado_Por'          =>$session->Id_Usuario,
+                'Fecha_Mod'               =>date("Y-m-d H:i:s")
+            ]);
+
+            $this->actualizarEstatusElementoPadre($idInspeccionDetDelPadre);
+        }
+
+        return;
     }
 
     function actualizarImgInicial($idInspeccion,$nombreImg,$tipoImg){

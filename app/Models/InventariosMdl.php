@@ -67,8 +67,24 @@ class InventariosMdl extends Model
         ->where(['Id_Sitio' => $Id_Sitio,'Estatus' => 'Activo'])->findAll());
     }
 
-    // pendinete recibir id inspeccion del controlador
-    public function getUbicacionPadre($id_inspeccion_det){
+    public function getUbicacionPadre($id_inspeccion_det, $id_inspeccion){
         return $this->table('v_ubicaciones_arbol')->select('parent_id')->where(['Id_Inspeccion_Det' => $id_inspeccion_det,'Id_Inspeccion' => $id_inspeccion])->findAll();
+    }
+
+    public function cuantosHijosSinInspeccionar($id_padre, $id_inspeccion){
+        return count($this->asArray()->where([
+            "parent_id" => $id_padre,
+            "Id_Status_Inspeccion_Det" => "568798D1-76BB-11D3-82BF-00104BC75DC2",
+            "Id_Inspeccion" => $id_inspeccion
+        ])->findAll());
+    }
+
+    // En este punto tomamos el campo id como para identificar la copia de la original y sacar su estatus
+    public function getStatusPadre($id_padre, $id_inspeccion){
+        return $this->table('v_ubicaciones_arbol')->select('Id_Status_Inspeccion_Det')->where(['id' => $id_padre,'Id_Inspeccion' => $id_inspeccion])->findAll();
+    }
+
+    public function getIdInspeccionDetPorIdPadre($id_padre, $id_inspeccion){
+        return $this->table('v_ubicaciones_arbol')->select('Id_Inspeccion_Det')->where(['id' => $id_padre,'Id_Inspeccion' => $id_inspeccion])->findAll();
     }
 }
