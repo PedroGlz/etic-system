@@ -442,6 +442,8 @@ class Inventarios extends BaseController{
         ]);
 
         if($saveProblema != false){
+
+            $this->actualizarEstatusElementoPadre($this->request->getPost('Id_Inspeccion_Det'));
             echo json_encode(array("status" => true ));
         }else{
             echo json_encode(array("status" => false ));
@@ -684,14 +686,17 @@ class Inventarios extends BaseController{
             'Fecha_Mod'            =>date("Y-m-d H:i:s"),
         ]);
 
-        // $updateDetalle = $inspeccionesDetMdl->update(
-        //     $this->request->getPost('Id_Inspeccion_Det'),[
-        //     'Id_Status_Inspeccion_Det'=>2,
-        //     'Modificado_Por'          =>$session->Id_Usuario,
-        //     'Fecha_Mod'               =>date("Y-m-d H:i:s"),
-        // ]);
+        $updateDetalle = $inspeccionesDetMdl->update(
+            $this->request->getPost('Id_Inspeccion_Det_Cronico'),[
+            'Id_Status_Inspeccion_Det'=>"568798D2-76BB-11D3-82BF-00104BC75DC2",
+            'Id_Estatus_Color_Text'   =>"2",
+            'Modificado_Por'          =>$session->Id_Usuario,
+            'Fecha_Mod'               =>date("Y-m-d H:i:s")
+        ]);
 
         if($saveProblema != false){
+            $this->actualizarEstatusElementoPadre($this->request->getPost('Id_Inspeccion_Det_Cronico'));
+
             echo json_encode(array("status" => true ));
         }else{
             echo json_encode(array("status" => false ));
@@ -758,6 +763,8 @@ class Inventarios extends BaseController{
                 'Fecha_Mod'               =>date("Y-m-d H:i:s"),
             ]);
 
+            $this->actualizarEstatusElementoPadre($this->request->getPost('Id_Inspeccion_Det_BL'));
+
             echo json_encode(array("status" => true ));
         }else{
             echo json_encode(array("status" => false ));
@@ -780,6 +787,8 @@ class Inventarios extends BaseController{
             'Modificado_Por'          =>$session->Id_Usuario,
             'Fecha_Mod'               =>date("Y-m-d H:i:s"),
         ]);
+
+        $this->actualizarEstatusElementoPadre($insp_det[0]['Id_Inspeccion_Det']);
 
         // $delete = $lineaBaseMdl->update(
         //     $id,[
@@ -838,7 +847,7 @@ class Inventarios extends BaseController{
             ]);
         }
 
-
+        $this->actualizarEstatusElementoPadre($problema[0]['Id_Inspeccion_Det']);
 
         // habilitar borrado hasta hacer trigger
         //$op = $problemasMdl->delete($id);
