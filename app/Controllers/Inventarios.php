@@ -3598,8 +3598,8 @@ class Inventarios extends BaseController{
             $ruta_imagen_original = ROOTPATH."public/Archivos_ETIC/inspecciones/".$session->inspeccion."/Imagenes/".$nombre_img_original; //Imagen original
             // return $ruta_imagen_original;
             $ruta_img_nueva = ROOTPATH."public/Archivos_ETIC/inspecciones/".$session->inspeccion."/Imagenes_optimizadas/".$nombre_img_original; //Nueva imagen
-            $ancho = 410; //Nuevo ancho 440
-            $alto = 307;  //Nuevo alto 330
+            $ancho = 500; //Nuevo ancho 440 409
+            $alto = 375;  //Nuevo alto 330 307
             //Creamos una nueva imagen a partir del fichero inicial
             
             $ruta_imagen_original = imagecreatefromjpeg($ruta_imagen_original);
@@ -3619,7 +3619,10 @@ class Inventarios extends BaseController{
             imagecopyresampled($img_optimizada, $ruta_imagen_original, 0, 0, 0, 0, floor($ancho), floor($alto), $x, $y);
             
             //se crea la imagen
-            imagejpeg($img_optimizada, $ruta_img_nueva);
+            imagejpeg($img_optimizada, $ruta_img_nueva,90);
+
+            imagedestroy($ruta_imagen_original);
+            imagedestroy($img_optimizada);
         }
 
         return json_encode(200);

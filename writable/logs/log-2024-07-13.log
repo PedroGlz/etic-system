@@ -1,0 +1,40 @@
+CRITICAL - 2024-07-13 12:27:52 --> Unsupported operand types: string - string
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->nuevoProblema()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2024-07-13 12:27:57 --> Unsupported operand types: string - string
+#0 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->nuevoProblema()
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2024-07-13 12:47:33 --> Undefined variable $imagen_original
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(3624): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 3624)
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->optimizar_imagenes()
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2024-07-13 12:48:04 --> Undefined variable $imagen_original
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(3624): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 3624)
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->optimizar_imagenes()
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2024-07-13 12:49:12 --> Undefined variable $imagen_original
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(3624): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 3624)
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->optimizar_imagenes()
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2024-07-13 12:49:22 --> Undefined variable $imagen_original
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(3624): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 3624)
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->optimizar_imagenes()
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}

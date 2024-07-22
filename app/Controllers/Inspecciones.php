@@ -7,6 +7,9 @@ use App\Controllers\BaseController;
 use App\Models\InspeccionesMdl;
 use App\Models\UbicacionesMdl;
 use App\Models\InspeccionesDetMdl;
+use App\Models\ProblemasMdl;
+use App\Models\HistorialProblemasMdl;
+
 helper('filesystem');
 
 class Inspecciones extends BaseController
@@ -289,6 +292,7 @@ class Inspecciones extends BaseController
 
     public function cargar_bd_inspeccion(){
         $inspeccionesMdl = new InspeccionesMdl();
+        $problemasMdl = new ProblemasMdl();
         $session = session();
 
         // Recibimos el sql de la base de datos
@@ -300,6 +304,30 @@ class Inspecciones extends BaseController
         // Ejecutmos el comando
         shell_exec("C:\\xampp\\mysql\\bin\\mysql -u root u695808356_etic_system_db < ".$ruta_bd_inspeccion);
         
+        // primero de la tabla de problemas sacar los que sean cornicos y esten abiertos agrupados por ubicacion
+        // de cada ubicacion sacar sus probemas ordenados por numero de insteccion descargar_bd_exportarel primero lo dejamero abierto y los demas cerrados
+        // validar como hacerle para el historial de problemas (tabla)
+
+        $ubicacionesCronicos = $problemasMdl->obtenerUbicacionesCronicos();
+        foreach ($ubicacionesCronicos as $key => $value) {
+            
+            $problemasArr = $problemasMdl->obtenerProblemasCronicos($value["Id_Ubicacion"]);
+            $contador = 1;
+            foreach ($problemasArr as $keyp => $valueP) {
+                // print_r($valueP);
+                if ($contador > 1) {
+                    
+                    $updateProblema = $problemasMdl->update($valueP["id_problema"],[
+                        'Estatus_Problema' => 'Cerrado'
+                    ]);
+                }
+                $contador++;                
+            }
+
+        }
+
+
+
         // Obteneindo los datos de la inspeccion restaurada
         $datos_inspeccion = $inspeccionesMdl->datos_inspeccion_restaurar();
 

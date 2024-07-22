@@ -332,4 +332,24 @@ class ProblemasMdl extends Model{
 
         return $this->asArray()->where(['Id_Problema' => $id])->first();
     }
+
+    public function obtenerUbicacionesCronicos(){
+        return $this->table('problemas')->select('Id_Ubicacion')
+        ->where([
+            'Es_Cronico' => 'SI',
+            'Estatus_Problema' => 'Abierto',
+            'Estatus' => 'Activo',
+        ])
+        ->groupBy("Id_Ubicacion")
+        ->findAll();
+    }
+
+    public function obtenerProblemasCronicos($Id_Ubicacion){
+        return $this->table('problemas')->select('
+            problemas.id_problema, 
+            problemas.Numero_Problema,
+            (SELECT i.no_inspeccion FROM inspecciones AS i WHERE i.id_inspeccion = problemas.id_inspeccion) AS numeroInspeccion
+        ')
+        ->where(['problemas.Id_Ubicacion' => $Id_Ubicacion])->orderBy('numeroInspeccion DESC')->findAll();
+    }
 }
