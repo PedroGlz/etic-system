@@ -93,6 +93,18 @@ class ProblemasMdl extends Model{
     public function getProblemas_Sitio($condicion, $orden = 'Id_Problema ASC', $array = null){
         $condicion['Estatus'] = 'Activo';
 
+        $cronicosCerradosHistorial = $this->table('problemas')->select('Id_Problema')
+        ->where([
+            'Es_Cronico' => 'SI',
+            'Estatus_Problema' => 'Cerrado',
+            'Estatus' => 'Activo',
+        ]);
+
+        $arridds = [];
+        foreach ($cronicosCerradosHistorial->findAll() as $row) {
+            array_push($arridds,$row['Id_Problema']);
+        }
+
         return $this->table('problemas')->select('
             Id_Problema,    
             Id_Tipo_Inspeccion,
@@ -166,6 +178,7 @@ class ProblemasMdl extends Model{
         ')
         ->where($condicion)
         ->whereIn('Id_Problema', $array)
+        ->whereNotIn('Id_Problema', $arridds)
         ->orderBy($orden)->findAll();
     }
 
@@ -344,12 +357,39 @@ class ProblemasMdl extends Model{
         ->findAll();
     }
 
-    public function obtenerProblemasCronicos($Id_Ubicacion){
+    public function obtenerProblemasCronicos($Id_Ubicacion, $id_tipo_problema){
         return $this->table('problemas')->select('
             problemas.id_problema, 
             problemas.Numero_Problema,
             (SELECT i.no_inspeccion FROM inspecciones AS i WHERE i.id_inspeccion = problemas.id_inspeccion) AS numeroInspeccion
         ')
-        ->where(['problemas.Id_Ubicacion' => $Id_Ubicacion])->orderBy('numeroInspeccion DESC')->findAll();
+        ->where([
+            'problemas.Id_Ubicacion' => $Id_Ubicacion,
+            'Id_Tipo_Inspeccion' => $id_tipo_problema,
+            'problemas.Es_Cronico' => 'SI',
+            'problemas.Estatus_Problema' => 'Abierto',
+            'problemas.Estatus' => 'Activo',
+        ])
+        ->orderBy('numeroInspeccion DESC')->findAll();
+    }
+
+    public function getHistorialProblema($Id_Ubicacion, $id_tipo_problema){
+        return $this->table('problemas')->select('
+            Problem_Temperature,
+            Reference_Temperature,
+            DATE_FORMAT(Fecha_Creacion,"%d/%m/%Y") AS fecha_problema_historico,
+            Numero_Problema,
+            (SELECT i.no_inspeccion FROM inspecciones AS i WHERE i.id_inspeccion = problemas.id_inspeccion) AS numInspeccion,
+            Fecha_Creacion,
+            (SELECT s.Severidad FROM severidades AS s WHERE s.Id_Severidad = problemas.Id_Severidad) AS StrSeveridad,
+            Component_Comment AS notas
+        ')
+        ->where([
+            'problemas.Id_Ubicacion' => $Id_Ubicacion,
+            'Id_Tipo_Inspeccion' => $id_tipo_problema,
+            'problemas.Es_Cronico' => 'SI',
+            'problemas.Estatus' => 'Activo',
+        ])
+        ->orderBy('numInspeccion DESC')->findAll();
     }
 }

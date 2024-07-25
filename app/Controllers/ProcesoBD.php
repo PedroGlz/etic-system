@@ -85,8 +85,8 @@ class ProcesoBD extends BaseController{
 
             /*Data for the table `estatus_color_text` */
 
-            insert  into `estatus_color_text`(`Id_Estatus_Color_Text`,`Color_Text`,`Descripcion`) values (1,"#000000","sin inspeccionar"),(2,"#DD3B3B","inspeccionado con hallazgos"),(3,"#21B040","inspeccionado sin hallazgos");
-
+            insert  into `estatus_color_text`(`Id_Estatus_Color_Text`,`Color_Text`,`Descripcion`) values (1,"#000000","sin inspeccionar","flag_export","flag_export"),(2,"#DD3B3B","inspeccionado con hallazgos","flag_export","flag_export"),(3,"#21B040","inspeccionado sin hallazgos","flag_export","flag_export"),(4,"#0082ff","verificado sin inspección","flag_export","flag_export");
+            
             /* Estructura de la tabla `datos_reporte` */
             CREATE TABLE `datos_reporte` (
                 `Id_Datos_Reporte` int(15) NOT NULL AUTO_INCREMENT,

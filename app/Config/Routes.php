@@ -134,7 +134,7 @@ $routes->get('/inventarios/guardarCronico', 'Inventarios::guardarCronico');
 $routes->get('/inventarios/getProblemas_Sitio/(:any)', 'Inventarios::getProblemas_Sitio/$1');
 $routes->get('/inventarios/getNumero_Problema', 'Inventarios::getNumero_Problema');
 $routes->get('/inventarios/eliminarProblema/(:any)', 'Inventarios::eliminarProblema/$1');
-$routes->get('/inventarios/getHistorialProblema/(:any)', 'Inventarios::getHistorialProblema/$1');
+$routes->get('/inventarios/getHistorialProblema/(:any)/(:any)', 'Inventarios::getHistorialProblema/$1/$2');
 $routes->get('/inventarios/cambiarEstatusUbicacion', 'Inventarios::cambiarEstatusUbicacion');
 // Base LIne
 $routes->get('/inventarios/guardarBaseLine', 'Inventarios::guardarBaseLine');

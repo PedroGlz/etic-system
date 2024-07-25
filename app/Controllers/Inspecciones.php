@@ -308,20 +308,28 @@ class Inspecciones extends BaseController
         // de cada ubicacion sacar sus probemas ordenados por numero de insteccion descargar_bd_exportarel primero lo dejamero abierto y los demas cerrados
         // validar como hacerle para el historial de problemas (tabla)
 
+        $tipos_inspeccion = [
+            "0D32B331-76C3-11D3-82BF-00104BC75DC2",
+            "0D32B332-76C3-11D3-82BF-00104BC75DC2",
+            "0D32B333-76C3-11D3-82BF-00104BC75DC2",
+            "0D32B334-76C3-11D3-82BF-00104BC75DC2"
+        ];
+
         $ubicacionesCronicos = $problemasMdl->obtenerUbicacionesCronicos();
         foreach ($ubicacionesCronicos as $key => $value) {
-            
-            $problemasArr = $problemasMdl->obtenerProblemasCronicos($value["Id_Ubicacion"]);
-            $contador = 1;
-            foreach ($problemasArr as $keyp => $valueP) {
-                // print_r($valueP);
-                if ($contador > 1) {
-                    
-                    $updateProblema = $problemasMdl->update($valueP["id_problema"],[
-                        'Estatus_Problema' => 'Cerrado'
-                    ]);
+
+            for ($i=0; $i < count($tipos_inspeccion); $i++) {
+                $problemasArr = $problemasMdl->obtenerProblemasCronicos($value["Id_Ubicacion"], $tipos_inspeccion[$i]);
+                $contador = 1;
+                foreach ($problemasArr as $keyp => $valueP) {
+                    if ($contador > 1) {
+                        
+                        $updateProblema = $problemasMdl->update($valueP["id_problema"],[
+                            'Estatus_Problema' => 'Cerrado'
+                        ]);
+                    }
+                    $contador++;
                 }
-                $contador++;                
             }
 
         }
@@ -360,7 +368,7 @@ class Inspecciones extends BaseController
             date_default_timezone_set("America/Mexico_City");
             $fecha_de_cierre = date("Y-m-d . H:i");
             $fecha_de_cierre = str_replace(" . ","T",strval($fecha_de_cierre));
-
+            
             $fecha_inicio = $inspeccionesMdl->get($this->request->getPost('Id_Inspeccion'));
             $fecha_inicio = str_replace(" ","T",strval($fecha_inicio["Fecha_Inicio"]));
 
@@ -369,7 +377,6 @@ class Inspecciones extends BaseController
             $data['Fecha_Fin']=$fecha_de_cierre;
             $data['No_Dias']=$dias;
         }
-        
         $update = $inspeccionesMdl->update($this->request->getPost('Id_Inspeccion'),$data);
         // Actualizano la variable de session con el estatus
         $session->set('Id_Status_Inspeccion', $this->request->getPost('Id_Status_Inspeccion'));

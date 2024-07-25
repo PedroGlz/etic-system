@@ -1390,14 +1390,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   function ajustesEditarProblema(){
     var valoresItem = dataFilasJsGridProblemas[filaActualJsGridProblemas];
-    //console.log(valoresItem)
+    console.log('desdeaqui miau')
+    console.log(valoresItem)
     //console.log(valoresItem.numInspeccion)
     //console.log(strNumInspeccion.value)
     // Mostramos Botones de navegacion
     document.querySelector("#contenedorBtnNavegacionProblemas").style.display = ""
 
     // Cargamos los el historial del problema en el jsgrid de historial
-    cargarDataJsGridHistorialProblemas(valoresItem.Id_Problema);
+    cargarDataJsGridHistorialProblemas(valoresItem.Id_Ubicacion,valoresItem.Id_Tipo_Inspeccion);
 
     // Asignacion de valores para editar un problema
     idInspeccion_Det = valoresItem.Id_Inspeccion_Det;
@@ -1817,9 +1818,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   }
 
-  function cargarDataJsGridHistorialProblemas(idProblema){
+  function cargarDataJsGridHistorialProblemas(id_ubicacion, id_tipo_inspeccion){
     $.ajax({
-      url: `inventarios/getHistorialProblema/${idProblema}`,
+      url: `inventarios/getHistorialProblema/${id_ubicacion}/${id_tipo_inspeccion}`,
       type: "POST",
       dataType: 'json',
       processData: false,

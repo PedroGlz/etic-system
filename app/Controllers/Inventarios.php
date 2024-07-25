@@ -682,6 +682,7 @@ class Inventarios extends BaseController{
         $updateProblema = $problemasMdl->update(
             $idProblemaAnterior,[
             'Estatus_Problema'     =>"Cerrado",
+            'Es_Cronico'           =>"SI",
             'Modificado_Por'       =>$session->Id_Usuario,
             'Fecha_Mod'            =>date("Y-m-d H:i:s"),
         ]);
@@ -883,9 +884,12 @@ class Inventarios extends BaseController{
         return;
     }
 
-    public function getHistorialProblema($id){
-        $historialProblemas = new HistorialProblemasMdl();
-        echo (json_encode($historialProblemas->getHistorialProblema($id)));
+    public function getHistorialProblema($id_ubicacion, $Id_Tipo_Inspeccion){
+        // $historialProblemas = new HistorialProblemasMdl();
+        // echo (json_encode($historialProblemas->getHistorialProblema($id)));
+
+        $problemasMdl = new ProblemasMdl();
+        echo (json_encode($problemasMdl->getHistorialProblema($id_ubicacion, $Id_Tipo_Inspeccion)));
     }
 
     public function getHistorialBaseLine(){
@@ -943,8 +947,6 @@ class Inventarios extends BaseController{
     }
 
     function subirImagenes() {
-        $fotosProblemasMdl = new FotosProblemasMdl();
-
         $numInspeccion = $this->request->getPost('numInspeccionArchivos');
         $Id_Inspeccion = $this->request->getPost('Id_Inspeccion');
 
@@ -975,7 +977,7 @@ class Inventarios extends BaseController{
     }
 
     function eliminarImagenes(){
-        $fotosProblemasMdl = new FotosProblemasMdl();
+        // $fotosProblemasMdl = new FotosProblemasMdl();
 
         $numInspeccion = $this->request->getPost('numInspeccionArchivos');
         $Id_Inspeccion = $this->request->getPost('Id_Inspeccion');
@@ -983,8 +985,8 @@ class Inventarios extends BaseController{
         $data = (get_object_vars(json_decode($this->request->getPost('datosArreglo')))["imgSeleccionadas"]);
         foreach($data as $nombreImg){
             unlink("Archivos_ETIC/inspecciones/".$numInspeccion."/Imagenes/".$nombreImg);
-            $registros = $fotosProblemasMdl->where(["Id_Inspeccion" => $Id_Inspeccion, "Nombre_Foto" => $nombreImg]);
-            $registros->delete();
+            // $registros = $fotosProblemasMdl->where(["Id_Inspeccion" => $Id_Inspeccion, "Nombre_Foto" => $nombreImg]);
+            // $registros->delete();
         }
 
         echo json_encode(array("status" => true ));
@@ -1274,16 +1276,20 @@ class Inventarios extends BaseController{
             $historial = array();
             $data = [];
 
-            if(count($historialProblemas->getHistorialProblema($value['Id_Problema'])) > 0){
+            if(count($problemasMdl->getHistorialProblema($value['Id_Ubicacion'], $value['Id_Tipo_Inspeccion'])) > 0){
 
-                $historial = $historialProblemas->getHistorialProblema($value['Id_Problema']);
+                $historial = $problemasMdl->getHistorialProblema($value['Id_Ubicacion'], $value['Id_Tipo_Inspeccion']);
+                
+                // reordenando los elementos del historial por numero de inspeccion de menor a mayor
+                usort($historial, function($a, $b) {
+                    return $a['numInspeccion'] - $b['numInspeccion'];
+                });
 
                 foreach ($historial as $key5 => $value5) {
                     $data['Problema'][$value5["fecha_problema_historico"]] = $value5["Problem_Temperature"];
                     $data['Referencia'][$value5["fecha_problema_historico"]] = $value5["Reference_Temperature"];
                 }
-                ksort($data["Problema"]);
-                ksort($data["Referencia"]);
+
             }
             
             // Antes del proceso DB

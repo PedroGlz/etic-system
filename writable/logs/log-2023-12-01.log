@@ -1,7 +1,0 @@
-CRITICAL - 2023-12-01 14:47:27 --> count(): Argument #1 ($value) must be of type Countable|array, null given
-#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1642): count(NULL)
-#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->ordenar_ubicaciones_baseline()
-#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
-#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
-#5 {main}
