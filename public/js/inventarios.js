@@ -1389,6 +1389,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function ajustesEditarProblema(){
+    console.log(dataFilasJsGridProblemas)
     var valoresItem = dataFilasJsGridProblemas[filaActualJsGridProblemas];
     console.log('desdeaqui miau')
     console.log(valoresItem)
