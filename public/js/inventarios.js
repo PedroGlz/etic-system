@@ -1300,8 +1300,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         console.log(args.item)
         dataFilasJsGridProblemas = $("#jsGridProblemas").jsGrid("option", "data");
         totalFIlasProblemas = dataFilasJsGridProblemas.length - 1;
-        filaActualJsGridProblemas = args.itemIndex;
-        console.log(filaActualJsGridProblemas)
+        // filaActualJsGridProblemas = args.itemIndex;
+        // console.log(filaActualJsGridProblemas)
 
         let arrayNumInspecciones = []
         dataFilasJsGridProblemas.forEach((it) =>{
@@ -1312,16 +1312,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
         arrayNumInspecciones.sort(function (a, b) {
           return b - a;
         });
-
         // Quitando los duplicados
         const arrayNumInspeccionAgrupados = [...new Set(arrayNumInspecciones)];
         // Identificando la inspeccion anterior
-        let inspeccionAnteriorCalculada = arrayNumInspeccionAgrupados[1];
+        let inspeccionAnteriorCalculada = arrayNumInspeccionAgrupados.length > 1 ? arrayNumInspeccionAgrupados[1] : arrayNumInspeccionAgrupados[0];
 
+        listaProblemasParaEditar = dataFilasJsGridProblemas.filter(item => (item.numInspeccion >= inspeccionAnteriorCalculada || item.Estatus_Problema === 'Abierto'));
 
-        listaProblemasParaEditar = dataFilasJsGridProblemas.filter(item => item.numInspeccion >= inspeccionAnteriorCalculada);
-
-
+        
+        const Id_Problema = args.item.Id_Problema;
+        filaActualJsGridProblemas = listaProblemasParaEditar.findIndex(item => item.Id_Problema == Id_Problema);
+        
 
 
 
@@ -2706,6 +2707,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
       btnClick = event.target;
     }
     
+
+    // cada que se cambien el array atraves de su index se va a sobrescribri con lo que haya en el el form de editar
+
     if(btnClick.id == "btnSiguienteProblemas" && filaActualJsGridProblemas < totalFIlasProblemas) {
       filaActualJsGridProblemas = filaActualJsGridProblemas + 1;
     }else if(btnClick.id == "btnAtrasProblemas" && filaActualJsGridProblemas > 0){

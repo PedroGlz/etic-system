@@ -456,7 +456,8 @@ class Inventarios extends BaseController{
         $session = session();
 
         $tipoInspeccion= $this->request->getPost('Id_Tipo_Inspeccion');
-        $idInspeccion = $this->request->getPost('Id_Inspeccion');
+        // $idInspeccion = $this->request->getPost('Id_Inspeccion');
+        $idInspeccion = $session->Id_Inspeccion;
 
         $data = [
             'Id_Tipo_Inspeccion'   =>$this->request->getPost('Id_Tipo_Inspeccion'),
