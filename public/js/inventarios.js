@@ -46,7 +46,7 @@ var arrayContactosSitio = [];
 var arrayUbicacionesOrdenadas = [];
 var datos_base_line_filtro = [];
 var id_inspeccion_det_bl_respaldo
-
+var listaProblemasParaEditar = [];
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
@@ -1244,7 +1244,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       processData: false,
       contentType: false,
       success: function (res) {
-        //console.log(res)
+        console.log(res)
         dataGridProblemas = res;
         filtrarProblemas()
         // JsGridProblemas.jsGrid("loadData",{ data : res});
@@ -1301,24 +1301,38 @@ window.addEventListener('DOMContentLoaded', (event) => {
         dataFilasJsGridProblemas = $("#jsGridProblemas").jsGrid("option", "data");
         totalFIlasProblemas = dataFilasJsGridProblemas.length - 1;
         filaActualJsGridProblemas = args.itemIndex;
+        console.log(filaActualJsGridProblemas)
+
+        let arrayNumInspecciones = []
+        dataFilasJsGridProblemas.forEach((it) =>{
+          arrayNumInspecciones.push(it.numInspeccion)
+        })
+
+        // ordenando los umeros de nspeccionde mayor a menor
+        arrayNumInspecciones.sort(function (a, b) {
+          return b - a;
+        });
+
+        // Quitando los duplicados
+        const arrayNumInspeccionAgrupados = [...new Set(arrayNumInspecciones)];
+        // Identificando la inspeccion anterior
+        let inspeccionAnteriorCalculada = arrayNumInspeccionAgrupados[1];
+
+
+        listaProblemasParaEditar = dataFilasJsGridProblemas.filter(item => item.numInspeccion >= inspeccionAnteriorCalculada);
+
+
+
+
+
+
 
         // no se pueden abiri problemas cerrados de inspecciones menores a la inspeccion anterior
         // solo se pueden abrir en modal las inspecciones que tengan estatus abierto
         if(args.item.Id_Inspeccion != idInspeccion && args.item.Estatus_Problema.toLowerCase() == 'cerrado'){
-
-          let insp = []
-          dataFilasJsGridProblemas.forEach((it) =>{
-            insp.push(it.numInspeccion)
-          })
-
-          insp.sort(function (a, b) {
-            return b - a;
-          });
-          const mostConcise = [...new Set(insp)];
-          //console.log(mostConcise)
           
-          if(mostConcise.length >= 2){
-            if(args.item.numInspeccion <= mostConcise[1]){
+          if(arrayNumInspeccionAgrupados.length >= 2){
+            if(args.item.numInspeccion <= inspeccionAnteriorCalculada){
               return;
             }
           }
@@ -1389,8 +1403,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function ajustesEditarProblema(){
-    console.log(dataFilasJsGridProblemas)
-    var valoresItem = dataFilasJsGridProblemas[filaActualJsGridProblemas];
+    console.log(listaProblemasParaEditar)
+    var valoresItem = listaProblemasParaEditar[filaActualJsGridProblemas];
     console.log('desdeaqui miau')
     console.log(valoresItem)
     //console.log(valoresItem.numInspeccion)
@@ -1703,6 +1717,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
       default:
       newdata = newdata;
     }
+
+    console.log('desdes el filtro')
+    console.log(newdata)
 
     // MOSTRANDO PROBLEMAS FILTRADOS
     JsGridProblemas.jsGrid("loadData",{ data : newdata});
