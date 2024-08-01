@@ -48,6 +48,7 @@ var datos_base_line_filtro = [];
 var id_inspeccion_det_bl_respaldo
 var listaProblemasParaEditar = [];
 var arrayFormsProblemasEditar = [];
+var arrayFormsBaseLineEditar = [];
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
@@ -1363,21 +1364,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
         let inspeccionAnteriorCalculada = arrayNumInspeccionAgrupados.length > 1 ? arrayNumInspeccionAgrupados[1] : arrayNumInspeccionAgrupados[0];
 
         listaProblemasParaEditar = dataFilasJsGridProblemas.filter(item => (Number(item.numInspeccion) >= Number(inspeccionAnteriorCalculada) || item.Estatus_Problema === 'Abierto'));
-        console.log('---------------------iicio-----------------')
-        // console.log(num_inspeccion_actual_js)
-        // console.log(arrayNumInspeccionAgrupados)
-        // console.log(inspeccionAnteriorCalculada)
-        // console.log(listaProblemasParaEditar)
         
         const Id_Problema = args.item.Id_Problema;
         filaActualJsGridProblemas = listaProblemasParaEditar.findIndex(item => item.Id_Problema == Id_Problema);
-        // console.log(Id_Problema)
-        console.log(filaActualJsGridProblemas)
-        console.log('---------------------fin-----------------')
-
-
-
-
 
         // no se pueden abiri problemas cerrados de inspecciones menores a la inspeccion anterior
         // solo se pueden abrir en modal las inspecciones que tengan estatus abierto
@@ -2038,6 +2027,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
       // formData.append('Id_Inspeccion',idInspeccion);
       // formData.append('Id_Ubicacion',Id_Ubicacion.value);
 
+      console.log(form_action)
+
       $.ajax({
         data: formData,
         url: form_action,
@@ -2652,11 +2643,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
         },
       },
       rowDoubleClick: function(args){
+        console.log(args.item)
         dataFilasJsGridBaseLine = $("#jsGridListaBaseLine").jsGrid("option", "data");
         totalFIlasBaseLine = dataFilasJsGridBaseLine.length - 1;
-        filaActualJsGridBaseLine = args.itemIndex;
+        // filaActualJsGridBaseLine = args.itemIndex;
+
+        // Limpiamos el arreglo con los BL que se van a ir editando
+        arrayFormsBaseLineEditar = [];
+        
         // Mostramos los botones de navegacion entre registros
         document.querySelector("#contenedorBtnNavegacionBL").style.display = ""
+
+        filaActualJsGridBaseLine = dataFilasJsGridBaseLine.findIndex(item => item.Id_Linea_Base == args.item.Id_Linea_Base);
 
         editarBaseLine()
       },
@@ -2743,11 +2741,28 @@ window.addEventListener('DOMContentLoaded', (event) => {
       btnClick = event.target;
     }
 
+    if(!$("#FormBaseLine").valid()){
+      Toast.fire({
+        icon: 'warning',
+        title: 'Ingresar los campos obligatorios *'
+      })
+      return;
+    }
+
+    var formData = new FormData(document.getElementById("FormBaseLine"));
+    let datosBaseLineEnELForm = formDataToObjet(formData)
+
+    arrayFormsBaseLineEditar[filaActualJsGridBaseLine] = {
+      ...arrayFormsBaseLineEditar[filaActualJsGridBaseLine],
+      ...datosBaseLineEnELForm
+    };
+
     if(btnClick.id == "btnSiguiente" && filaActualJsGridBaseLine < totalFIlasBaseLine) {
       filaActualJsGridBaseLine = filaActualJsGridBaseLine + 1;
     }else if(btnClick.id == "btnAtras" && filaActualJsGridBaseLine > 0){
       filaActualJsGridBaseLine = filaActualJsGridBaseLine - 1;
     }
+
     editarBaseLine();
   }
 
