@@ -1193,37 +1193,78 @@ window.addEventListener('DOMContentLoaded', (event) => {
       formData.append('Id_Inspeccion_Det',idInspeccion_Det);
       formData.append('Id_Ubicacion',idUbicacion);
 
-      $.ajax({
-        data: formData,
-        url: form_action,
-        type: "POST",
-        dataType: 'json',
-        processData: false,
-        contentType: false,
-        success: function (res) {
-          //console.log(form_action)
-          cargarDataJsGridProblemas()
 
-          if (form_action != '/inventarios/updateProblema') {
-            // creamos de nuevo el treeview actualizado
-            cargar_datos_treeview().then(() => {
-              ubicar_nodo(true)
-            }); 
+      if(form_action == '/inventarios/updateProblema'){
+
+        alertLodading('Guardando cambios...')
+
+        // let formProbleaActual = formDataToObjet(formData);
+        arrayFormsProblemasEditar.push(formDataToObjet(formData));
+        
+        
+        arrayFormsProblemasEditar.forEach((datos_probelma) => {
+          let formData_editar = new FormData();
+
+          for (let key in datos_probelma) {
+            formData_editar.append(key, datos_probelma[key]);
           }
 
-          // Mostramos mensaje de operacion exitosa
-          Toast.fire({
-            icon: 'success',
-            title: 'Agregado'
-          })
-          
-          // Ocultamos el modal
-          $('#modalProblemas').modal('hide');
-        },
-        error: function (err) {
-          //console.log(err);
-        }
-      });
+          $.ajax({
+            data: formData_editar,
+            url: form_action,
+            type: "POST",
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function (res) {
+            },
+            error: function (err) {
+              //console.log(err);
+            }
+          });
+
+        })
+
+        cerrarAlertLoading('Cambios guardados')
+
+        cargarDataJsGridProblemas()
+        $('#modalProblemas').modal('hide');
+
+
+      }else{
+        $.ajax({
+          data: formData,
+          url: form_action,
+          type: "POST",
+          dataType: 'json',
+          processData: false,
+          contentType: false,
+          success: function (res) {
+            //console.log(form_action)
+            cargarDataJsGridProblemas()
+  
+            if (form_action != '/inventarios/updateProblema') {
+              // creamos de nuevo el treeview actualizado
+              cargar_datos_treeview().then(() => {
+                ubicar_nodo(true)
+              }); 
+            }
+  
+            // Mostramos mensaje de operacion exitosa
+            Toast.fire({
+              icon: 'success',
+              title: 'Agregado'
+            })
+            
+            // Ocultamos el modal
+            $('#modalProblemas').modal('hide');
+          },
+          error: function (err) {
+            //console.log(err);
+          }
+        });
+      }
+
     }else if ($("#FrmProblemas").valid() && (Ir_File.value == '' || Photo_File.value == '')) {
       document.querySelector("#tabImgProblema-tab").click()
       Toast.fire({
@@ -1322,7 +1363,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         let inspeccionAnteriorCalculada = arrayNumInspeccionAgrupados.length > 1 ? arrayNumInspeccionAgrupados[1] : arrayNumInspeccionAgrupados[0];
 
         listaProblemasParaEditar = dataFilasJsGridProblemas.filter(item => (Number(item.numInspeccion) >= Number(inspeccionAnteriorCalculada) || item.Estatus_Problema === 'Abierto'));
-        // console.log('---------------------iicio-----------------')
+        console.log('---------------------iicio-----------------')
         // console.log(num_inspeccion_actual_js)
         // console.log(arrayNumInspeccionAgrupados)
         // console.log(inspeccionAnteriorCalculada)
@@ -1331,8 +1372,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         const Id_Problema = args.item.Id_Problema;
         filaActualJsGridProblemas = listaProblemasParaEditar.findIndex(item => item.Id_Problema == Id_Problema);
         // console.log(Id_Problema)
-        // console.log(filaActualJsGridBaseLine)
-        // console.log('---------------------fin-----------------')
+        console.log(filaActualJsGridProblemas)
+        console.log('---------------------fin-----------------')
 
 
 
@@ -1907,7 +1948,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         },
       },
       rowDoubleClick: function(args){
-        //console.log(args)
+        console.log(args)
         dataFilasJsGridBaseLine = $("#jsGridBaseLine").jsGrid("option", "data");
         totalFIlasBaseLine = dataFilasJsGridBaseLine.length - 1;
         filaActualJsGridBaseLine = args.itemIndex;
@@ -2728,22 +2769,34 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     var formData = new FormData(document.getElementById("FrmProblemas"));
 
-    let abc = formDataToObjet(formData)
+    let datosDelProblemaEnELForm = formDataToObjet(formData)
+    delete datosDelProblemaEnELForm.Numero_Problema;
 
-    arrayFormsProblemasEditar = arrayFormsProblemasEditar.filter(item => item.Id_Problema != abc.Id_Problema);
-    arrayFormsProblemasEditar.push(abc);
+    arrayFormsProblemasEditar = arrayFormsProblemasEditar.filter(item => item.Id_Problema != datosDelProblemaEnELForm.Id_Problema);
+    arrayFormsProblemasEditar.push(datosDelProblemaEnELForm);
+    // listaProblemasParaEditar[filaActualJsGridProblemas] = datosDelProblemaEnELForm;
+    // listaProblemasParaEditar.push(datosDelProblemaEnELForm);
+
+    // Modificar las propiedades existentes y agregar las propiedades que no estén
+    listaProblemasParaEditar[filaActualJsGridProblemas] = {
+      ...listaProblemasParaEditar[filaActualJsGridProblemas],
+      ...datosDelProblemaEnELForm
+    };
     
     
+    console.log('viendo index antes de sum o rest------------------------------')
+    console.log(filaActualJsGridProblemas)
     console.log('viendo el array editar------------------------------')
     console.log(arrayFormsProblemasEditar)
+    console.log('viendo el array origina con todos los problemas------------------------------')
+    console.log(listaProblemasParaEditar)
 
-    // cada que se cambien el array atraves de su index se va a sobrescribri con lo que haya en el el form de editar
-
-    if(btnClick.id == "btnSiguienteProblemas" && filaActualJsGridProblemas < totalFIlasProblemas) {
+    if (btnClick.id == "btnSiguienteProblemas" && filaActualJsGridProblemas < totalFIlasProblemas) {
       filaActualJsGridProblemas = filaActualJsGridProblemas + 1;
-    }else if(btnClick.id == "btnAtrasProblemas" && filaActualJsGridProblemas > 0){
+    } else if (btnClick.id == "btnAtrasProblemas" && filaActualJsGridProblemas > 0) {
       filaActualJsGridProblemas = filaActualJsGridProblemas - 1;
     }
+
 
     ajustesEditarProblema();
   }
