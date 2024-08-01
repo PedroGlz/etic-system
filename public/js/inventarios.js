@@ -47,6 +47,7 @@ var arrayUbicacionesOrdenadas = [];
 var datos_base_line_filtro = [];
 var id_inspeccion_det_bl_respaldo
 var listaProblemasParaEditar = [];
+var arrayFormsProblemasEditar = [];
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
@@ -1303,7 +1304,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
         // filaActualJsGridProblemas = args.itemIndex;
         // console.log(filaActualJsGridProblemas)
 
-        let arrayNumInspecciones = []
+        // Limpiamos el arreglo con los problemas que se van a ir editando
+        arrayFormsProblemasEditar = [];
+
+        let arrayNumInspecciones = [num_inspeccion_actual_js]
         dataFilasJsGridProblemas.forEach((it) =>{
           arrayNumInspecciones.push(it.numInspeccion)
         })
@@ -1317,12 +1321,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
         // Identificando la inspeccion anterior
         let inspeccionAnteriorCalculada = arrayNumInspeccionAgrupados.length > 1 ? arrayNumInspeccionAgrupados[1] : arrayNumInspeccionAgrupados[0];
 
-        listaProblemasParaEditar = dataFilasJsGridProblemas.filter(item => (item.numInspeccion >= inspeccionAnteriorCalculada || item.Estatus_Problema === 'Abierto'));
-
+        listaProblemasParaEditar = dataFilasJsGridProblemas.filter(item => (Number(item.numInspeccion) >= Number(inspeccionAnteriorCalculada) || item.Estatus_Problema === 'Abierto'));
+        // console.log('---------------------iicio-----------------')
+        // console.log(num_inspeccion_actual_js)
+        // console.log(arrayNumInspeccionAgrupados)
+        // console.log(inspeccionAnteriorCalculada)
+        // console.log(listaProblemasParaEditar)
         
         const Id_Problema = args.item.Id_Problema;
         filaActualJsGridProblemas = listaProblemasParaEditar.findIndex(item => item.Id_Problema == Id_Problema);
-        
+        // console.log(Id_Problema)
+        // console.log(filaActualJsGridBaseLine)
+        // console.log('---------------------fin-----------------')
 
 
 
@@ -1404,10 +1414,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function ajustesEditarProblema(){
-    console.log(listaProblemasParaEditar)
+    // console.log(listaProblemasParaEditar)
     var valoresItem = listaProblemasParaEditar[filaActualJsGridProblemas];
-    console.log('desdeaqui miau')
-    console.log(valoresItem)
+    // console.log('desdeaqui miau')
+    // console.log(valoresItem)
     //console.log(valoresItem.numInspeccion)
     //console.log(strNumInspeccion.value)
     // Mostramos Botones de navegacion
@@ -2706,7 +2716,26 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }else{
       btnClick = event.target;
     }
+
+    // Si el formulario no es valido o no se han seleccionado archivos no se permite avanzar
+    if (!$("#FrmProblemas").valid()  || Ir_File.value == '' || Photo_File.value == '') {
+      Toast.fire({
+        icon: 'warning',
+        title: 'Ingresar los campos obligatorios *'
+      })
+      return;
+    }
+
+    var formData = new FormData(document.getElementById("FrmProblemas"));
+
+    let abc = formDataToObjet(formData)
+
+    arrayFormsProblemasEditar = arrayFormsProblemasEditar.filter(item => item.Id_Problema != abc.Id_Problema);
+    arrayFormsProblemasEditar.push(abc);
     
+    
+    console.log('viendo el array editar------------------------------')
+    console.log(arrayFormsProblemasEditar)
 
     // cada que se cambien el array atraves de su index se va a sobrescribri con lo que haya en el el form de editar
 
@@ -2715,6 +2744,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }else if(btnClick.id == "btnAtrasProblemas" && filaActualJsGridProblemas > 0){
       filaActualJsGridProblemas = filaActualJsGridProblemas - 1;
     }
+
     ajustesEditarProblema();
   }
 

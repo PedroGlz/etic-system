@@ -93,6 +93,9 @@
 
 <!-- Scripts personalizados -->
 <!-- funciones globales js -->
+<script>
+  var num_inspeccion_actual_js = <?php echo json_encode($inspeccion); ?>
+</script>
 <script src="http://etic-system.local/js/global.js"></script>
 <script src="http://etic-system.local/js/teclado_numerico.js"></script>
 <script src="http://etic-system.local/js/proceso_bd.js"></script>
