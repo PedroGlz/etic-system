@@ -721,11 +721,11 @@ class Inventarios extends BaseController{
         $Id_Linea_Base_insert = crear_id();
 
         $data = [
-            'Id_Linea_Base' =>$Id_Linea_Base_insert,
-            'Id_Sitio'      =>$session->Id_Sitio,
-            'Id_Ubicacion'  =>$this->request->getPost('Id_UbicacionBL'),
-            'Id_Inspeccion' =>$idInspeccion,
-            'Id_Inspeccion_Det'=> $this->request->getPost('Id_Inspeccion_Det_BL'),
+            // 'Id_Linea_Base' =>$Id_Linea_Base_insert,
+            // 'Id_Sitio'      =>$session->Id_Sitio,
+            // 'Id_Ubicacion'  =>$this->request->getPost('Id_UbicacionBL'),
+            // 'Id_Inspeccion' =>$idInspeccion,
+            // 'Id_Inspeccion_Det'=> $this->request->getPost('Id_Inspeccion_Det_BL'),
             'MTA'           =>$this->request->getPost('MTA'),
             'Temp_max'      =>$this->request->getPost('Temp_max'),
             'Temp_amb'      =>$this->request->getPost('Temp_amb'),
@@ -733,17 +733,31 @@ class Inventarios extends BaseController{
             'Archivo_IR'    =>$nombreIrImagen,
             'Archivo_ID'    =>$nombreDigImagen,
             'Ruta'          =>$this->request->getPost('rutaBaseLine'),
-            'Estatus'       =>"Activo",
-            'Creado_Por'    =>$session->Id_Usuario,
-            'Fecha_Creacion'=>date("Y-m-d H:i:s"),
+            // 'Estatus'       =>"Activo",
+            // 'Creado_Por'    =>$session->Id_Usuario,
+            // 'Fecha_Creacion'=>date("Y-m-d H:i:s"),
         ];
 
         if ($nombreIrImagen != "") {$this->actualizarImgInicial($idInspeccion,$nombreIrImagen,1);}
         if ($nombreDigImagen != "") {$this->actualizarImgInicial($idInspeccion,$nombreDigImagen,2);}
 
         if($idBaseLine < 1){
+            $data['Id_Linea_Base'] = $Id_Linea_Base_insert;
+            $data['Id_Sitio'] = $session->Id_Sitio;
+            $data['Id_Ubicacion'] = $this->request->getPost('Id_UbicacionBL');
+            $data['Id_Inspeccion'] = $idInspeccion;
+            $data['Id_Inspeccion_Det'] = $this->request->getPost('Id_Inspeccion_Det_BL');
+            $data['Fecha_Creacion'] = date("Y-m-d H:i:s");
+            $data['Estatus'] = "Activo";
+            $data['Creado_Por'] = $session->Id_Usuario;
+            $data['Fecha_Creacion'] = date("Y-m-d H:i:s");
+
             $saveBaseLine = $lineaBaseMdl->insert($data);
         }else{
+
+            $data['Modificado_Por'] = $session->Id_Usuario;
+            $data['Fecha_Mod'] = date("Y-m-d H:i:s");
+
             $saveBaseLine = $lineaBaseMdl->update($idBaseLine,$data);
         }
 

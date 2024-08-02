@@ -56,6 +56,7 @@ class LineaBaseMdl extends Model
             Id_Linea_Base,
             Id_Ubicacion,
             Id_Inspeccion,
+            Id_Inspeccion_Det,
             Estatus,
             DATE_FORMAT(Fecha_Creacion,"%d/%m/%Y") as Fecha_Creacion,
             MTA,

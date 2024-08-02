@@ -251,9 +251,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
 
     $(".inputTextImg").keypress((event) => {
-      //console.log(event.target.parentElement)
-      //console.log(contenedorImgSeleccionado)
-      //console.log(Archivo_ID.value)
+      ////console.log(event.target.parentElement)
+      ////console.log(contenedorImgSeleccionado)
+      ////console.log(Archivo_ID.value)
       setTimeout(() => {
         event.target.parentElement.click();  
       }, 1250);
@@ -297,7 +297,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   // Creamos el treeView
   function crear_treeview(datos_treeview){
-    //console.log(datos_treeview)
+    ////console.log(datos_treeview)
     TreeView = $('#treeview').treeview({
       expandIcon: 'fas fa-plus', /* icono para expandir */
       collapseIcon: 'fas fa-minus', /* icono para colapsar */
@@ -312,11 +312,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     /* Eventos del treeView */
     TreeView.on('nodeSelected', function(event, node) {
-      //console.log(event)
+      ////console.log(event)
       // Limpiamos el array para agregar nuevos id para filtrar
       arrayUbicacionesFiltro = []
-      //console.log(node)
-      // //console.log(arrayUbicacionesFiltro)
+      ////console.log(node)
+      // ////console.log(arrayUbicacionesFiltro)
       nodoSeleccionado.estatus = true;
       nodoSeleccionado.esEquipo = node.Es_Equipo == 'SI' ? true : false ;
       nodoSeleccionado.Nivel_arbol = parseInt(node.level) + 1;
@@ -328,7 +328,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       // Op ternario para guardar los nodos de los items en nodosTreeView y enviarlos al jsGrid,
       // si no tiene nodos la variable nodosTreeView se va como un arreglo vacio para mostrar mensaje de lista vacia
       node.nodes == null ? nodosTreeView = [] : nodosTreeView = node.nodes;
-      //console.log(nodosTreeView)
+      ////console.log(nodosTreeView)
       JsGridInventario.jsGrid("loadData",{ data : nodosTreeView});
 
       // Agregamos el id del elemento actual
@@ -371,9 +371,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
         type: 'POST',
         dataType: "json",
         success: function(data){
-          // //console.log(dataGridProblemas)
-          //console.log(data)
-          //console.log(data.length)
+          // ////console.log(dataGridProblemas)
+          ////console.log(data)
+          ////console.log(data.length)
 
           if (data.length > 0) {
 
@@ -444,7 +444,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
           return filter.data
         },
         deleteItem: function(item) {
-          //console.log(item)
+          ////console.log(item)
           return $.ajax({
             url: "/inventarios/borrar/"+item.Id_Inspeccion_Det,
             dataType: 'json',
@@ -460,13 +460,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
               })
             },
             error: function (err) {
-              //console.log(err);
+              ////console.log(err);
             }
           });
         },
       },
       rowDoubleClick: function(args){
-        //console.log(args.item)
+        ////console.log(args.item)
         // Cargamos el historial del base line
         JsGridBaseLine.jsGrid("loadData",{ data : []});
         cargarDataJsGridBaseLine(args.item.id)
@@ -498,7 +498,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             var btnEliminarItem = $("<button>")
             .click(function(e) {
               validar_eliminacion_ubicacion(item.Id_Inspeccion_Det, item.id).then((validacion) => {
-                //console.log(validacion.status)
+                ////console.log(validacion.status)
 
                 if(validacion.status){
                   Swal.fire({
@@ -540,7 +540,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function validar_eliminacion_ubicacion(id_insp_det, id_ubicacion){
-    // //console.log(id)
+    // ////console.log(id)
     return new Promise((resolve, reject) => {
       $.ajax({
         url: `/inventarios/validar_eliminacion_ubicacion/${id_insp_det}/${id_ubicacion}`,
@@ -582,7 +582,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     unselectedNodo()
 
     limpiar_frm_ubicaciones_baseline();
-    //console.log(datos_treeview_iniciales)
+    ////console.log(datos_treeview_iniciales)
     // if(datos_treeview_iniciales != ''){
     //   if (datos_treeview_iniciales[0].text == 'No Members is presnt in list'){
     //     datos_treeview_iniciales = [];
@@ -602,18 +602,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function limpiarChecksEstatus(){
-    //console.log('primer paso limpiar')
+    ////console.log('primer paso limpiar')
 
     // // if (!document.querySelector("#checkLista").checked){
-    // //   //console.log('en el tree')
-    // //   //console.log(elementosSeleccionadosTree)
+    // //   ////console.log('en el tree')
+    // //   ////console.log(elementosSeleccionadosTree)
     // // }else{
     // //   elementosSeleccionadosJsGrid = [];
-    // //   //console.log('en el jsGrid')
+    // //   ////console.log('en el jsGrid')
     // //   $('input[type=checkbox][name="checkUbicacionesJsGrid"]:checked').each(function() {
     // //     elementosSeleccionadosJsGrid.push($(this).val());
     // //   });
-    // //   //console.log(elementosSeleccionadosJsGrid)
+    // //   ////console.log(elementosSeleccionadosJsGrid)
     // // }
 
     // TreeView.treeview('uncheckAll', { silent: $('#chk-check-silent').is(':checked') });
@@ -626,7 +626,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function nuevoRegistro(){
-    //console.log(nodoSeleccionado)
+    ////console.log(nodoSeleccionado)
     if(!nodoSeleccionado.esEquipo){
       $('#modalAgregarUbicacion').modal('show');
     }else{
@@ -671,7 +671,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       var formData = new FormData(document.getElementById("FormInventarios"));
 
       var objetformData = formDataToObjet(formData);
-      //console.log(objetformData)
+      ////console.log(objetformData)
 
       $.ajax({
         data: formData,
@@ -681,7 +681,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         processData: false,
         contentType: false,
         success: function (res) {
-          //console.log(res)
+          ////console.log(res)
           // creamos de nuevo el treeview actualizado
           cargar_datos_treeview().then(() => {
             ubicar_nodo()
@@ -696,7 +696,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
           })
         },
         error: function (err) {
-          //console.log(err);
+          ////console.log(err);
         }
       });
     }
@@ -707,45 +707,45 @@ window.addEventListener('DOMContentLoaded', (event) => {
   function ubicar_nodo(es_problema = false) {
     let element_list = document.querySelector(`[data-nodeid="${nodoSeleccionado.nodeId}"]`);
 
-    //console.log(element_list)
+    ////console.log(element_list)
     // if (element_list === null) {
-    //   //console.log("sin nodo seleccionado")
+    //   ////console.log("sin nodo seleccionado")
     //   return;
     // }
 
     if (es_problema) {
-      //console.log("entro al if")
-      //console.log(element_list)
+      ////console.log("entro al if")
+      ////console.log(element_list)
       $('#treeview').treeview('revealNode',[ nodoSeleccionado.nodeId ,{ silent: true }]);
-      //console.log("1")
+      ////console.log("1")
       element_list.click()
-      //console.log("2")
+      ////console.log("2")
       return;
     }
 
-    //console.log("No entro al if")
+    ////console.log("No entro al if")
 
     /* de los datos del nodo que se selecciono le sumamos 1 al nodeid que se genera y
     se expande el tree para mostrar ese elemento nuevo generado */
-    //console.log(nodoSeleccionado.nodeId)
+    ////console.log(nodoSeleccionado.nodeId)
     if (nodoSeleccionado.nodeId == undefined || nodoSeleccionado.nodeId == null) {
-      //console.log("nada seleccionado")
+      ////console.log("nada seleccionado")
       return;
     }
     nodoSeleccionado.nodeId++
     $('#treeview').treeview('revealNode',[ nodoSeleccionado.nodeId ,{ silent: true }]);
-    //console.log(nodoSeleccionado.nodeId)
+    ////console.log(nodoSeleccionado.nodeId)
     /* Para mostrar los elementos que contiene el nodo seleccionado volvemos a quitarle 1
     y ejecutamos el click simulando la selccion para cargar los datos en el jsgrid */
     nodoSeleccionado.nodeId--
     element_list = document.querySelector(`[data-nodeid="${nodoSeleccionado.nodeId}"]`);
     element_list.click()
-    //console.log(nodoSeleccionado.nodeId)
+    ////console.log(nodoSeleccionado.nodeId)
   }
 
   function editarUbicacion(args){
     let item = args.item;
-    //console.log(item)
+    ////console.log(item)
 
     document.querySelector("#FormInventarios").removeAttribute("action");
     document.querySelector("#FormInventarios").setAttribute("action",`/inventarios/update`);
@@ -775,7 +775,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   // Función que restablece todo el form
   function limpiar_frm_ubicaciones_baseline(){
-    //console.log('se cerro mdl');
+    ////console.log('se cerro mdl');
     colocarRuta('pathUbicacion');
     
     // Limpia los valores del form
@@ -793,8 +793,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function unselectedNodo(){
-    //console.log('deseleccionando nodo')
-    //console.log(nodoSeleccionado)
+    ////console.log('deseleccionando nodo')
+    ////console.log(nodoSeleccionado)
     // Limpiamos el array para agregar nuevos id para filtrar
     arrayUbicacionesFiltro = []
     // Limpiamos las variables para el alta de un problema
@@ -869,7 +869,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   // PROBLEMAS
   function nuevoProblema(){
-    //console.log(nodoSeleccionado)
+    ////console.log(nodoSeleccionado)
     // Validamos que este seleccionado algun elemento del treeview  
     if(nodoSeleccionado.estatus){
       // Si está seleccionado algun elemento del treeview entonce procedemos a validar si tiene Baseline
@@ -922,7 +922,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function validar_crear_problema_ubicacion(id){
-    //console.log(id)
+    ////console.log(id)
     return new Promise((resolve, reject) => {
       $.ajax({
         url: `/inventarios/validar_crear_problema_ubicacion/${id}`,
@@ -940,7 +940,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   function validar_crear_baseline(){
     onlyClick(btnNuevoBaseLine)
-    //console.log(id_inspeccion_det_bl_respaldo)
+    ////console.log(id_inspeccion_det_bl_respaldo)
     return new Promise((resolve, reject) => {
       $.ajax({
         url: `/inventarios/validar_crear_baseline/${id_inspeccion_det_bl_respaldo}`,
@@ -982,13 +982,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
           document.querySelector('#Numero_Problema').value = (parseInt(valoresDefaulProblema.Numero_Problema) + 1);
           valoresCheckProblemas(valoresDefaulProblema);
         }else{
-          //console.log('entro el else')
+          ////console.log('entro el else')
           document.querySelector('#Numero_Problema').value = 1;
         }
     
       },
       error: function (err) {
-        //console.log(err);
+        ////console.log(err);
       }
     });
 
@@ -1179,8 +1179,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   function guardarDatosProblema(){
     onlyClick(btnGuardarProblema)
-    //console.log(idInspeccion_Det)
-    //console.log(idUbicacion)
+    ////console.log(idInspeccion_Det)
+    ////console.log(idUbicacion)
     if($("#FrmProblemas").valid() && Ir_File.value != '' && Photo_File.value != ''){
 
       // Obtenemos la operacion a realizar create ó update
@@ -1220,7 +1220,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             success: function (res) {
             },
             error: function (err) {
-              //console.log(err);
+              ////console.log(err);
             }
           });
 
@@ -1241,7 +1241,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
           processData: false,
           contentType: false,
           success: function (res) {
-            //console.log(form_action)
+            ////console.log(form_action)
             cargarDataJsGridProblemas()
   
             if (form_action != '/inventarios/updateProblema') {
@@ -1261,7 +1261,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             $('#modalProblemas').modal('hide');
           },
           error: function (err) {
-            //console.log(err);
+            ////console.log(err);
           }
         });
       }
@@ -1287,13 +1287,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
       processData: false,
       contentType: false,
       success: function (res) {
-        console.log(res)
+        //console.log(res)
         dataGridProblemas = res;
         filtrarProblemas()
         // JsGridProblemas.jsGrid("loadData",{ data : res});
       },
       error: function (err) {
-        //console.log(err);
+        ////console.log(err);
       }
     });
   }
@@ -1334,17 +1334,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
               })
             },
             error: function (err) {
-              //console.log(err);
+              ////console.log(err);
             }
           });
         },
       },
       rowDoubleClick: function(args){
-        console.log(args.item)
+        //console.log(args.item)
         dataFilasJsGridProblemas = $("#jsGridProblemas").jsGrid("option", "data");
         totalFIlasProblemas = dataFilasJsGridProblemas.length - 1;
         // filaActualJsGridProblemas = args.itemIndex;
-        // console.log(filaActualJsGridProblemas)
+        // //console.log(filaActualJsGridProblemas)
 
         // Limpiamos el arreglo con los problemas que se van a ir editando
         arrayFormsProblemasEditar = [];
@@ -1444,12 +1444,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function ajustesEditarProblema(){
-    // console.log(listaProblemasParaEditar)
+    // //console.log(listaProblemasParaEditar)
     var valoresItem = listaProblemasParaEditar[filaActualJsGridProblemas];
-    // console.log('desdeaqui miau')
-    // console.log(valoresItem)
-    //console.log(valoresItem.numInspeccion)
-    //console.log(strNumInspeccion.value)
+    // //console.log('desdeaqui miau')
+    // //console.log(valoresItem)
+    ////console.log(valoresItem.numInspeccion)
+    ////console.log(strNumInspeccion.value)
     // Mostramos Botones de navegacion
     document.querySelector("#contenedorBtnNavegacionProblemas").style.display = ""
 
@@ -1556,7 +1556,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function editarProblemaVisual(item){
-    // //console.log(item)
+    // ////console.log(item)
     // Mostramos la fila con los datos con los campos de numero idInspeccion
     // numero problema, tipo de inpeccion y equipo
     document.querySelector('#rowEditVisual').style.display = 'block';
@@ -1646,7 +1646,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function limpiarFrmProblemas(){
-    //console.log('se cerro mdl')
+    ////console.log('se cerro mdl')
     // Asignacion de valores para el alta de un problema
     idInspeccion_Det = "";
     idUbicacion = "";
@@ -1759,8 +1759,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
       newdata = newdata;
     }
 
-    console.log('desdes el filtro')
-    console.log(newdata)
+    //console.log('desdes el filtro')
+    //console.log(newdata)
 
     // MOSTRANDO PROBLEMAS FILTRADOS
     JsGridProblemas.jsGrid("loadData",{ data : newdata});
@@ -1775,8 +1775,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
       dataType: 'json',
       data: {Id_Inspeccion: idInspeccion, Id_Tipo_Inspeccion: Id_Tipo_Inspeccion.value, id_ubicacion_original: id_ubicacion_original_referencia.value},
       success: function (data) {
-        //console.log(data)
-        //console.log(data.id_inspeccion_detalle_actual.Id_Inspeccion_Det)
+        ////console.log(data)
+        ////console.log(data.id_inspeccion_detalle_actual.Id_Inspeccion_Det)
         
         
         let num_problema_anterior = data.numero_problema_actual;
@@ -1804,7 +1804,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
       },
       error: function (err) {
-        //console.log(err);
+        ////console.log(err);
       }
     });
   }
@@ -1888,7 +1888,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         JsGridHistorialProblemas.jsGrid("loadData",{ data : res});
       },
       error: function (err) {
-        //console.log(err);
+        ////console.log(err);
       }
     });
   }
@@ -1931,13 +1931,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
               cargarDataJsGridBaseLine()
             },
             error: function (err) {
-              //console.log(err);
+              ////console.log(err);
             }
           });
         },
       },
       rowDoubleClick: function(args){
-        console.log(args)
+        //console.log(args)
         dataFilasJsGridBaseLine = $("#jsGridBaseLine").jsGrid("option", "data");
         totalFIlasBaseLine = dataFilasJsGridBaseLine.length - 1;
         filaActualJsGridBaseLine = args.itemIndex;
@@ -2005,14 +2005,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
         if(ubicacionBL != ""){
           JsGridBaseLine.jsGrid("loadData",{ data : res});
         }else{
+          //console.log('cargando datos')
+          //console.log(res)
+          res.sort((a, b) => new Date(a.Fecha_Creacion_sinFormato) - new Date(b.Fecha_Creacion_sinFormato));
           JsGridListaBaseLine.jsGrid("loadData",{ data : res});
           // Datos para filtrar baseline por ubicacion del treeview
           datos_base_line_filtro = res;
-          //console.log(datos_base_line_filtro)
+          ////console.log(datos_base_line_filtro)
         }
       },
       error: function (err) {
-        //console.log(err);
+        ////console.log(err);
       }
     });
   }
@@ -2024,38 +2027,76 @@ window.addEventListener('DOMContentLoaded', (event) => {
       var form_action = $("#FormBaseLine").attr("action");
       // Guardamos el form con los input file para subir archivos
       var formData = new FormData(document.getElementById("FormBaseLine"));
-      // formData.append('Id_Inspeccion',idInspeccion);
-      // formData.append('Id_Ubicacion',Id_Ubicacion.value);
 
-      console.log(form_action)
+      if(Id_Linea_Base.value != 0){
+        alertLodading('Guardando cambios...')
 
-      $.ajax({
-        data: formData,
-        url: form_action,
-        type: "POST",
-        dataType: 'json',
-        processData: false,
-        contentType: false,
-        success: function (res) {
-          // creamos de nuevo el treeview actualizado
-          cargar_datos_treeview().then(() => {
-            ubicar_nodo()
+        arrayFormsBaseLineEditar.push(formDataToObjet(formData))
+        
+        arrayFormsBaseLineEditar.forEach((datos_BL) => {
+          let formData_editar_bl = new FormData();
+
+          for (let key in datos_BL) {
+            formData_editar_bl.append(key, datos_BL[key]);
+          }
+
+          $.ajax({
+            data: formData_editar_bl,
+            url: form_action,
+            type: "POST",
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function (res) {
+            },
+            error: function (err) {
+              ////console.log(err);
+            }
           });
-          // Se actualiza la tabla del modal y tambien la lista de baseline
-          cargarDataJsGridBaseLine(Id_Ubicacion.value)
-          cargarDataJsGridBaseLine()
-          // Mostramos mensaje de operacion exitosa
-          Toast.fire({
-            icon: 'success',
-            title: 'Agregado'
-          })
-          
-          $('#modalBaseLine').modal('hide');
-        },
-        error: function (err) {
-          //console.log(err);
-        }
-      });
+        
+        })
+
+        // creamos de nuevo el treeview actualizado
+        cargar_datos_treeview().then(() => {
+          ubicar_nodo()
+        });
+        // Se actualiza la tabla del modal y tambien la lista de baseline
+        cargarDataJsGridBaseLine(Id_Ubicacion.value)
+        cargarDataJsGridBaseLine()
+
+        cerrarAlertLoading('Cambios guardados')
+        $('#modalBaseLine').modal('hide');
+      }else{
+
+        $.ajax({
+          data: formData,
+          url: form_action,
+          type: "POST",
+          dataType: 'json',
+          processData: false,
+          contentType: false,
+          success: function (res) {
+            // creamos de nuevo el treeview actualizado
+            cargar_datos_treeview().then(() => {
+              ubicar_nodo()
+            });
+            // Se actualiza la tabla del modal y tambien la lista de baseline
+            cargarDataJsGridBaseLine(Id_Ubicacion.value)
+            cargarDataJsGridBaseLine()
+            // Mostramos mensaje de operacion exitosa
+            Toast.fire({
+              icon: 'success',
+              title: 'Agregado'
+            })
+            
+            $('#modalBaseLine').modal('hide');
+          },
+          error: function (err) {
+            ////console.log(err);
+          }
+        });
+      
+      }
     }
   };
 
@@ -2116,7 +2157,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function limpiarFrmBaseLine(){
-    //console.log('se cerro mdl')
+    ////console.log('se cerro mdl')
     // Limpia los valores del form
     $('#FormBaseLine')[0].reset();
     // Quita los mensajes de error y limpia los valodes del form
@@ -2181,7 +2222,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         JsGridHistorialInspecciones.jsGrid("loadData",{ data : res});
       },
       error: function (err) {
-        //console.log(err);
+        ////console.log(err);
       }
     });
   }
@@ -2202,7 +2243,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         crearSelectFallaProblemas('0D32B333-76C3-11D3-82BF-00104BC75DC2',"hazard_Issue");
       },
       error: function (error) {
-        //console.log(error);
+        ////console.log(error);
       },
     });
 
@@ -2232,7 +2273,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       data:{Id_Inspeccion: idInspeccion},
       success: function (data){
         var inputImg = event.target.previousElementSibling.previousElementSibling;
-        //console.log(inputImg)
+        ////console.log(inputImg)
         if(inputImg.classList.contains('inputIR')) {
           inputImg.value = data.irImg;
         }else{
@@ -2242,7 +2283,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         event.target.previousElementSibling.firstElementChild.click()
       },
       error: function (error) {
-        //console.log(error);
+        ////console.log(error);
       },
     });
 
@@ -2319,7 +2360,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       processData: false,
       contentType: false,
       success: function (res) {
-        //console.log(res);
+        ////console.log(res);
         document.querySelector("#imagenes").value = "";
         explorarArchivos();
         Toast.fire({
@@ -2328,7 +2369,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         })
       },
       error: function (err) {
-        //console.log(err);
+        ////console.log(err);
       }
     });
 
@@ -2385,7 +2426,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
       },
       error: function (err) {
-        //console.log(err);
+        ////console.log(err);
       }
     });
   };
@@ -2422,7 +2463,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
               })
             },
             error: function (err) {
-              //console.log(err);
+              ////console.log(err);
             }
           });
         }
@@ -2462,21 +2503,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function ubicarTextImg(event){
-    //console.log("identificando quien fue")
+    ////console.log("identificando quien fue")
     if(event.target.classList.contains('fas')) {
-      //console.log("icono")
+      ////console.log("icono")
       inputImgStr = event.target.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling;
     }else{
-      //console.log("boton")
+      ////console.log("boton")
       inputImgStr = event.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling;
     }
-    //console.log(inputImgStr)
+    ////console.log(inputImgStr)
   }
 
   function datosImg(elemento, nombreImg, idInspeccionImg = idInspeccion, numInspeccionImg = strNumInspeccion.value){
     elemento.nextElementSibling.innerHTML = "";
     let rutaImg= `Archivos_ETIC/inspecciones/${numInspeccionImg}/Imagenes/${nombreImg}`;
-    //console.log(rutaImg)
+    ////console.log(rutaImg)
     elemento.src = rutaImg;
 
     $.ajax({
@@ -2502,10 +2543,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
   
   function cambiarEstatusUbicacion(idUbicacionDet){
     
-  //console.log('cambiando color')  
-    //console.log(selectEstatus)
-    //console.log(selectEstatus.value)
-    //console.log(idUbicacionDet)
+  ////console.log('cambiando color')  
+    ////console.log(selectEstatus)
+    ////console.log(selectEstatus.value)
+    ////console.log(idUbicacionDet)
 
     if(selectEstatus.value == ""){
       limpiarChecksEstatus()
@@ -2528,7 +2569,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     allNodes = allCollapsedNodes.concat(allExpandedNodes);
 
 
-    // console.log(allExpandedNodes)
+    // //console.log(allExpandedNodes)
 
 
 
@@ -2547,7 +2588,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     // Filtrando para encontrar el nodo con el codigo de barra
     let nodo_que_coincide = allNodes.filter(nodo => nodo.Id_Inspeccion_Det == idUbicacionDet);
-    //console.log(nodo_que_coincide)
+    ////console.log(nodo_que_coincide)
     // Ubicando el nodo en el treeview expandiendo
     TreeView.treeview('revealNode', [ nodo_que_coincide[0].nodeId, { silent: true,highlighting:true } ]);
     
@@ -2572,28 +2613,28 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         rowJsGridInventario.innerHTML= textEstatus[0];
 
-        console.log('expandiendo')
+        //console.log('expandiendo')
         cargar_datos_treeview().then(() => {
           allExpandedNodes.forEach((nodo)=>{
-            // console.log(nodo.nodeId)
+            // //console.log(nodo.nodeId)
             $('#treeview').treeview('expandNode', [nodo.nodeId]);
           })
           $('#treeview').treeview('selectNode', [ seleccionadito[0].nodeId]);
         })
       },
       error: function (error) {
-        //console.log(error);
+        ////console.log(error);
       },
     });
 
   }
 
   function checkedJsGrid(event){
-    //console.log('fueradel if check')
-    //console.log(event.target)
+    ////console.log('fueradel if check')
+    ////console.log(event.target)
     if(event.target.classList.contains('checkBoxEstatusJsGrid') && event.target.checked){
-      //console.log('dentro del if check')
-      //console.log(event.target)
+      ////console.log('dentro del if check')
+      ////console.log(event.target)
       rowJsGridInventario = event.target.parentElement.parentElement.nextSibling.nextSibling;
       cambiarEstatusUbicacion(event.target.value);
     }
@@ -2637,13 +2678,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
               cargarDataJsGridBaseLine();
             },
             error: function (err) {
-              //console.log(err);
+              ////console.log(err);
             }
           });
         },
       },
       rowDoubleClick: function(args){
-        console.log(args.item)
+        //console.log(args)
         dataFilasJsGridBaseLine = $("#jsGridListaBaseLine").jsGrid("option", "data");
         totalFIlasBaseLine = dataFilasJsGridBaseLine.length - 1;
         // filaActualJsGridBaseLine = args.itemIndex;
@@ -2710,12 +2751,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function editarBaseLine(){
-    
     let idinspeccioneBl = dataFilasJsGridBaseLine[filaActualJsGridBaseLine].Id_Inspeccion;
     let numInspeccionBl = dataFilasJsGridBaseLine[filaActualJsGridBaseLine].numInspeccion;
     let imgIrBl = dataFilasJsGridBaseLine[filaActualJsGridBaseLine].Archivo_IR;
     let imgDigBl = dataFilasJsGridBaseLine[filaActualJsGridBaseLine].Archivo_ID;
     
+    document.querySelector("#Id_Inspeccion_Det_BL").value = dataFilasJsGridBaseLine[filaActualJsGridBaseLine].Id_Inspeccion_Det
     document.querySelector("#Id_Linea_Base").value = dataFilasJsGridBaseLine[filaActualJsGridBaseLine].Id_Linea_Base;
     document.querySelector("#Id_InspeccionBL").value = idinspeccioneBl;
     document.querySelector("#Id_UbicacionBL").value = dataFilasJsGridBaseLine[filaActualJsGridBaseLine].Id_Ubicacion;
@@ -2751,9 +2792,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     var formData = new FormData(document.getElementById("FormBaseLine"));
     let datosBaseLineEnELForm = formDataToObjet(formData)
+    dataFilasJsGridBaseLine[filaActualJsGridBaseLine].Notas = datosBaseLineEnELForm.NotasBL;
 
-    arrayFormsBaseLineEditar[filaActualJsGridBaseLine] = {
-      ...arrayFormsBaseLineEditar[filaActualJsGridBaseLine],
+    arrayFormsBaseLineEditar = arrayFormsBaseLineEditar.filter(item => item.Id_Linea_Base != datosBaseLineEnELForm.Id_Linea_Base);
+    arrayFormsBaseLineEditar.push(datosBaseLineEnELForm);
+
+    dataFilasJsGridBaseLine[filaActualJsGridBaseLine] = {
+      ...dataFilasJsGridBaseLine[filaActualJsGridBaseLine],
       ...datosBaseLineEnELForm
     };
 
@@ -2789,8 +2834,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     arrayFormsProblemasEditar = arrayFormsProblemasEditar.filter(item => item.Id_Problema != datosDelProblemaEnELForm.Id_Problema);
     arrayFormsProblemasEditar.push(datosDelProblemaEnELForm);
-    // listaProblemasParaEditar[filaActualJsGridProblemas] = datosDelProblemaEnELForm;
-    // listaProblemasParaEditar.push(datosDelProblemaEnELForm);
 
     // Modificar las propiedades existentes y agregar las propiedades que no estén
     listaProblemasParaEditar[filaActualJsGridProblemas] = {
@@ -2798,14 +2841,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
       ...datosDelProblemaEnELForm
     };
     
-    
-    console.log('viendo index antes de sum o rest------------------------------')
-    console.log(filaActualJsGridProblemas)
-    console.log('viendo el array editar------------------------------')
-    console.log(arrayFormsProblemasEditar)
-    console.log('viendo el array origina con todos los problemas------------------------------')
-    console.log(listaProblemasParaEditar)
-
     if (btnClick.id == "btnSiguienteProblemas" && filaActualJsGridProblemas < totalFIlasProblemas) {
       filaActualJsGridProblemas = filaActualJsGridProblemas + 1;
     } else if (btnClick.id == "btnAtrasProblemas" && filaActualJsGridProblemas > 0) {
@@ -2989,7 +3024,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       
       let arregloOriginal = arrayElementosParaReporte,
       arreglo_problemas_partes = []; // Aquí almacenamos los nuevos arreglos
-      // //console.log("Arreglo original: ", arregloOriginal);
+      // ////console.log("Arreglo original: ", arregloOriginal);
       const LONGITUD_PEDAZOS = 25; // Partir en arreglo de 3
       for (let i = 0; i < arregloOriginal.length; i += LONGITUD_PEDAZOS) {
         let pedazo = arregloOriginal.slice(i, i + LONGITUD_PEDAZOS);
@@ -3014,7 +3049,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             resolve();
           },
           error: function (error) {
-            //console.log(error)
+            ////console.log(error)
           },
         });
 
@@ -3135,7 +3170,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       data:'',
       dataType: 'json',
       success: function (data){
-        //console.log(data[0])
+        ////console.log(data[0])
 
         nombre_contacto_1.value = data[0].Contacto_1;
         puesto_contacto_1.value = data[0].Puesto_Contacto_1;
@@ -3148,7 +3183,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
       },
       error: function (error) {
-        //console.log(error);
+        ////console.log(error);
       },
     });
 
@@ -3163,7 +3198,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         data:'',
         dataType: 'json',
         success: function (data){
-          //console.log(data)
+          ////console.log(data)
           /* si no hay nigun dato guardado anteriormente para el reporte
           entonces carga solo los contactos del sitio */
           if (data === null || data.length < 1) {
@@ -3356,7 +3391,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         },
         error: function (error) {
-          //console.log(error);
+          ////console.log(error);
           reject()
         },
       });
@@ -3373,12 +3408,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function camposReporeteResultados(event){
-    //console.log(event.target)
+    ////console.log(event.target)
     let elemento_click_RA = event.target;
     let contenedorElementosRA = event.target.parentElement.previousElementSibling;
-    //console.log(contenedorElementosRA)
+    ////console.log(contenedorElementosRA)
 
-    // //console.log(contenedorElementosRA)
+    // ////console.log(contenedorElementosRA)
 
     let div_contenedor = document.createElement('div');
     div_contenedor.classList.add("input-group","input-group-sm","mt-1");
@@ -3503,7 +3538,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         elemento_click_RA.parentElement.previousElementSibling.value = "";
       break;
       case elemento_click_RA.classList.contains("btnModalArchivos_recomendacion") || elemento_click_RA.classList.contains("fa-folder-open"):
-        //console.log("entro acaa")
+        ////console.log("entro acaa")
         ubicarTextImg(event)
       break;
     }
@@ -3516,7 +3551,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // Limpiando el contenedorContactos
     contenedorContactos.innerHTML = "";
 
-    //console.log(contactos)
+    ////console.log(contactos)
 
     contactos.forEach(contacto => {
       contenedorContactos.innerHTML += `<div class="row mb-1">
@@ -3595,7 +3630,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   function preparacion_reporte_resultado_analisis(){
     // window.open(`/inventarios/datosResultadoDeAnalisis`);
     if($("#FrmInfoReporteResultadoAnalisis").valid()){
-      //console.log("entrando ala generacion")
+      ////console.log("entrando ala generacion")
       onlyClick(btnGenerarReporteAnalisis)
 
       Swal.fire({
@@ -3661,7 +3696,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
           }, 850);
         },
         error: function (err) {
-          //console.log(err)
+          ////console.log(err)
           cerrarAlertLoading("Error al generar el reporte")
         }
       });
@@ -3969,7 +4004,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
           
           let arregloOriginal = res,
           arregloDeArreglos_bl = []; // Aquí almacenamos los nuevos arreglos
-          // //console.log("Arreglo original: ", arregloOriginal);
+          // ////console.log("Arreglo original: ", arregloOriginal);
           const LONGITUD_PEDAZOS = 25; // Partir en arreglo de 3
           for (let i = 0; i < arregloOriginal.length; i += LONGITUD_PEDAZOS) {
             let pedazo = arregloOriginal.slice(i, i + LONGITUD_PEDAZOS);
@@ -3994,7 +4029,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 resolve('succes');
               },
               error: function (error) {
-                //console.log(error)
+                ////console.log(error)
               },
             });
           })
@@ -4009,7 +4044,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
   
   function obtener_orden_ubicaciones(arreglo){
-    // //console.log(arreglo)
+    // ////console.log(arreglo)
     arreglo.forEach(element => {
       arrayUbicacionesOrdenadas.push(element.id)
       if (element.hasOwnProperty('nodes')){
@@ -4043,7 +4078,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             resolve();
           },
           error: function (error) {
-            //console.log(error)
+            ////console.log(error)
             reject(error)
           },
         });
@@ -4108,7 +4143,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function limpiarFrmFechasExcelProblemas(){
-    //console.log('se cerro mdl')
+    ////console.log('se cerro mdl')
     // Limpia los valores del form
     $('#frm_seleccionar_fechas_excel_problemas')[0].reset();
     // Quita los mensajes de error y limpia los valodes del form
@@ -4122,7 +4157,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       
       let fecha_inicio = document.querySelector("#fecha_inicio_reporte_excel").value;
       let fecha_fin = document.querySelector("#fecha_fin_reporte_excel").value;
-      //console.log(fecha_fin);
+      ////console.log(fecha_fin);
       $.ajax({
         url: `/inventarios/generarReporteListaProblemasExcel/${fecha_inicio}/${fecha_fin}`,
         type: "POST",
@@ -4135,7 +4170,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
           $("#modal_fechas_reporte_excel_problemas").modal("hide");
         },
         error: function (err) {
-          //console.log(err)
+          ////console.log(err)
           Toast.fire({
             icon: 'error',
             title: 'Error al generar reporte'
@@ -4215,7 +4250,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
           $('#ghostbar').remove();
           $(document).unbind('mousemove');
           dragging = false;
-          //console.log("aqui")
+          ////console.log("aqui")
         //  $('.jsgrid-header-cell').trigger("click");
         $("#jsGridInventario").css('width', 'auto')
       }

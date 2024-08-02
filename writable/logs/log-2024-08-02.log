@@ -1,0 +1,16 @@
+CRITICAL - 2024-08-02 07:45:34 --> Undefined array key 0
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1053): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1053)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(768): App\Controllers\Inventarios->actualizarEstatusElementoPadre('undefined')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->guardarBaseLine()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2024-08-02 07:48:40 --> Undefined array key 0
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1053): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1053)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(768): App\Controllers\Inventarios->actualizarEstatusElementoPadre('0')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->guardarBaseLine()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
