@@ -14,3 +14,65 @@ CRITICAL - 2024-08-02 07:48:40 --> Undefined array key 0
 #4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #6 {main}
+CRITICAL - 2024-08-02 11:38:18 --> Cannot access offset of type string on string
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(783): App\Controllers\Inventarios->actualizarEstatusElementoPadre('173A0BA1-99CF-4...')
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->guardarBaseLine()
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2024-08-02 11:39:03 --> Cannot access offset of type string on string
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(783): App\Controllers\Inventarios->actualizarEstatusElementoPadre('173A0BA1-99CF-4...')
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->guardarBaseLine()
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2024-08-02 11:45:26 --> Undefined array key "Id_Status_Inspeccion_Det"
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1076): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1076)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(784): App\Controllers\Inventarios->actualizarEstatusElementoPadre('787EA580-EF8B-4...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->guardarBaseLine()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2024-08-02 11:46:10 --> Undefined array key "Id_Status_Inspeccion_Det"
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1076): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1076)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(784): App\Controllers\Inventarios->actualizarEstatusElementoPadre('787EA580-EF8B-4...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->guardarBaseLine()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2024-08-02 11:46:50 --> Undefined array key "Id_Status_Inspeccion_Det"
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1076): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1076)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(810): App\Controllers\Inventarios->actualizarEstatusElementoPadre('787EA580-EF8B-4...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->eliminarBaseLine('UY0OXAGR-BSFH-L...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2024-08-02 11:46:54 --> Undefined array key "Id_Status_Inspeccion_Det"
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1076): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1076)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(810): App\Controllers\Inventarios->actualizarEstatusElementoPadre('787EA580-EF8B-4...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->eliminarBaseLine('UY0OXAGR-BSFH-L...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2024-08-02 11:47:50 --> Undefined array key "Id_Status_Inspeccion_Det"
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1076): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1076)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(810): App\Controllers\Inventarios->actualizarEstatusElementoPadre('787EA580-EF8B-4...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->eliminarBaseLine('8EV1FNYB-3JGK-D...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2024-08-02 12:10:52 --> Undefined array key "Id_Status_Inspeccion_Det"
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1076): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1076)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(784): App\Controllers\Inventarios->actualizarEstatusElementoPadre('FF8E9F34-AD21-4...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->guardarBaseLine()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}

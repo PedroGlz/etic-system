@@ -768,18 +768,21 @@ class Inventarios extends BaseController{
         $saveBaseLine = !is_null($lineaBaseMdl->get($Id_Linea_Base_insert));
 
         if($saveBaseLine != false){
-            // Si se guarda el nuevo BL, se actualiza el estatus de la copia de las ubicaciones a TESTED
-            $updateDetalle = $inspeccionesDetMdl->update([
-                'Id_Inspeccion_Det_BL' => $this->request->getPost('Id_Inspeccion_Det_BL'),
-                'Id_InspeccionBL' => $this->request->getPost('Id_InspeccionBL'),
-            ],[
-                'Id_Status_Inspeccion_Det'=>"568798D2-76BB-11D3-82BF-00104BC75DC2",
-                'Id_Estatus_Color_Text'   =>"3",
-                'Modificado_Por'          =>$session->Id_Usuario,
-                'Fecha_Mod'               =>date("Y-m-d H:i:s"),
-            ]);
 
-            $this->actualizarEstatusElementoPadre($this->request->getPost('Id_Inspeccion_Det_BL'));
+            if($idBaseLine < 1){
+                // Si se guarda el nuevo BL, se actualiza el estatus de la copia de las ubicaciones a TESTED
+                $updateDetalle = $inspeccionesDetMdl->update([
+                    'Id_Inspeccion_Det_BL' => $this->request->getPost('Id_Inspeccion_Det_BL'),
+                    'Id_InspeccionBL' => $this->request->getPost('Id_InspeccionBL'),
+                ],[
+                    'Id_Status_Inspeccion_Det'=>"568798D2-76BB-11D3-82BF-00104BC75DC2",
+                    'Id_Estatus_Color_Text'   =>"3",
+                    'Modificado_Por'          =>$session->Id_Usuario,
+                    'Fecha_Mod'               =>date("Y-m-d H:i:s"),
+                ]);
+                
+                $this->actualizarEstatusElementoPadre($this->request->getPost('Id_Inspeccion_Det_BL'));
+            }
 
             echo json_encode(array("status" => true ));
         }else{
@@ -1068,9 +1071,11 @@ class Inventarios extends BaseController{
         
         if ($id_padre != "0") {
             $cuantosPorVerificar = $inventariosMdl->cuantosHijosSinInspeccionar($id_padre, $session->Id_Inspeccion);
-            $idInspeccionDetDelPadre = $inventariosMdl->getIdInspeccionDetPorIdPadre($id_padre, $session->Id_Inspeccion)[0]["Id_Inspeccion_Det"];
+            $datosDelPadre = $inventariosMdl->getIdInspeccionDetPorIdPadre($id_padre, $session->Id_Inspeccion);
+            $idInspeccionDetDelPadre = $datosDelPadre[0]["Id_Inspeccion_Det"];
+            $estatusDelPadre = $datosDelPadre[0]["Id_Status_Inspeccion_Det"];
+            
             // $estatusIdPadre = $inventariosMdl->getStatusPadre($id_padre, $session->Id_Inspeccion)[0]["Id_Status_Inspeccion_Det"];
-
             if ($cuantosPorVerificar > 0) {
                 $id_status_inspeccion_det = "568798D1-76BB-11D3-82BF-00104BC75DC2"; //estatus por verificado
                 $id_color_texto_inspeccion_det = 1; //color texto negro
@@ -1079,12 +1084,15 @@ class Inventarios extends BaseController{
                 $id_color_texto_inspeccion_det = 4; //color texto azul
             }
 
-            $updateEstatusPadre = $inspeccionesDetMdl->update($idInspeccionDetDelPadre,[
-                'Id_Status_Inspeccion_Det'=> $id_status_inspeccion_det,
-                'Id_Estatus_Color_Text'   => $id_color_texto_inspeccion_det,
-                'Modificado_Por'          =>$session->Id_Usuario,
-                'Fecha_Mod'               =>date("Y-m-d H:i:s")
-            ]);
+            if ( $estatusDelPadre != '568798D2-76BB-11D3-82BF-00104BC75DC2') {
+                # code...
+                $updateEstatusPadre = $inspeccionesDetMdl->update($idInspeccionDetDelPadre,[
+                    'Id_Status_Inspeccion_Det'=> $id_status_inspeccion_det,
+                    'Id_Estatus_Color_Text'   => $id_color_texto_inspeccion_det,
+                    'Modificado_Por'          =>$session->Id_Usuario,
+                    'Fecha_Mod'               =>date("Y-m-d H:i:s")
+                ]);
+            }
 
             $this->actualizarEstatusElementoPadre($idInspeccionDetDelPadre);
         }

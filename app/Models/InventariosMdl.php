@@ -85,6 +85,6 @@ class InventariosMdl extends Model
     }
 
     public function getIdInspeccionDetPorIdPadre($id_padre, $id_inspeccion){
-        return $this->table('v_ubicaciones_arbol')->select('Id_Inspeccion_Det')->where(['id' => $id_padre,'Id_Inspeccion' => $id_inspeccion])->findAll();
+        return $this->table('v_ubicaciones_arbol')->select('Id_Inspeccion_Det, Id_Status_Inspeccion_Det')->where(['id' => $id_padre,'Id_Inspeccion' => $id_inspeccion])->findAll();
     }
 }
