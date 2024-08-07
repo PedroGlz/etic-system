@@ -2864,94 +2864,7 @@ class ProcesoBD extends BaseController{
                 ,LastModified AS Fecha_Mod
             FROM '.$nombre_db.'.locationbaselines AS b_l;
 
-            INSERT INTO problemas
-            SELECT
-                UPPER(PIEProblemInspectionID) AS Id_Problema
-                ,UPPER((SELECT p.InspectionTypeID FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID))) AS Id_Tipo_Inspeccion
-                ,(SELECT ip.ProblemNo FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID) AS Numero_Problema
-                ,UPPER((SELECT CustomerSiteID FROM '.$nombre_db.'.inspections AS ins WHERE ins.InspectionID = (SELECT ip.InspectionID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID))) AS Id_Sitio
-                ,UPPER((SELECT ip.InspectionID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID)) AS Id_Inspeccion
-                ,UPPER((SELECT ip.InspectionDetailID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID)) AS Id_Inspeccion_Det
-                ,UPPER((SELECT p.LocationID FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID))) AS Id_Ubicacion
-                ,UPPER(ProblemPhaseID) AS Problem_Phase
-                ,UPPER(ReferencePhaseID) AS Reference_Phase
-                , ROUND(IF(ProblemTemperature != "",((ProblemTemperature - 32) / 1.8),ProblemTemperature)) AS Problem_Temperature
-                , ROUND(IF(ReferenceTemperature != "",((ReferenceTemperature - 32) / 1.8),ReferenceTemperature)) AS Reference_Temperature
-                ,TrueRMSLoad_A AS Problem_Rms
-                ,TrueRMSLoad_B AS Reference_Rms
-                ,UPPER(SecondReferencePhaseID) AS Additional_Info
-                ,TrueRMSLoad_C AS Additional_Rms
-                ,"off" AS Emissivity_Check
-                ,FreqOnNuetral AS Emissivity
-                ,"off" AS Indirect_Temp_Check
-                ,"off" AS Temp_Ambient_Check
-                , ROUND(IF(AmbientTemperature != "",((AmbientTemperature - 32) / 1.8),AmbientTemperature)) AS Temp_Ambient
-                ,"off" AS Environment_Check
-                ,UPPER(PIEEnvironmentID) AS Environment
-                ,(SELECT pf.IRFilename FROM '.$nombre_db.'.problemphotos AS pf WHERE pf.ProblemInspectionID = ppi.ProblemInspectionID) AS Ir_File
-                ,(SELECT DATE_FORMAT(pf.IRDate,"%d/%m/%Y") FROM '.$nombre_db.'.problemphotos AS pf WHERE pf.ProblemInspectionID = ppi.ProblemInspectionID) AS Ir_File_Date
-                ,(SELECT pf.IRTime FROM '.$nombre_db.'.problemphotos AS pf WHERE pf.ProblemInspectionID = ppi.ProblemInspectionID) AS Ir_File_Time
-                ,(SELECT pf.PhotoFIleName FROM '.$nombre_db.'.problemphotos AS pf WHERE pf.ProblemInspectionID = ppi.ProblemInspectionID) AS Photo_File
-                ,(SELECT DATE_FORMAT(pf.PhotoDate,"%d/%m/%Y") FROM '.$nombre_db.'.problemphotos AS pf WHERE pf.ProblemInspectionID = ppi.ProblemInspectionID) AS Photo_File_Date
-                ,(SELECT pf.PhotoTime FROM '.$nombre_db.'.problemphotos AS pf WHERE pf.ProblemInspectionID = ppi.ProblemInspectionID) AS Photo_File_Time
-                ,"off" AS Wind_Speed_Check
-                ,Windspeed AS Wind_Speed
-                ,UPPER((SELECT p.ManufacturerID FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID))) AS Id_Fabricante
-                ,"off" AS Rated_Load_Check
-                ,(SELECT p.PI4 FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID)) AS Rated_Load
-                ,"off" AS Circuit_Voltage_Check
-                ,(SELECT p.PI5 FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID)) AS Circuit_Voltage
-                ,UPPER((SELECT p.FaultID FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID))) AS Id_Falla
-                ,UPPER((SELECT p.EquipmentID FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID))) AS Id_Equipo
-                ,(SELECT p.ComponentComment FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID)) AS Component_Comment
-                ,(SELECT IF(p.ProblemStatus = 1,"Abierto","Cerrado") FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID)) AS Estatus_Problema
-                ,ROUND((IF(ProblemTemperature != "",((ProblemTemperature - 32) / 1.8),ProblemTemperature)) - (IF(ReferenceTemperature != "",((ReferenceTemperature - 32) / 1.8),ReferenceTemperature))) AS Aumento_Temperatura
-                ,UPPER((SELECT ProblemSeverityID FROM '.$nombre_db.'.problemseverity AS ps WHERE ps.ProblemSeverityID = ppi.ProblemSeverityID)) AS Id_Severidad
-                ,(SELECT IF(ip.DeleteFlag = 0,"Activo","Inactivo") FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID) AS Estatus
-                ,IFNULL((SELECT allpopen.LocationPath FROM '.$nombre_db.'.zrpt_AllOpenProblems AS allpopen WHERE allpopen.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID)),
-                (SELECT allpclose.LocationPath FROM '.$nombre_db.'.zrpt_AllClosedProblems AS allpclose WHERE allpclose.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID)))AS Ruta
-                #para sacar hazard type se enlaza a problems con el ProblemID al campo FaultType
-                ,UPPER((#SELECT p.FaultType FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (
-                SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID
-                    #)
-                )) AS hazard_Type
-                #para sacar Hazard Classification se enlaza a equipmentgroups con el ProblemID despues a equipment con el EquipmentID y despues a equipmentgroups con el EquipmentGroupID al campo Name
-                ,UPPER((#select eg.Name from '.$nombre_db.'.equipmentgroups as eg where eg.EquipmentGroupID = (
-                SELECT e.EquipmentGroupID FROM '.$nombre_db.'.equipment AS e WHERE e.EquipmentID = (
-                    SELECT p.EquipmentID FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (
-                        SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID
-                        )
-                    )
-                #)
-                )) AS hazard_Classification
-                #para sacar Hazard Group se enlaza a equipment, primero con el ProblemID despues a equipment con el EquipmentID al campo Name
-                ,UPPER((#SELECT e.Name FROM '.$nombre_db.'.equipment AS e WHERE e.EquipmentID = (
-                    SELECT p.EquipmentID FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (
-                        SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID
-                        )
-                    #)
-                )) AS hazard_Group
-                #para sacar Hazard Issue se enlaza a faults, primero con el ProblemID despues a faults con el FaultID al campo Fault
-                ,UPPER((#select f.Fault from '.$nombre_db.'.faults as f where f.FaultID = (
-                    SELECT p.FaultID FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (
-                        SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID
-                        )
-                    #)
-                )) AS hazard_Issue
-                ,"0" AS Rpm
-                ,"0" AS Bearing_Type
-                ,(SELECT IF(p.IsChronic = 1,"SI","NO") FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID)) AS Es_Cronico
-                ,UPPER((SELECT i.InspectionID FROM '.$nombre_db.'.inspections AS i WHERE i.InspectionNo = (
-                    SELECT p.ClosedOnInspectionNo FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (
-                        SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID
-                        )
-                    )
-                )) AS Cerrado_En_Inspeccion
-                ,UPPER(CreateUserID) AS Creado_Por
-                ,CreateDate AS Fecha_Creacion
-                ,UPPER(LastUserID) AS Modificado_Por
-                ,LastModified AS Fecha_Mod
-            FROM '.$nombre_db.'.pieprobleminspections AS ppi;
+            #aquí estaba el insert de la tabal de probelmas antes
 
             INSERT INTO severidades
             SELECT
@@ -3160,6 +3073,94 @@ class ProcesoBD extends BaseController{
                 ,Fecha_Mod
                 ,"flag_export" AS Id_Inspeccion
             FROM ubicaciones_temp AS ut;
+
+            INSERT INTO problemas
+            SELECT
+                UPPER(PIEProblemInspectionID) AS Id_Problema
+                ,UPPER((SELECT p.InspectionTypeID FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID))) AS Id_Tipo_Inspeccion
+                ,(SELECT ip.ProblemNo FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID) AS Numero_Problema
+                ,UPPER((SELECT CustomerSiteID FROM '.$nombre_db.'.inspections AS ins WHERE ins.InspectionID = (SELECT ip.InspectionID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID))) AS Id_Sitio
+                ,UPPER((SELECT ip.InspectionID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID)) AS Id_Inspeccion
+                ,UPPER((SELECT ip.InspectionDetailID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID)) AS Id_Inspeccion_Det
+                ,UPPER((SELECT p.LocationID FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID))) AS Id_Ubicacion
+                ,UPPER(ProblemPhaseID) AS Problem_Phase
+                ,UPPER(ReferencePhaseID) AS Reference_Phase
+                , ROUND(IF(ProblemTemperature != "",((ProblemTemperature - 32) / 1.8),ProblemTemperature)) AS Problem_Temperature
+                , ROUND(IF(ReferenceTemperature != "",((ReferenceTemperature - 32) / 1.8),ReferenceTemperature)) AS Reference_Temperature
+                ,TrueRMSLoad_A AS Problem_Rms
+                ,TrueRMSLoad_B AS Reference_Rms
+                ,UPPER(SecondReferencePhaseID) AS Additional_Info
+                ,TrueRMSLoad_C AS Additional_Rms
+                ,"off" AS Emissivity_Check
+                ,FreqOnNuetral AS Emissivity
+                ,"off" AS Indirect_Temp_Check
+                ,"off" AS Temp_Ambient_Check
+                , ROUND(IF(AmbientTemperature != "",((AmbientTemperature - 32) / 1.8),AmbientTemperature)) AS Temp_Ambient
+                ,"off" AS Environment_Check
+                ,UPPER(PIEEnvironmentID) AS Environment
+                ,(SELECT pf.IRFilename FROM '.$nombre_db.'.problemphotos AS pf WHERE pf.ProblemInspectionID = ppi.ProblemInspectionID) AS Ir_File
+                ,(SELECT DATE_FORMAT(pf.IRDate,"%d/%m/%Y") FROM '.$nombre_db.'.problemphotos AS pf WHERE pf.ProblemInspectionID = ppi.ProblemInspectionID) AS Ir_File_Date
+                ,(SELECT pf.IRTime FROM '.$nombre_db.'.problemphotos AS pf WHERE pf.ProblemInspectionID = ppi.ProblemInspectionID) AS Ir_File_Time
+                ,(SELECT pf.PhotoFIleName FROM '.$nombre_db.'.problemphotos AS pf WHERE pf.ProblemInspectionID = ppi.ProblemInspectionID) AS Photo_File
+                ,(SELECT DATE_FORMAT(pf.PhotoDate,"%d/%m/%Y") FROM '.$nombre_db.'.problemphotos AS pf WHERE pf.ProblemInspectionID = ppi.ProblemInspectionID) AS Photo_File_Date
+                ,(SELECT pf.PhotoTime FROM '.$nombre_db.'.problemphotos AS pf WHERE pf.ProblemInspectionID = ppi.ProblemInspectionID) AS Photo_File_Time
+                ,"off" AS Wind_Speed_Check
+                ,Windspeed AS Wind_Speed
+                ,UPPER((SELECT p.ManufacturerID FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID))) AS Id_Fabricante
+                ,"off" AS Rated_Load_Check
+                ,(SELECT p.PI4 FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID)) AS Rated_Load
+                ,"off" AS Circuit_Voltage_Check
+                ,(SELECT p.PI5 FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID)) AS Circuit_Voltage
+                ,UPPER((SELECT p.FaultID FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID))) AS Id_Falla
+                ,UPPER((SELECT p.EquipmentID FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID))) AS Id_Equipo
+                ,(SELECT p.ComponentComment FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID)) AS Component_Comment
+                ,(SELECT IF(p.ProblemStatus = 1,"Abierto","Cerrado") FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID)) AS Estatus_Problema
+                ,ROUND((IF(ProblemTemperature != "",((ProblemTemperature - 32) / 1.8),ProblemTemperature)) - (IF(ReferenceTemperature != "",((ReferenceTemperature - 32) / 1.8),ReferenceTemperature))) AS Aumento_Temperatura
+                ,UPPER((SELECT ProblemSeverityID FROM '.$nombre_db.'.problemseverity AS ps WHERE ps.ProblemSeverityID = ppi.ProblemSeverityID)) AS Id_Severidad
+                ,(SELECT IF(ip.DeleteFlag = 0,"Activo","Inactivo") FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID) AS Estatus
+                ,(SELECT r.ruta FROM u695808356_etic_system_db.ubicaciones AS r WHERE r.id_ubicacion = (SELECT p.LocationID FROM etic_2328_bachocoun_granjasvallecillosmty.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM etic_2328_bachocoun_granjasvallecillosmty.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID))) AS Ruta
+                #para sacar hazard type se enlaza a problems con el ProblemID al campo FaultType
+                ,UPPER((#SELECT p.FaultType FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (
+                SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID
+                    #)
+                )) AS hazard_Type
+                #para sacar Hazard Classification se enlaza a equipmentgroups con el ProblemID despues a equipment con el EquipmentID y despues a equipmentgroups con el EquipmentGroupID al campo Name
+                ,UPPER((#select eg.Name from '.$nombre_db.'.equipmentgroups as eg where eg.EquipmentGroupID = (
+                SELECT e.EquipmentGroupID FROM '.$nombre_db.'.equipment AS e WHERE e.EquipmentID = (
+                    SELECT p.EquipmentID FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (
+                        SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID
+                        )
+                    )
+                #)
+                )) AS hazard_Classification
+                #para sacar Hazard Group se enlaza a equipment, primero con el ProblemID despues a equipment con el EquipmentID al campo Name
+                ,UPPER((#SELECT e.Name FROM '.$nombre_db.'.equipment AS e WHERE e.EquipmentID = (
+                    SELECT p.EquipmentID FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (
+                        SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID
+                        )
+                    #)
+                )) AS hazard_Group
+                #para sacar Hazard Issue se enlaza a faults, primero con el ProblemID despues a faults con el FaultID al campo Fault
+                ,UPPER((#select f.Fault from '.$nombre_db.'.faults as f where f.FaultID = (
+                    SELECT p.FaultID FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (
+                        SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID
+                        )
+                    #)
+                )) AS hazard_Issue
+                ,"0" AS Rpm
+                ,"0" AS Bearing_Type
+                ,(SELECT IF(p.IsChronic = 1,"SI","NO") FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID)) AS Es_Cronico
+                ,UPPER((SELECT i.InspectionID FROM '.$nombre_db.'.inspections AS i WHERE i.InspectionNo = (
+                    SELECT p.ClosedOnInspectionNo FROM '.$nombre_db.'.problems AS p WHERE p.ProblemID = (
+                        SELECT ip.ProblemID FROM '.$nombre_db.'.probleminspections AS ip WHERE ip.ProblemInspectionID = ppi.ProblemInspectionID
+                        )
+                    )
+                )) AS Cerrado_En_Inspeccion
+                ,UPPER(CreateUserID) AS Creado_Por
+                ,CreateDate AS Fecha_Creacion
+                ,UPPER(LastUserID) AS Modificado_Por
+                ,LastModified AS Fecha_Mod
+            FROM '.$nombre_db.'.pieprobleminspections AS ppi;
             
             DROP TABLE IF EXISTS `ubicaciones_temp`;
             DROP VIEW IF EXISTS `v_ubicaciones_path_temp`;
