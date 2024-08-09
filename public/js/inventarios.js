@@ -343,7 +343,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       // Asignacion de valores para el alta de un problema
       idInspeccion_Det = node.Id_Inspeccion_Det;
       idUbicacion = node.id;
-      StrEquipo = node.nameUbicacion;
+      StrEquipo = node.nombreUbicacion;
       StrRuta = sitioRuta.concat(node.path);
       /* En este imput se guarda el nombre de la ruta del elemento actual seleccionado para enviarle
       al back y concatenarse con el nombre de la nueva ubicacion a agregar y así se arme la ruta */
@@ -361,48 +361,56 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   }
 
-  function cargar_datos_treeview(){
+  function cargar_datos_treeview(parentId = 0){
+    
     return new Promise((resolve, reject) => {
       datos_treeview = [{"text":"Sin ubicaciones","state": {"disabled":true}}];
 
       $.ajax({
-        url: '/inventarios/obtenerarbol',
-        data:{Id_Sitio:Id_Sitio.value,Id_Inspeccion:Id_Inspeccion.value},
+        url: '/inventarios/obtenerNodosArbol',
+        data:{
+          Id_Sitio:Id_Sitio.value,
+          Id_Inspeccion:Id_Inspeccion.value,
+          parentId: parentId
+        },
         type: 'POST',
         dataType: "json",
-        success: function(data){
-          // ////console.log(dataGridProblemas)
-          ////console.log(data)
-          ////console.log(data.length)
-
-          if (data.length > 0) {
-
-            data.forEach(ubicacion =>{
-
-              ubicacion.nameUbicacion= ubicacion.name,
-              ubicacion.text= ubicacion.name,
-              ubicacion.icon= ubicacion.Es_Equipo == 'SI' ? 'fas fa-traffic-light':'fas fa-grip-vertical tamañoIconoTree',
-              ubicacion.color= ubicacion.color_text,
-              ubicacion.Nivel= ubicacion.level,
-              ubicacion.nodes = data.filter(nodo => nodo.Id_Ubicacion_padre == ubicacion.id)
-              
-              if (ubicacion.nodes == ''){
-                delete ubicacion.nodes
-              }
-
-              datos_treeview = data.filter(nodo => nodo.Id_Ubicacion_padre == 0)
-            });
-          }
-
+        success: function(response){
+          
+          // // if (response.length > 0) {
+          //   response.forEach(ubicacion =>{
+          //     // ubicacion.nombreUbicacion= ubicacion.name,
+          //     // ubicacion.text= ubicacion.name,
+          //     // ubicacion.icon= ubicacion.Es_Equipo == 'SI' ? 'fas fa-traffic-light':'fas fa-grip-vertical tamañoIconoTree',
+          //     // ubicacion.color= ubicacion.color_text
+          //     // ubicacion.Nivel= ubicacion.level
+          //     if (Number(ubicacion.tieneNodos) > 0) {
+          //       ubicacion.nodes = []
+          //     }
+          //     // if (ubicacion.nodes == ''){
+          //     //   delete ubicacion.nodes
+          //     // }
+          //     // datos_treeview = data.filter(nodo => nodo.Id_Ubicacion_padre == 0)
+          //   });
+          // // }
+          
+          console.log('-----------------inicio----------------------')
+          console.log(response)
+          console.log('-----------------FIn----------------------')
+          
+          datos_treeview = response
           /* Creando nuevamente el treeview con los datos */
+          // $('#treeview').treeview({
+          //   data: response
+          // });
           crear_treeview(datos_treeview)
           /* Cargar datos en el jsgrid de ubicaciones */
-          datos_treeview_iniciales = datos_treeview;
-          if (data.length > 0) {
+          datos_treeview_iniciales = response;
+          if (response.length > 0) {
             JsGridInventario.jsGrid("loadData",{ data : datos_treeview_iniciales});
           }
 
-          resolve(datos_treeview);
+          resolve('ok');
         },
         error: function (error) {
           crear_treeview(datos_treeview)
@@ -483,10 +491,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
         return editarUbicacion(args);
       },
       // deleteConfirm: function(item){
-      //   return `El registro "${item.nameUbicacion}" será eliminado, ¿Esta seguro?`;
+      //   return `El registro "${item.nombreUbicacion}" será eliminado, ¿Esta seguro?`;
       // },
       fields: [
-        { name: "nameUbicacion", title:"Ubicación", type: "text", css:"noWrap", width:250, validate: "required",
+        { name: "nombreUbicacion", title:"Ubicación", type: "text", css:"noWrap", width:250, validate: "required",
           itemTemplate : function (value, item) {
             return icono(value,item);
           }
@@ -503,7 +511,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 if(validacion.status){
                   Swal.fire({
                     title: 'Eliminar',
-                    html: `El registro "${item.nameUbicacion}" será eliminado, ¿Esta seguro?`,
+                    html: `El registro "${item.nombreUbicacion}" será eliminado, ¿Esta seguro?`,
                     showCancelButton: true,
                     cancelButtonColor: '#d33',
                     confirmButtonColor: '#3085d6',
@@ -756,7 +764,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     document.querySelector('#Id_Inspeccion_Det').value = item.Id_Inspeccion_Det;
 
     document.querySelector('#Test_Estatus').value = item.Id_Status_Inspeccion_Det;
-    document.querySelector('#Ubicacion').value = item.nameUbicacion;
+    document.querySelector('#Ubicacion').value = item.nombreUbicacion;
     document.querySelector('#Descripcion').value = item.Descripcion;
     document.querySelector('#Id_Tipo_Prioridad').value = item.Id_Tipo_Prioridad;
     document.querySelector('#Codigo_Barras').value = item.Codigo_Barras;

@@ -71,17 +71,15 @@ class Inventarios extends BaseController{
     }
 
     /* OBTENER ESTRUCTURA DEL ARBOL */
-    Public function obtenerArbol(){
+    Public function obtenerNodosArbol(){
         $inventariosMdl = new InventariosMdl();
 
-        $data = [];
-        $parent_key = '0';
-
-        if($inventariosMdl->conteo($this->request->getPost('Id_Sitio')) > 0){
-            // $data = $this->membersTree($parent_key,0, $id_inspecion);
-            $data = $inventariosMdl->get($this->request->getPost('Id_Sitio'),$this->request->getPost('Id_Inspeccion'));
-        }
-
+        $data = $inventariosMdl->obtenerNodosArbol(
+            $this->request->getPost('Id_Sitio'),
+            $this->request->getPost('Id_Inspeccion'),
+            $this->request->getPost('parentId')
+        );
+        
         echo (json_encode($data));
     }
 

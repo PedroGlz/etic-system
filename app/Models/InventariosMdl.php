@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class InventariosMdl extends Model
 {
-    protected $table            = 'v_ubicaciones_arbol';
+    protected $table            = 'v_ubicaciones_arbol_2';
     //protected $primaryKey       = 'id';
     protected $returnType       = 'array';
     protected $allowedFields    = [
@@ -38,9 +38,13 @@ class InventariosMdl extends Model
         ->where(['No_Inspeccion' => $id_inspeccion])->findAll();
     }
 
-    public function get($Id_Sitio,$id_inspeccion){
-        return $this->table('v_ubicaciones_arbol')->where(['Id_Sitio' => $Id_Sitio,'Id_Inspeccion' => $id_inspeccion,'Estatus' => 'Activo'])->findAll();
-        // return $this->table('v_ubicaciones_arbol')->where(['Id_Sitio' => $Id_Sitio])->findAll();
+    public function obtenerNodosArbol($Id_Sitio,$id_inspeccion,$parentId){
+        return $this->table('v_ubicaciones_arbol')->where([
+            'Id_Sitio' => $Id_Sitio,
+            'Id_Inspeccion' => $id_inspeccion,
+            'parent_id' => $parentId,
+            'Estatus' => 'Activo'
+        ])->findAll();
     }
 
     public function consultaReporte($Id_Sitio,$id_inspeccion,$array){

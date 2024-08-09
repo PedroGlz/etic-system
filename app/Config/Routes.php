@@ -127,7 +127,7 @@ $routes->get('/inspecciones/limpiar_bd', 'Inspecciones::limpiar_bd');
 $routes->post('/inspecciones/inicializar_imagenes', 'Inspecciones::inicializar_imagenes');
 // Inventarios
 $routes->get('/inventarios/obtenerEstatusInspecDet', 'Inventarios::obtenerEstatusInspecDet');
-$routes->get('/inventarios/obtenerarbol', 'Inventarios::obtenerArbol');
+$routes->get('/inventarios/obtenerNodosArbol', 'Inventarios::obtenerNodosArbol');
 $routes->get('/inventarios/nuevoProblema', 'Inventarios::nuevoProblema');
 $routes->get('/inventarios/updateProblema', 'Inventarios::updateProblema');
 $routes->get('/inventarios/guardarCronico', 'Inventarios::guardarCronico');
