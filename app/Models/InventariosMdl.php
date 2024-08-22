@@ -39,7 +39,7 @@ class InventariosMdl extends Model
     }
 
     public function obtenerNodosArbol($Id_Sitio,$id_inspeccion,$parentId){
-        return $this->table('v_ubicaciones_arbol')->where([
+        return $this->table('v_ubicaciones_arbol_2')->where([
             'Id_Sitio' => $Id_Sitio,
             'Id_Inspeccion' => $id_inspeccion,
             'parent_id' => $parentId,
@@ -48,7 +48,7 @@ class InventariosMdl extends Model
     }
 
     public function consultaReporte($Id_Sitio,$id_inspeccion,$array){
-        return $this->table('v_ubicaciones_arbol')->select('
+        return $this->table('v_ubicaciones_arbol_2')->select('
             id AS Id_Ubicacion,
             level,
             Estatus_Inspeccion_Det AS Estatus,
@@ -56,7 +56,7 @@ class InventariosMdl extends Model
             Codigo_Barras,
             Notas_Inspeccion,
             Id_Inspeccion_Det,
-            (SELECT Tipo_Prioridad FROM tipo_prioridades WHERE tipo_prioridades.Id_Tipo_Prioridad = v_ubicaciones_arbol.Id_Tipo_Prioridad) AS Prioridad
+            (SELECT Tipo_Prioridad FROM tipo_prioridades WHERE tipo_prioridades.Id_Tipo_Prioridad = v_ubicaciones_arbol_2.Id_Tipo_Prioridad) AS Prioridad
         ')
         // ->where(['Id_Sitio' => $Id_Sitio,'Id_Inspeccion' => $id_inspeccion])
         ->where(['Id_Sitio' => $Id_Sitio])
@@ -72,7 +72,7 @@ class InventariosMdl extends Model
     }
 
     public function getUbicacionPadre($id_inspeccion_det, $id_inspeccion){
-        return $this->table('v_ubicaciones_arbol')->select('parent_id')->where(['Id_Inspeccion_Det' => $id_inspeccion_det,'Id_Inspeccion' => $id_inspeccion])->findAll();
+        return $this->table('v_ubicaciones_arbol_2')->select('parent_id')->where(['Id_Inspeccion_Det' => $id_inspeccion_det,'Id_Inspeccion' => $id_inspeccion])->findAll();
     }
 
     public function cuantosHijosSinInspeccionar($id_padre, $id_inspeccion){
@@ -85,10 +85,10 @@ class InventariosMdl extends Model
 
     // En este punto tomamos el campo id como para identificar la copia de la original y sacar su estatus
     public function getStatusPadre($id_padre, $id_inspeccion){
-        return $this->table('v_ubicaciones_arbol')->select('Id_Status_Inspeccion_Det')->where(['id' => $id_padre,'Id_Inspeccion' => $id_inspeccion])->findAll();
+        return $this->table('v_ubicaciones_arbol_2')->select('Id_Status_Inspeccion_Det')->where(['id' => $id_padre,'Id_Inspeccion' => $id_inspeccion])->findAll();
     }
 
     public function getIdInspeccionDetPorIdPadre($id_padre, $id_inspeccion){
-        return $this->table('v_ubicaciones_arbol')->select('Id_Inspeccion_Det, Id_Status_Inspeccion_Det')->where(['id' => $id_padre,'Id_Inspeccion' => $id_inspeccion])->findAll();
+        return $this->table('v_ubicaciones_arbol_2')->select('Id_Inspeccion_Det, Id_Status_Inspeccion_Det')->where(['id' => $id_padre,'Id_Inspeccion' => $id_inspeccion])->findAll();
     }
 }
