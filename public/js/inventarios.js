@@ -387,7 +387,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
           datos_treeview = response.filter(nodo => nodo.Id_Ubicacion_padre == 0)
 
-          datos_treeview = response
+          // datos_treeview = response
           /* Creando nuevamente el treeview con los datos */
           // $('#treeview').treeview({
           //   data: response
