@@ -306,7 +306,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
       showCheckbox: false, /* mostrar icono check */
       levels: 1, /* Elementos collapsados al nivel 1 */
       data: datos_treeview,
-      // highlightSelected: true,
       // selectedBackColor: '#e789ff4d',
       // selectedColor: '',
     });
@@ -378,27 +377,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
         dataType: "json",
         success: function(response){
           
-          // // if (response.length > 0) {
-          //   response.forEach(ubicacion =>{
-          //     // ubicacion.nombreUbicacion= ubicacion.name,
-          //     // ubicacion.text= ubicacion.name,
-          //     // ubicacion.icon= ubicacion.Es_Equipo == 'SI' ? 'fas fa-traffic-light':'fas fa-grip-vertical tamañoIconoTree',
-          //     // ubicacion.color= ubicacion.color_text
-          //     // ubicacion.Nivel= ubicacion.level
-          //     if (Number(ubicacion.tieneNodos) > 0) {
-          //       ubicacion.nodes = []
-          //     }
-          //     // if (ubicacion.nodes == ''){
-          //     //   delete ubicacion.nodes
-          //     // }
-          //     // datos_treeview = data.filter(nodo => nodo.Id_Ubicacion_padre == 0)
-          //   });
-          // // }
-          
-          console.log('-----------------inicio----------------------')
-          console.log(response)
-          console.log('-----------------FIn----------------------')
-          
+          response.forEach(ubicacion =>{
+            ubicacion.nodes = response.filter(nodo => nodo.Id_Ubicacion_padre == ubicacion.id)
+
+            if (ubicacion.nodes == ''){
+              delete ubicacion.nodes
+            }
+          });
+
+          datos_treeview = response.filter(nodo => nodo.Id_Ubicacion_padre == 0)
+
           datos_treeview = response
           /* Creando nuevamente el treeview con los datos */
           // $('#treeview').treeview({

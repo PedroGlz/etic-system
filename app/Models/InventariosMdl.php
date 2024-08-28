@@ -42,7 +42,7 @@ class InventariosMdl extends Model
         return $this->table('v_ubicaciones_arbol_2')->where([
             'Id_Sitio' => $Id_Sitio,
             'Id_Inspeccion' => $id_inspeccion,
-            'parent_id' => $parentId,
+            // 'parent_id' => $parentId,
             'Estatus' => 'Activo'
         ])->findAll();
     }
