@@ -1,0 +1,14 @@
+ERROR - 2024-08-26 22:08:57 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+CRITICAL - 2024-08-26 22:08:57 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT `Id_Usua...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Models\UsuariosMdl.php(64): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Login.php(33): App\Models\UsuariosMdl->obtenerUsuario(Array)
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Login->acceso()
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}

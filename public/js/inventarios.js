@@ -306,8 +306,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
       showCheckbox: false, /* mostrar icono check */
       levels: 1, /* Elementos collapsados al nivel 1 */
       data: datos_treeview,
-      selectedBackColor: '#e789ff4d',
-      selectedColor: '',
+      // highlightSelected: true,
+      // selectedBackColor: '#e789ff4d',
+      // selectedColor: '',
     });
 
     /* Eventos del treeView */
@@ -2551,7 +2552,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   
   function cambiarEstatusUbicacion(idUbicacionDet){
     
-  ////console.log('cambiando color')  
+    ////console.log('cambiando color')  
     ////console.log(selectEstatus)
     ////console.log(selectEstatus.value)
     ////console.log(idUbicacionDet)
@@ -2611,7 +2612,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     var textEstatus = $('select[name="Id_Status_Inspeccion_Det"] option:selected').text();
     textEstatus = textEstatus.split(" ",1);
-
+return
     $.ajax({
       url: `/inventarios/cambiarEstatusUbicacion`,
       type: "POST",

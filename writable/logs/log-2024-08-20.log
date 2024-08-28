@@ -1,0 +1,8 @@
+CRITICAL - 2024-08-20 00:00:44 --> Undefined array key 0
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1068): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1068)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1055): App\Controllers\Inventarios->actualizarEstatusElementoPadre('91CDF992-7F3F-4...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->cambiarEstatusUbicacion()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}

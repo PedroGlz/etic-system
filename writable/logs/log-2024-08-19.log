@@ -1,0 +1,372 @@
+ERROR - 2024-08-19 20:33:05 --> MySQL server has gone away
+ERROR - 2024-08-19 20:33:05 --> MySQL server has gone away
+ERROR - 2024-08-19 20:33:05 --> MySQL server has gone away
+ERROR - 2024-08-19 20:33:05 --> MySQL server has gone away
+ERROR - 2024-08-19 20:33:05 --> MySQL server has gone away
+ERROR - 2024-08-19 20:33:05 --> MySQL server has gone away
+CRITICAL - 2024-08-19 20:33:05 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\FallasMdl.php(44): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Fallas.php(28): App\Models\FallasMdl->obtenerRegistros()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Fallas->show()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Fallas))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-08-19 20:33:05 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\TipoPrioridades.php(27): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\TipoPrioridades->show()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TipoPrioridades))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2024-08-19 20:33:05 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\EstatusInspecDetMdl.php(31): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(70): App\Models\EstatusInspecDetMdl->obtenerLista()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->obtenerEstatusInspecDet()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-08-19 20:33:05 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\FabricantesMdl.php(49): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Fabricantes.php(27): App\Models\FabricantesMdl->obtenerRegistros()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Fabricantes->show()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Fabricantes))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-08-19 20:33:05 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\EstatusInspecDetMdl.php(31): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(70): App\Models\EstatusInspecDetMdl->obtenerLista()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->obtenerEstatusInspecDet()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-08-19 20:33:05 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\LineaBaseMdl.php(86): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(917): App\Models\LineaBaseMdl->getHistorialBaseLine('', '78C21295-C607-4...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getHistorialBaseLine()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-08-19 20:33:07 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+ERROR - 2024-08-19 20:33:07 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+ERROR - 2024-08-19 20:33:07 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+CRITICAL - 2024-08-19 20:33:07 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT `Id_Prob...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(104): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(325): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-08-19 20:33:07 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Controllers\Fases.php(10): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Fases->show()
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Fases))
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2024-08-19 20:33:07 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Models\TipoAmbientesMdl.php(22): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\TipoAmbientes.php(10): App\Models\TipoAmbientesMdl->get()
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\TipoAmbientes->show()
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TipoAmbientes))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2024-08-19 20:33:07 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+ERROR - 2024-08-19 20:33:07 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+CRITICAL - 2024-08-19 20:33:07 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT `Id_Fabr...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Models\FabricantesMdl.php(49): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Fabricantes.php(27): App\Models\FabricantesMdl->obtenerRegistros()
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Fabricantes->show()
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Fabricantes))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-08-19 20:33:07 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Controllers\Fases.php(10): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Fases->show()
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Fases))
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2024-08-19 20:33:07 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+CRITICAL - 2024-08-19 20:33:07 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Controllers\Fases.php(10): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Fases->show()
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Fases))
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2024-08-19 20:33:09 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+CRITICAL - 2024-08-19 20:33:09 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Models\InventariosMdl.php(47): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(80): App\Models\InventariosMdl->obtenerNodosArbol('7B56774F-D176-4...', '78C21295-C607-4...', '0')
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->obtenerNodosArbol()
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2024-08-19 20:33:59 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+CRITICAL - 2024-08-19 20:33:59 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT `Id_Fall...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Models\FallasMdl.php(44): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Fallas.php(28): App\Models\FallasMdl->obtenerRegistros()
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Fallas->show()
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Fallas))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2024-08-19 20:33:59 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+CRITICAL - 2024-08-19 20:33:59 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Models\EstatusInspecDetMdl.php(31): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(70): App\Models\EstatusInspecDetMdl->obtenerLista()
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->obtenerEstatusInspecDet()
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2024-08-19 20:33:59 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+ERROR - 2024-08-19 20:33:59 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+CRITICAL - 2024-08-19 20:33:59 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT `Id_Line...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Models\LineaBaseMdl.php(86): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(917): App\Models\LineaBaseMdl->getHistorialBaseLine('', '78C21295-C607-4...')
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getHistorialBaseLine()
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-08-19 20:33:59 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Models\EstatusInspecDetMdl.php(31): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(70): App\Models\EstatusInspecDetMdl->obtenerLista()
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->obtenerEstatusInspecDet()
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2024-08-19 20:33:59 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+CRITICAL - 2024-08-19 20:33:59 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Controllers\TipoPrioridades.php(27): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\TipoPrioridades->show()
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TipoPrioridades))
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2024-08-19 20:33:59 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+CRITICAL - 2024-08-19 20:33:59 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT `Id_Fabr...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Models\FabricantesMdl.php(49): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Fabricantes.php(27): App\Models\FabricantesMdl->obtenerRegistros()
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Fabricantes->show()
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Fabricantes))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2024-08-19 20:34:01 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+CRITICAL - 2024-08-19 20:34:01 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT `Id_Fabr...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Models\FabricantesMdl.php(49): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Fabricantes.php(27): App\Models\FabricantesMdl->obtenerRegistros()
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Fabricantes->show()
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Fabricantes))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2024-08-19 20:34:01 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+ERROR - 2024-08-19 20:34:01 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+CRITICAL - 2024-08-19 20:34:01 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Controllers\Fases.php(10): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Fases->show()
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Fases))
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2024-08-19 20:34:01 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Controllers\Fases.php(10): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Fases->show()
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Fases))
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2024-08-19 20:34:01 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+CRITICAL - 2024-08-19 20:34:01 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Controllers\Fases.php(10): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Fases->show()
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Fases))
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2024-08-19 20:34:01 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+CRITICAL - 2024-08-19 20:34:01 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Models\TipoAmbientesMdl.php(22): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\TipoAmbientes.php(10): App\Models\TipoAmbientesMdl->get()
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\TipoAmbientes->show()
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TipoAmbientes))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2024-08-19 20:34:02 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+CRITICAL - 2024-08-19 20:34:02 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT `Id_Prob...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(104): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(325): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2024-08-19 20:34:03 --> Error connecting to the database: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+CRITICAL - 2024-08-19 20:34:03 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+#0 C:\xampp\htdocs\etic-system\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\etic-system\system\Database\BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\etic-system\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\etic-system\app\Models\InventariosMdl.php(47): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(80): App\Models\InventariosMdl->obtenerNodosArbol('7B56774F-D176-4...', '78C21295-C607-4...', '0')
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->obtenerNodosArbol()
+#7 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#8 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-08-19 23:40:08 --> Undefined array key 0
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1068): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1068)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1055): App\Controllers\Inventarios->actualizarEstatusElementoPadre('3B23C2E0-D280-4...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->cambiarEstatusUbicacion()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2024-08-19 23:40:18 --> Undefined array key 0
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1068): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1068)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1055): App\Controllers\Inventarios->actualizarEstatusElementoPadre('8C1D81B3-DC4F-4...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->cambiarEstatusUbicacion()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2024-08-19 23:40:24 --> Undefined array key 0
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1068): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1068)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1055): App\Controllers\Inventarios->actualizarEstatusElementoPadre(NULL)
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->cambiarEstatusUbicacion()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2024-08-19 23:57:39 --> Undefined array key 0
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1068): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1068)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1055): App\Controllers\Inventarios->actualizarEstatusElementoPadre('3B23C2E0-D280-4...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->cambiarEstatusUbicacion()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2024-08-19 23:58:51 --> Undefined array key 0
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1068): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1068)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1055): App\Controllers\Inventarios->actualizarEstatusElementoPadre('76E4EDCB-6500-4...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->cambiarEstatusUbicacion()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
