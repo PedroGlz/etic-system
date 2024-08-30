@@ -50,6 +50,8 @@ var listaProblemasParaEditar = [];
 var arrayFormsProblemasEditar = [];
 var arrayFormsBaseLineEditar = [];
 
+var arrayAllNodes = [];
+
 window.addEventListener('DOMContentLoaded', (event) => {
 
   // Valor que se toma de la vista menu
@@ -189,7 +191,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     cargarJsGridBaseLine()
     cargarJsGridListaBaseLine()
     // Obtenemos los datos para el treeview y se crea de nuevo el elemento
-    cargar_datos_treeview().then(() => {
+    cargar_datos_treeview(true).then(() => {
       iniciarElementos();
       cargarEventListeners();
       cerrarAlertLoading();
@@ -306,12 +308,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
       showCheckbox: false, /* mostrar icono check */
       levels: 1, /* Elementos collapsados al nivel 1 */
       data: datos_treeview,
-      // selectedBackColor: '#e789ff4d',
+      selectedBackColor: '#e789ff4d',
       // selectedColor: '',
     });
 
     /* Eventos del treeView */
     TreeView.on('nodeSelected', function(event, node) {
+      event.preventDefault();
+      console.log(event)
       ////console.log(event)
       // Limpiamos el array para agregar nuevos id para filtrar
       arrayUbicacionesFiltro = []
@@ -361,7 +365,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   }
 
-  function cargar_datos_treeview(parentId = 0){
+  function cargar_datos_treeview(primerCarga = false){
     
     return new Promise((resolve, reject) => {
       datos_treeview = [{"text":"Sin ubicaciones","state": {"disabled":true}}];
@@ -371,35 +375,35 @@ window.addEventListener('DOMContentLoaded', (event) => {
         data:{
           Id_Sitio:Id_Sitio.value,
           Id_Inspeccion:Id_Inspeccion.value,
-          parentId: parentId
+          parentId: 0
         },
         type: 'POST',
         dataType: "json",
         success: function(response){
           
-          response.forEach(ubicacion =>{
-            ubicacion.nodes = response.filter(nodo => nodo.Id_Ubicacion_padre == ubicacion.id)
+          if (primerCarga) {
+            
+            response.forEach(ubicacion =>{
+              ubicacion.nodes = response.filter(nodo => nodo.Id_Ubicacion_padre == ubicacion.id)
 
-            if (ubicacion.nodes == ''){
-              delete ubicacion.nodes
+              if (ubicacion.nodes == ''){
+                delete ubicacion.nodes
+              }
+            });
+
+            datos_treeview = response.filter(nodo => nodo.Id_Ubicacion_padre == 0)
+
+            crear_treeview(datos_treeview)
+            /* Cargar datos en el jsgrid de ubicaciones */
+            datos_treeview_iniciales = datos_treeview;
+            if (response.length > 0) {
+              JsGridInventario.jsGrid("loadData",{ data : datos_treeview_iniciales});
             }
-          });
-
-          datos_treeview = response.filter(nodo => nodo.Id_Ubicacion_padre == 0)
-
-          // datos_treeview = response
-          /* Creando nuevamente el treeview con los datos */
-          // $('#treeview').treeview({
-          //   data: response
-          // });
-          crear_treeview(datos_treeview)
-          /* Cargar datos en el jsgrid de ubicaciones */
-          datos_treeview_iniciales = response;
-          if (response.length > 0) {
-            JsGridInventario.jsGrid("loadData",{ data : datos_treeview_iniciales});
+          
           }
 
-          resolve('ok');
+          arrayAllNodes = response;
+          resolve(response);
         },
         error: function (error) {
           crear_treeview(datos_treeview)
@@ -2540,8 +2544,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   
   function cambiarEstatusUbicacion(idUbicacionDet){
     
-    ////console.log('cambiando color')  
-    ////console.log(selectEstatus)
+    console.log('---cambiando color-----antes-------------------')  
+    console.log(arrayAllNodes)
     ////console.log(selectEstatus.value)
     ////console.log(idUbicacionDet)
 
@@ -2565,38 +2569,38 @@ window.addEventListener('DOMContentLoaded', (event) => {
     seleccionadito = treeViewObject.getSelected(),
     allNodes = allCollapsedNodes.concat(allExpandedNodes);
 
-
-    // //console.log(allExpandedNodes)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // Filtrando para encontrar el nodo con el codigo de barra
+    // Filtrando para encontrar el nodo al que se le esta cambiadno el estatus
     let nodo_que_coincide = allNodes.filter(nodo => nodo.Id_Inspeccion_Det == idUbicacionDet);
-    ////console.log(nodo_que_coincide)
-    // Ubicando el nodo en el treeview expandiendo
-    TreeView.treeview('revealNode', [ nodo_que_coincide[0].nodeId, { silent: true,highlighting:true } ]);
+    // // Ubicando el nodo en el treeview expandiendo
+    // TreeView.treeview('revealNode', [ nodo_que_coincide[0].nodeId, { silent: true,highlighting:true } ]);
     
     // Color negro
     let colorTexto = '#000000'
     if (selectEstatus.value != '568798D1-76BB-11D3-82BF-00104BC75DC2') {
       colorTexto = '#0082ff'
     }
-    // Colocando color rojo a la letra visualmente
+    // Colocando color de texto correspondiente al nodo
     document.querySelector('[data-nodeid="'+nodo_que_coincide[0].nodeId+'"]').style.color = colorTexto;
 
+    arrayAllNodes.forEach((node) => {
+      if (node.Id_Inspeccion_Det == idUbicacionDet) {
+        node.color = colorTexto;
+      }
+    });
+
+    $('#treeview').treeview('updateNode', [nodo_que_coincide[0].nodeId, nodo_que_coincide[0], { silent: true }]);
+
+    // let newArrAllnodes = arrayAllNodes
+
+    // newArrAllnodes.forEach(ubicacion =>{
+    //   ubicacion.nodes = arrayAllNodes.filter(nodo => nodo.Id_Ubicacion_padre == ubicacion.id)
+
+    //   if (ubicacion.nodes == ''){
+    //     delete ubicacion.nodes
+    //   }
+    // });
+
+    // crear_treeview(newArrAllnodes)
 
     var textEstatus = $('select[name="Id_Status_Inspeccion_Det"] option:selected').text();
     textEstatus = textEstatus.split(" ",1);
