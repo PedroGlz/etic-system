@@ -2615,7 +2615,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
       "parent_id": "C1B23776-5244-41C3-8D10-4875CEF599D4"
   }]
 
-    // TreeView.treeview('setTree',[abf])
+  // aqui seteamos la data solo falta editar un array con los elementos del arbol y mandarlo para que renderise con los cambios
+    TreeView.treeview('setTree',[abf])
 
     var treeData = treeViewObject.getTree();
     console.log(treeData);

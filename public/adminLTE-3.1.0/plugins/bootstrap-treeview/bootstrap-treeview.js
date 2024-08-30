@@ -1212,6 +1212,7 @@
 
 	Tree.prototype.setTree = function (data) {
 		this.tree = data;
+		this.setInitialStates({ nodes: this.tree }, 0);
 	};
 	Tree.prototype.getTree = function () {
 		return this.tree;
