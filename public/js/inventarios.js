@@ -314,7 +314,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     /* Eventos del treeView */
     TreeView.on('nodeSelected', function(event, node) {
-      event.preventDefault();
+      
       console.log(event)
       ////console.log(event)
       // Limpiamos el array para agregar nuevos id para filtrar
@@ -2588,7 +2588,37 @@ window.addEventListener('DOMContentLoaded', (event) => {
       }
     });
 
-    $('#treeview').treeview('updateNode', [nodo_que_coincide[0].nodeId, nodo_que_coincide[0], { silent: true }]);
+    let abf = [{
+      "Id_Inspeccion_Det": "61EAE28D-8626-4B3F-8601-BF82EFC337B3",
+      "id": "C5661A8B-5562-465A-84A5-495743BFF64D",
+      "Id_Sitio": "7B56774F-D176-42FB-AABA-3C4A9825871B",
+      "nombreUbicacion": "CONTACTOR",
+      "text": "CONTACTOR",
+      "level": "5",
+      "Codigo_Barras": "",
+      "Es_Equipo": "SI",
+      "Estatus": "Activo",
+      "Id_Tipo_Prioridad": "6F5F0EB1-76B8-11D3-82BF-00104BC75DC2",
+      "Descripcion": "",
+      "Id_Fabricante": null,
+      "Id_Ubicacion_padre": "C1B23776-5244-41C3-8D10-4875CEF599D4",
+      "Id_Status_Inspeccion_Det": "568798D1-76BB-11D3-82BF-00104BC75DC2",
+      "Id_Inspeccion": "78C21295-C607-46E3-A026-37F1B3772FC6",
+      "No_Inspeccion": "2328",
+      "Fecha_inspeccion": "2024-07-04 00:00:00",
+      "Notas_Inspeccion": null,
+      "path": "GRANJA VALLECILLOS 04 / CASETAS / CASETA 12 / TABLERO CAPACITOR / CONTACTOR",
+      "Fecha_Creacion": "2010-04-30 06:29:00",
+      "icon": "fas fa-traffic-light",
+      "Estatus_Inspeccion_Det": "PVERIF",
+      "color": "#000000",
+      "parent_id": "C1B23776-5244-41C3-8D10-4875CEF599D4"
+  }]
+
+    // TreeView.treeview('setTree',[abf])
+
+    var treeData = treeViewObject.getTree();
+    console.log(treeData);
 
     // let newArrAllnodes = arrayAllNodes
 

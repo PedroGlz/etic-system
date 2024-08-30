@@ -794,7 +794,7 @@
         <script src="<?php echo base_url(); ?>/adminLTE-3.1.0/plugins/pdfmake/vfs_fonts.js"></script>
 
         <!-- Treeview -->
-        <script src="<?php echo base_url(); ?>/adminLTE-3.1.0/plugins/bootstrap-treeview/bootstrap-treeview.min.js"></script>
+        <script src="<?php echo base_url(); ?>/adminLTE-3.1.0/plugins/bootstrap-treeview/bootstrap-treeview.js"></script>
 
         <!-- jsGrid -->
         <script src="<?php echo base_url(); ?>/adminLTE-3.1.0/plugins/jsgrid/jsgrid.min.js"></script>
