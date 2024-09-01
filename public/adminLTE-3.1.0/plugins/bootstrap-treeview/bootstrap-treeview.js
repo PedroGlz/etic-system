@@ -399,6 +399,10 @@
 	};
 
 	Tree.prototype.setSelectedState = function (node, state, options) {
+		console.log('en el js de treeview-------');
+		console.log(node);
+		console.log(state);
+		console.log(options);
 
 		if (state === node.state.selected) return;
 
@@ -1211,9 +1215,14 @@
 	};
 
 	Tree.prototype.setTree = function (data) {
-		this.tree = data;
+		this.tree = [];
+		this.nodes = [];                         
+
+		this.tree = $.extend(true, [], JSON.parse(data));
+
 		this.setInitialStates({ nodes: this.tree }, 0);
 	};
+	
 	Tree.prototype.getTree = function () {
 		return this.tree;
 	};

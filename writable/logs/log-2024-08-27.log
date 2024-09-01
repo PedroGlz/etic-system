@@ -1,0 +1,20 @@
+ERROR - 2024-08-27 13:38:31 --> Table 'u695808356_etic_system_db.v_ubicaciones_arbol_2' doesn't exist
+CRITICAL - 2024-08-27 13:38:31 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\InventariosMdl.php(47): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(80): App\Models\InventariosMdl->obtenerNodosArbol('7B56774F-D176-4...', '78C21295-C607-4...', '0')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->obtenerNodosArbol()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-08-27 13:38:48 --> Table 'u695808356_etic_system_db.v_ubicaciones_arbol_2' doesn't exist
+CRITICAL - 2024-08-27 13:38:48 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\InventariosMdl.php(47): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(80): App\Models\InventariosMdl->obtenerNodosArbol('7B56774F-D176-4...', '78C21295-C607-4...', '0')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->obtenerNodosArbol()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
