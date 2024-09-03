@@ -1,6 +1,6 @@
 /* Variables */
 var TreeView;
-var datos_treeview = [{"text":"Sin ubicaciones","state": {"disabled":true}}];
+// var datos_treeview = [{"text":"Sin ubicaciones","state": {"disabled":true}}];
 var JsGridInventario;
 var JsGridProblemas;
 var JsGridHistorialProblemas;
@@ -191,7 +191,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     cargarJsGridBaseLine()
     cargarJsGridListaBaseLine()
     // Obtenemos los datos para el treeview y se crea de nuevo el elemento
-    cargar_datos_treeview(true).then(() => {
+    cargar_datos_treeview().then(() => {
       iniciarElementos();
       cargarEventListeners();
       cerrarAlertLoading();
@@ -309,7 +309,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       levels: 1, /* Elementos collapsados al nivel 1 */
       data: datos_treeview,
       selectedBackColor: '#e789ff4d',
-      // selectedColor: '',
+      selectedColor: '',
     });
 
     /* Eventos del treeView */
@@ -365,11 +365,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   }
 
-  function cargar_datos_treeview(primerCarga = false){
+  function cargar_datos_treeview(){
     
     return new Promise((resolve, reject) => {
-      datos_treeview = [{"text":"Sin ubicaciones","state": {"disabled":true}}];
-
+      
       $.ajax({
         url: '/inventarios/obtenerNodosArbol',
         data:{
@@ -380,26 +379,36 @@ window.addEventListener('DOMContentLoaded', (event) => {
         type: 'POST',
         dataType: "json",
         success: function(response){
-          
-          if (primerCarga) {
             
-            response.forEach(ubicacion =>{
-              ubicacion.nodes = response.filter(nodo => nodo.Id_Ubicacion_padre == ubicacion.id)
+          response.forEach(ubicacion =>{
+            ubicacion.nodes = response.filter(nodo => nodo.Id_Ubicacion_padre == ubicacion.id)
 
-              if (ubicacion.nodes == ''){
-                delete ubicacion.nodes
-              }
-            });
-
-            datos_treeview = response.filter(nodo => nodo.Id_Ubicacion_padre == 0)
-
-            crear_treeview(datos_treeview)
-            /* Cargar datos en el jsgrid de ubicaciones */
-            datos_treeview_iniciales = datos_treeview;
-            if (response.length > 0) {
-              JsGridInventario.jsGrid("loadData",{ data : datos_treeview_iniciales});
+            if (ubicacion.nodes == ''){
+              delete ubicacion.nodes
             }
+          });
+
+          datos_treeview = [{
+            'text': document.querySelector('#nombreSitio').textContent.trim(),
+            'icon': 'fas fa-industry',
+            'Id_Ubicacion_padre': -1,
+            'Id_Inspeccion_Det': 0,
+            'level': 1,
+            'path': document.querySelector('#nombreSitio').textContent.trim(),
+            'nodes': response.filter(nodo => nodo.Id_Ubicacion_padre == 0),
+            'state': {
+              expanded: true,
+              selected: true
+            },
+          }];
           
+          
+
+          crear_treeview(datos_treeview)
+          /* Cargar datos en el jsgrid de ubicaciones */
+          datos_treeview_iniciales = response.filter(nodo => nodo.Id_Ubicacion_padre == 0);
+          if (response.length > 0) {
+            JsGridInventario.jsGrid("loadData",{ data : datos_treeview_iniciales});
           }
 
           arrayAllNodes = response;
@@ -2544,11 +2553,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
   
   function cambiarEstatusUbicacion(idUbicacionDet){
     
-    console.log('---cambiando color-----antes-------------------')  
-    // console.log(arrayAllNodes)
-    ////console.log(selectEstatus.value)
-    ////console.log(idUbicacionDet)
-
     if(selectEstatus.value == ""){
       limpiarChecksEstatus()
 
@@ -2560,8 +2564,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
       return;
     }
 
-
-
     // Extrayendo toda la estructura del treeview
     let treeViewObject = $('#treeview').data('treeview'),
     allCollapsedNodes = treeViewObject.getCollapsed(),
@@ -2571,7 +2573,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     // Filtrando para encontrar el nodo al que se le esta cambiadno el estatus
     let nodo_que_coincide = allNodes.filter(nodo => nodo.Id_Inspeccion_Det == idUbicacionDet);
-    console.log(nodo_que_coincide)
 
     // Color negro
     let colorTexto = '#000000'
@@ -2580,55 +2581,95 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
     // Colocando color de texto correspondiente al nodo
     document.querySelector('[data-nodeid="'+nodo_que_coincide[0].nodeId+'"]').style.color = colorTexto;
-
-    var treeData = treeViewObject.getTree();
-
-    let zzz = JSON.stringify(cambiarColor(treeData,idUbicacionDet,colorTexto));
-    console.log(zzz)
     
-    TreeView.treeview('setTree',zzz)
-
     var textEstatus = $('select[name="Id_Status_Inspeccion_Det"] option:selected').text();
     textEstatus = textEstatus.split(" ",1);
-return
+    rowJsGridInventario.innerHTML= textEstatus[0];
+    
+    let treeData = treeViewObject.getTree();
+    let treeDataActualizada = JSON.stringify(cambiarColor(treeData,idUbicacionDet,colorTexto,selectEstatus.value, textEstatus[0]));
+    TreeView.treeview('setTree',treeDataActualizada)
+
+    console.log(JSON.parse(treeDataActualizada))
+    console.log(nodo_que_coincide)
+
+    // let treeDataActualizadaPadres = JSON.stringify(cambiarColorNodoPadre(treeDataActualizada, nodo_que_coincide))
+    let treeDataActualizadaPadres = JSON.stringify(cambiarColorNodoPadre(JSON.parse(treeDataActualizada), nodo_que_coincide))
+    TreeView.treeview('setTree',treeDataActualizadaPadres)
+    
     $.ajax({
       url: `/inventarios/cambiarEstatusUbicacion`,
       type: "POST",
       dataType: 'json',
       data:{Id_Inspeccion_Det: idUbicacionDet,idEstatus:selectEstatus.value},
-      success: function (data){
-
-        rowJsGridInventario.innerHTML= textEstatus[0];
-
-        //console.log('expandiendo')
-        cargar_datos_treeview().then(() => {
-          allExpandedNodes.forEach((nodo)=>{
-            // //console.log(nodo.nodeId)
-            $('#treeview').treeview('expandNode', [nodo.nodeId]);
-          })
-          $('#treeview').treeview('selectNode', [ seleccionadito[0].nodeId]);
-        })
-      },
-      error: function (error) {
-        ////console.log(error);
-      },
+      success: function (data){},
+      error: function (error){},
     });
 
   }
 
 
-  function cambiarColor(treeData, idInspeccionDet, colorTexto) {
+  function cambiarColor(treeData, idInspeccionDet, colorTexto, idStatus, textEstatus) {
+    
     for (let i = 0; i < treeData.length; i++) {
-        let element = treeData[i];
-        if (element.Id_Inspeccion_Det == idInspeccionDet) {
-            element.color = colorTexto;
-            console.log('cambiandooooooo' + i);
-            break; // Rompe el ciclo cuando se encuentra el elemento
-        }
-        if (element.nodes) {
-            cambiarColor(element.nodes, idInspeccionDet, colorTexto);
-        }
+
+      if ( treeData[i].Id_Inspeccion_Det == idInspeccionDet) {
+
+        treeData[i].color = colorTexto;
+        treeData[i].Id_Status_Inspeccion_Det = idStatus;
+        treeData[i].Estatus_Inspeccion_Det = textEstatus;
+      
+        break; // Rompe el ciclo cuando se encuentra el  treeData[i]o
+
+      }else if ( treeData[i].nodes) {
+        cambiarColor( treeData[i].nodes, idInspeccionDet, colorTexto, idStatus, textEstatus);
+      }
+          
     }
+
+    return treeData;
+  }
+
+  function cambiarColorNodoPadre(treeData, nodo) {
+    console.log(nodo)
+    // obteniendo nodoPadre del parametro nodo
+    let nodoPadre = $('#treeview').treeview('getParent', nodo)
+
+    if (nodoPadre.Id_Inspeccion_Det == undefined) {
+      return;
+    }
+
+    let nodosHijos = nodoPadre.nodes;
+    let todosDiferentes = true;
+
+    for (let i = 0; i < nodosHijos.length; i++) {
+      if (nodosHijos[i].Id_Status_Inspeccion_Det == "568798D1-76BB-11D3-82BF-00104BC75DC2")/* Por Verificar PVERIF*/ {
+        todosDiferentes = false;
+        break;
+      }
+    }
+
+    let colorTexto = '#000000'; /* Color NEGRO */
+    let idStatus = "568798D1-76BB-11D3-82BF-00104BC75DC2"; /* Por Verificar PVERIF*/
+    let textEstatus = "PVERIF"
+    if (todosDiferentes) {
+      colorTexto = '#0082ff'; /* color AZUL*/
+      idStatus = '568798D2-76BB-11D3-82BF-00104BC75DC2'; /* Verificado VERIFICADO */
+      textEstatus = 'VERIFICADO'
+    }
+
+    // Colocando color de texto correspondiente al nodo
+    document.querySelector('[data-nodeid="'+nodoPadre.nodeId+'"]').style.color = colorTexto;
+
+    treeData = cambiarColor(treeData,nodoPadre.Id_Inspeccion_Det, colorTexto, idStatus, textEstatus);    
+    TreeView.treeview('setTree',JSON.stringify(treeData))
+
+    let nodoAbuelo = $('#treeview').treeview('getParent', nodoPadre)
+
+    if (nodoAbuelo.Id_Inspeccion_Det != undefined) {
+      cambiarColorNodoPadre(treeData, nodoPadre)
+    }
+
     return treeData;
   }
 

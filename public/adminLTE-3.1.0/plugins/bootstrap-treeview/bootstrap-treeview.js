@@ -114,6 +114,7 @@
 			getEnabled: $.proxy(this.getEnabled, this),
 			getTree: $.proxy(this.getTree, this), // Agregar el método getTree
 			setTree: $.proxy(this.setTree, this), // Agregar el método setTree
+			
 			// Select methods
 			selectNode: $.proxy(this.selectNode, this),
 			unselectNode: $.proxy(this.unselectNode, this),
@@ -399,10 +400,6 @@
 	};
 
 	Tree.prototype.setSelectedState = function (node, state, options) {
-		console.log('en el js de treeview-------');
-		console.log(node);
-		console.log(state);
-		console.log(options);
 
 		if (state === node.state.selected) return;
 
@@ -503,8 +500,6 @@
 		this.$element.empty().append(this.$wrapper.empty());
 
 		// Build tree
-		console.log('en el js de treeview');
-		console.log(this.tree);
 		this.buildTree(this.tree, 0);
 	};
 

@@ -1082,7 +1082,7 @@ class Inventarios extends BaseController{
                 $id_color_texto_inspeccion_det = 4; //color texto azul
             }
 
-            if ( $estatusDelPadre != '568798D2-76BB-11D3-82BF-00104BC75DC2') {
+            // if ( $estatusDelPadre != '568798D2-76BB-11D3-82BF-00104BC75DC2') {
                 # code...
                 $updateEstatusPadre = $inspeccionesDetMdl->update($idInspeccionDetDelPadre,[
                     'Id_Status_Inspeccion_Det'=> $id_status_inspeccion_det,
@@ -1090,7 +1090,7 @@ class Inventarios extends BaseController{
                     'Modificado_Por'          =>$session->Id_Usuario,
                     'Fecha_Mod'               =>date("Y-m-d H:i:s")
                 ]);
-            }
+            // }
 
             $this->actualizarEstatusElementoPadre($idInspeccionDetDelPadre);
         }

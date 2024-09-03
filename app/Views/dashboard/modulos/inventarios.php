@@ -57,7 +57,7 @@
                   <div id="parent">
 
                     <div id="LeftCol">
-                      <button type="button" class="btn btn-default styleBtnInicioTree" id="btnInicio">
+                      <button type="button" class="btn btn-default styleBtnInicioTree" id="btnInicio" style='display:none !important;'>
                         <i class="fas fa-industry"></i>&nbsp;&nbsp;<?=$nombreSitio;?>
                       </button>
                       <div id="treeview"></div>
