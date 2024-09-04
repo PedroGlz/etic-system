@@ -179,7 +179,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     crearSelectFases('Additional_Info');
     crearSelectTipoAmbientes('Environment');
     // Creamos el trebiew con datos por default
-    crear_treeview(datos_treeview);
+    // crear_treeview(datos_treeview);
     // Cargamos el jsGrid
     cargarJsGridProblemas();
     cargarDataJsGridProblemas();
@@ -191,7 +191,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     cargarJsGridBaseLine()
     cargarJsGridListaBaseLine()
     // Obtenemos los datos para el treeview y se crea de nuevo el elemento
-    cargar_datos_treeview().then(() => {
+    cargar_datos_treeview(true).then(() => {
       iniciarElementos();
       cargarEventListeners();
       cerrarAlertLoading();
@@ -315,7 +315,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
     /* Eventos del treeView */
     TreeView.on('nodeSelected', function(event, node) {
       console.log('clickitoo')
-      console.log(event)
+      
+      if (node.Id_Inspeccion_Det != '0') {
+
+        $.ajax({
+          url: '/inventarios/setSelectedNode',
+          data: {
+            Id_Inspeccion_Det: node.Id_Inspeccion_Det
+          },
+          type: 'POST',
+          dataType: 'json'
+        });
+      }
+
       ////console.log(event)
       // Limpiamos el array para agregar nuevos id para filtrar
       arrayUbicacionesFiltro = []
@@ -358,14 +370,52 @@ window.addEventListener('DOMContentLoaded', (event) => {
       filtrarProblemas();
     });
 
-    TreeView.on('nodeUnselected ', function(event, node) {
+    TreeView.on('nodeUnselected', function(event, node) {
+
+      $.ajax({
+        url: '/inventarios/setUnselectedNode',
+        type: 'POST',
+        dataType: 'json'
+      });
+
       unselectedNodo()
       limpiar_frm_ubicaciones_baseline()
     });
 
+    TreeView.on('nodeExpanded', function(event, node) {
+      console.log(node)
+      if (node.Id_Inspeccion_Det != '0') {
+        $.ajax({
+          url: '/inventarios/setExpandNode',
+          data: {
+            Id_Inspeccion_Det: node.Id_Inspeccion_Det,
+            expanded: '1'
+          },
+          type: 'POST',
+          dataType: 'json'
+        });
+      }
+
+    });
+
+    TreeView.on('nodeCollapsed', function(event, node) {
+      console.log(node)
+      if (node.Id_Inspeccion_Det != '0') {
+        $.ajax({
+          url: '/inventarios/setExpandNode',
+          data: {
+            Id_Inspeccion_Det: node.Id_Inspeccion_Det,
+            expanded: '0'
+          },
+          type: 'POST',
+          dataType: 'json'
+        });
+      }
+    });
+
   }
 
-  function cargar_datos_treeview(){
+  function cargar_datos_treeview( primerCarga = false){
     
     return new Promise((resolve, reject) => {
       
@@ -381,6 +431,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
         success: function(response){
             
           response.forEach(ubicacion =>{
+            ubicacion.state = {
+              expanded: ubicacion.expanded == '1' ? true : false,
+              // selected: ubicacion.selected == '1' ? true : false
+            }
             ubicacion.nodes = response.filter(nodo => nodo.Id_Ubicacion_padre == ubicacion.id)
 
             if (ubicacion.nodes == ''){
@@ -393,6 +447,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             'icon': 'fas fa-industry',
             'Id_Ubicacion_padre': -1,
             'Id_Inspeccion_Det': 0,
+            'id': 0,
             'level': 1,
             'path': document.querySelector('#nombreSitio').textContent.trim(),
             'nodes': response.filter(nodo => nodo.Id_Ubicacion_padre == 0),
@@ -403,16 +458,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
           }];
           
           
-
-          crear_treeview(datos_treeview)
-          /* Cargar datos en el jsgrid de ubicaciones */
-          datos_treeview_iniciales = response.filter(nodo => nodo.Id_Ubicacion_padre == 0);
-          if (response.length > 0) {
-            JsGridInventario.jsGrid("loadData",{ data : datos_treeview_iniciales});
+          if (primerCarga) {
+            crear_treeview(datos_treeview)
+            /* Cargar datos en el jsgrid de ubicaciones */
+            datos_treeview_iniciales = response.filter(nodo => nodo.Id_Ubicacion_padre == 0);
+            if (response.length > 0) {
+              JsGridInventario.jsGrid("loadData",{ data : datos_treeview_iniciales});
+            }
           }
 
-          arrayAllNodes = response;
-          resolve(response);
+          // arrayAllNodes = response;
+          // resolve(response);
+          resolve(datos_treeview);
         },
         error: function (error) {
           crear_treeview(datos_treeview)
@@ -458,10 +515,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
           return $.ajax({
             url: "/inventarios/borrar/"+item.Id_Inspeccion_Det,
             dataType: 'json',
-            success: function (res) {
+            success: function () {
+
+              cambiarEstatusUbicacion(item.Id_Inspeccion_Det, '568798D2-76BB-11D3-82BF-00104BC75DC2')
+
+              let treeViewObject = $('#treeview').data('treeview'),
+              allCollapsedNodes = treeViewObject.getCollapsed(),
+              allExpandedNodes = treeViewObject.getExpanded(),
+              seleccionadito = treeViewObject.getSelected(),
+              allNodes = allCollapsedNodes.concat(allExpandedNodes);
+          
+              // Filtrando para encontrar el nodo al que se le esta cambiadno el estatus
+              let nodo_que_coincide = allNodes.filter(nodo => nodo.Id_Inspeccion_Det == item.Id_Inspeccion_Det);
+              document.querySelector('[data-nodeid="'+nodo_que_coincide[0].nodeId+'"]').remove();
+
               // creamos de nuevo el treeview actualizado
-              cargar_datos_treeview().then(() => {
-                ubicar_nodo()
+              cargar_datos_treeview().then((treeArmado) => {
+                TreeView.treeview('setTree',JSON.stringify(treeArmado))
               });
 
               Toast.fire({
@@ -492,9 +562,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         
         return editarUbicacion(args);
       },
-      // deleteConfirm: function(item){
-      //   return `El registro "${item.nombreUbicacion}" será eliminado, ¿Esta seguro?`;
-      // },
       fields: [
         { name: "nombreUbicacion", title:"Ubicación", type: "text", css:"noWrap", width:250, validate: "required",
           itemTemplate : function (value, item) {
@@ -508,7 +575,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
             var btnEliminarItem = $("<button>")
             .click(function(e) {
               validar_eliminacion_ubicacion(item.Id_Inspeccion_Det, item.id).then((validacion) => {
-                ////console.log(validacion.status)
 
                 if(validacion.status){
                   Swal.fire({
@@ -636,6 +702,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function nuevoRegistro(){
+
+    if(TreeView.treeview('getSelected').length < 1){
+      Swal.fire({
+        title: '',
+        html: `<strong>Debes seleccionar una ubicación para agregar <br> un nuevo elemento.</strong>`,
+        icon: 'warning',
+        showCancelButton: false,
+        cancelButtonColor: '#d33',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Aceptar'
+      })
+
+      return;
+    }
+
     ////console.log(nodoSeleccionado)
     if(!nodoSeleccionado.esEquipo){
       $('#modalAgregarUbicacion').modal('show');
@@ -680,9 +761,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
       // Guardamos el form con los input file para subir archivos
       var formData = new FormData(document.getElementById("FormInventarios"));
 
-      var objetformData = formDataToObjet(formData);
-      ////console.log(objetformData)
-
       $.ajax({
         data: formData,
         url: form_action,
@@ -691,9 +769,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
         processData: false,
         contentType: false,
         success: function (res) {
-          ////console.log(res)
+
           // creamos de nuevo el treeview actualizado
-          cargar_datos_treeview().then(() => {
+          cargar_datos_treeview().then((treeArmado) => {
+            TreeView.treeview('setTree',JSON.stringify(treeArmado))
             ubicar_nodo()
           });
 
@@ -782,6 +861,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     $('#modalAgregarUbicacion').modal('show');
   }
+
+
+
 
   // Función que restablece todo el form
   function limpiar_frm_ubicaciones_baseline(){
@@ -1392,9 +1474,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         ajustesEditarProblema()
 
       },
-      // deleteConfirm: function(item){
-      //   return `El problema ${item.Numero_Problema} del ${item.nombreEquipo} será eliminado, ¿Esta seguro?`;
-      // },
       fields: [ 
         { name: "Numero_Problema", title:"No", type: "number", width: 25 ,align:"center",},
         { name: "Fecha_Creacion", title:"Fecha", type: "text",align:"center",
@@ -1954,9 +2033,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         editarBaseLine()
       },
-      // deleteConfirm: function(item){
-      //   return `El registro será eliminado, ¿Esta seguro?`;
-      // },
       fields: [
         { name: "numInspeccion", title:"No. Insp", type: "number",align:"center",},
         { name: "Fecha_Creacion", title:"Fecha", type: "text",align:"center",
@@ -2551,9 +2627,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   }
   
-  function cambiarEstatusUbicacion(idUbicacionDet){
+  function cambiarEstatusUbicacion(idUbicacionDet, estatusValorParam = false){
+    let estatusValor = estatusValorParam != false ? estatusValorParam : selectEstatus.value;
     
-    if(selectEstatus.value == ""){
+    if(estatusValor == ""){
       limpiarChecksEstatus()
 
       Toast.fire({
@@ -2574,9 +2651,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // Filtrando para encontrar el nodo al que se le esta cambiadno el estatus
     let nodo_que_coincide = allNodes.filter(nodo => nodo.Id_Inspeccion_Det == idUbicacionDet);
 
+    // revelando visualmente el nodo a modificar para que no marque eerror al cambiar propiedades
+    TreeView.treeview('revealNode', [ nodo_que_coincide[0].nodeId, { silent: false } ]);
+
     // Color negro
     let colorTexto = '#000000'
-    if (selectEstatus.value != '568798D1-76BB-11D3-82BF-00104BC75DC2') {
+    if (estatusValor != '568798D1-76BB-11D3-82BF-00104BC75DC2') {
       colorTexto = '#0082ff'
     }
     // Colocando color de texto correspondiente al nodo
@@ -2587,13 +2667,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
     rowJsGridInventario.innerHTML= textEstatus[0];
     
     let treeData = treeViewObject.getTree();
-    let treeDataActualizada = JSON.stringify(cambiarColor(treeData,idUbicacionDet,colorTexto,selectEstatus.value, textEstatus[0]));
+    let treeDataActualizada = JSON.stringify(cambiarColor(treeData,idUbicacionDet,colorTexto,estatusValor, textEstatus[0]));
     TreeView.treeview('setTree',treeDataActualizada)
 
     console.log(JSON.parse(treeDataActualizada))
     console.log(nodo_que_coincide)
 
-    // let treeDataActualizadaPadres = JSON.stringify(cambiarColorNodoPadre(treeDataActualizada, nodo_que_coincide))
     let treeDataActualizadaPadres = JSON.stringify(cambiarColorNodoPadre(JSON.parse(treeDataActualizada), nodo_que_coincide))
     TreeView.treeview('setTree',treeDataActualizadaPadres)
     
@@ -2601,13 +2680,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
       url: `/inventarios/cambiarEstatusUbicacion`,
       type: "POST",
       dataType: 'json',
-      data:{Id_Inspeccion_Det: idUbicacionDet,idEstatus:selectEstatus.value},
+      data:{Id_Inspeccion_Det: idUbicacionDet,idEstatus:estatusValor},
       success: function (data){},
       error: function (error){},
     });
 
   }
-
 
   function cambiarColor(treeData, idInspeccionDet, colorTexto, idStatus, textEstatus) {
     
@@ -2743,9 +2821,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         editarBaseLine()
       },
-      // deleteConfirm: function(item){
-      //   return `El registro será eliminado, ¿Esta seguro?`;
-      // },
       fields: [
         { name: "numInspeccion", title:"No. Insp", type: "number", align:"center",},
         { name: "equipo", title:"Equipo", type: "text", width:150, align:"",},

@@ -1,0 +1,68 @@
+CRITICAL - 2024-09-03 18:12:27 --> Undefined array key 0
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1089): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1089)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1074): App\Controllers\Inventarios->actualizarEstatusElementoPadre('QX9MFHSV-NRBJ-6...')
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(232): App\Controllers\Inventarios->cambiarEstatusUbicacion('QX9MFHSV-NRBJ-6...', '568798D1-76BB-1...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->borrar('QX9MFHSV-NRBJ-6...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-03 18:48:22 --> Undefined array key 0
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1088): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1088)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1073): App\Controllers\Inventarios->actualizarEstatusElementoPadre('QX9MFHSV-NRBJ-6...')
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(232): App\Controllers\Inventarios->cambiarEstatusUbicacion('QX9MFHSV-NRBJ-6...', '568798D1-76BB-1...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->borrar('QX9MFHSV-NRBJ-6...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-03 18:49:48 --> Undefined array key 0
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1088): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1088)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1073): App\Controllers\Inventarios->actualizarEstatusElementoPadre('QX9MFHSV-NRBJ-6...')
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(231): App\Controllers\Inventarios->cambiarEstatusUbicacion('QX9MFHSV-NRBJ-6...', '568798D1-76BB-1...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->borrar('QX9MFHSV-NRBJ-6...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-03 18:52:48 --> Undefined array key 0
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1087): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1087)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1072): App\Controllers\Inventarios->actualizarEstatusElementoPadre('QX9MFHSV-NRBJ-6...')
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(231): App\Controllers\Inventarios->cambiarEstatusUbicacion('QX9MFHSV-NRBJ-6...', '568798D1-76BB-1...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->borrar('QX9MFHSV-NRBJ-6...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-03 23:05:01 --> There is no data to update.
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(1574): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+#1 C:\xampp\htdocs\etic-system\system\BaseModel.php(832): CodeIgniter\BaseModel->transformDataToArray(NULL, 'update')
+#2 C:\xampp\htdocs\etic-system\system\Model.php(646): CodeIgniter\BaseModel->update(Array, NULL)
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(249): CodeIgniter\Model->update(Array)
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->setSelectedNode()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-03 23:30:01 --> Unknown column '78C21295' in 'where clause'
+ERROR - 2024-09-03 23:30:22 --> Unknown column '78C21295' in 'where clause'
+CRITICAL - 2024-09-03 23:30:22 --> Undefined variable $update
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(262): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 262)
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->setSelectedNode()
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2024-09-03 23:30:35 --> Unknown column '78C21295' in 'where clause'
+ERROR - 2024-09-03 23:31:39 --> Unknown column '78C21295' in 'where clause'
+ERROR - 2024-09-03 23:33:19 --> Unknown column '78C21295' in 'where clause'
+ERROR - 2024-09-03 23:34:57 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-03 23:35:24 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-03 23:38:30 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-03 23:41:33 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-03 23:45:40 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-03 23:45:40 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-03 23:45:44 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-03 23:45:44 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-03 23:51:35 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-03 23:59:47 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1

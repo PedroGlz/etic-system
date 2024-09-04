@@ -13,7 +13,8 @@ class InventariosMdl extends Model
         'Id_Inspeccion_Det',
         'id',
         'Id_Sitio',
-        'parent_id',
+        'nombreUbicacion',
+        'text',
         'level',
         'Codigo_Barras',
         'Es_Equipo',
@@ -26,9 +27,15 @@ class InventariosMdl extends Model
         'Id_Inspeccion',
         'No_Inspeccion',
         'Fecha_inspeccion',
-        'Estatus_Inspeccion_Det',
         'Notas_Inspeccion',
         'path',
+        'Fecha_Creacion',
+        'icon',
+        'Estatus_Inspeccion_Det',
+        'color',
+        'expanded',
+        'selected',
+        'parent_id',
     ];
 
 

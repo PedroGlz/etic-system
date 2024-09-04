@@ -1,0 +1,57 @@
+ERROR - 2024-09-04 00:06:42 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:06:57 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:07:39 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:13:51 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:13:57 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:16:36 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:16:44 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:17:12 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:17:25 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:21:08 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:21:15 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:21:25 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:22:18 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:37:22 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+CRITICAL - 2024-09-04 00:37:26 --> Undefined array key 0
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1134): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1134)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(233): App\Controllers\Inventarios->actualizarEstatusElementoPadre('M2CXF5LS-RV7D-H...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->borrar('M2CXF5LS-RV7D-H...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2024-09-04 00:40:27 --> Undefined array key 0
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1134): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1134)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1119): App\Controllers\Inventarios->actualizarEstatusElementoPadre('M2CXF5LS-RV7D-H...')
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(224): App\Controllers\Inventarios->cambiarEstatusUbicacion('M2CXF5LS-RV7D-H...', '568798D2-76BB-1...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->borrar('M2CXF5LS-RV7D-H...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-04 00:41:24 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:41:45 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:41:47 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:43:35 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:43:36 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:46:51 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:47:17 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:47:26 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:47:53 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:47:53 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:48:46 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:48:51 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 00:49:55 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 01:04:53 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 01:05:15 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+CRITICAL - 2024-09-04 01:05:23 --> Undefined array key 0
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1134): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1134)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1119): App\Controllers\Inventarios->actualizarEstatusElementoPadre('1Y94U2EC-3GHZ-Q...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->cambiarEstatusUbicacion()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+ERROR - 2024-09-04 01:05:28 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 01:05:30 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-04 01:05:32 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1

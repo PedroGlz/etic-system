@@ -136,6 +136,11 @@ $routes->get('/inventarios/getNumero_Problema', 'Inventarios::getNumero_Problema
 $routes->get('/inventarios/eliminarProblema/(:any)', 'Inventarios::eliminarProblema/$1');
 $routes->get('/inventarios/getHistorialProblema/(:any)/(:any)', 'Inventarios::getHistorialProblema/$1/$2');
 $routes->get('/inventarios/cambiarEstatusUbicacion', 'Inventarios::cambiarEstatusUbicacion');
+
+$routes->post('/inventarios/setSelectedNode', 'Inventarios::setSelectedNode');
+$routes->post('/inventarios/setUnselectedNode', 'Inventarios::setUnselectedNode');
+$routes->post('/inventarios/setExpandNode', 'Inventarios::setExpandNode');
+
 // Base LIne
 $routes->get('/inventarios/guardarBaseLine', 'Inventarios::guardarBaseLine');
 $routes->get('/inventarios/getHistorialBaseLine', 'Inventarios::getHistorialBaseLine');

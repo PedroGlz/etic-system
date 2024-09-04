@@ -154,6 +154,9 @@ class Inventarios extends BaseController{
 
             // Para que entre al succes del ajax
             if($save_inspection_det != false){
+
+                $this->cambiarEstatusUbicacion($Id_Inspeccion_Det_insert, $this->request->getPost('Test_Estatus'));
+
                 echo json_encode(array("status" => true, "Id_Inspeccion_Det" => $Id_Inspeccion_Det_insert));
             }else{
                 echo json_encode(array("status" => false));
@@ -203,6 +206,9 @@ class Inventarios extends BaseController{
         // Para que entre al succes del ajax
         // if($updateUbicacion != false && $updateDetalle != false){
         if($updateUbicacion != false){
+
+            $this->cambiarEstatusUbicacion($this->request->getPost('Id_Inspeccion_Det'), $this->request->getPost('Test_Estatus'));
+
             echo json_encode(array("status" => true ));
         }else{
             echo json_encode(array("status" => false ));
@@ -213,6 +219,9 @@ class Inventarios extends BaseController{
     public function borrar($id){
         $inspeccionesDetMdl = new InspeccionesDetMdl();
         $session = session();
+
+        // Primero actualizamos los estatus con sus colores porque cuando se elimine ya no encuentra los elementos
+        $this->cambiarEstatusUbicacion($id, "568798D2-76BB-11D3-82BF-00104BC75DC2");
 
         $delete = $inspeccionesDetMdl->update(
             $id,[
@@ -227,6 +236,51 @@ class Inventarios extends BaseController{
         }
         else{
             return json_encode(500);
+        }
+    }
+
+    public function setSelectedNode(){
+        $inspeccionesDetMdl = new InspeccionesDetMdl();
+        $session = session();
+        $db = db_connect();
+
+        $db->query("UPDATE inspecciones_det SET selected = '0' WHERE Id_Inspeccion = '".$session->Id_Inspeccion."'");
+        
+        $update = $inspeccionesDetMdl->update(
+            $this->request->getPost('Id_Inspeccion_Det'),[
+            'selected'          => 1,
+            'Modificado_Por'    =>$session->Id_Usuario,
+            'Fecha_Mod'         =>date("Y-m-d H:i:s")
+        ]);
+
+        return;
+    }
+
+    public function setUnselectedNode(){
+        $inspeccionesDetMdl = new InspeccionesDetMdl();
+        $session = session();
+        $db = db_connect();
+
+        $db->query("UPDATE inspecciones_det SET selected = '0' Id_Inspeccion = '".$session->Id_Inspeccion."'");
+        
+        return;
+    }
+
+    public function setExpandNode(){
+        $inspeccionesDetMdl = new InspeccionesDetMdl();
+        $session = session();
+
+        $update = $inspeccionesDetMdl->update(
+            $this->request->getPost('Id_Inspeccion_Det'),[
+            'expanded'          => $this->request->getPost('expanded'),
+            'Modificado_Por'    =>$session->Id_Usuario,
+            'Fecha_Mod'         =>date("Y-m-d H:i:s")
+        ]);
+
+        if($update){
+            echo json_encode(array("status" => true ));
+        }else{
+            echo json_encode(array("status" => false ));
         }
     }
 
@@ -1029,13 +1083,23 @@ class Inventarios extends BaseController{
         echo (json_encode($imagenesArray));
     }
 
-    function cambiarEstatusUbicacion(){
+    function cambiarEstatusUbicacion($id_insp_det = null, $id_estatus_det = null){
         $inspeccionesDetMdl = new InspeccionesDetMdl();
         $session = session();
-        
-        $id_inspeccion_det = $this->request->getPost('Id_Inspeccion_Det');
-        $id_estatus_inspeccion_det = $this->request->getPost('idEstatus');
-        
+
+        $llamadoInterno = false;
+        if ($id_insp_det != null && $id_estatus_det != null) {
+            $llamadoInterno = true;
+        }
+
+        if ($llamadoInterno) {
+            $id_inspeccion_det = $id_insp_det;
+            $id_estatus_inspeccion_det = $id_estatus_det;
+        }else{
+            $id_inspeccion_det = $this->request->getPost('Id_Inspeccion_Det');
+            $id_estatus_inspeccion_det = $this->request->getPost('idEstatus');
+        }
+                
         // Si el estatus es igual a POR VERIFICAR entonces se pinta en negro de lo contrario se pinta en color azul
         if ($id_estatus_inspeccion_det == "568798D1-76BB-11D3-82BF-00104BC75DC2") {
             $Id_Estatus_Color_Text = 1;
@@ -1053,6 +1117,8 @@ class Inventarios extends BaseController{
         if($updateDetalle != false){
 
             $this->actualizarEstatusElementoPadre($id_inspeccion_det);
+            if ($llamadoInterno) { return;}
+
             echo json_encode(array("status" => true ));
         }else{
             echo json_encode(array("status" => false ));
@@ -1066,7 +1132,7 @@ class Inventarios extends BaseController{
 
         // obtener el id padre del elemento, es el id que se crea por primera vez
         $id_padre = $inventariosMdl->getUbicacionPadre($id_inspeccion_det, $session->Id_Inspeccion)[0]["parent_id"];
-        
+
         if ($id_padre != "0") {
             $cuantosPorVerificar = $inventariosMdl->cuantosHijosSinInspeccionar($id_padre, $session->Id_Inspeccion);
             $datosDelPadre = $inventariosMdl->getIdInspeccionDetPorIdPadre($id_padre, $session->Id_Inspeccion);

@@ -22,6 +22,8 @@ class InspeccionesDetMdl extends Model
         'Notas_Inspeccion',
         'Estatus',
         'Id_Estatus_Color_Text',
+        'selected',
+        'expanded',
         'Creado_Por',
         'Fecha_Creacion',
         'Modificado_Por',

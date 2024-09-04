@@ -82,3 +82,8 @@
 a {
     color: #111111;
 }
+
+.jsgrid-cell {
+    border: none !important;
+    padding: 0.04rem !important;
+}

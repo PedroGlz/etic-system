@@ -114,6 +114,7 @@
 			getEnabled: $.proxy(this.getEnabled, this),
 			getTree: $.proxy(this.getTree, this), // Agregar el método getTree
 			setTree: $.proxy(this.setTree, this), // Agregar el método setTree
+			refreshTree: $.proxy(this.refreshTree, this), // Agregar el método setTree
 			
 			// Select methods
 			selectNode: $.proxy(this.selectNode, this),
@@ -1207,6 +1208,10 @@
 				return undefined;
 			}
 		}
+	};
+
+	Tree.prototype.refreshTree = function () {
+		this.render();
 	};
 
 	Tree.prototype.setTree = function (data) {
