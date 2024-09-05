@@ -1,0 +1,17 @@
+ERROR - 2024-09-05 00:26:02 --> Unknown column 'expanded' in 'field list'
+ERROR - 2024-09-05 00:26:03 --> Unknown column 'expanded' in 'field list'
+ERROR - 2024-09-05 00:26:17 --> Unknown column 'selected' in 'field list'
+ERROR - 2024-09-05 00:26:17 --> Unknown column 'selected' in 'field list'
+ERROR - 2024-09-05 00:26:17 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-05 00:26:18 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-05 00:27:57 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-05 01:47:59 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(SELECt Fabricante FROM fabricantes WHERE fabricantes.Id_Fabricante = problem...' at line 2
+CRITICAL - 2024-09-05 01:47:59 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(197): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(379): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}

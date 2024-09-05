@@ -87,3 +87,7 @@ a {
     border: none !important;
     padding: 0.04rem !important;
 }
+
+.treeview{
+    min-width: max-content !important;
+}

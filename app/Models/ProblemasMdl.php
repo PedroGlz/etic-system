@@ -164,18 +164,33 @@ class ProblemasMdl extends Model{
             (SELECT Falla FROM FALLAS WHERE FALLAS.Id_Falla = problemas.hazard_Group) AS hazardGroup,
             (SELECT Falla FROM FALLAS WHERE FALLAS.Id_Falla = problemas.hazard_Issue) AS hazardIssue,
             (SELECT Codigo_Barras FROM ubicaciones WHERE ubicaciones.Id_Ubicacion = problemas.ID_Ubicacion) AS codigoBarras,
+            (SELECT Ubicacion FROM ubicaciones WHERE ubicaciones.Id_Ubicacion = problemas.Id_Ubicacion) AS nombreEquipo,            
             (SELECT Desc_Prioridad FROM tipo_prioridades WHERE tipo_prioridades.Id_Tipo_Prioridad = (SELECT Id_Tipo_Prioridad FROM ubicaciones WHERE ubicaciones.Id_Ubicacion = problemas.ID_Ubicacion)) AS tipoPrioridad,
             (SELECT Severidad FROM severidades WHERE severidades.Id_Severidad = problemas.Id_Severidad) AS severidad,
-            (SELECt Fabricante FROM fabricantes WHERE fabricantes.Id_Fabricante = problemas.Id_Fabricante) AS fabricante,
+            (SELECT Severidad FROM severidades WHERE severidades.Id_Severidad = problemas.Id_Severidad) AS StrSeveridad,
+            (SELECt Fabricante FROM fabricantes WHERE fabricantes.Id_Fabricante = problemas.Id_Fabricante) AS fabricante,            
             (SELECt Nombre_Fase FROM fases WHERE fases.Id_Fase = problemas.Problem_Phase) AS faseProblema,
             (SELECt Nombre_Fase FROM fases WHERE fases.Id_Fase = problemas.Reference_Phase) AS faseReferencia,
             (SELECt Nombre_Fase FROM fases WHERE fases.Id_Fase = problemas.Additional_Info) AS faseAdicional,
             (SELECT Nombre FROM tipo_ambientes WHERE tipo_ambientes.Id_Tipo_Ambiente = problemas.Environment) AS tipoAmbiente,
             (SELECT No_Inspeccion FROM inspecciones WHERE inspecciones.Id_Inspeccion = problemas.Id_Inspeccion) AS numInspeccion,
-            (SELECT Tipo_Inspeccion FROM tipo_inspecciones WHERE tipo_inspecciones.Id_Tipo_Inspeccion = problemas.Id_Tipo_Inspeccion) AS tipoInspeccion,
-            (SELECT Ubicacion FROM ubicaciones WHERE ubicaciones.Id_Ubicacion = problemas.Id_Ubicacion) AS nombreEquipo,
-            (SELECT Severidad FROM severidades WHERE severidades.Id_Severidad = problemas.Id_Severidad) AS StrSeveridad
+            (SELECT Tipo_Inspeccion FROM tipo_inspecciones WHERE tipo_inspecciones.Id_Tipo_Inspeccion = problemas.Id_Tipo_Inspeccion) AS tipoInspeccion
         ')
+        // ->join('sitios', 'sitios.Id_Sitio = problemas.Id_Sitio', 'left')
+        // ->join('FALLAS fht', 'fht.Id_Falla = problemas.hazard_Type', 'left')
+        // ->join('FALLAS fhc', 'fhc.Id_Falla = problemas.hazard_Classification', 'left')
+        // ->join('FALLAS fhg', 'fhg.Id_Falla = problemas.hazard_Group', 'left')
+        // ->join('FALLAS fhi', 'fhi.Id_Falla = problemas.hazard_Issue', 'left')
+        // ->join('ubicaciones ubi', 'ubi.Id_Ubicacion = problemas.Id_Ubicacion', 'left')
+        // ->join('tipo_prioridades tp', 'ubi.Id_Tipo_Prioridad = tp.Id_Tipo_Prioridad', 'left')
+        // ->join('severidades sev', 'sev.Id_Severidad = problemas.Id_Severidad', 'left')
+        // ->join('fabricantes fab', 'fab.Id_Fabricante = problemas.Id_Fabricante', 'left')
+        // ->join('fases fpp', 'fpp.Id_Fase = problemas.Problem_Phase', 'left')
+        // ->join('fases fprf', 'fprf.Id_Fase = problemas.Reference_Phase', 'left')
+        // ->join('fases fai', 'fai.Id_Fase = problemas.Additional_Info', 'left')        
+        // ->join('tipo_ambientes ta', 'ta.Id_Tipo_Ambiente = problemas.Environment', 'left')
+        // ->join('inspecciones insp', 'insp.Id_Inspeccion = problemas.Id_Inspeccion', 'left')
+        // ->join('tipo_inspecciones tinsp', 'tinsp.Id_Tipo_Inspeccion = problemas.Id_Tipo_Inspeccion', 'left')
         ->where($condicion)
         ->whereIn('Id_Problema', $array)
         ->whereNotIn('Id_Problema', $arridds)
