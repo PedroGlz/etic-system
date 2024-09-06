@@ -90,8 +90,8 @@ class ProblemasMdl extends Model{
         return  $this->select('Id_Problema')->where(['Id_Ubicacion' => $idUbicacion,'Problem_Phase' => $problem,'Id_Problema !=' => $idProblema,'Estatus' => 'Activo'])->countAllResults();
     }
     
-    public function getProblemas_Sitio($condicion, $orden = 'Id_Problema ASC', $array = null){
-        $condicion['Estatus'] = 'Activo';
+    public function getProblemas_Sitio($condicion, $orden = 'problemas.Id_Problema ASC', $array = null){
+        $condicion['problemas.Estatus'] = 'Activo';
 
         $cronicosCerradosHistorial = $this->table('problemas')->select('Id_Problema')
         ->where([
@@ -106,95 +106,97 @@ class ProblemasMdl extends Model{
         }
 
         return $this->table('problemas')->select('
-            Id_Problema,    
-            Id_Tipo_Inspeccion,
-            Numero_Problema,
-            Id_Sitio,
-            Id_Inspeccion,
-            Id_Inspeccion_Det,
-            Id_Ubicacion,
-            Problem_Temperature,
-            Reference_Temperature,
-            Problem_Phase,
-            Reference_Phase,
-            Problem_Rms,
-            Reference_Rms,
-            Additional_Info,
-            Additional_Rms,
-            Emissivity_Check,
-            Emissivity,
-            Indirect_Temp_Check,
-            Temp_Ambient_Check,
-            Temp_Ambient,
-            Environment_Check,
-            Environment,
-            Ir_File,
-            Photo_File,
-            Wind_Speed_Check,
-            Wind_Speed,
-            Id_Fabricante,
-            Rated_Load_Check,
-            Rated_Load,
-            Circuit_Voltage_Check,
-            Circuit_Voltage,
-            Id_Falla,
-            Component_Comment,
-            Estatus_Problema,
-            Aumento_Temperatura,
-            Id_Severidad,
-            Estatus,
-            Ruta,
-            hazard_Type,
-            hazard_Classification,
-            hazard_Group,
-            hazard_Issue,
-            Rpm,
-            Bearing_Type,
-            Es_Cronico,
-            Cerrado_En_Inspeccion,
-            Creado_Por,
-            Fecha_Creacion,
-            Modificado_Por,
-            Fecha_Mod,
-            DATE_FORMAT(Fecha_Creacion,"%d/%m/%Y") AS fecha_key_grafica,
-            DATE_FORMAT(Fecha_Creacion,"%d/%m/%Y") AS Fecha_Creacion_formateada,
-            (SELECT Sitio FROM sitios WHERE sitios.Id_Sitio = problemas.Id_Sitio) AS nombre_sitio,
-            (SELECT Falla FROM FALLAS WHERE FALLAS.Id_Falla = problemas.hazard_Type) AS hazardType,
-            (SELECT Falla FROM FALLAS WHERE FALLAS.Id_Falla = problemas.hazard_Classification) AS hazardClassification,
-            (SELECT Falla FROM FALLAS WHERE FALLAS.Id_Falla = problemas.hazard_Group) AS hazardGroup,
-            (SELECT Falla FROM FALLAS WHERE FALLAS.Id_Falla = problemas.hazard_Issue) AS hazardIssue,
-            (SELECT Codigo_Barras FROM ubicaciones WHERE ubicaciones.Id_Ubicacion = problemas.ID_Ubicacion) AS codigoBarras,
-            (SELECT Ubicacion FROM ubicaciones WHERE ubicaciones.Id_Ubicacion = problemas.Id_Ubicacion) AS nombreEquipo,            
-            (SELECT Desc_Prioridad FROM tipo_prioridades WHERE tipo_prioridades.Id_Tipo_Prioridad = (SELECT Id_Tipo_Prioridad FROM ubicaciones WHERE ubicaciones.Id_Ubicacion = problemas.ID_Ubicacion)) AS tipoPrioridad,
-            (SELECT Severidad FROM severidades WHERE severidades.Id_Severidad = problemas.Id_Severidad) AS severidad,
-            (SELECT Severidad FROM severidades WHERE severidades.Id_Severidad = problemas.Id_Severidad) AS StrSeveridad,
-            (SELECt Fabricante FROM fabricantes WHERE fabricantes.Id_Fabricante = problemas.Id_Fabricante) AS fabricante,            
-            (SELECt Nombre_Fase FROM fases WHERE fases.Id_Fase = problemas.Problem_Phase) AS faseProblema,
-            (SELECt Nombre_Fase FROM fases WHERE fases.Id_Fase = problemas.Reference_Phase) AS faseReferencia,
-            (SELECt Nombre_Fase FROM fases WHERE fases.Id_Fase = problemas.Additional_Info) AS faseAdicional,
-            (SELECT Nombre FROM tipo_ambientes WHERE tipo_ambientes.Id_Tipo_Ambiente = problemas.Environment) AS tipoAmbiente,
-            (SELECT No_Inspeccion FROM inspecciones WHERE inspecciones.Id_Inspeccion = problemas.Id_Inspeccion) AS numInspeccion,
-            (SELECT Tipo_Inspeccion FROM tipo_inspecciones WHERE tipo_inspecciones.Id_Tipo_Inspeccion = problemas.Id_Tipo_Inspeccion) AS tipoInspeccion
+            problemas.Id_Problema,    
+            problemas.Id_Tipo_Inspeccion,
+            problemas.Numero_Problema,
+            problemas.Id_Sitio,
+            problemas.Id_Inspeccion,
+            problemas.Id_Inspeccion_Det,
+            problemas.Id_Ubicacion,
+            problemas.Problem_Temperature,
+            problemas.Reference_Temperature,
+            problemas.Problem_Phase,
+            problemas.Reference_Phase,
+            problemas.Problem_Rms,
+            problemas.Reference_Rms,
+            problemas.Additional_Info,
+            problemas.Additional_Rms,
+            problemas.Emissivity_Check,
+            problemas.Emissivity,
+            problemas.Indirect_Temp_Check,
+            problemas.Temp_Ambient_Check,
+            problemas.Temp_Ambient,
+            problemas.Environment_Check,
+            problemas.Environment,
+            problemas.Ir_File,
+            problemas.Photo_File,
+            problemas.Wind_Speed_Check,
+            problemas.Wind_Speed,
+            problemas.Id_Fabricante,
+            problemas.Rated_Load_Check,
+            problemas.Rated_Load,
+            problemas.Circuit_Voltage_Check,
+            problemas.Circuit_Voltage,
+            problemas.Id_Falla,
+            problemas.Component_Comment,
+            problemas.Estatus_Problema,
+            problemas.Aumento_Temperatura,
+            problemas.Id_Severidad,
+            problemas.Estatus,
+            problemas.Ruta,
+            problemas.hazard_Type,
+            problemas.hazard_Classification,
+            problemas.hazard_Group,
+            problemas.hazard_Issue,
+            problemas.Rpm,
+            problemas.Bearing_Type,
+            problemas.Es_Cronico,
+            problemas.Cerrado_En_Inspeccion,
+            problemas.Creado_Por,
+            problemas.Fecha_Creacion,
+            problemas.Modificado_Por,
+            problemas.Fecha_Mod,
+            DATE_FORMAT(problemas.Fecha_Creacion,"%d/%m/%Y") AS fecha_key_grafica,
+            DATE_FORMAT(problemas.Fecha_Creacion,"%d/%m/%Y") AS Fecha_Creacion_formateada,
+            
+            sitios.Sitio AS nombre_sitio,
+            fht.Falla AS hazardType,
+            fhc.Falla AS hazardClassification,
+            fhg.Falla AS hazardGroup,
+            fhi.Falla AS hazardIssue,
+            ubi.Codigo_Barras AS codigoBarras,
+            ubi.Ubicacion AS nombreEquipo,
+            tp.Desc_Prioridad AS tipoPrioridad,
+            sev.Severidad AS severidad,
+            sev.Severidad AS StrSeveridad,
+            fab.Fabricante AS fabricante,
+            fpp.Nombre_Fase AS faseProblema,
+            fprf.Nombre_Fase AS faseReferencia,
+            fai.Nombre_Fase AS faseAdicional,
+            ta.Nombre AS tipoAmbiente,
+            insp.No_Inspeccion AS numInspeccion,
+            tinsp.Tipo_Inspeccion AS tipoInspeccion
         ')
-        // ->join('sitios', 'sitios.Id_Sitio = problemas.Id_Sitio', 'left')
-        // ->join('FALLAS fht', 'fht.Id_Falla = problemas.hazard_Type', 'left')
-        // ->join('FALLAS fhc', 'fhc.Id_Falla = problemas.hazard_Classification', 'left')
-        // ->join('FALLAS fhg', 'fhg.Id_Falla = problemas.hazard_Group', 'left')
-        // ->join('FALLAS fhi', 'fhi.Id_Falla = problemas.hazard_Issue', 'left')
-        // ->join('ubicaciones ubi', 'ubi.Id_Ubicacion = problemas.Id_Ubicacion', 'left')
-        // ->join('tipo_prioridades tp', 'ubi.Id_Tipo_Prioridad = tp.Id_Tipo_Prioridad', 'left')
-        // ->join('severidades sev', 'sev.Id_Severidad = problemas.Id_Severidad', 'left')
-        // ->join('fabricantes fab', 'fab.Id_Fabricante = problemas.Id_Fabricante', 'left')
-        // ->join('fases fpp', 'fpp.Id_Fase = problemas.Problem_Phase', 'left')
-        // ->join('fases fprf', 'fprf.Id_Fase = problemas.Reference_Phase', 'left')
-        // ->join('fases fai', 'fai.Id_Fase = problemas.Additional_Info', 'left')        
-        // ->join('tipo_ambientes ta', 'ta.Id_Tipo_Ambiente = problemas.Environment', 'left')
-        // ->join('inspecciones insp', 'insp.Id_Inspeccion = problemas.Id_Inspeccion', 'left')
-        // ->join('tipo_inspecciones tinsp', 'tinsp.Id_Tipo_Inspeccion = problemas.Id_Tipo_Inspeccion', 'left')
+        ->join('sitios', 'problemas.Id_Sitio = sitios.Id_Sitio', 'left')
+        ->join('FALLAS fht', 'fht.Id_Falla = problemas.hazard_Type', 'left')
+        ->join('FALLAS fhc', 'fhc.Id_Falla = problemas.hazard_Classification', 'left')
+        ->join('FALLAS fhg', 'fhg.Id_Falla = problemas.hazard_Group', 'left')
+        ->join('FALLAS fhi', 'fhi.Id_Falla = problemas.hazard_Issue', 'left')
+        ->join('ubicaciones ubi', 'ubi.Id_Ubicacion = problemas.Id_Ubicacion', 'left')
+        ->join('tipo_prioridades tp', 'ubi.Id_Tipo_Prioridad = tp.Id_Tipo_Prioridad', 'left')
+        ->join('severidades sev', 'sev.Id_Severidad = problemas.Id_Severidad', 'left')
+        ->join('fabricantes fab', 'fab.Id_Fabricante = problemas.Id_Fabricante', 'left')
+        ->join('fases fpp', 'fpp.Id_Fase = problemas.Problem_Phase', 'left')
+        ->join('fases fprf', 'fprf.Id_Fase = problemas.Reference_Phase', 'left')
+        ->join('fases fai', 'fai.Id_Fase = problemas.Additional_Info', 'left')        
+        ->join('tipo_ambientes ta', 'ta.Id_Tipo_Ambiente = problemas.Environment', 'left')
+        ->join('inspecciones insp', 'insp.Id_Inspeccion = problemas.Id_Inspeccion', 'left')
+        ->join('tipo_inspecciones tinsp', 'tinsp.Id_Tipo_Inspeccion = problemas.Id_Tipo_Inspeccion', 'left')
         ->where($condicion)
-        ->whereIn('Id_Problema', $array)
-        ->whereNotIn('Id_Problema', $arridds)
-        ->orderBy($orden)->findAll();
+        ->whereIn('problemas.Id_Problema', $array)
+        ->whereNotIn('problemas.Id_Problema', $arridds)
+        ->orderBy($orden)
+        ->get();
     }
 
     public function getProblemas_Sitio_Reporte($Id_Sitio,$Id_Inspeccion){
@@ -213,142 +215,158 @@ class ProblemasMdl extends Model{
     }
 
     public function getReporteListaProblemas($Id_Sitio,$estatus,$Id_Inspeccion){
-        $condicion = ['Id_Sitio' => $Id_Sitio, "Estatus_Problema"=> $estatus,'Estatus' => 'Activo'];
+        $condicion = ['problemas.Id_Sitio' => $Id_Sitio, "problemas.Estatus_Problema"=> $estatus,'problemas.Estatus' => 'Activo'];
 
         if($estatus == "Cerrado"){
-            $condicion['Cerrado_En_Inspeccion'] = $Id_Inspeccion;
+            $condicion['problemas.Cerrado_En_Inspeccion'] = $Id_Inspeccion;
         }
 
         return $this->table('problemas')->select('
-            Id_Problema,    
-            Id_Tipo_Inspeccion,
-            Numero_Problema,
-            Id_Sitio,
-            Id_Inspeccion,
-            Id_Inspeccion_Det,
-            Id_Ubicacion,
-            Problem_Temperature,
-            Reference_Temperature,
-            Problem_Phase,
-            Reference_Phase,
-            Problem_Rms,
-            Reference_Rms,
-            Additional_Info,
-            Additional_Rms,
-            Emissivity_Check,
-            Emissivity,
-            Indirect_Temp_Check,
-            Temp_Ambient_Check,
-            Temp_Ambient,
-            Environment_Check,
-            Environment,
-            Ir_File,
-            Photo_File,
-            Wind_Speed_Check,
-            Wind_Speed,
-            Id_Fabricante,
-            Rated_Load_Check,
-            Rated_Load,
-            Circuit_Voltage_Check,
-            Circuit_Voltage,
-            Id_Falla,
-            Component_Comment,
-            Estatus_Problema,
-            Aumento_Temperatura,
-            Id_Severidad,
-            Estatus,
-            Ruta,
-            hazard_Type,
-            hazard_Classification,
-            hazard_Group,
-            hazard_Issue,
-            Rpm,
-            Bearing_Type,
-            Es_Cronico,
-            Cerrado_En_Inspeccion,
-            Creado_Por,
-            Fecha_Creacion,
-            Modificado_Por,
-            Fecha_Mod,
-            (SELECT Tipo_Inspeccion FROM tipo_inspecciones WHERE tipo_inspecciones.Id_Tipo_Inspeccion = problemas.Id_Tipo_Inspeccion) AS tipoInspeccion,
-            (SELECT No_Inspeccion FROM inspecciones WHERE inspecciones.Id_Inspeccion = problemas.Id_Inspeccion) AS numInspeccion,
-            (SELECT Tipo_Inspeccion FROM tipo_inspecciones WHERE tipo_inspecciones.Id_Tipo_Inspeccion = problemas.Id_Tipo_Inspeccion) AS tipoInspeccion,
-            (SELECT Severidad FROM severidades WHERE severidades.Id_Severidad = problemas.Id_Severidad) AS StrSeveridad
+            problemas.Id_Problema,    
+            problemas.Id_Tipo_Inspeccion,
+            problemas.Numero_Problema,
+            problemas.Id_Sitio,
+            problemas.Id_Inspeccion,
+            problemas.Id_Inspeccion_Det,
+            problemas.Id_Ubicacion,
+            problemas.Problem_Temperature,
+            problemas.Reference_Temperature,
+            problemas.Problem_Phase,
+            problemas.Reference_Phase,
+            problemas.Problem_Rms,
+            problemas.Reference_Rms,
+            problemas.Additional_Info,
+            problemas.Additional_Rms,
+            problemas.Emissivity_Check,
+            problemas.Emissivity,
+            problemas.Indirect_Temp_Check,
+            problemas.Temp_Ambient_Check,
+            problemas.Temp_Ambient,
+            problemas.Environment_Check,
+            problemas.Environment,
+            problemas.Ir_File,
+            problemas.Photo_File,
+            problemas.Wind_Speed_Check,
+            problemas.Wind_Speed,
+            problemas.Id_Fabricante,
+            problemas.Rated_Load_Check,
+            problemas.Rated_Load,
+            problemas.Circuit_Voltage_Check,
+            problemas.Circuit_Voltage,
+            problemas.Id_Falla,
+            problemas.Component_Comment,
+            problemas.Estatus_Problema,
+            problemas.Aumento_Temperatura,
+            problemas.Id_Severidad,
+            problemas.Estatus,
+            problemas.Ruta,
+            problemas.hazard_Type,
+            problemas.hazard_Classification,
+            problemas.hazard_Group,
+            problemas.hazard_Issue,
+            problemas.Rpm,
+            problemas.Bearing_Type,
+            problemas.Es_Cronico,
+            problemas.Cerrado_En_Inspeccion,
+            problemas.Creado_Por,
+            problemas.Fecha_Creacion,
+            problemas.Modificado_Por,
+            problemas.Fecha_Mod,
+            tinsp.Tipo_Inspeccion AS tipoInspeccion,
+            insp.No_Inspeccion AS numInspeccion,
+            sev.Severidad AS StrSeveridad
         ')
+        ->join('severidades sev', 'sev.Id_Severidad = problemas.Id_Severidad', 'left')
+        ->join('inspecciones insp', 'insp.Id_Inspeccion = problemas.Id_Inspeccion', 'left')
+        ->join('tipo_inspecciones tinsp', 'tinsp.Id_Tipo_Inspeccion = problemas.Id_Tipo_Inspeccion', 'left')
         ->where($condicion)
         // ->groupBy('Id_Inspeccion')
-        ->orderBy("Id_Inspeccion DESC , Id_Tipo_Inspeccion ASC, Numero_Problema ASC")->findAll();
+        ->orderBy("problemas.Id_Inspeccion DESC , problemas.Id_Tipo_Inspeccion ASC, problemas.Numero_Problema ASC")->findAll();
     }
 
     public function getProblemas_SitioGrafica($condicion){
         return $this->table('problemas')->select('
-            Id_Problema,    
-            Id_Tipo_Inspeccion,
-            Numero_Problema,
-            Id_Sitio,
-            Id_Inspeccion,
-            Id_Inspeccion_Det,
-            Id_Ubicacion,
-            Problem_Temperature,
-            Reference_Temperature,
-            Problem_Phase,
-            Reference_Phase,
-            Problem_Rms,
-            Reference_Rms,
-            Additional_Info,
-            Additional_Rms,
-            Emissivity_Check,
-            Emissivity,
-            Indirect_Temp_Check,
-            Temp_Ambient_Check,
-            Temp_Ambient,
-            Environment_Check,
-            Environment,
-            Ir_File,
-            Photo_File,
-            Wind_Speed_Check,
-            Wind_Speed,
-            Id_Fabricante,
-            Rated_Load_Check,
-            Rated_Load,
-            Circuit_Voltage_Check,
-            Circuit_Voltage,
-            Id_Falla,
-            Component_Comment,
-            Estatus_Problema,
-            Aumento_Temperatura,
-            Id_Severidad,
-            Estatus,
-            Ruta,
-            hazard_Type,
-            hazard_Classification,
-            hazard_Group,
-            hazard_Issue,
-            Rpm,
-            Bearing_Type,
-            Es_Cronico,
-            Cerrado_En_Inspeccion,
-            Creado_Por,
-            Fecha_Creacion,
-            Modificado_Por,
-            Fecha_Mod,
-            (SELECT Falla FROM FALLAS WHERE FALLAS.Id_Falla = problemas.hazard_Type) AS hazardType,
-            (SELECT Falla FROM FALLAS WHERE FALLAS.Id_Falla = problemas.hazard_Classification) AS hazardClassification,
-            (SELECT Falla FROM FALLAS WHERE FALLAS.Id_Falla = problemas.hazard_Group) AS hazardGroup,
-            (SELECT Falla FROM FALLAS WHERE FALLAS.Id_Falla = problemas.hazard_Issue) AS hazardIssue,
-            (SELECT Codigo_Barras FROM ubicaciones WHERE ubicaciones.Id_Ubicacion = problemas.ID_Ubicacion) AS codigoBarras,
-            (SELECT Desc_Prioridad FROM tipo_prioridades WHERE tipo_prioridades.Id_Tipo_Prioridad = (SELECT Id_Tipo_Prioridad FROM ubicaciones WHERE ubicaciones.Id_Ubicacion = problemas.ID_Ubicacion)) AS tipoPrioridad,
-            (SELECT Severidad FROM severidades WHERE severidades.Id_Severidad = problemas.Id_Severidad) AS severidad,
-            (SELECt Fabricante FROM fabricantes WHERE fabricantes.Id_Fabricante = problemas.Id_Fabricante) AS fabricante,
-            (SELECt Nombre_Fase FROM fases WHERE fases.Id_Fase = problemas.Problem_Phase) AS faseProblema,
-            (SELECt Nombre_Fase FROM fases WHERE fases.Id_Fase = problemas.Reference_Phase) AS faseReferencia,
-            (SELECt Nombre_Fase FROM fases WHERE fases.Id_Fase = problemas.Additional_Info) AS faseAdicional,
-            (SELECT Nombre FROM tipo_ambientes WHERE tipo_ambientes.Id_Tipo_Ambiente = problemas.Environment) AS tipoAmbiente,
-            (SELECT No_Inspeccion FROM inspecciones WHERE inspecciones.Id_Inspeccion = problemas.Id_Inspeccion) AS numInspeccion,
-            (SELECT Tipo_Inspeccion FROM tipo_inspecciones WHERE tipo_inspecciones.Id_Tipo_Inspeccion = problemas.Id_Tipo_Inspeccion) AS tipoInspeccion,
-            (SELECT Ubicacion FROM ubicaciones WHERE ubicaciones.Id_Ubicacion = problemas.Id_Ubicacion) AS nombreEquipo,
-            (SELECT Severidad FROM severidades WHERE severidades.Id_Severidad = problemas.Id_Severidad) AS StrSeveridad
+            problemas.Id_Problema,    
+            problemas.Id_Tipo_Inspeccion,
+            problemas.Numero_Problema,
+            problemas.Id_Sitio,
+            problemas.Id_Inspeccion,
+            problemas.Id_Inspeccion_Det,
+            problemas.Id_Ubicacion,
+            problemas.Problem_Temperature,
+            problemas.Reference_Temperature,
+            problemas.Problem_Phase,
+            problemas.Reference_Phase,
+            problemas.Problem_Rms,
+            problemas.Reference_Rms,
+            problemas.Additional_Info,
+            problemas.Additional_Rms,
+            problemas.Emissivity_Check,
+            problemas.Emissivity,
+            problemas.Indirect_Temp_Check,
+            problemas.Temp_Ambient_Check,
+            problemas.Temp_Ambient,
+            problemas.Environment_Check,
+            problemas.Environment,
+            problemas.Ir_File,
+            problemas.Photo_File,
+            problemas.Wind_Speed_Check,
+            problemas.Wind_Speed,
+            problemas.Id_Fabricante,
+            problemas.Rated_Load_Check,
+            problemas.Rated_Load,
+            problemas.Circuit_Voltage_Check,
+            problemas.Circuit_Voltage,
+            problemas.Id_Falla,
+            problemas.Component_Comment,
+            problemas.Estatus_Problema,
+            problemas.Aumento_Temperatura,
+            problemas.Id_Severidad,
+            problemas.Estatus,
+            problemas.Ruta,
+            problemas.hazard_Type,
+            problemas.hazard_Classification,
+            problemas.hazard_Group,
+            problemas.hazard_Issue,
+            problemas.Rpm,
+            problemas.Bearing_Type,
+            problemas.Es_Cronico,
+            problemas.Cerrado_En_Inspeccion,
+            problemas.Creado_Por,
+            problemas.Fecha_Creacion,
+            problemas.Modificado_Por,
+            problemas.Fecha_Mod,
+            fht.Falla AS hazardType,
+            fhc.Falla AS hazardClassification,
+            fhg.Falla AS hazardGroup,
+            fhi.Falla AS hazardIssue,
+            ubi.Codigo_Barras AS codigoBarras,
+            sev.Severidad AS severidad,
+            sev.Severidad AS StrSeveridad,
+            fab.Fabricante AS fabricante,
+            fpp.Nombre_Fase AS faseProblema,
+            fprf.Nombre_Fase AS faseReferencia,
+            fai.Nombre_Fase AS faseAdicional,
+            ta.Nombre AS tipoAmbiente,
+            insp.No_Inspeccion AS numInspeccion,
+            tinsp.Tipo_Inspeccion AS tipoInspeccion,
+            tp.Desc_Prioridad AS tipoPrioridad,
+            ubi.Ubicacion AS nombreEquipo
         ')
+        ->join('FALLAS fht', 'fht.Id_Falla = problemas.hazard_Type', 'left')
+        ->join('FALLAS fhc', 'fhc.Id_Falla = problemas.hazard_Classification', 'left')
+        ->join('FALLAS fhg', 'fhg.Id_Falla = problemas.hazard_Group', 'left')
+        ->join('FALLAS fhi', 'fhi.Id_Falla = problemas.hazard_Issue', 'left')
+        ->join('ubicaciones ubi', 'ubi.Id_Ubicacion = problemas.Id_Ubicacion', 'left')
+        ->join('tipo_prioridades tp', 'ubi.Id_Tipo_Prioridad = tp.Id_Tipo_Prioridad', 'left')
+        ->join('severidades sev', 'sev.Id_Severidad = problemas.Id_Severidad', 'left')
+        ->join('fabricantes fab', 'fab.Id_Fabricante = problemas.Id_Fabricante', 'left')
+        ->join('fases fpp', 'fpp.Id_Fase = problemas.Problem_Phase', 'left')
+        ->join('fases fprf', 'fprf.Id_Fase = problemas.Reference_Phase', 'left')
+        ->join('fases fai', 'fai.Id_Fase = problemas.Additional_Info', 'left')        
+        ->join('tipo_ambientes ta', 'ta.Id_Tipo_Ambiente = problemas.Environment', 'left')
+        ->join('inspecciones insp', 'insp.Id_Inspeccion = problemas.Id_Inspeccion', 'left')
+        ->join('tipo_inspecciones tinsp', 'tinsp.Id_Tipo_Inspeccion = problemas.Id_Tipo_Inspeccion', 'left')
         ->where('Estatus','Activo')
         ->where($condicion)->findAll();
     }

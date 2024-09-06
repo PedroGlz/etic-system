@@ -15,3 +15,750 @@ CRITICAL - 2024-09-05 01:47:59 --> Call to a member function getResult() on bool
 #5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #7 {main}
+ERROR - 2024-09-05 18:04:00 --> Unknown column 'sitios.Sitio' in 'field list'
+CRITICAL - 2024-09-05 18:04:00 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(200): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(379): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 18:39:18 --> Unknown column 'sitios.Sitio' in 'field list'
+CRITICAL - 2024-09-05 18:39:18 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(186): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(379): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 18:40:28 --> Unknown column 'sitios.Sitio' in 'field list'
+CRITICAL - 2024-09-05 18:40:28 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(182): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(379): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 18:48:41 --> Unknown column 'sitios.Sitio' in 'field list'
+CRITICAL - 2024-09-05 18:48:41 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(182): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 18:50:14 --> Unknown column 'sitios.Sitio' in 'field list'
+CRITICAL - 2024-09-05 18:50:14 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(200): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 18:53:22 --> Unknown column 'sitios.Sitio' in 'field list'
+CRITICAL - 2024-09-05 18:53:22 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(198): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 18:53:40 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 18:53:40 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(198): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 18:54:16 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 18:54:16 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(198): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 18:54:54 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 18:54:54 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(198): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 18:56:17 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 18:56:17 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(198): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 19:00:32 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 19:00:32 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(198): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 19:02:24 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 19:02:24 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(198): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 19:02:42 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 19:02:42 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(198): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 19:03:35 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 19:03:35 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(198): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 19:03:42 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 19:03:42 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(198): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 19:04:16 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 19:04:16 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-05 19:06:10 --> Call to undefined method App\Models\ProblemasMdl::fetch_all
+#0 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): CodeIgniter\Model->__call('fetch_all', Array)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+ERROR - 2024-09-05 19:06:19 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 19:06:19 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-05 19:11:50 --> Call to undefined method App\Models\ProblemasMdl::result
+#0 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): CodeIgniter\Model->__call('result', Array)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+ERROR - 2024-09-05 19:13:06 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 19:13:06 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(360): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-05 19:14:37 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 19:14:37 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 19:17:02 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 19:17:02 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(360): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-05 19:17:14 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 19:17:14 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(360): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2024-09-05 19:17:33 --> Call to undefined method App\Models\ProblemasMdl::getResult
+#0 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): CodeIgniter\Model->__call('getResult', Array)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+ERROR - 2024-09-05 19:22:25 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 19:22:25 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(361): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2024-09-05 20:02:11 --> Too few arguments to function CodeIgniter\Database\BaseBuilder::join(), 1 passed in C:\xampp\htdocs\etic-system\system\Model.php on line 723 and at least 2 expected
+#0 C:\xampp\htdocs\etic-system\system\Model.php(723): CodeIgniter\Database\BaseBuilder->join('INNER JOIN siti...')
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(180): CodeIgniter\Model->__call('join', Array)
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-05 20:02:13 --> Too few arguments to function CodeIgniter\Database\BaseBuilder::join(), 1 passed in C:\xampp\htdocs\etic-system\system\Model.php on line 723 and at least 2 expected
+#0 C:\xampp\htdocs\etic-system\system\Model.php(723): CodeIgniter\Database\BaseBuilder->join('INNER JOIN siti...')
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(180): CodeIgniter\Model->__call('join', Array)
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-05 20:03:52 --> Too few arguments to function CodeIgniter\Database\BaseBuilder::join(), 1 passed in C:\xampp\htdocs\etic-system\system\Model.php on line 723 and at least 2 expected
+#0 C:\xampp\htdocs\etic-system\system\Model.php(723): CodeIgniter\Database\BaseBuilder->join('sitios AS sitio...')
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(180): CodeIgniter\Model->__call('join', Array)
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-05 20:04:49 --> Too few arguments to function CodeIgniter\Database\BaseBuilder::join(), 1 passed in C:\xampp\htdocs\etic-system\system\Model.php on line 723 and at least 2 expected
+#0 C:\xampp\htdocs\etic-system\system\Model.php(723): CodeIgniter\Database\BaseBuilder->join('INNER JOIN siti...')
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(180): CodeIgniter\Model->__call('join', Array)
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-05 20:06:05 --> Too few arguments to function CodeIgniter\Database\BaseBuilder::join(), 1 passed in C:\xampp\htdocs\etic-system\system\Model.php on line 723 and at least 2 expected
+#0 C:\xampp\htdocs\etic-system\system\Model.php(723): CodeIgniter\Database\BaseBuilder->join('sitios, problem...')
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(180): CodeIgniter\Model->__call('join', Array)
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-05 20:06:12 --> Too few arguments to function CodeIgniter\Database\BaseBuilder::join(), 1 passed in C:\xampp\htdocs\etic-system\system\Model.php on line 723 and at least 2 expected
+#0 C:\xampp\htdocs\etic-system\system\Model.php(723): CodeIgniter\Database\BaseBuilder->join('sitios, problem...')
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(180): CodeIgniter\Model->__call('join', Array)
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-05 20:06:22 --> Too few arguments to function CodeIgniter\Database\BaseBuilder::join(), 1 passed in C:\xampp\htdocs\etic-system\system\Model.php on line 723 and at least 2 expected
+#0 C:\xampp\htdocs\etic-system\system\Model.php(723): CodeIgniter\Database\BaseBuilder->join('sitios, problem...')
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(180): CodeIgniter\Model->__call('join', Array)
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-05 20:06:32 --> Too few arguments to function CodeIgniter\Database\BaseBuilder::join(), 1 passed in C:\xampp\htdocs\etic-system\system\Model.php on line 723 and at least 2 expected
+#0 C:\xampp\htdocs\etic-system\system\Model.php(723): CodeIgniter\Database\BaseBuilder->join('sitios, problem...')
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(180): CodeIgniter\Model->__call('join', Array)
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-05 20:07:34 --> Too few arguments to function CodeIgniter\Database\BaseBuilder::join(), 1 passed in C:\xampp\htdocs\etic-system\system\Model.php on line 723 and at least 2 expected
+#0 C:\xampp\htdocs\etic-system\system\Model.php(723): CodeIgniter\Database\BaseBuilder->join('sitios, problem...')
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(180): CodeIgniter\Model->__call('join', Array)
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-05 20:07:36 --> Too few arguments to function CodeIgniter\Database\BaseBuilder::join(), 1 passed in C:\xampp\htdocs\etic-system\system\Model.php on line 723 and at least 2 expected
+#0 C:\xampp\htdocs\etic-system\system\Model.php(723): CodeIgniter\Database\BaseBuilder->join('sitios, problem...')
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(180): CodeIgniter\Model->__call('join', Array)
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-05 20:08:57 --> Too few arguments to function CodeIgniter\Database\BaseBuilder::join(), 1 passed in C:\xampp\htdocs\etic-system\system\Model.php on line 723 and at least 2 expected
+#0 C:\xampp\htdocs\etic-system\system\Model.php(723): CodeIgniter\Database\BaseBuilder->join('sitios, problem...')
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(180): CodeIgniter\Model->__call('join', Array)
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-05 20:09:30 --> syntax error, unexpected token "->"
+#0 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Prob...')
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(374): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Prob...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-05 20:09:47 --> syntax error, unexpected token "->"
+#0 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Prob...')
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(374): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Prob...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-05 20:09:54 --> Too few arguments to function CodeIgniter\Database\BaseBuilder::join(), 1 passed in C:\xampp\htdocs\etic-system\system\Model.php on line 723 and at least 2 expected
+#0 C:\xampp\htdocs\etic-system\system\Model.php(723): CodeIgniter\Database\BaseBuilder->join('sitios, problem...')
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(180): CodeIgniter\Model->__call('join', Array)
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-05 20:10:02 --> Too few arguments to function CodeIgniter\Database\BaseBuilder::join(), 1 passed in C:\xampp\htdocs\etic-system\system\Model.php on line 723 and at least 2 expected
+#0 C:\xampp\htdocs\etic-system\system\Model.php(723): CodeIgniter\Database\BaseBuilder->join('sitios, problem...')
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(180): CodeIgniter\Model->__call('join', Array)
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-05 20:10:28 --> Call to undefined method App\Models\ProblemasMdl::getResultArray
+#0 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(200): CodeIgniter\Model->__call('getResultArray', Array)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+ERROR - 2024-09-05 20:10:42 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`Id_Sitio` USING (`left`)
+WHERE `Id_Sitio` = '7B56774F-D176-42FB-AABA-3C4A98...' at line 3
+CRITICAL - 2024-09-05 20:10:42 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(361): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(200): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-05 20:10:54 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 20:10:54 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(361): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(200): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-05 20:11:13 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 20:11:13 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(361): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(200): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-05 20:11:24 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 20:11:24 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(361): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(200): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-05 20:11:35 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 20:11:35 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(361): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(200): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-05 20:14:22 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 20:14:22 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(364): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(200): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2024-09-05 20:18:36 --> syntax error, unexpected token "->"
+#0 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\etic-system\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Prob...')
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(374): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Prob...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 20:18:45 --> Not unique table/alias: 'problemas'
+CRITICAL - 2024-09-05 20:18:45 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(365): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(201): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-05 20:19:44 --> Not unique table/alias: 'problemas'
+CRITICAL - 2024-09-05 20:19:44 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(363): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(201): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-05 20:20:32 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 20:20:32 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(361): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(200): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2024-09-05 20:22:28 --> Call to undefined method App\Models\ProblemasMdl::result_array
+#0 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(200): CodeIgniter\Model->__call('result_array', Array)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2024-09-05 20:23:45 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::get()
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2024-09-05 20:27:25 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::result()
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2024-09-05 20:34:34 --> Unknown column 'Id_Problema' in 'field list'
+CRITICAL - 2024-09-05 20:34:34 --> Call to a member function where() on bool
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2024-09-05 20:34:44 --> Unknown column 'Id_Problema' in 'field list'
+CRITICAL - 2024-09-05 20:34:44 --> Call to a member function where() on bool
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2024-09-05 20:34:52 --> Unknown column 'Id_Problema' in 'field list'
+CRITICAL - 2024-09-05 20:34:52 --> Call to a member function where() on bool
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2024-09-05 20:51:48 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 20:51:48 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2024-09-05 20:52:10 --> Call to undefined method App\Models\ProblemasMdl::getResult
+#0 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): CodeIgniter\Model->__call('getResult', Array)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2024-09-05 20:52:20 --> Call to undefined method App\Models\ProblemasMdl::getResult
+#0 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): CodeIgniter\Model->__call('getResult', Array)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+ERROR - 2024-09-05 20:52:45 --> Unknown column 'sitios.Sitio' in 'field list'
+CRITICAL - 2024-09-05 20:52:45 --> Call to a member function getFirstRow() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): CodeIgniter\BaseModel->first()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 20:53:00 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 20:53:00 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(360): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-05 20:53:46 --> Column 'Id_Sitio' in field list is ambiguous
+CRITICAL - 2024-09-05 20:53:46 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(360): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2024-09-05 20:56:29 --> Undefined variable $Id_Sitio
+#0 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(187): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 187)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+ERROR - 2024-09-05 20:57:02 --> Column 'Id_Sitio' in field list is ambiguous
+ERROR - 2024-09-05 20:57:02 --> Error en la consulta: Column 'Id_Sitio' in field list is ambiguous
+ERROR - 2024-09-05 20:57:37 --> Column 'Id_Sitio' in field list is ambiguous
+ERROR - 2024-09-05 20:57:37 --> Error en la consulta: Column 'Id_Sitio' in field list is ambiguous
+ERROR - 2024-09-05 20:57:44 --> Unknown column 'sitios.Sitio' in 'field list'
+ERROR - 2024-09-05 20:57:44 --> Error en la consulta: Unknown column 'sitios.Sitio' in 'field list'
+ERROR - 2024-09-05 21:02:16 --> FUNCTION problemas.DATE_FORMAT does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+CRITICAL - 2024-09-05 21:02:16 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(360): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-05 21:02:30 --> FUNCTION problemas.DATE_FORMAT does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+CRITICAL - 2024-09-05 21:02:30 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(360): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-05 21:02:57 --> Column 'Id_Sitio' in where clause is ambiguous
+CRITICAL - 2024-09-05 21:02:57 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(360): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-05 21:03:22 --> Column 'Id_Sitio' in where clause is ambiguous
+CRITICAL - 2024-09-05 21:03:22 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(360): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-05 21:03:36 --> Column 'Id_Sitio' in where clause is ambiguous
+CRITICAL - 2024-09-05 21:03:36 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(360): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-05 21:03:53 --> Column 'Id_Sitio' in where clause is ambiguous
+CRITICAL - 2024-09-05 21:03:53 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(360): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-05 21:04:18 --> Column 'Id_Sitio' in where clause is ambiguous
+CRITICAL - 2024-09-05 21:04:18 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(360): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'Fecha_Creacion ...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-05 21:15:56 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') AS tipoAmbiente, No_Inspeccion FROM inspecciones WHERE inspecciones.Id_Insp...' at line 1
+CRITICAL - 2024-09-05 21:15:56 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(360): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'problemas.Fecha...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-05 21:16:41 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') AS tipoAmbiente, No_Inspeccion FROM inspecciones WHERE inspecciones.Id_Insp...' at line 1
+CRITICAL - 2024-09-05 21:16:41 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(360): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(199): App\Models\ProblemasMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(378): App\Models\ProblemasMdl->getProblemas_Sitio(Array, 'problemas.Fecha...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getProblemas_Sitio('7B56774F-D176-4...')
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2024-09-05 21:41:06 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'tipoInspeccion, (SELECT No_Inspeccion FROM inspecciones WHERE inspecciones.Id...' at line 1
+CRITICAL - 2024-09-05 21:41:06 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(282): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(2088): App\Models\ProblemasMdl->getReporteListaProblemas('7B56774F-D176-4...', 'Abierto', '78C21295-C607-4...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteListaProblemas('Abierto')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 21:41:14 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'tipoInspeccion, (SELECT No_Inspeccion FROM inspecciones WHERE inspecciones.Id...' at line 1
+CRITICAL - 2024-09-05 21:41:14 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(282): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(2088): App\Models\ProblemasMdl->getReporteListaProblemas('7B56774F-D176-4...', 'Abierto', '78C21295-C607-4...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteListaProblemas('Abierto')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-05 21:46:22 --> Column 'Id_Sitio' in where clause is ambiguous
+CRITICAL - 2024-09-05 21:46:22 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\ProblemasMdl.php(284): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(2088): App\Models\ProblemasMdl->getReporteListaProblemas('7B56774F-D176-4...', 'Abierto', '78C21295-C607-4...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->generarReporteListaProblemas('Abierto')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}

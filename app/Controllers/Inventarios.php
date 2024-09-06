@@ -373,9 +373,8 @@ class Inventarios extends BaseController{
     public function getProblemas_Sitio($id){
         $problemasMdl = new ProblemasMdl();
         
-        $condicion = array("Id_Sitio" => $id);
-        $orden = 'Fecha_Creacion ASC';
-
+        $condicion = array("problemas.Id_Sitio" => $id);
+        $orden = 'problemas.Fecha_Creacion ASC';
         echo (json_encode($problemasMdl->getProblemas_Sitio($condicion,$orden)));
     }
 
