@@ -1,0 +1,68 @@
+CRITICAL - 2024-09-06 00:38:24 --> syntax error, unexpected token "return"
+#0 C:\xampp\htdocs\etic-system\system\Router\Router.php(176): CodeIgniter\Router\Router->autoRoute('inventarios/get...')
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(718): CodeIgniter\Router\Router->handle('inventarios/get...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(359): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2024-09-06 00:38:24 --> syntax error, unexpected token "return"
+#0 C:\xampp\htdocs\etic-system\system\Router\Router.php(176): CodeIgniter\Router\Router->autoRoute('inventarios/get...')
+#1 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(718): CodeIgniter\Router\Router->handle('inventarios/get...')
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(359): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2024-09-06 01:06:57 --> Unknown column 'numInspeccion' in 'order clause'
+CRITICAL - 2024-09-06 01:06:57 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\LineaBaseMdl.php(120): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(972): App\Models\LineaBaseMdl->getBaselineUbicacion('91CDF992-7F3F-4...', '78C21295-C607-4...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getHistorialBaseLine()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-06 01:07:48 --> Unknown column 'numInspeccion' in 'order clause'
+CRITICAL - 2024-09-06 01:07:48 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\LineaBaseMdl.php(120): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(972): App\Models\LineaBaseMdl->getBaselineUbicacion('91CDF992-7F3F-4...', '78C21295-C607-4...')
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getHistorialBaseLine()
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2024-09-06 01:10:27 --> Column 'Estatus' in where clause is ambiguous
+CRITICAL - 2024-09-06 01:10:27 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\etic-system\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 C:\xampp\htdocs\etic-system\app\Models\LineaBaseMdl.php(35): CodeIgniter\BaseModel->findAll()
+#2 C:\xampp\htdocs\etic-system\app\Models\LineaBaseMdl.php(122): App\Models\LineaBaseMdl->get()
+#3 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(972): App\Models\LineaBaseMdl->getBaselineUbicacion('91CDF992-7F3F-4...', '78C21295-C607-4...')
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->getHistorialBaseLine()
+#5 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#6 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2024-09-06 01:45:33 --> Undefined array key 0
+#0 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(1138): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 1138)
+#1 C:\xampp\htdocs\etic-system\app\Controllers\Inventarios.php(835): App\Controllers\Inventarios->actualizarEstatusElementoPadre(NULL)
+#2 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(824): App\Controllers\Inventarios->guardarBaseLine()
+#3 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventarios))
+#4 C:\xampp\htdocs\etic-system\system\CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\etic-system\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+ERROR - 2024-09-06 02:00:18 --> Unknown column 'expanded' in 'field list'
+ERROR - 2024-09-06 02:00:19 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-06 02:00:19 --> Unknown column 'selected' in 'field list'
+ERROR - 2024-09-06 02:00:19 --> Unknown column 'selected' in 'field list'
+ERROR - 2024-09-06 02:00:20 --> Unknown column 'expanded' in 'field list'
+ERROR - 2024-09-06 02:00:22 --> Unknown column 'expanded' in 'field list'
+ERROR - 2024-09-06 02:00:24 --> Unknown column 'selected' in 'field list'
+ERROR - 2024-09-06 02:00:24 --> Unknown column 'selected' in 'field list'
+ERROR - 2024-09-06 02:00:24 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-06 02:00:56 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-06 02:02:21 --> Unknown column 'selected' in 'field list'
+ERROR - 2024-09-06 02:02:21 --> Unknown column 'selected' in 'field list'
+ERROR - 2024-09-06 02:02:22 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Id_Inspeccion = '78C21295-C607-46E3-A026-37F1B3772FC6'' at line 1
+ERROR - 2024-09-06 02:02:22 --> Unknown column 'selected' in 'field list'
+ERROR - 2024-09-06 02:02:22 --> Unknown column 'selected' in 'field list'

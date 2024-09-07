@@ -967,7 +967,12 @@ class Inventarios extends BaseController{
         $Id_Ubicacion = $this->request->getPost('Id_Ubicacion');
         $Id_Inspeccion = $this->request->getPost('Id_Inspeccion');
 
-        echo (json_encode($lineaBaseMdl->getHistorialBaseLine($Id_Ubicacion, $Id_Inspeccion)));
+        if ($Id_Ubicacion != '') {
+            echo (json_encode($lineaBaseMdl->getBaselineUbicacion($Id_Ubicacion, $Id_Inspeccion)));
+        }else {
+            echo (json_encode($lineaBaseMdl->getHistorialBaseLine($Id_Inspeccion)));
+        }
+
     }
 
     public function getHistorialInspecciones($id){
@@ -1784,7 +1789,7 @@ class Inventarios extends BaseController{
         $orden_ubicaciones = $this->request->getPost('orden_ubicaciones');
 
         // Base LIne unicamente de la inspeccion
-        $baseLine = $lineaBaseMdl->getHistorialBaseLine('',$session->Id_Inspeccion);
+        $baseLine = $lineaBaseMdl->getHistorialBaseLine($session->Id_Inspeccion);
         $array_ids = array();
         $elementos_inventario_ordenados = array();
         for ($i=0; $i < count($orden_ubicaciones); $i++) { 

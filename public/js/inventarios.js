@@ -546,10 +546,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
         },
       },
       rowDoubleClick: function(args){
-        ////console.log(args.item)
+        console.log(args.item)
         // Cargamos el historial del base line
         JsGridBaseLine.jsGrid("loadData",{ data : []});
-        cargarDataJsGridBaseLine(args.item.id)
+        cargarDataJsGridBaseLine(args.item.Id_Inspeccion_Det)
         JsGridHistorialInspecciones.jsGrid("loadData",{ data : []});
         cargarDataJsGridHistorialInspecciones(args.item.id)
         document.querySelector("#Id_InspeccionBL").value = idInspeccion;
@@ -2113,11 +2113,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
       var form_action = $("#FormBaseLine").attr("action");
       // Guardamos el form con los input file para subir archivos
       var formData = new FormData(document.getElementById("FormBaseLine"));
+      let objFormData = formDataToObjet(formData);
+
+console.log(arrayFormsBaseLineEditar)
 
       if(Id_Linea_Base.value != 0){
         alertLodading('Guardando cambios...')
 
-        arrayFormsBaseLineEditar.push(formDataToObjet(formData))
+        arrayFormsBaseLineEditar.push(objFormData)
         
         arrayFormsBaseLineEditar.forEach((datos_BL) => {
           let formData_editar_bl = new FormData();
@@ -2134,6 +2137,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
             processData: false,
             contentType: false,
             success: function (res) {
+              // Se actualiza la tabla del modal y tambien la lista de baseline
+              cargarDataJsGridBaseLine(objFormData.Id_Inspeccion_Det_BL)
+              cargarDataJsGridBaseLine()
+
+              cargar_datos_treeview().then((treeArmado) => {
+                TreeView.treeview('setTree',JSON.stringify(treeArmado))
+                ubicar_nodo()
+              });
+
+
             },
             error: function (err) {
               ////console.log(err);
@@ -2142,13 +2155,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         
         })
 
-        // creamos de nuevo el treeview actualizado
-        cargar_datos_treeview().then(() => {
-          ubicar_nodo()
-        });
-        // Se actualiza la tabla del modal y tambien la lista de baseline
-        cargarDataJsGridBaseLine(Id_Ubicacion.value)
-        cargarDataJsGridBaseLine()
+
 
         cerrarAlertLoading('Cambios guardados')
         $('#modalBaseLine').modal('hide');
