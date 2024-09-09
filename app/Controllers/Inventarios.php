@@ -1298,13 +1298,13 @@ class Inventarios extends BaseController{
         $datosInspeccion = $inspeccionesMdl->obtenerRegistros($session->Id_Inspeccion);
         // Problemas de las ubicaciones
         $arrayElementosParaReporte = (get_object_vars(json_decode($this->request->getPost('datosArreglo')))["arrayElementosParaReporte"]);
-        
+
         $condicion = [
-            'Id_Sitio' => $session->Id_Sitio,
-            'Id_Inspeccion' => $session->Id_Inspeccion,
-            'Estatus_Problema' => 'Abierto',
+            'problemas.Id_Sitio' => $session->Id_Sitio,
+            'problemas.Id_Inspeccion' => $session->Id_Inspeccion,
+            'problemas.Estatus_Problema' => 'Abierto',
         ];
-        $orden = 'Id_Tipo_Inspeccion ASC, Numero_Problema ASC';
+        $orden = 'problemas.Id_Tipo_Inspeccion ASC, problemas.Numero_Problema ASC';
         $problemas = $problemasMdl->getProblemas_Sitio($condicion, $orden, $arrayElementosParaReporte);
 
         // Datos para el encabezado del reporte y encaberzado de tabla

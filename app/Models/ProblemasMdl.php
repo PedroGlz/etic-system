@@ -408,18 +408,21 @@ class ProblemasMdl extends Model{
 
     public function getHistorialProblema($Id_Ubicacion, $id_tipo_problema){
         return $this->table('problemas')->select('
-            Problem_Temperature,
-            Reference_Temperature,
-            DATE_FORMAT(Fecha_Creacion,"%d/%m/%Y") AS fecha_problema_historico,
-            Numero_Problema,
-            (SELECT i.no_inspeccion FROM inspecciones AS i WHERE i.id_inspeccion = problemas.id_inspeccion) AS numInspeccion,
-            Fecha_Creacion,
-            (SELECT s.Severidad FROM severidades AS s WHERE s.Id_Severidad = problemas.Id_Severidad) AS StrSeveridad,
-            Component_Comment AS notas
+            problemas.Problem_Temperature,
+            problemas.Reference_Temperature,
+            DATE_FORMAT(problemas.Fecha_Creacion,"%d/%m/%Y") AS fecha_problema_historico,
+            problemas.Numero_Problema,
+            problemas.Fecha_Creacion,
+            insp.No_Inspeccion AS numInspeccion,
+            sev.Severidad AS StrSeveridad,
+            problemas.Component_Comment AS notas
         ')
+        ->join('severidades sev', 'sev.Id_Severidad = problemas.Id_Severidad', 'left')
+        ->join('inspecciones insp', 'insp.Id_Inspeccion = problemas.Id_Inspeccion', 'left')
+
         ->where([
             'problemas.Id_Ubicacion' => $Id_Ubicacion,
-            'Id_Tipo_Inspeccion' => $id_tipo_problema,
+            'problemas.Id_Tipo_Inspeccion' => $id_tipo_problema,
             'problemas.Es_Cronico' => 'SI',
             'problemas.Estatus' => 'Activo',
         ])

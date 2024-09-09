@@ -315,6 +315,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     /* Eventos del treeView */
     TreeView.on('nodeSelected', function(event, node) {
       console.log('clickitoo')
+      console.log(node)
       
       if (node.Id_Inspeccion_Det != '0') {
 
@@ -371,7 +372,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
 
     TreeView.on('nodeUnselected', function(event, node) {
-
       $.ajax({
         url: '/inventarios/setUnselectedNode',
         type: 'POST',
@@ -592,10 +592,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     }
                   })
                 }else{
-                  Toast.fire({
-                    icon: 'error',
-                    title: validacion.msj,
-                    timer: 4300
+                  Swal.fire({
+                    title: 'No se puede eliminar',
+                    html: `<strong>${validacion.msj}</strong>`,
+                    icon: 'warning',
+                    showCancelButton: false,
+                    cancelButtonColor: '#d33',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Aceptar'
                   })
                 }
 
@@ -961,17 +965,25 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   // PROBLEMAS
   function nuevoProblema(){
+
+    let nodoSeleccionado = TreeView.treeview('getSelected')[0];
+
     ////console.log(nodoSeleccionado)
     // Validamos que este seleccionado algun elemento del treeview  
-    if(nodoSeleccionado.estatus){
+    if(TreeView.treeview('getSelected').length > 0){
+
+      if (nodoSeleccionado.nodeId == '0') {
+        return
+      }
+
       // Si está seleccionado algun elemento del treeview entonce procedemos a validar si tiene Baseline
-      validar_crear_problema_ubicacion(nodoSeleccionado.id_inspeccion_det).then((validacion) => {      
+      validar_crear_problema_ubicacion(nodoSeleccionado.Id_Inspeccion_Det).then((validacion) => {      
         // Si no tiene baselien retorna true y procede a realizarse el proceso de crear problema
         if(validacion.status){
           document.querySelector("#FrmProblemas").removeAttribute("action");
           document.querySelector("#FrmProblemas").setAttribute("action",`/inventarios/nuevoProblema`);
     
-          if(nodoSeleccionado.esEquipo){
+          if(nodoSeleccionado.Es_Equipo == 'SI'){
             $('#modalSeleccionarProblema').modal('show');
           }else{
             Swal.fire({
@@ -995,21 +1007,31 @@ window.addEventListener('DOMContentLoaded', (event) => {
           }
         // Si si tiene Baslien manda mensaje de error
         }else{
-          Toast.fire({
-            icon: 'error',
-            title: validacion.msj,
-            timer: 4300
-          });
+          Swal.fire({
+            title: 'No se puede crear hallazgos',
+            html: `<strong>${validacion.msj}</strong>`,
+            icon: 'warning',
+            showCancelButton: false,
+            cancelButtonColor: '#d33',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Aceptar'
+          })          
           return;
         }
       })
 
     }else{
-      // Mostramos mensaje de alerta
-      Toast.fire({
-        icon: 'error',
-        title: 'Seleccionar elemento'
-      })
+      Swal.fire({
+        title: 'Ubicacion no seleccionada',
+        html: `<strong> Para crear un hallazgo, es necesario seleccionar una ubicación.</strong>`,
+        icon: 'warning',
+        showCancelButton: false,
+        cancelButtonColor: '#d33',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Aceptar'
+      })          
+      return;
+
     }
   }
 
@@ -1286,22 +1308,26 @@ window.addEventListener('DOMContentLoaded', (event) => {
       formData.append('Id_Inspeccion_Det',idInspeccion_Det);
       formData.append('Id_Ubicacion',idUbicacion);
 
+      let objFormData = formDataToObjet(formData);
 
+      // Editando problemas
       if(form_action == '/inventarios/updateProblema'){
 
         alertLodading('Guardando cambios...')
 
-        // let formProbleaActual = formDataToObjet(formData);
-        arrayFormsProblemasEditar.push(formDataToObjet(formData));
+        arrayFormsProblemasEditar = arrayFormsProblemasEditar.filter(item => item.Id_Problema != objFormData.Id_Problema);
+        arrayFormsProblemasEditar.push(objFormData);
+
+        console.log(arrayFormsProblemasEditar)
         
-        
+        return
         arrayFormsProblemasEditar.forEach((datos_probelma) => {
           let formData_editar = new FormData();
 
           for (let key in datos_probelma) {
             formData_editar.append(key, datos_probelma[key]);
           }
-
+          
           $.ajax({
             data: formData_editar,
             url: form_action,
@@ -1334,14 +1360,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
           contentType: false,
           success: function (res) {
             ////console.log(form_action)
+
+            cambiarEstatusUbicacion(idInspeccion_Det, 'problema_add')
             cargarDataJsGridProblemas()
   
-            if (form_action != '/inventarios/updateProblema') {
-              // creamos de nuevo el treeview actualizado
-              cargar_datos_treeview().then(() => {
-                ubicar_nodo(true)
-              }); 
-            }
+            // if (form_action != '/inventarios/updateProblema') {
+            //   // creamos de nuevo el treeview actualizado
+            //   cargar_datos_treeview().then(() => {
+            //     ubicar_nodo(true)
+            //   }); 
+            // }
   
             // Mostramos mensaje de operacion exitosa
             Toast.fire({
@@ -1353,7 +1381,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
             $('#modalProblemas').modal('hide');
           },
           error: function (err) {
-            ////console.log(err);
+            Swal.fire({
+              title: 'Evento inesperado',
+              html: `Ocurrio un problema al intentar guardar el registro, por favor intente de nuevo.`,
+              icon: 'warning',
+              showCancelButton: false,
+              cancelButtonColor: '#d33',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Aceptar',
+              cancelButtonText: 'Cancelar',
+            })
           }
         });
       }
@@ -1414,11 +1451,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
             url: "/inventarios/eliminarProblema/"+item.Id_Problema,
             dataType: 'json',
             success: function (res) {
-              // creamos de nuevo el treeview actualizado
-              cargar_datos_treeview().then(() => {
-                ubicar_nodo()
-              });
-              
+
+
+              cambiarEstatusUbicacion(item.Id_Inspeccion_Det, 'problema_delete')
+
+              seleccionarNodoTreeview()
+
               cargarDataJsGridProblemas()
               Toast.fire({
                 icon: 'success',
@@ -1588,8 +1626,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
       document.querySelector("#menuTabsProblemaElectricoMecanico").style.display = '';
       mostrarFormularioProblema('divProblemaElectrico',valoresItem.Id_Tipo_Inspeccion);
       crearSelectFallaProblemas(valoresItem.Id_Tipo_Inspeccion,"Id_Falla");
+      console.log('problema electrico/mecanico')
       return editarProblemaElectrico(valoresItem);
     } else {
+      console.log('problema visual')
       // Si es un problema visual ocultamos los tabs de imagenes del problema electrico y mecanico
       // document.querySelector("#menuTabsProblemaElectricoMecanico").style.display = 'none';
       mostrarFormularioProblema('divProblemaVisual');
@@ -1645,7 +1685,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function editarProblemaVisual(item){
-    // ////console.log(item)
+    console.log(item)
     // Mostramos la fila con los datos con los campos de numero idInspeccion
     // numero problema, tipo de inpeccion y equipo
     document.querySelector('#rowEditVisual').style.display = 'block';
@@ -1790,6 +1830,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function filtrarProblemas(){
+    console.log('filtrando-----------')
+    console.log(arrayUbicacionesFiltro)
     var filtroTipoVal = filtroTipoProblem.value;
     var filtroEstatusVal = filtroEstatus.value;
     var newdata=[];
@@ -2082,28 +2124,32 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function cargarDataJsGridBaseLine(ubicacionBL = ''){
-    $.ajax({
-      url: `inventarios/getHistorialBaseLine`,
-      data: {Id_Ubicacion:ubicacionBL, Id_Inspeccion:idInspeccion},
-      type: "POST",
-      dataType: 'json',
-      success: function (res) {
-        if(ubicacionBL != ""){
-          JsGridBaseLine.jsGrid("loadData",{ data : res});
-        }else{
-          //console.log('cargando datos')
-          //console.log(res)
-          res.sort((a, b) => new Date(a.Fecha_Creacion_sinFormato) - new Date(b.Fecha_Creacion_sinFormato));
-          JsGridListaBaseLine.jsGrid("loadData",{ data : res});
-          // Datos para filtrar baseline por ubicacion del treeview
-          datos_base_line_filtro = res;
-          ////console.log(datos_base_line_filtro)
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        url: `inventarios/getHistorialBaseLine`,
+        data: {Id_Ubicacion:ubicacionBL, Id_Inspeccion:idInspeccion},
+        type: "POST",
+        dataType: 'json',
+        success: function (res) {
+          if(ubicacionBL != ""){
+            JsGridBaseLine.jsGrid("loadData",{ data : res});
+          }else{
+            //console.log('cargando datos')
+            //console.log(res)
+            res.sort((a, b) => new Date(a.Fecha_Creacion_sinFormato) - new Date(b.Fecha_Creacion_sinFormato));
+            JsGridListaBaseLine.jsGrid("loadData",{ data : res});
+            // Datos para filtrar baseline por ubicacion del treeview
+            datos_base_line_filtro = res;
+            ////console.log(datos_base_line_filtro)
+          }
+          resolve('ok')
+        },
+        error: function (err) {
+          ////console.log(err);
+          reject('error')
         }
-      },
-      error: function (err) {
-        ////console.log(err);
-      }
-    });
+      });
+    }) 
   }
 
   function guardarDatosBaseLine(){
@@ -2115,13 +2161,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
       var formData = new FormData(document.getElementById("FormBaseLine"));
       let objFormData = formDataToObjet(formData);
 
-console.log(arrayFormsBaseLineEditar)
-
+      // Editando
       if(Id_Linea_Base.value != 0){
         alertLodading('Guardando cambios...')
 
-        arrayFormsBaseLineEditar.push(objFormData)
-        
+        dataFilasJsGridBaseLine[filaActualJsGridBaseLine].Notas = objFormData.NotasBL;
+        arrayFormsBaseLineEditar = arrayFormsBaseLineEditar.filter(item => item.Id_Linea_Base != objFormData.Id_Linea_Base);
+        arrayFormsBaseLineEditar.push(objFormData);
+
         arrayFormsBaseLineEditar.forEach((datos_BL) => {
           let formData_editar_bl = new FormData();
 
@@ -2137,15 +2184,13 @@ console.log(arrayFormsBaseLineEditar)
             processData: false,
             contentType: false,
             success: function (res) {
+
               // Se actualiza la tabla del modal y tambien la lista de baseline
-              cargarDataJsGridBaseLine(objFormData.Id_Inspeccion_Det_BL)
-              cargarDataJsGridBaseLine()
-
-              cargar_datos_treeview().then((treeArmado) => {
-                TreeView.treeview('setTree',JSON.stringify(treeArmado))
-                ubicar_nodo()
-              });
-
+              cargarDataJsGridBaseLine(objFormData.Id_Inspeccion_Det_BL).then(() => {
+                cargarDataJsGridBaseLine().then(() => {
+                  seleccionarNodoTreeview()
+                })
+              })
 
             },
             error: function (err) {
@@ -2159,6 +2204,8 @@ console.log(arrayFormsBaseLineEditar)
 
         cerrarAlertLoading('Cambios guardados')
         $('#modalBaseLine').modal('hide');
+      
+        // Creando nuevo
       }else{
 
         $.ajax({
@@ -2169,13 +2216,16 @@ console.log(arrayFormsBaseLineEditar)
           processData: false,
           contentType: false,
           success: function (res) {
-            // creamos de nuevo el treeview actualizado
-            cargar_datos_treeview().then(() => {
-              ubicar_nodo()
-            });
+
+            cambiarEstatusUbicacion(objFormData.Id_Inspeccion_Det_BL, 'baseline_add')
+
             // Se actualiza la tabla del modal y tambien la lista de baseline
-            cargarDataJsGridBaseLine(Id_Ubicacion.value)
-            cargarDataJsGridBaseLine()
+            cargarDataJsGridBaseLine(objFormData.Id_Inspeccion_Det_BL).then(() => {
+              cargarDataJsGridBaseLine().then(() => {
+                seleccionarNodoTreeview()
+              })
+            })
+
             // Mostramos mensaje de operacion exitosa
             Toast.fire({
               icon: 'success',
@@ -2192,6 +2242,23 @@ console.log(arrayFormsBaseLineEditar)
       }
     }
   };
+
+  function seleccionarNodoTreeview(){
+    
+    let nodoSeleccionado = TreeView.treeview('getSelected');
+
+    if (nodoSeleccionado.length > 0) {
+      nodoSeleccionado = (TreeView.treeview('getSelected'))[0];
+    }else{
+      nodoSeleccionado = {nodeId:0}
+    }
+
+    console.log(nodoSeleccionado)
+    console.log(nodoSeleccionado.nodeId)
+
+    TreeView.treeview('unselectNode', [ nodoSeleccionado.nodeId, { silent: false } ]);
+    TreeView.treeview('selectNode', [ nodoSeleccionado.nodeId, { silent: false } ]);
+  }
 
   function validarFormBaseLine(){
     procesoValidacionBaseLine = $('#FormBaseLine').validate({
@@ -2635,8 +2702,19 @@ console.log(arrayFormsBaseLineEditar)
   }
   
   function cambiarEstatusUbicacion(idUbicacionDet, estatusValorParam = false){
-    let estatusValor = estatusValorParam != false ? estatusValorParam : selectEstatus.value;
+
+
+    let estatusValor = selectEstatus.value
+    let textEstatus = $('select[name="Id_Status_Inspeccion_Det"] option:selected').text();
+    textEstatus = (textEstatus.split(" ",1))[0];
+
+
+    if (estatusValorParam != false) {
+      estatusValor = estatusValorParam
+    }
     
+    console.log(estatusValor) 
+
     if(estatusValor == ""){
       limpiarChecksEstatus()
 
@@ -2658,23 +2736,52 @@ console.log(arrayFormsBaseLineEditar)
     // Filtrando para encontrar el nodo al que se le esta cambiadno el estatus
     let nodo_que_coincide = allNodes.filter(nodo => nodo.Id_Inspeccion_Det == idUbicacionDet);
 
-    // revelando visualmente el nodo a modificar para que no marque eerror al cambiar propiedades
+    // revelando visualmente el nodo a modificar para que no marque error al cambiar propiedades
     TreeView.treeview('revealNode', [ nodo_que_coincide[0].nodeId, { silent: false } ]);
 
+
+
+    console.log('antes de los if------------------------------------')
+    console.log(estatusValor)
     // Color negro
     let colorTexto = '#000000'
-    if (estatusValor != '568798D1-76BB-11D3-82BF-00104BC75DC2') {
+    if (estatusValor != '568798D1-76BB-11D3-82BF-00104BC75DC2' && estatusValorParam == false) {
+      console.log('No es baseline mijo')
       colorTexto = '#0082ff'
+    }else if (estatusValor == 'baseline_add') {
+      console.log('entro en add baseline mijo')
+      estatusValor = '568798D2-76BB-11D3-82BF-00104BC75DC2'
+      colorTexto = '#21B040'
+      textEstatus = 'VERIFICADO'
+    }else if (estatusValor == 'baseline_delete') {
+      console.log('entro en eliminar baseline mijo')
+      estatusValor = '568798D1-76BB-11D3-82BF-00104BC75DC2'
+      colorTexto = '#000000'
+      textEstatus = 'PVERIF'
+    }else if(estatusValor == 'problema_add'){
+      console.log('entro en agregar probelmaaa')
+      estatusValor = '568798D2-76BB-11D3-82BF-00104BC75DC2'
+      colorTexto = '#DD3B3B'
+      textEstatus = 'VERIFICADO'
+    }else if(estatusValor == 'problema_delete'){
+      console.log('entro en eliminar probelmaaa')
+      estatusValor = '568798D1-76BB-11D3-82BF-00104BC75DC2'
+      colorTexto = '#000000'
+      textEstatus = 'PVERIF'
     }
-    // Colocando color de texto correspondiente al nodo
+
+    // Colocando color de texto visualmente al elemento en el arbol
     document.querySelector('[data-nodeid="'+nodo_que_coincide[0].nodeId+'"]').style.color = colorTexto;
+    // Colocando el texto del nuevo estatus en el jsGrid de inventarios
+    console.log(rowJsGridInventario)
+    rowJsGridInventario.innerHTML= textEstatus;
     
-    var textEstatus = $('select[name="Id_Status_Inspeccion_Det"] option:selected').text();
-    textEstatus = textEstatus.split(" ",1);
-    rowJsGridInventario.innerHTML= textEstatus[0];
+    // var textEstatus = $('select[name="Id_Status_Inspeccion_Det"] option:selected').text();
+    // textEstatus = textEstatus.split(" ",1);
+    // rowJsGridInventario.innerHTML= textEstatus[0];
     
     let treeData = treeViewObject.getTree();
-    let treeDataActualizada = JSON.stringify(cambiarColor(treeData,idUbicacionDet,colorTexto,estatusValor, textEstatus[0]));
+    let treeDataActualizada = JSON.stringify(cambiarColor(treeData,idUbicacionDet,colorTexto,estatusValor, textEstatus));
     TreeView.treeview('setTree',treeDataActualizada)
 
     console.log(JSON.parse(treeDataActualizada))
@@ -2683,14 +2790,16 @@ console.log(arrayFormsBaseLineEditar)
     let treeDataActualizadaPadres = JSON.stringify(cambiarColorNodoPadre(JSON.parse(treeDataActualizada), nodo_que_coincide))
     TreeView.treeview('setTree',treeDataActualizadaPadres)
     
-    $.ajax({
-      url: `/inventarios/cambiarEstatusUbicacion`,
-      type: "POST",
-      dataType: 'json',
-      data:{Id_Inspeccion_Det: idUbicacionDet,idEstatus:estatusValor},
-      success: function (data){},
-      error: function (error){},
-    });
+    if (estatusValorParam == false) {
+      $.ajax({
+        url: `/inventarios/cambiarEstatusUbicacion`,
+        type: "POST",
+        dataType: 'json',
+        data:{Id_Inspeccion_Det: idUbicacionDet,idEstatus:estatusValor},
+        success: function (data){},
+        error: function (error){},
+      });
+    }
 
   }
 
@@ -2793,18 +2902,24 @@ console.log(arrayFormsBaseLineEditar)
             url: "/inventarios/eliminarBaseLine/"+item.Id_Linea_Base,
             dataType: 'json',
             success: function (res) {
+              console.group('eliminado de LISTA bL')
+              console.group(item)
 
-              // creamos de nuevo el treeview actualizado
-              cargar_datos_treeview().then(() => {
-                ubicar_nodo()
-              });
+              cambiarEstatusUbicacion(item.Id_Inspeccion_Det, 'baseline_delete')
+
+              seleccionarNodoTreeview()
+
+              // // creamos de nuevo el treeview actualizado
+              // cargar_datos_treeview().then(() => {
+              //   ubicar_nodo()
+              // });
               // Mostramos mensaje de operacion exitosa
               Toast.fire({
                 icon: 'success',
                 title: 'Eliminado'
               })
-              // actualizamos el listado BL
-              cargarDataJsGridBaseLine();
+              // // actualizamos el listado BL
+              // cargarDataJsGridBaseLine();
             },
             error: function (err) {
               ////console.log(err);
@@ -2928,6 +3043,9 @@ console.log(arrayFormsBaseLineEditar)
       ...datosBaseLineEnELForm
     };
 
+    console.log(arrayFormsBaseLineEditar)
+    console.log(dataFilasJsGridBaseLine)
+
     if(btnClick.id == "btnSiguiente" && filaActualJsGridBaseLine < totalFIlasBaseLine) {
       filaActualJsGridBaseLine = filaActualJsGridBaseLine + 1;
     }else if(btnClick.id == "btnAtras" && filaActualJsGridBaseLine > 0){
@@ -2968,8 +3086,10 @@ console.log(arrayFormsBaseLineEditar)
     };
     
     if (btnClick.id == "btnSiguienteProblemas" && filaActualJsGridProblemas < totalFIlasProblemas) {
+      limpiarFrmProblemas()
       filaActualJsGridProblemas = filaActualJsGridProblemas + 1;
     } else if (btnClick.id == "btnAtrasProblemas" && filaActualJsGridProblemas > 0) {
+      limpiarFrmProblemas()
       filaActualJsGridProblemas = filaActualJsGridProblemas - 1;
     }
 
