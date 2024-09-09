@@ -3093,7 +3093,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
       filaActualJsGridProblemas = filaActualJsGridProblemas - 1;
     }
 
-
     ajustesEditarProblema();
   }
 

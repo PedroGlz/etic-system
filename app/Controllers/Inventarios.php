@@ -1193,6 +1193,7 @@ class Inventarios extends BaseController{
         $datosInspeccion = $inspeccionesMdl->obtenerRegistros($session->Id_Inspeccion);
         // Problemas de las ubicaciones
         $problemas = $problemasMdl->getProblemas_Sitio_Reporte($session->Id_Sitio,$session->Id_Inspeccion);
+        
         // consulta para el inventario de la inspeccion
         $arrayElementosParaReporte = (get_object_vars(json_decode($this->request->getPost('datosArreglo')))["arrayElementosParaReporte"]);
         $ubicacionesInventario = $inventariosMdl->consultaReporte($session->Id_Sitio,$session->Id_Inspeccion,$arrayElementosParaReporte);
@@ -1850,7 +1851,6 @@ class Inventarios extends BaseController{
         $iteracion = 0;
         // Total de iteraciones para genera paginas
         $totalBaseLine = count($baseLine) - 1;
-
         // Datos de la tabla
         foreach($baseLine as $key => $value){
 
@@ -1903,7 +1903,7 @@ class Inventarios extends BaseController{
 
             $pdf->SetX(175); $pdf->SetFont('Arial','B',8); $pdf->Cell(17,4,utf8_decode('Fabricante:'),"L",0,'L');
             $pdf->SetFont('Arial','',8); $pdf->Cell(46,4,utf8_decode($value['fabricante']),"R",0,'L'); $pdf->Ln();
-
+            
             $pdf->SetX(175); $pdf->SetFont('Arial','B',8); $pdf->Cell(30,4,utf8_decode('Prioridad Operación:'),"LB",0,'L');
             $pdf->SetFont('Arial','',8); $pdf->Cell(33,4,utf8_decode($value['tipoPrioridad']),"RB",0,'L'); $pdf->Ln();
 
@@ -2194,8 +2194,8 @@ class Inventarios extends BaseController{
                 'value'=> count(
                     $problemasMdl->getProblemas_SitioGrafica(
                         array(
-                            "Id_Sitio" => $session->Id_Sitio,
-                            "Id_Inspeccion" => $session->Id_Inspeccion
+                            "problemas.Id_Sitio" => $session->Id_Sitio,
+                            "problemas.Id_Inspeccion" => $session->Id_Inspeccion
                         )
                     )
                 )
@@ -2205,12 +2205,12 @@ class Inventarios extends BaseController{
                 'value'=> count(
                     $problemasMdl->getProblemas_SitioGrafica(
                         array(
-                            "Id_Sitio" => $session->Id_Sitio,
-                            "Id_Inspeccion" => $session->Id_Inspeccion,
-                            "Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
-                            // "Id_Tipo_Inspeccion" => "0D32B332-76C3-11D3-82BF-00104BC75DC2",
-                            "Estatus_Problema" => "Abierto",
-                            "Id_Severidad" => "1D56EDB0-8D6E-11D3-9270-006008A19766"
+                            "problemas.Id_Sitio" => $session->Id_Sitio,
+                            "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                            "problemas.Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
+                            // "problemas.Id_Tipo_Inspeccion" => "0D32B332-76C3-11D3-82BF-00104BC75DC2",
+                            "problemas.Estatus_Problema" => "Abierto",
+                            "problemas.Id_Severidad" => "1D56EDB0-8D6E-11D3-9270-006008A19766"
                         )
                     )
                 )
@@ -2220,12 +2220,12 @@ class Inventarios extends BaseController{
                 'value'=> count(
                     $problemasMdl->getProblemas_SitioGrafica(
                         array(
-                            "Id_Sitio" => $session->Id_Sitio,
-                            "Id_Inspeccion" => $session->Id_Inspeccion,
-                            "Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
-                            // "Id_Tipo_Inspeccion" => "0D32B332-76C3-11D3-82BF-00104BC75DC2",
-                            "Estatus_Problema" => "Abierto",
-                            "Id_Severidad" => "1D56EDB1-8D6E-11D3-9270-006008A19766"
+                            "problemas.Id_Sitio" => $session->Id_Sitio,
+                            "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                            "problemas.Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
+                            // "problemas.Id_Tipo_Inspeccion" => "0D32B332-76C3-11D3-82BF-00104BC75DC2",
+                            "problemas.Estatus_Problema" => "Abierto",
+                            "problemas.Id_Severidad" => "1D56EDB1-8D6E-11D3-9270-006008A19766"
                         )
                     )
                 )
@@ -2235,12 +2235,12 @@ class Inventarios extends BaseController{
                 'value'=> count(
                     $problemasMdl->getProblemas_SitioGrafica(
                         array(
-                            "Id_Sitio" => $session->Id_Sitio,
-                            "Id_Inspeccion" => $session->Id_Inspeccion,
-                            "Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
-                            // "Id_Tipo_Inspeccion" => "0D32B332-76C3-11D3-82BF-00104BC75DC2",
-                            "Estatus_Problema" => "Abierto",
-                            "Id_Severidad" => "1D56EDB2-8D6E-11D3-9270-006008A19766"
+                            "problemas.Id_Sitio" => $session->Id_Sitio,
+                            "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                            "problemas.Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
+                            // "problemas.Id_Tipo_Inspeccion" => "0D32B332-76C3-11D3-82BF-00104BC75DC2",
+                            "problemas.Estatus_Problema" => "Abierto",
+                            "problemas.Id_Severidad" => "1D56EDB2-8D6E-11D3-9270-006008A19766"
                         )
                     )
                 )
@@ -2250,12 +2250,12 @@ class Inventarios extends BaseController{
                 'value'=> count(
                     $problemasMdl->getProblemas_SitioGrafica(
                         array(
-                            "Id_Sitio" => $session->Id_Sitio,
-                            "Id_Inspeccion" => $session->Id_Inspeccion,
-                            "Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
-                            // "Id_Tipo_Inspeccion" => "0D32B332-76C3-11D3-82BF-00104BC75DC2",
-                            "Estatus_Problema" => "Abierto",
-                            "Id_Severidad" => "1D56EDB3-8D6E-11D3-9270-006008A19766"
+                            "problemas.Id_Sitio" => $session->Id_Sitio,
+                            "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                            "problemas.Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
+                            // "problemas.Id_Tipo_Inspeccion" => "0D32B332-76C3-11D3-82BF-00104BC75DC2",
+                            "problemas.Estatus_Problema" => "Abierto",
+                            "problemas.Id_Severidad" => "1D56EDB3-8D6E-11D3-9270-006008A19766"
                         )
                     )
                 )
@@ -2265,10 +2265,10 @@ class Inventarios extends BaseController{
                 'value'=> count(
                     $problemasMdl->getProblemas_SitioGrafica(
                         array(
-                            "Id_Sitio" => $session->Id_Sitio,
-                            "Id_Inspeccion" => $session->Id_Inspeccion,
-                            "Id_Tipo_Inspeccion" => "0D32B334-76C3-11D3-82BF-00104BC75DC2",
-                            "Estatus_Problema" => "Abierto",
+                            "problemas.Id_Sitio" => $session->Id_Sitio,
+                            "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                            "problemas.Id_Tipo_Inspeccion" => "0D32B334-76C3-11D3-82BF-00104BC75DC2",
+                            "problemas.Estatus_Problema" => "Abierto",
                         )
                     )
                 )
@@ -2278,10 +2278,10 @@ class Inventarios extends BaseController{
                 'value'=> count(
                     $problemasMdl->getProblemas_SitioGrafica(
                         array(
-                            "Id_Sitio" => $session->Id_Sitio,
-                            "Id_Inspeccion" => $session->Id_Inspeccion,
-                            "Id_Tipo_Inspeccion" => "0D32B333-76C3-11D3-82BF-00104BC75DC2",
-                            "Estatus_Problema" => "Abierto",
+                            "problemas.Id_Sitio" => $session->Id_Sitio,
+                            "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                            "problemas.Id_Tipo_Inspeccion" => "0D32B333-76C3-11D3-82BF-00104BC75DC2",
+                            "problemas.Estatus_Problema" => "Abierto",
                         )
                     )
                 )
@@ -2291,9 +2291,9 @@ class Inventarios extends BaseController{
                 'value'=> count(
                     $problemasMdl->getProblemas_SitioGrafica(
                         array(
-                            "Id_Sitio" => $session->Id_Sitio,
-                            "Id_Inspeccion" => $session->Id_Inspeccion,
-                            "Estatus_Problema" => "Cerrado",
+                            "problemas.Id_Sitio" => $session->Id_Sitio,
+                            "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                            "problemas.Estatus_Problema" => "Cerrado",
                         )
                     )
                 )
@@ -2486,9 +2486,9 @@ class Inventarios extends BaseController{
         $pdf->Cell(66,8,utf8_decode('Anomalías / Hallazgos Crónicos: '.count(
             $problemasMdl->getProblemas_SitioGrafica(
                 array(
-                    "Id_Sitio" => $session->Id_Sitio,
-                    "Id_Inspeccion" => $session->Id_Inspeccion,
-                    "Es_Cronico" => "SI",
+                    "problemas.Id_Sitio" => $session->Id_Sitio,
+                    "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                    "problemas.Es_Cronico" => "SI",
                 )
             )
         )),0,0,'C',true);
@@ -2512,8 +2512,8 @@ class Inventarios extends BaseController{
     }
 
     public function generarResultadoDeAnalisis(){
-        // Generar reportes previos
         // $this->generarReporteBaseLine();
+        // Generar reportes previos
         $this->generarGraficaConcentradoProblemas();
         $this->generarReporteListaProblemas("Abierto");
         $this->generarReporteListaProblemas("Cerrado");
@@ -2577,12 +2577,12 @@ class Inventarios extends BaseController{
         $imagen_recomendacion_2 = $this->request->getPost('imagen_recomendacion_2');
         $referencia_reporte = $this->request->getPost('referencia_reporte');
         $elementos_inspeccionados = $this->request->getPost('areas_inspeccionadas');
-        
+
         $total_hallazgos = count(
             $problemasMdl->getProblemas_SitioGrafica(
                 array(
-                    "Id_Sitio" => $session->Id_Sitio,
-                    "Id_Inspeccion" => $session->Id_Inspeccion
+                    "problemas.Id_Sitio" => $session->Id_Sitio,
+                    "problemas.Id_Inspeccion" => $session->Id_Inspeccion
                 )
             )
         );
@@ -2590,9 +2590,9 @@ class Inventarios extends BaseController{
         $total_electricos = count(
             $problemasMdl->getProblemas_SitioGrafica(
                 array(
-                    "Id_Sitio" => $session->Id_Sitio,
-                    "Id_Inspeccion" => $session->Id_Inspeccion,
-                    "Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
+                    "problemas.Id_Sitio" => $session->Id_Sitio,
+                    "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                    "problemas.Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
                     // "Id_Tipo_Inspeccion" => "0D32B332-76C3-11D3-82BF-00104BC75DC2",
                     // "Estatus_Problema" => "Abierto"
                 )
@@ -2602,10 +2602,10 @@ class Inventarios extends BaseController{
         $cronicos_electricos = count(
             $problemasMdl->getProblemas_SitioGrafica(
                 array(
-                    "Id_Sitio" => $session->Id_Sitio,
-                    "Id_Inspeccion" => $session->Id_Inspeccion,
-                    "Es_Cronico" => "SI",
-                    "Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
+                    "problemas.Id_Sitio" => $session->Id_Sitio,
+                    "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                    "problemas.Es_Cronico" => "SI",
+                    "problemas.Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
                     // "Id_Tipo_Inspeccion" => "0D32B332-76C3-11D3-82BF-00104BC75DC2",
                     // "Estatus_Problema" => "Abierto",
                 )
@@ -2615,11 +2615,11 @@ class Inventarios extends BaseController{
         $electricos_cerrados = count(
             $problemasMdl->getProblemas_SitioGrafica(
                 array(
-                    "Id_Sitio" => $session->Id_Sitio,
-                    "Id_Inspeccion" => $session->Id_Inspeccion,
-                    "Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
+                    "problemas.Id_Sitio" => $session->Id_Sitio,
+                    "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                    "problemas.Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
                     // "Id_Tipo_Inspeccion" => "0D32B332-76C3-11D3-82BF-00104BC75DC2",
-                    "Estatus_Problema" => "Cerrado"
+                    "problemas.Estatus_Problema" => "Cerrado"
                 )
             )
         );
@@ -2629,9 +2629,9 @@ class Inventarios extends BaseController{
         $total_visuales = count(
             $problemasMdl->getProblemas_SitioGrafica(
                 array(
-                    "Id_Sitio" => $session->Id_Sitio,
-                    "Id_Inspeccion" => $session->Id_Inspeccion,
-                    "Id_Tipo_Inspeccion" => "0D32B333-76C3-11D3-82BF-00104BC75DC2",
+                    "problemas.Id_Sitio" => $session->Id_Sitio,
+                    "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                    "problemas.Id_Tipo_Inspeccion" => "0D32B333-76C3-11D3-82BF-00104BC75DC2",
                     // "Estatus_Problema" => "Abierto"
                 )
             )
@@ -2640,10 +2640,10 @@ class Inventarios extends BaseController{
         $cronicos_visuales = count(
             $problemasMdl->getProblemas_SitioGrafica(
                 array(
-                    "Id_Sitio" => $session->Id_Sitio,
-                    "Id_Inspeccion" => $session->Id_Inspeccion,
-                    "Es_Cronico" => "SI",
-                    "Id_Tipo_Inspeccion" => "0D32B333-76C3-11D3-82BF-00104BC75DC2",
+                    "problemas.Id_Sitio" => $session->Id_Sitio,
+                    "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                    "problemas.Es_Cronico" => "SI",
+                    "problemas.Id_Tipo_Inspeccion" => "0D32B333-76C3-11D3-82BF-00104BC75DC2",
                     // "Estatus_Problema" => "Abierto",
                 )
             )
@@ -2652,10 +2652,10 @@ class Inventarios extends BaseController{
         $visuales_cerrados = count(
             $problemasMdl->getProblemas_SitioGrafica(
                 array(
-                    "Id_Sitio" => $session->Id_Sitio,
-                    "Id_Inspeccion" => $session->Id_Inspeccion,
-                    "Id_Tipo_Inspeccion" => "0D32B333-76C3-11D3-82BF-00104BC75DC2",
-                    "Estatus_Problema" => "Cerrado"
+                    "problemas.Id_Sitio" => $session->Id_Sitio,
+                    "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                    "problemas.Id_Tipo_Inspeccion" => "0D32B333-76C3-11D3-82BF-00104BC75DC2",
+                    "problemas.Estatus_Problema" => "Cerrado"
                 )
             )
         );
@@ -2665,9 +2665,9 @@ class Inventarios extends BaseController{
         $total_mecanicos = count(
             $problemasMdl->getProblemas_SitioGrafica(
                 array(
-                    "Id_Sitio" => $session->Id_Sitio,
-                    "Id_Inspeccion" => $session->Id_Inspeccion,
-                    "Id_Tipo_Inspeccion" => "0D32B334-76C3-11D3-82BF-00104BC75DC2",
+                    "problemas.Id_Sitio" => $session->Id_Sitio,
+                    "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                    "problemas.Id_Tipo_Inspeccion" => "0D32B334-76C3-11D3-82BF-00104BC75DC2",
                     // "Estatus_Problema" => "Abierto"
                 )
             )
@@ -2676,10 +2676,10 @@ class Inventarios extends BaseController{
         $cronicos_mecanicos = count(
             $problemasMdl->getProblemas_SitioGrafica(
                 array(
-                    "Id_Sitio" => $session->Id_Sitio,
-                    "Id_Inspeccion" => $session->Id_Inspeccion,
-                    "Es_Cronico" => "SI",
-                    "Id_Tipo_Inspeccion" => "0D32B334-76C3-11D3-82BF-00104BC75DC2",
+                    "problemas.Id_Sitio" => $session->Id_Sitio,
+                    "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                    "problemas.Es_Cronico" => "SI",
+                    "problemas.Id_Tipo_Inspeccion" => "0D32B334-76C3-11D3-82BF-00104BC75DC2",
                     // "Estatus_Problema" => "Abierto",
                 )
             )
@@ -2688,10 +2688,10 @@ class Inventarios extends BaseController{
         $mecanicos_cerrados = count(
             $problemasMdl->getProblemas_SitioGrafica(
                 array(
-                    "Id_Sitio" => $session->Id_Sitio,
-                    "Id_Inspeccion" => $session->Id_Inspeccion,
-                    "Id_Tipo_Inspeccion" => "0D32B334-76C3-11D3-82BF-00104BC75DC2",
-                    "Estatus_Problema" => "Cerrado"
+                    "problemas.Id_Sitio" => $session->Id_Sitio,
+                    "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                    "problemas.Id_Tipo_Inspeccion" => "0D32B334-76C3-11D3-82BF-00104BC75DC2",
+                    "problemas.Estatus_Problema" => "Cerrado"
                 )
             )
         );
@@ -2705,10 +2705,10 @@ class Inventarios extends BaseController{
         $total_criticos = count(
             $problemasMdl->getProblemas_SitioGrafica(
                 array(
-                    "Id_Sitio" => $session->Id_Sitio,
-                    "Id_Inspeccion" => $session->Id_Inspeccion,
-                    "Id_Severidad" => "1D56EDB0-8D6E-11D3-9270-006008A19766",
-                    "Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
+                    "problemas.Id_Sitio" => $session->Id_Sitio,
+                    "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                    "problemas.Id_Severidad" => "1D56EDB0-8D6E-11D3-9270-006008A19766",
+                    "problemas.Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
                     // "Id_Tipo_Inspeccion" => "0D32B332-76C3-11D3-82BF-00104BC75DC2",
                     // "Estatus_Problema" => "Abierto"
                 )
@@ -2718,10 +2718,10 @@ class Inventarios extends BaseController{
         $total_serios = count(
             $problemasMdl->getProblemas_SitioGrafica(
                 array(
-                    "Id_Sitio" => $session->Id_Sitio,
-                    "Id_Inspeccion" => $session->Id_Inspeccion,
-                    "Id_Severidad" => "1D56EDB1-8D6E-11D3-9270-006008A19766",
-                    "Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
+                    "problemas.Id_Sitio" => $session->Id_Sitio,
+                    "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                    "problemas.Id_Severidad" => "1D56EDB1-8D6E-11D3-9270-006008A19766",
+                    "problemas.Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
                     // "Id_Tipo_Inspeccion" => "0D32B332-76C3-11D3-82BF-00104BC75DC2",
                     // "Estatus_Problema" => "Abierto"
                 )
@@ -2731,10 +2731,10 @@ class Inventarios extends BaseController{
         $total_importantes = count(
             $problemasMdl->getProblemas_SitioGrafica(
                 array(
-                    "Id_Sitio" => $session->Id_Sitio,
-                    "Id_Inspeccion" => $session->Id_Inspeccion,
-                    "Id_Severidad" => "1D56EDB2-8D6E-11D3-9270-006008A19766",
-                    "Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
+                    "problemas.Id_Sitio" => $session->Id_Sitio,
+                    "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                    "problemas.Id_Severidad" => "1D56EDB2-8D6E-11D3-9270-006008A19766",
+                    "problemas.Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
                     // "Id_Tipo_Inspeccion" => "0D32B332-76C3-11D3-82BF-00104BC75DC2",
                     // "Estatus_Problema" => "Abierto"
                 )
@@ -2744,11 +2744,11 @@ class Inventarios extends BaseController{
         $total_menores = count(
             $problemasMdl->getProblemas_SitioGrafica(
                 array(
-                    "Id_Sitio" => $session->Id_Sitio,
-                    "Id_Inspeccion" => $session->Id_Inspeccion,
-                    "Id_Severidad" => "1D56EDB3-8D6E-11D3-9270-006008A19766",
-                    "Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
-                    // "Id_Tipo_Inspeccion" => "0D32B332-76C3-11D3-82BF-00104BC75DC2",
+                    "problemas.Id_Sitio" => $session->Id_Sitio,
+                    "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                    "problemas.Id_Severidad" => "1D56EDB3-8D6E-11D3-9270-006008A19766",
+                    "problemas.Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
+                    // "problemas.Id_Tipo_Inspeccion" => "0D32B332-76C3-11D3-82BF-00104BC75DC2",
                     // "Estatus_Problema" => "Abierto"
                 )
             )
@@ -2757,16 +2757,16 @@ class Inventarios extends BaseController{
         $total_normal = count(
             $problemasMdl->getProblemas_SitioGrafica(
                 array(
-                    "Id_Sitio" => $session->Id_Sitio,
-                    "Id_Inspeccion" => $session->Id_Inspeccion,
-                    "Id_Severidad" => "1D56EDB4-8D6E-11D3-9270-006008A19766",
-                    "Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
+                    "problemas.Id_Sitio" => $session->Id_Sitio,
+                    "problemas.Id_Inspeccion" => $session->Id_Inspeccion,
+                    "problemas.Id_Severidad" => "1D56EDB4-8D6E-11D3-9270-006008A19766",
+                    "problemas.Id_Tipo_Inspeccion" => "0D32B331-76C3-11D3-82BF-00104BC75DC2",
                     // "Id_Tipo_Inspeccion" => "0D32B332-76C3-11D3-82BF-00104BC75DC2",
                     // "Estatus_Problema" => "Abierto"
                 )
             )
         );
-        
+
         #Creamos el objeto pdf (con medidas en milímetros):
         $pdf = new PDF_RA('P', 'mm', array(220,280));
         
@@ -3521,8 +3521,8 @@ class Inventarios extends BaseController{
         $direccion_completa = $Direccion.", ".$Colonia.", ".$Municipio.", ".$Estado;
 
         $condicion = [
-            'Id_Sitio' => $session->Id_Sitio,
-            'Id_Inspeccion' => $session->Id_Inspeccion,
+            'problemas.Id_Sitio' => $session->Id_Sitio,
+            'problemas.Id_Inspeccion' => $session->Id_Inspeccion,
         ];
         $orden = 'Id_Tipo_Inspeccion ASC, Numero_Problema ASC';
         $problemas = $problemasMdl->getProblemas_Sitio($condicion, $orden);

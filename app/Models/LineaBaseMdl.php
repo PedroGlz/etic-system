@@ -58,10 +58,17 @@ class LineaBaseMdl extends Model
             linea_base.Ruta,
             linea_base.Fecha_Creacion AS Fecha_Creacion_sinFormato,
             insp.No_Inspeccion AS numInspeccion,
-            ubi.Ubicacion AS equipo
+            ubi.Ubicacion AS equipo,
+            ubi.Codigo_Barras AS codigoBarras,
+            tp.Desc_Prioridad AS tipoPrioridad,
+            fab.Fabricante as fabricante,
+            v_ubi_t.path
         ')
         ->join('inspecciones insp', 'insp.Id_Inspeccion = linea_base.Id_Inspeccion', 'left')
         ->join('ubicaciones ubi', 'ubi.Id_Ubicacion = linea_base.Id_Ubicacion', 'left')
+        ->join('tipo_prioridades tp', 'ubi.Id_Tipo_Prioridad = tp.Id_Tipo_Prioridad', 'left')
+        ->join('v_ubicaciones_tree v_ubi_t', 'linea_base.Id_Ubicacion = v_ubi_t.id', 'left')
+        ->join('fabricantes fab', 'v_ubi_t.Id_Fabricante = fab.Id_Fabricante', 'left')
         ->where($condicion)
         ->orderBy($orden)->findAll();
     }
@@ -84,9 +91,11 @@ class LineaBaseMdl extends Model
             linea_base.Notas,
             linea_base.Ruta,
             linea_base.Fecha_Creacion AS Fecha_Creacion_sinFormato,
-            insp.No_Inspeccion AS numInspeccion
+            insp.No_Inspeccion AS numInspeccion,
+            ubi.Codigo_Barras AS codigoBarras
         ')
         ->join('inspecciones insp', 'insp.Id_Inspeccion = linea_base.Id_Inspeccion', 'left')
+        ->join('ubicaciones ubi', 'ubi.Id_Ubicacion = linea_base.Id_Ubicacion', 'left')
         ->where($condicion)
         ->findAll();
     }

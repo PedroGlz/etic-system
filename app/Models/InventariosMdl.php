@@ -59,7 +59,7 @@ class InventariosMdl extends Model
             id AS Id_Ubicacion,
             level,
             Estatus_Inspeccion_Det AS Estatus,
-            name AS Elemento,
+            nombreUbicacion AS Elemento,
             Codigo_Barras,
             Notas_Inspeccion,
             Id_Inspeccion_Det,

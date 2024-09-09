@@ -367,7 +367,7 @@ class ProblemasMdl extends Model{
         ->join('tipo_ambientes ta', 'ta.Id_Tipo_Ambiente = problemas.Environment', 'left')
         ->join('inspecciones insp', 'insp.Id_Inspeccion = problemas.Id_Inspeccion', 'left')
         ->join('tipo_inspecciones tinsp', 'tinsp.Id_Tipo_Inspeccion = problemas.Id_Tipo_Inspeccion', 'left')
-        ->where('Estatus','Activo')
+        ->where('problemas.Estatus','Activo')
         ->where($condicion)->findAll();
     }
 
