@@ -1320,7 +1320,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         console.log(arrayFormsProblemasEditar)
         
-        return
         arrayFormsProblemasEditar.forEach((datos_probelma) => {
           let formData_editar = new FormData();
 
@@ -1574,7 +1573,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // //console.log(listaProblemasParaEditar)
     var valoresItem = listaProblemasParaEditar[filaActualJsGridProblemas];
     // //console.log('desdeaqui miau')
-    // //console.log(valoresItem)
+    console.log(valoresItem)
     ////console.log(valoresItem.numInspeccion)
     ////console.log(strNumInspeccion.value)
     // Mostramos Botones de navegacion
@@ -1685,7 +1684,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function editarProblemaVisual(item){
-    console.log(item)
+    // console.log(item)
     // Mostramos la fila con los datos con los campos de numero idInspeccion
     // numero problema, tipo de inpeccion y equipo
     document.querySelector('#rowEditVisual').style.display = 'block';
@@ -3076,6 +3075,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let datosDelProblemaEnELForm = formDataToObjet(formData)
     delete datosDelProblemaEnELForm.Numero_Problema;
 
+    // Si es un problemas visual colocar bien los datos en sus porpiedades
+    if (datosDelProblemaEnELForm.Id_Tipo_Inspeccion == "0D32B333-76C3-11D3-82BF-00104BC75DC2") {
+      datosDelProblemaEnELForm.Component_Comment = datosDelProblemaEnELForm.observaciones_Visual;
+      datosDelProblemaEnELForm.StrSeveridad = datosDelProblemaEnELForm.severidad;
+      datosDelProblemaEnELForm.Ruta = datosDelProblemaEnELForm.StrRutaVisual;
+    }
+
     arrayFormsProblemasEditar = arrayFormsProblemasEditar.filter(item => item.Id_Problema != datosDelProblemaEnELForm.Id_Problema);
     arrayFormsProblemasEditar.push(datosDelProblemaEnELForm);
 
@@ -3086,10 +3092,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     };
     
     if (btnClick.id == "btnSiguienteProblemas" && filaActualJsGridProblemas < totalFIlasProblemas) {
-      limpiarFrmProblemas()
       filaActualJsGridProblemas = filaActualJsGridProblemas + 1;
     } else if (btnClick.id == "btnAtrasProblemas" && filaActualJsGridProblemas > 0) {
-      limpiarFrmProblemas()
       filaActualJsGridProblemas = filaActualJsGridProblemas - 1;
     }
 
@@ -3118,7 +3122,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
       let label = document.createElement('label');
       label.htmlFor = `${elemento.Id_Inspeccion_Det}`;
-      label.innerHTML = `${elemento.name}`;
+      label.innerHTML = `${elemento.nombreUbicacion}`;
       label.classList.add("form-check-label");
 
       contenedorCheck.appendChild(inputCheck);
