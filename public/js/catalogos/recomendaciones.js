@@ -1,22 +1,23 @@
-var tabla_Fallas;
+var tabla_recomendaciones;
 var procesoValidacion;
 
 window.addEventListener('DOMContentLoaded', (event) => {
     /* Variables del DOM */
-    const btnNuevoFallas = document.querySelector('#btnNuevoFallas');
+    const btnNuevaRecomendacion = document.querySelector('#btnNuevaRecomendacion');
     const btnGuardar = document.querySelector('#btnGuardar');
 
     // Creando el cuerpo de la tabla con dataTable y ajax
-    tabla_Fallas = $("#TbFallas").DataTable({
+    tabla_recomendaciones = $("#TbRecomendacion").DataTable({
         // Petición para llenar la tabla
         "ajax": {
-            url: '/fallas/show',
+            url: '/recomendaciones/show',
             dataSrc: ''
         },
         "columns": [
-            {data: 'Id_Falla', visible:false},
+            {data: 'Id_Recomendacion', visible:false},
             {data: 'tipoInspeccion'},
-            {data: 'Falla'},
+            {data: 'causa_raiz'},
+            {data: 'Recomendacion'},
             {data: 'Estatus', visible: false},
             {data: 'Creado_Por', visible:false},
             {data: 'Fecha_Creacion', visible:false},
@@ -24,16 +25,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
             {data: 'Fecha_Mod', visible:false},
             // Botones para editar y eliminar
             { data: null, render: function ( data, type, row ) {
-                    return `<button class="btn btn-info btn-sm EditarFallas" value="${row.Id_Falla}"><i class="fas fa-pencil-alt"></i></button>
-                            <button class="btn btn-danger btn-sm EliminarFallas" value="${row.Id_Falla}" onclick="eliminarFallas(this.value)"><i class="fas fa-trash-alt"></i></button>`;
+                    return `<button class="btn btn-info btn-sm EditarRecomendaciones" value="${row.Id_Recomendacion}"><i class="fas fa-pencil-alt"></i></button>
+                            <button class="btn btn-danger btn-sm EliminarRecomendaciones" value="${row.Id_Recomendacion}" onclick="eliminarRecomendaciones(this.value)"><i class="fas fa-trash-alt"></i></button>`;
                 }
             },
         ],
         // Indicamos el indice de la columna a ordenar y tipo de ordenamiento
-        order: [[5, 'desc']],
+        order: [[6, 'desc']],
         // Habilitar o deshabilitar el ordenable en las columnas
         'columnDefs': [ {
-            'targets': [8], /* table column index */
+            'targets': [9], /* table column index */
             'orderable': false, /* true or false */
          }],
         // Cambiamos a espeañol el idioma de los mensajes
@@ -124,13 +125,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
     })
 
     // Obtiene todos los datos del registro en el datatable al dar clic en editar
-    $('#TbFallas tbody').on('click', '.EditarFallas', function () {
-        var dataRow = tabla_Fallas.row($(this).parents('tr')).data();
+    $('#TbRecomendacion tbody').on('click', '.EditarRecomendaciones', function () {
+        var dataRow = tabla_recomendaciones.row($(this).parents('tr')).data();
         cambiarAction('update');
-        editarFallas(dataRow);
+        editarRecomendaciones(dataRow);
     });
 
     crearSelectTipoInpecciones('Id_Tipo_Inspeccion');
+    crearSelectCausasPrincipal('Id_Causa_Raiz');
     validarFrm();
     cargarEventListeners();
 });
@@ -138,22 +140,22 @@ window.addEventListener('DOMContentLoaded', (event) => {
 /* Listeners */
 function cargarEventListeners() {
     // Se activa cuando se presiona "Nuevo"
-    btnNuevoFallas.addEventListener('click', () =>{
+    btnNuevaRecomendacion.addEventListener('click', () =>{
         cambiarAction('create');
     });
     // Se activa cuando se hace clic en el boton guardar del modal
-    btnGuardar.addEventListener('click', guardarDatosFallas);
+    btnGuardar.addEventListener('click', guardarDatosRecomendaciones);
 }
 
 /* Funciones */
 
 // Función que agrega un cliente nuevo a la BD o edita un cliente
-function guardarDatosFallas(){
-    if($("#FrmFallas").valid()){
+function guardarDatosRecomendaciones(){
+    if($("#FrmRecomendaciones").valid()){
         // Obtenemos la operacion a realizar create ó update
-        var form_action = $("#FrmFallas").attr("action");
+        var form_action = $("#FrmRecomendaciones").attr("action");
         // Guardamos el form con los input file para subir archivos
-        var formData = new FormData(document.getElementById("FrmFallas"));
+        var formData = new FormData(document.getElementById("FrmRecomendaciones"));
         $.ajax({
             data: formData,
             url: form_action,
@@ -164,11 +166,11 @@ function guardarDatosFallas(){
             success: function (res) {
                 console.log(res)
                 // Despues de crearse el registro en BD se actualiza la tabla
-                $('#TbFallas').DataTable().ajax.reload();
+                $('#TbRecomendacion').DataTable().ajax.reload();
                 // Se limpia el formulario
                 limpiarFrm()
                 // Se cierra el modal
-                $('#modalAgregarFallas').modal('hide');
+                $('#modalAgregarRecomendacion').modal('hide');
                 // Mostramos mensaje de operacion exitosa
                 Toast.fire({
                     icon: 'success',
@@ -182,14 +184,14 @@ function guardarDatosFallas(){
     }
 };
 
-function eliminarFallas(id){
+function eliminarRecomendaciones(id){
     $.ajax({
-        url: 'fallas/delete/'+id,
+        url: 'recomendaciones/delete/'+id,
         type: "GET",
         dataType: 'json',
         success: function (res) {
             // Despues de eliminar el registro en BD se actualiza la tabla
-            $('#TbFallas').DataTable().ajax.reload();
+            $('#TbRecomendacion').DataTable().ajax.reload();
             // Mensaje de operacion exitosa
             Toast.fire({
                 icon: 'success',
@@ -203,44 +205,45 @@ function eliminarFallas(id){
 }
 
 // Función que cargar los datos del row clickeado y los coloca en el form y abre el modal
-function editarFallas(dataRow){
+function editarRecomendaciones(dataRow){
     console.log(dataRow);
-    document.querySelector('#Id_Falla').value = dataRow.Id_Falla;
+    document.querySelector('#Id_Recomendacion').value = dataRow.Id_Recomendacion;
     document.querySelector('#Id_Tipo_Inspeccion').value = dataRow.Id_Tipo_Inspeccion;
-    document.querySelector('#Falla').value = dataRow.Falla;
+    document.querySelector('#Id_Causa_Raiz').value = dataRow.Id_Causa_Raiz;
+    document.querySelector('#Recomendacion').value = dataRow.Recomendacion;
 
     if(dataRow.Estatus == "Inactivo"){
         document.querySelector('#Estatus').checked = false;
     }
 
-    $('#modalAgregarFallas').modal('show');
+    $('#modalAgregarRecomendacion').modal('show');
 }
 
 // Función que limpia el formulario y cambia el action
 // cuando se va a agregar o editar un registro
 function cambiarAction(operacion){
     limpiarFrm();
-    document.querySelector("#FrmFallas").removeAttribute("action");
-    document.querySelector("#FrmFallas").setAttribute("action",`/fallas/${operacion}`);
+    document.querySelector("#FrmRecomendaciones").removeAttribute("action");
+    document.querySelector("#FrmRecomendaciones").setAttribute("action",`/Recomendaciones/${operacion}`);
 }
 
 // Función que restablece todo el form
 function limpiarFrm(){
     // Limpia los valores del form
-    $('#FrmFallas')[0].reset();
+    $('#FrmRecomendaciones')[0].reset();
     // Quita los mensajes de error y limpia los valodes del form
     procesoValidacion.resetForm();
     // Quita los estilos de error de los inputs
-    $('#FrmFallas').find(".is-invalid").removeClass("is-invalid");
+    $('#FrmRecomendaciones').find(".is-invalid").removeClass("is-invalid");
 }
 
 function validarFrm(){
-    procesoValidacion = $('#FrmFallas').validate({
+    procesoValidacion = $('#FrmRecomendaciones').validate({
         rules: {
             Id_Tipo_Inspeccion: {
                 required: true,
             },
-            Falla: {
+            Recomendacion: {
                 required: true,
             }
         },
@@ -248,8 +251,8 @@ function validarFrm(){
             Id_Tipo_Inspeccion: {
                 required: "Seleccionar tipo de inspección",
             },
-            Falla: {
-                required: "Ingresar descripción",
+            Recomendacion: {
+                required: "Ingresar recomendaciòn",
             }
         },
         errorElement: 'span',

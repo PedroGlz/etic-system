@@ -31,7 +31,7 @@
                   <thead class="bg-gray-dark color-palette">
                     <tr>
                       <th>Id_Falla</th>
-                      <th>Tipo de falla</th>
+                      <th>Tipo Inspeccion</th>
                       <th>Falla</th>
                       <th>Estatus</th>
                       <th>Creado_Por</th>
@@ -83,8 +83,8 @@
 
               <!-- Campo de tipo de inpseccion -->
               <div class="form-group">
-                <label for="Id_Tipo_Falla">Tipo de falla:</label>
-                <select class="form-control select2" id="Id_Tipo_Falla" name="Id_Tipo_Falla"></select>
+                <label for="Id_Tipo_Inspeccion">Tipo de inspección:</label>
+                <select class="form-control select2" id="Id_Tipo_Inspeccion" name="Id_Tipo_Inspeccion"></select>
               </div>
               
               <!-- Campo de Falla -->

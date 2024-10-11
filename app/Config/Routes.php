@@ -108,9 +108,13 @@ $routes->get('/estatusInspeccion/delete/(:any)', 'EstatusInspeccion::delete/$1')
 // Catalogo fabricantes
 $routes->get('/fabricantes', 'Fabricantes::index');
 $routes->get('/fabricantes/delete/(:any)', 'Fabricantes::delete/$1');
+//Catalogo recomendaciones
+$routes->get('/recomendaciones', 'Recomendaciones::index');
+$routes->get('/recomendaciones/delete/(:any)', 'Recomendaciones::delete/$1');
 // Catalogo fallas
 $routes->get('/fallas', 'Fallas::index');
 $routes->get('/fallas/delete/(:any)', 'Fallas::delete/$1');
+$routes->get('/fallas/obtenerRegistros/(:any)', 'Fallas::obtenerRegistros/$1');
 // Catalogo tipo Fallas
 $routes->get('/tipoFallas', 'TipoFallas::index');
 $routes->get('/tipoFallas/delete/(:any)', 'TipoFallas::delete/$1');

@@ -160,12 +160,12 @@
                       <?php endif;?>
 
                       <?php if ($grupo == "Administradores" || $grupo == "Termografos"): ?>
-                      <!-- <li class="nav-item">
+                      <li class="nav-item">
                         <a href="/causaPrincipal" class="nav-link">
                           <i class="nav-icon far fa-circle nav-icon"></i>
                           <p>Causa principal</p>
                         </a>
-                      </li> -->
+                      </li>
                       <?php endif;?>
 
                       <?php if ($grupo == "Administradores"): ?>
@@ -197,11 +197,20 @@
 
                       <?php if ($grupo == "Administradores" || $grupo == "Termografos"): ?>
                       <li class="nav-item">
+                        <a href="/recomendaciones" class="nav-link">
+                          <i class="nav-icon far fa-circle nav-icon"></i>
+                          <p>Recomendaciones</p>
+                        </a>
+                      </li>
+                      <?php endif;?>
+
+                      <?php if ($grupo == "Administradores" || $grupo == "Termografos"): ?>
+                      <!-- <li class="nav-item">
                         <a href="/tipoFallas" class="nav-link">
                           <i class="nav-icon far fa-circle nav-icon"></i>
                           <p>Tipo fallas</p>
                         </a>
-                      </li>
+                      </li> -->
                       <?php endif;?>
 
                       <?php if ($grupo == "Administradores"): ?>

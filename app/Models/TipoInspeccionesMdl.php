@@ -23,10 +23,10 @@ class TipoInspeccionesMdl extends Model
     public function get($id = null){
 
         if($id === null){
-            return $this->findAll();
+            return $this->where(['Estatus' => 'Activo'])->findAll();
         }
 
-        return $this->asArray()->where(['Id_Tipo_Inspeccion' => $id])->first();	
+        return $this->asArray()->where(['Id_Tipo_Inspeccion' => $id, 'Estatus' => 'Activo'])->first();	
     }
 
 }

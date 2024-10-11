@@ -10,6 +10,7 @@ class FallasMdl extends Model
     protected $allowedFields = [
         'Id_Falla',
         'Id_Tipo_Falla',
+        'Id_Tipo_Inspeccion',
         'Falla',
         'Estatus',
         'Creado_Por',
@@ -23,24 +24,60 @@ class FallasMdl extends Model
     public function get($id = null){
 
         if($id === null){
-            return $this->findAll();
+            return $this->table('fallas')->select('
+                fallas.Id_Falla,
+                fallas.Id_Tipo_Falla,
+                fallas.Id_Tipo_Inspeccion,
+                fallas.Falla,
+                fallas.Estatus,
+                fallas.Creado_Por,
+                fallas.Fecha_Creacion,
+                fallas.Modificado_Por,
+                fallas.Fecha_Mod,
+                tinsp.Tipo_Inspeccion AS tipoInspeccion
+            ')
+            ->join('tipo_inspecciones tinsp', 'tinsp.Id_Tipo_Inspeccion = fallas.Id_Tipo_Inspeccion', 'left')
+            ->where(['fallas.Estatus' => 'Activo'])
+            ->orderBy('fallas.Fecha_Creacion', 'ASC')->findAll();
         }
 
-        return $this->asArray()->where(['Id_Falla' => $id])->first();	
+        return $this->table('fallas')->select('
+            fallas.Id_Falla,
+            fallas.Id_Tipo_Falla,
+            fallas.Id_Tipo_Inspeccion,
+            fallas.Falla,
+            fallas.Estatus,
+            fallas.Creado_Por,
+            fallas.Fecha_Creacion,
+            fallas.Modificado_Por,
+            fallas.Fecha_Mod,
+            tinsp.Tipo_Inspeccion AS tipoInspeccion
+        ')
+        ->join('tipo_inspecciones tinsp', 'tinsp.Id_Tipo_Inspeccion = fallas.Id_Tipo_Inspeccion', 'left')
+        ->where(['fallas.Id_Falla' => $id, 'fallas.Estatus' => 'Activo'])
+        ->orderBy('fallas.Fecha_Creacion', 'ASC')->findAll();
     }
 
-    public function obtenerRegistros(){
+    public function obtenerRegistros($idTipoInspeccion){
+
+        if($idTipoInspeccion === null){
+            return $this->where(['Estatus' => 'Activo'])->findAll();
+        }
+
         return $this->table('fallas')->select('
-            Id_Falla,
-            Id_Tipo_Falla,
-            Falla,
-            Estatus,
-            Creado_Por,
-            Fecha_Creacion,
-            Modificado_Por,
-            Fecha_Mod,
-            (SELECT Tipo_Falla FROM tipo_fallas WHERE tipo_fallas.Id_Tipo_Falla = fallas.Id_Tipo_Falla) AS nombreTipoFalla,
-            (SELECT Id_Tipo_Inspeccion FROM tipo_fallas WHERE tipo_fallas.Id_Tipo_Falla = fallas.Id_Tipo_Falla) tipoProblmea
-        ')->orderBy('Falla', 'ASC')->findAll();
+            fallas.Id_Falla,
+            fallas.Id_Tipo_Falla,
+            fallas.Id_Tipo_Inspeccion,
+            fallas.Falla,
+            fallas.Estatus,
+            fallas.Creado_Por,
+            fallas.Fecha_Creacion,
+            fallas.Modificado_Por,
+            fallas.Fecha_Mod,
+            tinsp.Tipo_Inspeccion AS tipoInspeccion
+        ')
+        ->join('tipo_inspecciones tinsp', 'tinsp.Id_Tipo_Inspeccion = fallas.Id_Tipo_Inspeccion', 'left')
+        ->where(['fallas.Estatus' => 'Activo', 'fallas.Id_Tipo_Inspeccion' => $idTipoInspeccion])
+        ->orderBy('fallas.Fecha_Creacion', 'ASC')->findAll();
     }
 }

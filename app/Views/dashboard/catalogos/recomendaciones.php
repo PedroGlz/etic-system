@@ -5,12 +5,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1><i class="fas fa-bezier-curve"></i>&nbsp;&nbsp;Causas principales</h1>
+            <h1><i class="fas fa-wave-square"></i>&nbsp;&nbsp;Recomendaciones</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item">
-                <button type="button" id="btnNuevoCausaPrincipal"class="btn btn-block btn-success" data-toggle="modal" data-target="#modalAgregarCausaPrincipal">Nuevo</button>
+                <button type="button" id="btnNuevaRecomendacion"class="btn btn-block btn-success" data-toggle="modal" data-target="#modalAgregarRecomendacion">Nuevo</button>
               </li>
             </ol>
           </div>
@@ -27,13 +27,13 @@
             <div class="card card-primary card-outline">
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="TbCausaPrincipal" class="display table table-striped table-bordered text-center" style="width:100%;">
+                <table id="TbRecomendacion" class="display table table-striped table-bordered text-center" style="width:100%;">
                   <thead class="bg-gray-dark color-palette">
                     <tr>
-                      <th>Id_Causa_Raiz</th>
-                      <th>Tipo inspección</th>
-                      <th>Falla</th>
-                      <th>Causa raíz</th>
+                      <th>Id_Recomendacion</th>
+                      <th>Tipo Inspección</th>
+                      <th>Causa principal</th>
+                      <th>Recomendación</th>
                       <th>Estatus</th>
                       <th>Creado_Por</th>
                       <th>Fecha_Creacion</th>
@@ -62,44 +62,41 @@
   Ventana Modal
   ==========================================================================================-->
 
-  <div class="modal fade" id="modalAgregarCausaPrincipal" data-backdrop="static">
+  <div class="modal fade" id="modalAgregarRecomendacion" data-backdrop="static">
     <div class="modal-dialog">
       <div class="modal-content">
         <!-- Cabecero del modal -->
         <div class="modal-header bg-info color-palette">
-          <h5 class="modal-title"><i class="far fa-plus-square"></i>&nbsp;&nbsp;Datos de la causa</h5>
+          <h5 class="modal-title"><i class="far fa-plus-square"></i>&nbsp;&nbsp;Datos de recomendación</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <!-- Cuerpo del modal -->
         <div class="modal-body">
-          <form action="/causaPrincipal/create" method="POST" id="FrmCausaPrincipal">
+          <form action="/recomendacion/create" method="POST" id="FrmRecomendaciones">
             <div class="box-body">
               
               <!-- Campo de id oculto -->
               <div hidden>
-                <input type="text" name="Id_Causa_Raiz" id="Id_Causa_Raiz" value="0">
+                <input type="text" name="Id_Recomendacion" id="Id_Recomendacion" value="0">
               </div>
 
-              <!-- Campo de Causa Raiz -->
-              <div class="form-group">
-                <label for="Causa_Raiz">Causa principal:</label>
-                <input type="text" class="form-control" id="Causa_Raiz" name="Causa_Raiz" placeholder="Ingresar causa">
-              </div>
-
-              <!-- Campo de Tipo de inspección -->
+              <!-- Campo de tipo de inpseccion -->
               <div class="form-group">
                 <label for="Id_Tipo_Inspeccion">Tipo de inspección:</label>
-                <select class="form-control" style="width: 100%;" id="Id_Tipo_Inspeccion" name="Id_Tipo_Inspeccion"></select>
+                <select class="form-control select2" id="Id_Tipo_Inspeccion" name="Id_Tipo_Inspeccion"></select>
               </div>
 
-              <!-- Campo de Falla -->
               <div class="form-group">
-              <label for="Id_Falla">Falla:</label>
-                <select class="form-control" style="width: 100%;" id="Id_Falla" name="Id_Falla">
-                  <option value="">Seleccionar...</option>
-                </select>
+                <label for="Id_Causa_Raiz">Causa principal:</label>
+                <select class="form-control select2" id="Id_Causa_Raiz" name="Id_Causa_Raiz"></select>
+              </div>
+              
+              <!-- Campo de Recomendacion -->
+              <div class="form-group">
+                <label for="Recomendacion">Recomendación:</label>
+                <textarea class="form-control" id="Recomendacion" name="Recomendacion" rows="4" placeholder="Ingresar recomendación"></textarea>
               </div>
 
               <!-- Campo de Estatus -->

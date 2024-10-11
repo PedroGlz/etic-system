@@ -151,17 +151,18 @@ function crearSelectTipoInpecciones(id_select){
     });
 }
 
-function crearSelectFallas(id_select){
+function crearSelectFallas(id_select, id_tipo_inspeccion){
     // obteniendo el select a modificar
     var select = document.getElementById(`${id_select}`);
 
     // peticion a la base
     $.ajax({
-        url: '/fallas/show',
+        url: `/fallas/obtenerRegistros/${id_tipo_inspeccion}`,
         type: "get",
-        data:'',
+        data: '',
         dataType: 'json',
         success: function (data){
+            console.log(data)
             // // Limpiando el select
             $(`#${id_select}`).empty();
 
@@ -601,4 +602,55 @@ function formDataToObjet(formData){
 function cambiar_size_fuente(size){
 
     document.querySelector("#size_fuente").innerHTML = `*{font-size:${size}rem}`
+}
+
+function crearSelectRecomendaciones(id_select){
+    // obteniendo el select a modificar
+    var select = document.getElementById(`${id_select}`);
+
+    // peticion a la base
+    $.ajax({
+        url: '/recomendaciones/show',
+        type: "get",
+        data:'',
+        dataType: 'json',
+        success: function (data){
+            // // Limpiando el select
+            $(`#${id_select}`).empty();
+
+            // creando el select con los productos en la OC
+            select.innerHTML += '<option value="">Selecionar...</option>';
+            data.forEach(data => {
+                select.innerHTML += `<option value="${data.Id_Recomendacion}">${data.Recomendacion}</option>`;
+            });
+        },
+        error: function (error) {
+            console.log(error);
+        },
+    });
+}
+
+function crearSelectCausasPrincipal(id_select){
+    // obteniendo el select a modificar
+    var select = document.getElementById(`${id_select}`);
+
+    // peticion a la base
+    $.ajax({
+        url: '/causaPrincipal/show',
+        type: "get",
+        data:'',
+        dataType: 'json',
+        success: function (data){
+            // // Limpiando el select
+            $(`#${id_select}`).empty();
+            // creando el select con los productos en la OC
+            select.innerHTML += '<option value="">Selecionar...</option>';
+            data.forEach(data => {
+                select.innerHTML += `<option value="${data.Id_Causa_Raiz}">${data.Causa_Raiz}</option>`;
+            });
+        },
+        error: function (error) {
+            console.log(error);
+        },
+    });
 }

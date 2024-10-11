@@ -2394,6 +2394,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       // data:,
       dataType: 'json',
       success: function (data){
+        console.log(data)
         dataSelectFallas = data;
 
         // crearSelectFallaProblemas('0D32B333-76C3-11D3-82BF-00104BC75DC2',"hazard_Type");
@@ -2408,14 +2409,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   }
   
-  function crearSelectFallaProblemas(tipoProblema,id_select){
+  function crearSelectFallaProblemas(idTipoInspeccion,id_select){
     // obteniendo el select a modificar
     var select = document.getElementById(`${id_select}`);
     // // Limpiando el select
     $(`#${id_select}`).empty();
 
-    newdata = dataSelectFallas.filter(falla => falla.tipoProblmea == tipoProblema);
-
+    newdata = dataSelectFallas.filter(falla => falla.Id_Tipo_Inspeccion == idTipoInspeccion);
+    console.log(newdata)
+    console.log(idTipoInspeccion)
+    console.log(dataSelectFallas)
     // creando el select con los productos en la OC
     select.innerHTML += '<option value="">Selecionar...</option>';
     newdata.forEach(newdata => {

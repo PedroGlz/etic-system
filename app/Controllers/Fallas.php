@@ -22,10 +22,10 @@ class Fallas extends BaseController
         echo view('templetes/footer',$script);
     }
 
-    public function show($id = null){
+    public function show($id = null){        
         $fallasMdl = new FallasMdl();
 
-        echo (json_encode($fallasMdl->obtenerRegistros()));
+        echo (json_encode($fallasMdl->get($id)));
     }
 
     public function create(){
@@ -40,7 +40,7 @@ class Fallas extends BaseController
 
         $save = $fallasMdl->insert([
             'Id_Falla'      =>$Id_Falla_insert,
-            'Id_Tipo_Falla' =>$this->request->getPost('Id_Tipo_Falla'),
+            'Id_Tipo_Inspeccion' =>$this->request->getPost('Id_Tipo_Inspeccion'),
             'Falla'         =>$this->request->getPost('Falla'),
             'Estatus'       =>$estatus,
             'Creado_Por'    =>$session->Id_Usuario,
@@ -70,7 +70,7 @@ class Fallas extends BaseController
         (!empty($this->request->getPost('Estatus'))) ? $estatus = 'Activo' : $estatus = 'Inactivo';
 
         $data = [
-            'Id_Tipo_Falla' =>$this->request->getPost('Id_Tipo_Falla'),
+            'Id_Tipo_Inspeccion' =>$this->request->getPost('Id_Tipo_Inspeccion'),
             'Falla'         =>$this->request->getPost('Falla'),
             'Estatus'       =>$estatus,
             'Modificado_Por'=>$session->Id_Usuario,
