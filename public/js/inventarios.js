@@ -2408,6 +2408,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
 
   }
+
+  function cargarDataSelectCausaPrincipal(){
+    // peticion a la base
+    $.ajax({
+      url: '/causa_principal/show',
+      type: "get",
+      // data:,
+      dataType: 'json',
+      success: function (data){
+        dataSelectCausas = data;
+        crearSelectCausaProblemas('0D32B331-76C3-11D3-82BF-00104BC75DC2',"causa_Principal");
+      },
+      error: function (error) {
+        ////console.log(error);
+      },
+    });
+  }
   
   function crearSelectFallaProblemas(idTipoInspeccion,id_select){
     // obteniendo el select a modificar
@@ -2416,9 +2433,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     $(`#${id_select}`).empty();
 
     newdata = dataSelectFallas.filter(falla => falla.Id_Tipo_Inspeccion == idTipoInspeccion);
-    console.log(newdata)
-    console.log(idTipoInspeccion)
-    console.log(dataSelectFallas)
+
     // creando el select con los productos en la OC
     select.innerHTML += '<option value="">Selecionar...</option>';
     newdata.forEach(newdata => {

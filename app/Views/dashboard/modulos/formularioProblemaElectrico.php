@@ -242,6 +242,12 @@
                     </div>
                     <select class="form-control" name="Environment" id="Environment"></select>
                 </div>
+                <div class="input-group input-group-sm mb-2">
+                    <div class="input-group-prepend">
+                        <label class="col-form-label col-form-label-sm">Causa principal:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    </div>
+                    <select class="form-control" name="Id_Causa_Raiz" id="Id_Causa_Raiz"></select>
+                </div>
             </div>
 
             <div class="col-sm-6">
