@@ -115,7 +115,7 @@
                     <div class="input-group-prepend">
                         <label class="col-form-label col-form-label-sm">*&nbsp;</label>
                     </div>
-                    <select class="form-control crearComentAuto" name="Problem_Phase" id="Problem_Phase"></select>
+                    <select class="form-control" name="Problem_Phase" id="Problem_Phase"></select>
                 </div>
             </div>
             <div class="col-sm-2">
@@ -246,7 +246,7 @@
                     <div class="input-group-prepend">
                         <label class="col-form-label col-form-label-sm">Causa principal:&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <select class="form-control" name="Id_Causa_Raiz" id="Id_Causa_Raiz"></select>
+                    <select class="form-control crearComentAuto" name="Id_Causa_Raiz" id="Id_Causa_Raiz"></select>
                 </div>
             </div>
 

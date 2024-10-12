@@ -77,6 +77,18 @@
         </div>
         <div class="input-group input-group-sm mb-2">
             <div class="input-group-prepend">
+                <label class="col-form-label col-form-label-sm">Causa principal:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            </div>
+            <select class="form-control crearComentAuto visual" name="Id_Causa_Raiz_Visual" id="Id_Causa_Raiz_Visual"></select>
+        </div>
+        <div class="input-group input-group-sm mb-2">
+            <div class="input-group-prepend">
+                <label class="col-form-label col-form-label-sm">Recomendaciones:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            </div>
+            <select class="form-control" name="Id_Recomendacion" id="Id_Recomendacion"></select>
+        </div>
+        <div class="input-group input-group-sm mb-2">
+            <div class="input-group-prepend">
                 <label class="col-form-label col-form-label-sm" for="Id_Severidad">Severidad:&nbsp;&nbsp;&nbsp;</label>
             </div>
             <select class="form-control form-control-sm" name="Id_Severidad" id="Id_Severidad">

@@ -28,6 +28,8 @@ var dataGridProblemas;
 var datos_treeview = [];
 var arrayUbicacionesFiltro = [];
 var dataSelectFallas = [];
+var dataSelectCausas = [];
+var dataSelectRecomendaciones = [];
 var inputImgStr = "";
 var elementosSeleccionadosTree = [];
 var elementosSeleccionadosJsGrid = [];
@@ -168,6 +170,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   if (iniciar_modulo) {
     cargarDataJsGridBaseLine();
     cargarDataSelectFallas();
+    cargarDataSelectCausaPrincipal();
+    cargarDataSelectRecomendaciones();
     explorarArchivos();
     crearSelectStatusInspeccionDetalle('Id_Status_Inspeccion_Det');
     crearSelectStatusInspeccionDetalle('Test_Estatus');
@@ -1084,6 +1088,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     var opSeleccionada = $("input[type='radio'][name='seleccionProblema']:checked").val();
     document.querySelector('#Id_Tipo_Inspeccion').value = opSeleccionada;
+
+    // obtene nodo seleccionado del treeview y asignar los valores de Id_Inspeccion_Det  y Id_Ubicacion
+    let nodoSeleccionado = TreeView.treeview('getSelected')[0];
+    console.log(nodoSeleccionado)
+    idInspeccion_Det = nodoSeleccionado.Id_Inspeccion_Det;
+    idUbicacion = nodoSeleccionado.id;
+
     
     $.ajax({
       url: `inventarios/getNumero_Problema`,
@@ -1116,6 +1127,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         mostrarFormularioProblema('divProblemaElectrico',opSeleccionada);
         document.querySelector(`#StrRuta`).value = StrRuta;
         crearSelectFallaProblemas(opSeleccionada,"Id_Falla");
+        crearSelectCausaPrincipal(opSeleccionada,"Id_Causa_Raiz");
         break;
       // problema visual
       case '0D32B333-76C3-11D3-82BF-00104BC75DC2':
@@ -1124,6 +1136,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
         // document.querySelector("#menuTabsProblemaElectricoMecanico").style.display = 'none';
         mostrarFormularioProblema('divProblemaVisual');
         document.querySelector(`#StrRutaVisual`).value = StrRuta;
+
+        crearSelectCausaPrincipal(opSeleccionada,"Id_Causa_Raiz_Visual");
+        crearSelectRecomendaciones(opSeleccionada,"Id_Recomendacion");
         break;
       // problema mecanico
       case '0D32B334-76C3-11D3-82BF-00104BC75DC2':
@@ -1131,6 +1146,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         mostrarFormularioProblema('divProblemaElectrico',opSeleccionada);
         document.querySelector(`#StrRuta`).value = StrRuta;
         crearSelectFallaProblemas(opSeleccionada,"Id_Falla");
+        crearSelectCausaPrincipal(opSeleccionada,"Id_Causa_Raiz");
         break;
       default:
         StrTipoInspeccion = 'Eléctrico';
@@ -1624,6 +1640,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       // Inicialmente mostranos el tab de imagenes para el problema electrico y mecanico
       document.querySelector("#menuTabsProblemaElectricoMecanico").style.display = '';
       mostrarFormularioProblema('divProblemaElectrico',valoresItem.Id_Tipo_Inspeccion);
+      crearSelectCausaPrincipal(valoresItem.Id_Tipo_Inspeccion,"Id_Causa_Raiz");
       crearSelectFallaProblemas(valoresItem.Id_Tipo_Inspeccion,"Id_Falla");
       console.log('problema electrico/mecanico')
       return editarProblemaElectrico(valoresItem);
@@ -1631,6 +1648,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
       console.log('problema visual')
       // Si es un problema visual ocultamos los tabs de imagenes del problema electrico y mecanico
       // document.querySelector("#menuTabsProblemaElectricoMecanico").style.display = 'none';
+      crearSelectCausaPrincipal(valoresItem.Id_Tipo_Inspeccion,"Id_Causa_Raiz_Visual");
+      crearSelectRecomendaciones(valoresItem.Id_Tipo_Inspeccion,"Id_Recomendacion");
       mostrarFormularioProblema('divProblemaVisual');
       return editarProblemaVisual(valoresItem);
     }
@@ -1660,6 +1679,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     document.querySelector("#Rated_Load").value = item.Rated_Load;
     document.querySelector("#Circuit_Voltage").value = item.Circuit_Voltage;
     document.querySelector("#Id_Falla").value = item.Id_Falla;
+    document.querySelector("#Id_Causa_Raiz").value = item.Id_Causa_Raiz;
     document.querySelector("#Component_Comment").value = item.Component_Comment;
     document.querySelector("#StrRuta").value = item.Ruta;
     document.querySelector('#StrEquipo').value = item.nombreEquipo;
@@ -1702,6 +1722,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // document.querySelector("#hazard_Group").value = item.hazard_Group;
     document.querySelector("#hazard_Issue").value = item.hazard_Issue;
     // document.querySelector("#Id_Severidad").value = item.Id_Severidad
+    document.querySelector("#Id_Causa_Raiz_Visual").value = item.Id_Causa_Raiz;
+    document.querySelector("#Id_Recomendacion").value = item.Id_Recomendacion;
 
 
     // VALIDACION TEMPORAL EN LO QUE SE MODIFICA EL PROCESO DB PARA UNIFICAR TODOS LOS ID
@@ -1807,23 +1829,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
   function crearComentario(event){
     var equip = document.querySelector('#StrEquipo').value;
     var problem = "";
-    var element = "";
+    var causa_raiz = document.querySelector('#Id_Causa_Raiz').options[document.querySelector('#Id_Causa_Raiz').selectedIndex].text;
+    // var element = "";
     var id_input = "Component_Comment";
 
     if(Id_Tipo_Inspeccion.value != "0D32B334-76C3-11D3-82BF-00104BC75DC2"){
       if(Id_Tipo_Inspeccion.value == "0D32B331-76C3-11D3-82BF-00104BC75DC2" || Id_Tipo_Inspeccion.value == "0D32B332-76C3-11D3-82BF-00104BC75DC2") {
         id_input = "Component_Comment";
         problem = selectFallaProblema.options[selectFallaProblema.selectedIndex].text;
-        element = selectProblemPhase.options[selectProblemPhase.selectedIndex].text;
+        // element = selectProblemPhase.options[selectProblemPhase.selectedIndex].text;
       }else if(Id_Tipo_Inspeccion.value == "0D32B333-76C3-11D3-82BF-00104BC75DC2") {
         id_input = "observaciones_Visual";
-        // problem = selectVisualGroup.options[selectVisualGroup.selectedIndex].text;
-        // element = selectVisualProblema.options[selectVisualProblema.selectedIndex].text;
         problem = selectVisualProblema.options[selectVisualProblema.selectedIndex].text;;
-        element = ""
+        causa_raiz = document.querySelector('#Id_Causa_Raiz_Visual').options[document.querySelector('#Id_Causa_Raiz_Visual').selectedIndex].text;
+        // element = ""
       }
   
-      document.querySelector(`#${id_input}`).value = (`${problem}, ${element}, ${equip}`).toUpperCase();
+      document.querySelector(`#${id_input}`).value = (`${problem}, ${causa_raiz}, ${equip}`)
     }
 
   }
@@ -2412,13 +2434,29 @@ window.addEventListener('DOMContentLoaded', (event) => {
   function cargarDataSelectCausaPrincipal(){
     // peticion a la base
     $.ajax({
-      url: '/causa_principal/show',
+      url: '/causaPrincipal/show',
       type: "get",
       // data:,
       dataType: 'json',
       success: function (data){
         dataSelectCausas = data;
-        crearSelectCausaProblemas('0D32B331-76C3-11D3-82BF-00104BC75DC2',"causa_Principal");
+        // crearSelectCausaProblemas('0D32B331-76C3-11D3-82BF-00104BC75DC2',"causa_Principal");
+      },
+      error: function (error) {
+        ////console.log(error);
+      },
+    });
+  }
+
+  function cargarDataSelectRecomendaciones(){
+    // peticion a la base
+    $.ajax({
+      url: '/recomendaciones/show',
+      type: "get",
+      // data:,
+      dataType: 'json',
+      success: function (data){
+        dataSelectRecomendaciones = data;
       },
       error: function (error) {
         ////console.log(error);
@@ -2438,6 +2476,38 @@ window.addEventListener('DOMContentLoaded', (event) => {
     select.innerHTML += '<option value="">Selecionar...</option>';
     newdata.forEach(newdata => {
       select.innerHTML += `<option value="${newdata.Id_Falla}">${newdata.Falla}</option>`;            
+    });
+  }
+
+  function crearSelectCausaPrincipal(idTipoInspeccion, id_select){
+    console.log('en el select causa')
+    console.log(dataSelectCausas)
+    // obteniendo el select a modificar
+    var select = document.getElementById(`${id_select}`);
+    // // Limpiando el select
+    $(`#${id_select}`).empty();
+
+    newdata = dataSelectCausas.filter(causa => causa.Id_Tipo_Inspeccion == idTipoInspeccion);
+
+    // creando el select con los productos en la OC
+    select.innerHTML += '<option value="">Selecionar...</option>';
+    newdata.forEach(newdata => {
+      select.innerHTML += `<option value="${newdata.Id_Causa_Raiz}">${newdata.Causa_Raiz}</option>`;            
+    });
+  }
+
+  function crearSelectRecomendaciones(idTipoInspeccion, id_select){
+    // obteniendo el select a modificar
+    var select = document.getElementById(`${id_select}`);
+    // // Limpiando el select
+    $(`#${id_select}`).empty();
+
+    newdata = dataSelectRecomendaciones.filter(recomendacion => recomendacion.Id_Tipo_Inspeccion == idTipoInspeccion);
+
+    // creando el select con los productos en la OC
+    select.innerHTML += '<option value="">Selecionar...</option>';
+    newdata.forEach(newdata => {
+      select.innerHTML += `<option value="${newdata.Id_Recomendacion}">${newdata.Recomendacion}</option>`;            
     });
   }
 

@@ -424,7 +424,7 @@ class Inventarios extends BaseController{
             'Rated_Load'           =>$this->request->getPost('Rated_Load'),
             'Circuit_Voltage_Check'=>$this->request->getPost('Circuit_Voltage_Check') === 'on' ? 'on' : 'off',
             'Circuit_Voltage'      =>$this->request->getPost('Circuit_Voltage'),
-            'Id_Falla'             =>$this->request->getPost('Id_Falla'),
+            'Id_Falla'             =>$this->request->getPost('Id_Falla'),            
             // 'Component_Comment'    =>$this->request->getPost('Component_Comment'),
             'Estatus_Problema'     =>"Abierto",
             // 'Aumento_Temperatura'  =>$diferencia_Temp,
@@ -443,7 +443,8 @@ class Inventarios extends BaseController{
             $Problem_Temp =$this->request->getPost('Problem_Temperature');
             $Reference_Temp =$this->request->getPost('Reference_Temperature');
             $diferencia_Temp = ($Problem_Temp - $Reference_Temp);
-
+            
+            $data['Id_Causa_Raiz']         =$this->request->getPost('Id_Causa_Raiz');
             $data['Problem_Temperature']   =$Problem_Temp;
             $data['Reference_Temperature'] =$Reference_Temp;
             $data['Component_Comment']     =$this->request->getPost('Component_Comment');
@@ -456,6 +457,8 @@ class Inventarios extends BaseController{
             // $data['hazard_Type']          =$this->request->getPost('hazard_Type');
             // $data['hazard_Classification']=$this->request->getPost('hazard_Classification');
             // $data['hazard_Group']         =$this->request->getPost('hazard_Group');
+            $data['Id_Causa_Raiz']         =$this->request->getPost('Id_Causa_Raiz_Visual');
+            $data['Id_Recomendacion']     =$this->request->getPost('Id_Recomendacion');
             $data['hazard_Issue']         =$this->request->getPost('hazard_Issue');
             $data['Component_Comment']    =$this->request->getPost('observaciones_Visual');
             $data['Id_Severidad']         =$this->request->getPost('Id_Severidad');
@@ -472,7 +475,6 @@ class Inventarios extends BaseController{
 
         $data['Ir_File'] = $nombreIrImagen;
         $data['Photo_File'] = $nombreDigImagen;
-
         // Realizando el insert de la data
         $saveProblema = $problemasMdl->insert($data);
 
