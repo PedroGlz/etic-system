@@ -1,7 +1,10 @@
 var tabla_CausaPrincipal;
 var procesoValidacion;
+var dataSelectFallas;
 
 window.addEventListener('DOMContentLoaded', (event) => {
+    alertLodading();
+
     /* Variables del DOM */
     const btnNuevoCausaPrincipal = document.querySelector('#btnNuevoCausaPrincipal');
     const btnGuardar = document.querySelector('#btnGuardar');
@@ -137,16 +140,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
         editarCausaPrincipal(dataRow);
     });
 
-    crearSelectTipoInpecciones('Id_Tipo_Inspeccion');
-    validarFrm();
-    cargarEventListeners();
-
+    cargarDataSelectFallas().then(data => {
+        dataSelectFallas = data;
+        crearSelectTipoInpecciones('Id_Tipo_Inspeccion');
+        validarFrm();
+        cargarEventListeners();
+        cerrarAlertLoading();
+    }).catch(error => {
+        console.error('Error loading data:', error);
+    });
 
     /* Listeners */
     function cargarEventListeners() {
 
-        console.log('en ellos listenerrrr')
-        console.log(selectTipoInspeccion)
         // Se activa cuando se presiona "Nuevo"
         btnNuevoCausaPrincipal.addEventListener('click', () =>{
             cambiarAction('create');
@@ -154,7 +160,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         // Se activa cuando se hace clic en el boton guardar del modal
         btnGuardar.addEventListener('click', guardarDatosCausaPrincipal);
         selectTipoInspeccion.addEventListener('change', (event) => {
-            crearSelectFallas('Id_Falla', event.target.value);
+            crearSelectFallasCP(event.target.value, 'Id_Falla');
         })
 
     }
@@ -218,15 +224,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     // Función que cargar los datos del row clickeado y los coloca en el form y abre el modal
     function editarCausaPrincipal(dataRow){
+        crearSelectFallasCP(dataRow.Id_Tipo_Inspeccion, 'Id_Falla');
         console.log(dataRow);
         document.querySelector('#Id_Causa_Raiz').value = dataRow.Id_Causa_Raiz;
-        document.querySelector('#Id_Tipo_Inspeccion').value = dataRow.Id_Tipo_Inspeccion;
-        document.querySelector('#Id_Falla').value = dataRow.Id_Falla;
+        document.querySelector('#Id_Tipo_Inspeccion').value = dataRow.Id_Tipo_Inspeccion;     
         document.querySelector('#Causa_Raiz').value = dataRow.Causa_Raiz;
-
+        // document.querySelector('#Id_Falla').value = dataRow.Id_Falla;
+        // Esperar a que el select de fallas se termine de crear en el DOM
+        setTimeout(() => {
+            document.querySelector('#Id_Falla').value = dataRow.Id_Falla;
+        }, 7000);
+        
         if(dataRow.Estatus == "Inactivo"){
             document.querySelector('#Estatus').checked = false;
         }
+
 
         $('#modalAgregarCausaPrincipal').modal('show');
     }
@@ -287,4 +299,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
+    function crearSelectFallasCP(idTipoInspeccion, id_select) {
+        // obteniendo el select a modificar
+        var select = document.getElementById(id_select);
+        // Limpiando el select
+        select.innerHTML = '';
+
+        // Filtrando y creando el select con los productos en la OC
+        const options = dataSelectFallas
+            .filter(falla => falla.Id_Tipo_Inspeccion == idTipoInspeccion)
+            .map(newdata => `<option value="${newdata.Id_Falla}">${newdata.Falla}</option>`)
+            .join('');
+
+        select.innerHTML = '<option value="">Seleccionar...</option>' + options;
+    }
 });

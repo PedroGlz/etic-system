@@ -169,9 +169,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
   // Si pasa la validación de una inspeccion activa se inician todas las funciones
   if (iniciar_modulo) {
     cargarDataJsGridBaseLine();
-    cargarDataSelectFallas();
-    cargarDataSelectCausaPrincipal();
-    cargarDataSelectRecomendaciones();
+    dataSelectFallas = cargarDataSelectFallas();
+    dataSelectCausas = cargarDataSelectCausaPrincipal();
+    dataSelectRecomendaciones = cargarDataSelectRecomendaciones();
     explorarArchivos();
     crearSelectStatusInspeccionDetalle('Id_Status_Inspeccion_Det');
     crearSelectStatusInspeccionDetalle('Test_Estatus');
@@ -2408,61 +2408,61 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
   }
 
-  function cargarDataSelectFallas(){
-    // peticion a la base
-    $.ajax({
-      url: '/fallas/show',
-      type: "get",
-      // data:,
-      dataType: 'json',
-      success: function (data){
-        console.log(data)
-        dataSelectFallas = data;
+  // function cargarDataSelectFallas(){
+  //   // peticion a la base
+  //   $.ajax({
+  //     url: '/fallas/show',
+  //     type: "get",
+  //     // data:,
+  //     dataType: 'json',
+  //     success: function (data){
+  //       console.log(data)
+  //       dataSelectFallas = data;
 
-        // crearSelectFallaProblemas('0D32B333-76C3-11D3-82BF-00104BC75DC2',"hazard_Type");
-        // crearSelectFallaProblemas('0D32B333-76C3-11D3-82BF-00104BC75DC2',"hazard_Classification");
-        // crearSelectFallaProblemas('0D32B333-76C3-11D3-82BF-00104BC75DC2',"hazard_Group");
-        crearSelectFallaProblemas('0D32B333-76C3-11D3-82BF-00104BC75DC2',"hazard_Issue");
-      },
-      error: function (error) {
-        ////console.log(error);
-      },
-    });
+  //       // crearSelectFallaProblemas('0D32B333-76C3-11D3-82BF-00104BC75DC2',"hazard_Type");
+  //       // crearSelectFallaProblemas('0D32B333-76C3-11D3-82BF-00104BC75DC2',"hazard_Classification");
+  //       // crearSelectFallaProblemas('0D32B333-76C3-11D3-82BF-00104BC75DC2',"hazard_Group");
+  //       crearSelectFallaProblemas('0D32B333-76C3-11D3-82BF-00104BC75DC2',"hazard_Issue");
+  //     },
+  //     error: function (error) {
+  //       ////console.log(error);
+  //     },
+  //   });
 
-  }
+  // }
 
-  function cargarDataSelectCausaPrincipal(){
-    // peticion a la base
-    $.ajax({
-      url: '/causaPrincipal/show',
-      type: "get",
-      // data:,
-      dataType: 'json',
-      success: function (data){
-        dataSelectCausas = data;
-        // crearSelectCausaProblemas('0D32B331-76C3-11D3-82BF-00104BC75DC2',"causa_Principal");
-      },
-      error: function (error) {
-        ////console.log(error);
-      },
-    });
-  }
+  // function cargarDataSelectCausaPrincipal(){
+  //   // peticion a la base
+  //   $.ajax({
+  //     url: '/causaPrincipal/show',
+  //     type: "get",
+  //     // data:,
+  //     dataType: 'json',
+  //     success: function (data){
+  //       dataSelectCausas = data;
+  //       // crearSelectCausaProblemas('0D32B331-76C3-11D3-82BF-00104BC75DC2',"causa_Principal");
+  //     },
+  //     error: function (error) {
+  //       ////console.log(error);
+  //     },
+  //   });
+  // }
 
-  function cargarDataSelectRecomendaciones(){
-    // peticion a la base
-    $.ajax({
-      url: '/recomendaciones/show',
-      type: "get",
-      // data:,
-      dataType: 'json',
-      success: function (data){
-        dataSelectRecomendaciones = data;
-      },
-      error: function (error) {
-        ////console.log(error);
-      },
-    });
-  }
+  // function cargarDataSelectRecomendaciones(){
+  //   // peticion a la base
+  //   $.ajax({
+  //     url: '/recomendaciones/show',
+  //     type: "get",
+  //     // data:,
+  //     dataType: 'json',
+  //     success: function (data){
+  //       dataSelectRecomendaciones = data;
+  //     },
+  //     error: function (error) {
+  //       ////console.log(error);
+  //     },
+  //   });
+  // }
   
   function crearSelectFallaProblemas(idTipoInspeccion,id_select){
     // obteniendo el select a modificar

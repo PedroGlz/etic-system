@@ -151,18 +151,20 @@ function crearSelectTipoInpecciones(id_select){
     });
 }
 
-function crearSelectFallas(id_select, id_tipo_inspeccion){
+function crearSelectFallas(id_select, id_tipo_inspeccion = false){
     // obteniendo el select a modificar
     var select = document.getElementById(`${id_select}`);
 
     // peticion a la base
     $.ajax({
-        url: `/fallas/obtenerRegistros/${id_tipo_inspeccion}`,
+        url: `/fallas/show`,
         type: "get",
         data: '',
         dataType: 'json',
-        success: function (data){
+        success: function (data){            
             console.log(data)
+
+            // let dataFiltrada = data.filter(data => data.Id_Tipo_Inspeccion == id_tipo_inspeccion);
             // // Limpiando el select
             $(`#${id_select}`).empty();
 
@@ -652,5 +654,51 @@ function crearSelectCausasPrincipal(id_select){
         error: function (error) {
             console.log(error);
         },
+    });
+}
+
+async function cargarDataSelectFallas() {
+    try {
+        const response = await $.ajax({
+            url: '/fallas/show',
+            type: "get",
+            dataType: 'json'
+        });
+        return response;
+    } catch (error) {
+        console.log(error);
+        return [];
+    }
+}
+
+function cargarDataSelectCausaPrincipal(){
+    // peticion a la base
+    $.ajax({
+        url: '/causaPrincipal/show',
+        type: "get",
+        // data:,
+        dataType: 'json',
+        success: function (data){
+            return data;        
+        },
+        error: function (error) {
+            return [];
+        },
+    });
+}
+
+function cargarDataSelectRecomendaciones(){
+    // peticion a la base
+    $.ajax({
+      url: '/recomendaciones/show',
+      type: "get",
+      // data:,
+      dataType: 'json',
+      success: function (data){
+        return data;
+      },
+      error: function (error) {
+        return [];
+      },
     });
 }
