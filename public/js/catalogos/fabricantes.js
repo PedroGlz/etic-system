@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             },
         ],
         // Indicamos el indice de la columna a ordenar y tipo de ordenamiento
-        order: [[0, 'desc']],
+        order: [[6, 'desc']],
         // Habilitar o deshabilitar el ordenable en las columnas
         'columnDefs': [ {
             'targets': [9], /* table column index */

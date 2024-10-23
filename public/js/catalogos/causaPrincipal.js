@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             },
         ],
         // Indicamos el indice de la columna a ordenar y tipo de ordenamiento
-        order: [[0, 'desc']],
+        order: [[6, 'desc']],
         // Habilitar o deshabilitar el ordenable en las columnas
         'columnDefs': [ {
             'targets': [9], /* table column index */
@@ -164,7 +164,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         })
 
     }
-
+});
     /* Funciones */
 
     // Función que agrega un cliente nuevo a la BD o edita un cliente
@@ -224,23 +224,32 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     // Función que cargar los datos del row clickeado y los coloca en el form y abre el modal
     function editarCausaPrincipal(dataRow){
-        crearSelectFallasCP(dataRow.Id_Tipo_Inspeccion, 'Id_Falla');
-        console.log(dataRow);
-        document.querySelector('#Id_Causa_Raiz').value = dataRow.Id_Causa_Raiz;
-        document.querySelector('#Id_Tipo_Inspeccion').value = dataRow.Id_Tipo_Inspeccion;     
-        document.querySelector('#Causa_Raiz').value = dataRow.Causa_Raiz;
-        // document.querySelector('#Id_Falla').value = dataRow.Id_Falla;
-        // Esperar a que el select de fallas se termine de crear en el DOM
-        setTimeout(() => {
+
+        alertLodading();
+
+        crearSelectFallasCP(dataRow.Id_Tipo_Inspeccion, 'Id_Falla').then(() => {
+            cerrarAlertLoading(' ', 'succes',1);
+
             document.querySelector('#Id_Falla').value = dataRow.Id_Falla;
-        }, 7000);
-        
-        if(dataRow.Estatus == "Inactivo"){
-            document.querySelector('#Estatus').checked = false;
-        }
 
+            console.log(dataRow);
+            document.querySelector('#Id_Causa_Raiz').value = dataRow.Id_Causa_Raiz;
+            document.querySelector('#Id_Tipo_Inspeccion').value = dataRow.Id_Tipo_Inspeccion;     
+            document.querySelector('#Causa_Raiz').value = dataRow.Causa_Raiz;
+            // document.querySelector('#Id_Falla').value = dataRow.Id_Falla;
+    
+            
+            if(dataRow.Estatus == "Inactivo"){
+                document.querySelector('#Estatus').checked = false;
+            }
+    
+            
+    
+            $('#modalAgregarCausaPrincipal').modal('show');
+        }).catch(error => {
+            cerrarAlertLoading();
+        });
 
-        $('#modalAgregarCausaPrincipal').modal('show');
     }
 
     // Función que limpia el formulario y cambia el action
@@ -299,18 +308,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
-    function crearSelectFallasCP(idTipoInspeccion, id_select) {
+    async function crearSelectFallasCP(idTipoInspeccion, id_select) {
         // obteniendo el select a modificar
         var select = document.getElementById(id_select);
         // Limpiando el select
         select.innerHTML = '';
 
-        // Filtrando y creando el select con los productos en la OC
-        const options = dataSelectFallas
-            .filter(falla => falla.Id_Tipo_Inspeccion == idTipoInspeccion)
-            .map(newdata => `<option value="${newdata.Id_Falla}">${newdata.Falla}</option>`)
-            .join('');
+        try {
+            // Filtrando y creando el select con los productos en la OC
+            const options = dataSelectFallas
+                .filter(falla => falla.Id_Tipo_Inspeccion == idTipoInspeccion)
+                .map(newdata => `<option value="${newdata.Id_Falla}">${newdata.Falla}</option>`)
+                .join('');
 
-        select.innerHTML = '<option value="">Seleccionar...</option>' + options;
+            select.innerHTML = '<option value="">Seleccionar...</option>' + options;
+        } catch (error) {
+            console.error('Error creating select options:', error);
+        }
     }
-});
