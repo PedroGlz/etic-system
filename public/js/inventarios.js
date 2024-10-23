@@ -169,9 +169,22 @@ window.addEventListener('DOMContentLoaded', (event) => {
   // Si pasa la validación de una inspeccion activa se inician todas las funciones
   if (iniciar_modulo) {
     cargarDataJsGridBaseLine();
-    dataSelectFallas = cargarDataSelectFallas();
-    dataSelectCausas = cargarDataSelectCausaPrincipal();
-    dataSelectRecomendaciones = cargarDataSelectRecomendaciones();
+    cargarDataSelectFallas().then((data) => {
+      dataSelectFallas = data;
+    }).catch((error) => {
+      console.error('Error loading fallas:', error);
+    });
+
+    cargarDataSelectCausaPrincipal().then((data) => {
+      dataSelectCausas = data;
+    }).catch((error) => {
+      console.error('Error loading causas:', error);
+    });
+    cargarDataSelectRecomendaciones().then((data) => {
+      dataSelectRecomendaciones = data;
+    }).catch((error) => {
+      console.error('Error loading recomendaciones:', error);
+    });
     explorarArchivos();
     crearSelectStatusInspeccionDetalle('Id_Status_Inspeccion_Det');
     crearSelectStatusInspeccionDetalle('Test_Estatus');
@@ -1136,7 +1149,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         // document.querySelector("#menuTabsProblemaElectricoMecanico").style.display = 'none';
         mostrarFormularioProblema('divProblemaVisual');
         document.querySelector(`#StrRutaVisual`).value = StrRuta;
-
+        
+        crearSelectFallaProblemas('0D32B333-76C3-11D3-82BF-00104BC75DC2',"hazard_Issue");
         crearSelectCausaPrincipal(opSeleccionada,"Id_Causa_Raiz_Visual");
         crearSelectRecomendaciones(opSeleccionada,"Id_Recomendacion");
         break;
@@ -2464,19 +2478,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
   //   });
   // }
   
-  function crearSelectFallaProblemas(idTipoInspeccion,id_select){
-    // obteniendo el select a modificar
-    var select = document.getElementById(`${id_select}`);
-    // // Limpiando el select
-    $(`#${id_select}`).empty();
+  function crearSelectFallaProblemas(idTipoInspeccion, id_select) {
+    const select = document.getElementById(id_select);
+    const fragment = document.createDocumentFragment();
+    const filteredData = dataSelectFallas.filter(falla => falla.Id_Tipo_Inspeccion === idTipoInspeccion);
 
-    newdata = dataSelectFallas.filter(falla => falla.Id_Tipo_Inspeccion == idTipoInspeccion);
-
-    // creando el select con los productos en la OC
-    select.innerHTML += '<option value="">Selecionar...</option>';
-    newdata.forEach(newdata => {
-      select.innerHTML += `<option value="${newdata.Id_Falla}">${newdata.Falla}</option>`;            
+    select.innerHTML = '<option value="">Selecionar...</option>';
+    filteredData.forEach(falla => {
+      const option = document.createElement('option');
+      option.value = falla.Id_Falla;
+      option.textContent = falla.Falla;
+      fragment.appendChild(option);
     });
+
+    select.appendChild(fragment);
   }
 
   function crearSelectCausaPrincipal(idTipoInspeccion, id_select){

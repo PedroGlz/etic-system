@@ -671,34 +671,30 @@ async function cargarDataSelectFallas() {
     }
 }
 
-function cargarDataSelectCausaPrincipal(){
-    // peticion a la base
-    $.ajax({
-        url: '/causaPrincipal/show',
-        type: "get",
-        // data:,
-        dataType: 'json',
-        success: function (data){
-            return data;        
-        },
-        error: function (error) {
-            return [];
-        },
-    });
+async function cargarDataSelectCausaPrincipal() {
+    try {
+        const response = await $.ajax({
+            url: '/causaPrincipal/show',
+            type: "get",
+            dataType: 'json'
+        });
+        return response;
+    } catch (error) {
+        console.log(error);
+        return [];
+    }
 }
 
-function cargarDataSelectRecomendaciones(){
-    // peticion a la base
-    $.ajax({
-      url: '/recomendaciones/show',
-      type: "get",
-      // data:,
-      dataType: 'json',
-      success: function (data){
-        return data;
-      },
-      error: function (error) {
+async function cargarDataSelectRecomendaciones() {
+    try {
+        const response = await $.ajax({
+            url: '/recomendaciones/show',
+            type: "get",
+            dataType: 'json'
+        });
+        return response;
+    } catch (error) {
+        console.log(error);
         return [];
-      },
-    });
+    }
 }
